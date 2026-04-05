@@ -1,4 +1,4 @@
-# Deeksha's Cyber-Noir Portfolio 🌌
+# My Portfolio 🌌
 
 Welcome to my personal portfolio! This is a visually stunning, Cyber-Noir themed web experience designed to showcase my identity as a security-conscious AI innovator.
 
