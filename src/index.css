@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+
+  --color-primary: #f43f5e;
+  --color-primary-container: #fb7185;
+  --color-on-primary: #4c0519;
+  --color-on-primary-container: #881337;
+  --color-secondary: #d946ef;
+  --color-secondary-container: #f0abfc;
+  --color-on-secondary: #4a044e;
+  --color-on-secondary-container: #701a75;
+  --color-tertiary: #8b5cf6;
+  --color-surface: #0a0a0a;
+  --color-surface-container-low: #121212;
+  --color-surface-container: #1a1a1a;
+  --color-surface-container-high: #222222;
+  --color-surface-container-highest: #2a2a2a;
+  --color-surface-variant: #2a2a2a;
+  --color-on-surface: #f5f5f5;
+  --color-on-surface-variant: #a3a3a3;
+  --color-outline-variant: #404040;
+}
+
+@layer base {
+  * {
+    @apply border-outline-variant/10;
+  }
+  body {
+    @apply bg-surface text-on-surface font-body selection:bg-primary/30 selection:text-primary;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(26, 26, 26, 0.4);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .bg-grid {
+    background-image: radial-gradient(circle at 2px 2px, rgba(217, 70, 239, 0.03) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+  .hero-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(217, 70, 239, 0.1) 0%, transparent 70%);
+  }
+  .aesthetic-gradient {
+    background: linear-gradient(135deg, #d946ef 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes scroll {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(10px); opacity: 0; }
+}
+
+@keyframes fadeUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.animate-scroll {
+  animation: scroll 2s infinite;
+}
