@@ -20,7 +20,6 @@ import {
   Award,
   Layers,
   Sparkles,
-  MapPin,
   Calendar,
   BookOpen,
   Briefcase,
@@ -527,10 +526,6 @@ export default function App() {
 
               <div className="pt-4 border-t border-emerald-500/10 flex flex-wrap gap-4 text-xs">
                 <div className="flex items-center gap-1.5 text-slate-300">
-                  <MapPin size={14} className="text-emerald-400" />
-                  <span>Mangaluru, India</span>
-                </div>
-                <div className="flex items-center gap-1.5 text-slate-300">
                   <Calendar size={14} className="text-emerald-400" />
                   <span>Graduating June 2026</span>
                 </div>
@@ -950,17 +945,6 @@ export default function App() {
                 </div>
                 <ArrowUpRight size={18} className="text-slate-400 group-hover:text-emerald-400 transition-colors" />
               </a>
-
-              <div className="bedim-card rounded-2xl p-5 flex items-center justify-between">
-                <div className="space-y-0.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-                    <MapPin size={13} /> Location & Mobility
-                  </span>
-                  <p className="text-sm font-semibold text-white">Mangaluru, India</p>
-                  <p className="text-xs text-slate-400">Open to Relocation across India & Global Remote</p>
-                </div>
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              </div>
             </div>
           </div>
         </section>
