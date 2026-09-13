@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Great+Vibes&family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-headline: "Manrope", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-label: "Inter", sans-serif;
+  --font-cursive: "Great Vibes", "Alex Brush", cursive;
 
   --color-primary: #0284c7;
   --color-primary-container: #bae6fd;
@@ -59,6 +60,9 @@
   }
   .light-gradient-bg {
     background: linear-gradient(180deg, #f0f6fc 0%, #e6f0fa 50%, #f0f6fc 100%);
+  }
+  .font-cursive {
+    font-family: 'Great Vibes', 'Alex Brush', 'Allura', cursive;
   }
 }
 

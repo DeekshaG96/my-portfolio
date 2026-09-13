@@ -294,18 +294,9 @@ export default function App() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-10 max-w-4xl"
           >
-            <div className="space-y-5">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-sky-100/90 border border-sky-200/80 text-sky-800 text-xs font-bold uppercase tracking-widest shadow-xs"
-              >
-                <Sparkles size={14} className="text-sky-600" /> Calm Precision • Confident Engineering
-              </motion.div>
-              <h1 className="text-7xl md:text-[9.5rem] font-black tracking-tighter leading-[0.88] text-slate-900">
-                DEEKSHA<br/>
-                <span className="aesthetic-gradient">G.</span>
+            <div className="space-y-2 py-4">
+              <h1 className="font-cursive text-7xl sm:text-8xl md:text-[9rem] lg:text-[11rem] font-normal leading-[1.15] tracking-normal text-slate-900 select-none drop-shadow-sm">
+                Deeksha <span className="aesthetic-gradient">G.</span>
               </h1>
             </div>
             
