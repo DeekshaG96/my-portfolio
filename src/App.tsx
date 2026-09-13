@@ -99,9 +99,9 @@ export default function App() {
   ];
 
   const stats = [
-    { label: 'Internships', value: '4+' },
-    { label: 'Projects', value: '10+' },
-    { label: 'Certifications', value: '8+' },
+    { label: 'Internships', value: '5' },
+    { label: 'Projects', value: '12+' },
+    { label: 'Cloud & Badges', value: '18+' },
     { label: 'CGPA', value: '7.8' }
   ];
 
@@ -133,96 +133,127 @@ export default function App() {
   const experience = [
     { 
       date: 'May 2026 - Present', 
-      title: 'Open Source Software Contributor', 
+      title: 'Open Source Software Engineering Contributor', 
       company: 'GirlScript Summer of Code (GSSoC)',
       location: 'Remote',
       points: [
-        'Contributing feature enhancements and bug fixes to developer and security tooling open-source repositories.',
-        'Configured GitHub Actions CI/CD workflows for automated linting and unit testing, reducing review cycles by 25%.',
-        'Collaborating with distributed engineering teams on modern git branching and PR review standards.'
+        'Contributing core features and bug fixes to developer and security tooling open-source repositories via Git/GitHub.',
+        'Configured automated GitHub Actions CI/CD workflows for linting, unit testing, and branch validation, cutting review cycles by 25%.',
+        'Collaborating with distributed engineering teams on modern pull request reviews and semantic versioning.'
+      ]
+    },
+    { 
+      date: 'Oct 2025 - Dec 2025', 
+      title: 'Network Security Engineering Intern', 
+      company: 'Fortinet (via AICTE & EduSkills)',
+      location: 'Virtual',
+      points: [
+        'Graduated from 10-week enterprise security engineering program with Grade O (Outstanding, 90-100%).',
+        'Configured stateful firewall inspection policies, Zero-Trust Network Access (ZTNA), and simulated enterprise attack vectors.',
+        'Hardened virtualized network perimeters and conducted automated threat-surface audits.'
+      ]
+    },
+    { 
+      date: 'Jan 2025 - Mar 2025', 
+      title: 'Cybersecurity Engineering Intern', 
+      company: 'Palo Alto Networks (via AICTE & EduSkills)',
+      location: 'Virtual',
+      points: [
+        'Completed 10-week intensive cybersecurity track, achieving Grade E (Excellent, 80-89%).',
+        'Analyzed real-time network traffic telemetry, investigated simulated SOC alarms, and mitigated perimeter vulnerabilities.',
+        'Constructed threat-modeling topologies and incident response automation playbooks for hybrid cloud workloads.'
       ]
     },
     { 
       date: 'Nov 2024 - Dec 2024', 
       title: 'AI Product Intern', 
-      company: 'TechSaksham (Microsoft & SAP)',
+      company: 'TechSaksham (Microsoft & SAP CSR Initiative)',
       location: 'Remote',
       points: [
-        'Developed AI-driven agricultural solutions using machine learning models with 94% prediction accuracy.',
-        'Collaborated with cross-functional teams to integrate business logic with scalable technical implementations.',
-        'Optimized model inference performance for real-time edge processing on agricultural IoT devices.'
+        'Engineered deep learning computer vision pipelines for sustainable agriculture, achieving 94% prediction accuracy.',
+        'Optimized model inference latency for real-time edge processing across 10,000+ agricultural data records.',
+        'Collaborated with cross-functional product leads to translate business requirements into production ML architecture.'
       ]
     },
     { 
-      date: 'Apr 2024 - Dec 2025', 
-      title: 'Cybersecurity & Cloud Intern', 
-      company: 'AICTE & EduSkills (Fortinet & Palo Alto Networks)',
-      location: 'Virtual',
+      date: 'Oct 2024 - Dec 2024', 
+      title: 'Cloud Infrastructure Engineering Intern', 
+      company: 'AWS Academy',
+      location: 'Remote',
       points: [
-        'Completed 10-week network security internship with Fortinet graduating with Grade O (Outstanding, 90-100%).',
-        'Configured stateful firewall rules, zero-trust network access (ZTNA), and simulated enterprise attack vectors.',
-        'Hardened AWS cloud VPC architectures adhering to industry security best practices.'
+        'Architected resilient, highly available cloud infrastructures utilizing AWS Core Services (EC2, S3, VPC, RDS, IAM) with Grade A evaluation.',
+        'Engineered multi-AZ subnet topologies, routing tables, and security group policies for scalable microservice hosting.',
+        'Implemented CloudWatch monitoring alarms and cloud cost-optimization strategies.'
       ]
     }
   ];
 
   const certifications = [
-    'AWS Cloud Architect', 'Google Cloud ACE', 
-    'Fortinet Security Expert', 'Vertex AI Prompt Design',
-    'Postman API Expert', 'Data Analytics Specialist'
+    'Google Cloud ACE', '18+ GCP Skill Badges',
+    'AWS Academy Cloud Architect', 'Fortinet Network Security (FCA)', 
+    'Palo Alto Networks Cyber', 'Postman API Student Expert',
+    'Vertex AI Prompt Design', 'Data Analytics Specialist'
   ];
 
   const projects = [
     {
-      title: 'Eco-Track Resilient',
-      tag: 'Logistics / Gemini AI',
-      desc: 'AI-assisted logistics intelligence prototype for disruption risk detection and recovery routing. Built for Google Solution Challenge 2026.',
+      title: 'RazorOps AI',
+      tag: 'FinTech / Automated Reconciliation',
+      desc: 'Cloud-native financial operations portal simulating transaction batch clearing, status lifecycles, and liquidity forecasting. Automated API test suites with Postman validate idempotency and cut manual auditing overhead by 40%.',
+      img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96',
+      tech: ['React 19', 'JavaScript', 'Firebase', 'SQL', 'Postman API', 'Tailwind CSS']
+    },
+    {
+      title: 'Eco-Track Logistics',
+      tag: 'Logistics / Gemini 2.5 Flash',
+      desc: 'AI-assisted logistics intelligence platform for supply chain disruption risk detection and recovery routing. Integrates Google Gemini 2.5 Flash reasoning with real-time IoT sensor telemetry in Firebase (+25% routing resilience). Built for Google Solution Challenge 2026.',
       img: 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/eco-track-logistics',
       live: 'https://techspire-13303696-1c68d.web.app',
-      tech: ['React', 'Gemini AI', 'Firebase', 'Google Maps API']
+      tech: ['React', 'Gemini AI', 'Firebase', 'Google Maps API', 'CI/CD']
     },
     {
       title: 'Smart Farmer Connect',
-      tag: 'AgriTech / Platform',
-      desc: 'Scalable full-stack marketplace and analytics platform bridging digital divide in agriculture with real-time crop insights.',
+      tag: 'AgriTech / Next.js Platform',
+      desc: 'Scalable full-stack marketplace and crop intelligence portal connecting farmers to agronomy analytics and direct commercial buyers. Features dynamic pricing models and localized weather analytics (+40% user engagement).',
       img: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/smart-farm-connect',
       live: 'https://v0-smart-farm-connect-ui.vercel.app/',
-      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel']
+      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'REST API']
+    },
+    {
+      title: 'VotX Protocol',
+      tag: 'Web3 / Cryptography',
+      desc: 'Decentralized electronic voting platform deploying gas-optimized Solidity smart contracts on Polygon with Zero-Knowledge proofs (ZK-proofs) for complete voter anonymity and tamper-proof ballot verification across 10,000+ simulated voters.',
+      img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96',
+      tech: ['Solidity', 'Polygon', 'ZK-Proofs', 'Web3.js', 'Smart Contracts']
     },
     {
       title: 'Student Success Dashboard',
       tag: 'EdTech / MLOps',
-      desc: 'Interactive predictive analytics portal analyzing factors for student academic retention and graduation trends with visualizations.',
+      desc: 'Interactive predictive machine learning portal analyzing educational indicators to forecast student retention and graduation outcomes in real time with feature-importance visual explainability.',
       img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/Student-Success-Dashboard',
-      tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Pandas']
-    },
-    {
-      title: 'AI Text Summarizer',
-      tag: 'NLP / GenAI',
-      desc: 'High-throughput text intelligence workspace summarizing complex documents into actionable insights using Gemini AI.',
-      img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/aitextsummarizer',
-      tech: ['Node.js', 'Express', 'Gemini AI', 'React']
+      tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Pandas', 'Matplotlib']
     },
     {
       title: 'Soul Journal',
-      tag: 'Mobile / Flutter',
-      desc: 'Cross-platform wellbeing and journaling application with cloud sync, mood tracking, and secure Firebase auth.',
+      tag: 'Mobile / Flutter & Cloud',
+      desc: 'Cross-platform mental wellness and habit-building mobile application engineered in Flutter with Riverpod state architecture, biometric security, and real-time Cloud Firestore synchronization.',
       img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/soul_journal',
       live: 'https://soul-journal-65327.web.app/',
-      tech: ['Flutter', 'Firebase', 'Riverpod', 'Cloud Firestore']
+      tech: ['Flutter', 'Firebase', 'Riverpod', 'Cloud Firestore', 'Dart']
     },
     {
-      title: 'Aura Mental Wellbeing',
-      tag: 'HealthTech / AI',
-      desc: 'AI-driven wellbeing companion offering personalized emotional health tracking and cognitive wellness insights.',
-      img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/aura-mental-wellbeing',
-      tech: ['React', 'Python', 'Flask', 'Machine Learning']
+      title: 'AI Text Summarizer',
+      tag: 'NLP / GenAI Engine',
+      desc: 'High-throughput document intelligence workspace leveraging Google Gemini LLM API to parse, summarize, and extract sentiment and core action items from dense documents and meeting transcripts.',
+      img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/aitextsummarizer',
+      tech: ['Node.js', 'Express', 'Gemini AI', 'React 19', 'Tailwind CSS']
     }
   ];
 
