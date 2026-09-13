@@ -39,6 +39,18 @@ export default function App() {
   const projects = [
     {
       num: '01',
+      title: 'RazorOps AI | Autonomous Reconciliation',
+      tag: 'Razorpay AI Buildathon 2026 (Track 4)',
+      category: 'AI & Cloud',
+      metric: 'Razorpay Buildathon • 93.4% Match',
+      desc: 'Autonomous financial reconciliation and liquidity intelligence engine built for Razorpay AI Buildathon 2026. Segregates deterministic math from Gemini Copilot reasoning, detecting MDR variances and modeling RBI nodal settlement cycles.',
+      img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/razorops-ai',
+      live: 'https://razorops-ai.web.app',
+      tech: ['React 19', 'Gemini AI', 'Firebase', 'E2E Testing', 'Tailwind CSS']
+    },
+    {
+      num: '02',
       title: 'NaanStop Food Delivery & Kitchen OS',
       tag: 'Full-Stack / Restaurant ERP',
       category: 'Full-Stack',
@@ -50,7 +62,7 @@ export default function App() {
       tech: ['React 18', 'Node.js', 'Express', 'MongoDB Atlas', 'Capacitor Android', 'JWT']
     },
     {
-      num: '02',
+      num: '03',
       title: 'Eco-Track Resilient',
       tag: 'Google Solution Challenge 2026',
       category: 'AI & Cloud',
@@ -62,7 +74,7 @@ export default function App() {
       tech: ['Gemini 1.5 Flash', 'React', 'Vite', 'Google Maps API', 'Firebase', 'Tailwind CSS']
     },
     {
-      num: '03',
+      num: '04',
       title: 'Forensic Pro Suite',
       tag: 'Cybersecurity / NIST SP 800-86',
       category: 'Security & Web3',
@@ -74,7 +86,7 @@ export default function App() {
       tech: ['Next.js 16', 'React 19', 'FastAPI', 'Python', 'Supabase', 'Xterm.js']
     },
     {
-      num: '04',
+      num: '05',
       title: 'The Architectural Ledger',
       tag: 'Enterprise HRMS & Payroll',
       category: 'Full-Stack',
@@ -86,7 +98,7 @@ export default function App() {
       tech: ['React 19', 'Vite', 'Tailwind CSS v4', 'Firebase', 'Recharts', 'Lucide React']
     },
     {
-      num: '05',
+      num: '06',
       title: 'SIT Global Success Hub',
       tag: 'EdTech / MLOps Portal',
       category: 'AI & Cloud',
@@ -98,7 +110,7 @@ export default function App() {
       tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Gemini 1.5 Pro', 'Bcrypt', 'Pandas']
     },
     {
-      num: '06',
+      num: '07',
       title: 'VotX Decentralized Voting System',
       tag: 'Web3 / Smart Contracts',
       category: 'Security & Web3',
@@ -110,7 +122,7 @@ export default function App() {
       tech: ['Solidity', 'Ethereum Sepolia', 'Hardhat', 'Ethers.js', 'React', 'Tailwind CSS']
     },
     {
-      num: '07',
+      num: '08',
       title: 'Smart Farmer Connect',
       tag: 'Agritech / Srinathon 2.0',
       category: 'Full-Stack',
@@ -122,7 +134,7 @@ export default function App() {
       tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'REST API', 'Vercel']
     },
     {
-      num: '08',
+      num: '09',
       title: 'PlantGuard AI Diagnostics',
       tag: 'Computer Vision / TechSaksham',
       category: 'AI & Cloud',
@@ -133,7 +145,7 @@ export default function App() {
       tech: ['Python', 'PyTorch', 'TensorFlow', 'CNN', 'OpenCV', 'Jupyter']
     },
     {
-      num: '09',
+      num: '10',
       title: 'Soul Journal & Mental Wellness',
       tag: 'Mobile / Flutter & Cloud',
       category: 'Mobile',
@@ -145,7 +157,7 @@ export default function App() {
       tech: ['Flutter', 'Dart', 'Firebase', 'Cloud Firestore', 'Biometrics', 'Web']
     },
     {
-      num: '10',
+      num: '11',
       title: 'AI Text Summarizer',
       tag: 'NLP / GenAI Engine',
       category: 'AI & Cloud',
