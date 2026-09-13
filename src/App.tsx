@@ -77,7 +77,7 @@ export default function App() {
   }, [typingText, isDeleting, loopNum]);
 
   const copyEmail = () => {
-    navigator.clipboard.writeText('dg575265@gmail.com');
+    navigator.clipboard.writeText('deekshagpbangera@gmail.com');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -102,7 +102,7 @@ export default function App() {
     { label: 'Internships', value: '2+' },
     { label: 'Projects', value: '10+' },
     { label: 'Certifications', value: '8+' },
-    { label: 'CGPA', value: '7.7' }
+    { label: 'CGPA', value: '7.8' }
   ];
 
   const values = [
@@ -244,7 +244,7 @@ export default function App() {
             <a href="#contact" className="hover:text-white transition-colors">Contact</a>
             <div className="flex items-center gap-6 pl-6 border-l border-white/10">
               <a href="https://github.com/DeekshaG96" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors"><Github size={16} /></a>
-              <a href="https://linkedin.com/in/deekshag96" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors"><Linkedin size={16} /></a>
+              <a href="https://linkedin.com/in/deeksha-g-cybersec" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors"><Linkedin size={16} /></a>
             </div>
           </div>
 
@@ -559,13 +559,13 @@ export default function App() {
                   className="group flex items-center gap-4 text-2xl font-bold hover:text-primary transition-colors relative w-fit"
                 >
                   <Mail size={24} /> 
-                  dg575265@gmail.com
+                  deekshagpbangera@gmail.com
                   <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">
                     {copied ? 'Copied!' : 'Click to Copy'}
                   </span>
                   {copied ? <Check size={18} className="text-primary" /> : <Copy size={18} className="opacity-20 group-hover:opacity-100 transition-opacity" />}
                 </button>
-                <a href="https://linkedin.com/in/deekshag96" target="_blank" rel="noreferrer" className="group flex items-center gap-4 text-2xl font-bold hover:text-primary transition-colors w-fit">
+                <a href="https://linkedin.com/in/deeksha-g-cybersec" target="_blank" rel="noreferrer" className="group flex items-center gap-4 text-2xl font-bold hover:text-primary transition-colors w-fit">
                   <Linkedin size={24} /> LinkedIn
                 </a>
                 <a href="https://github.com/DeekshaG96" target="_blank" rel="noreferrer" className="group flex items-center gap-4 text-2xl font-bold hover:text-primary transition-colors w-fit">
