@@ -304,7 +304,7 @@ export default function App() {
               <a href="#projects" className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest bg-white text-black px-10 py-5 rounded-full hover:bg-primary hover:text-white transition-all shadow-xl shadow-primary/10">
                 Explore My Impact <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
               </a>
-              <a href="/Deeksha_G_Resume.txt" download className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest border border-white/10 px-10 py-5 rounded-full hover:border-primary hover:text-primary transition-all">
+              <a href="/Deeksha_G_Resume.pdf" download="Deeksha_G_Resume.pdf" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest border border-white/10 px-10 py-5 rounded-full hover:border-primary hover:text-primary transition-all">
                 Download CV <Download size={18} className="group-hover:translate-y-1 transition-transform" />
               </a>
             </div>

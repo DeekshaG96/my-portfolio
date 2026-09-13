@@ -79,7 +79,7 @@ Experience the live, interactive portfolio at:
 ```plaintext
 my-portfolio/
 ├── public/                 # Static assets & downloadable CV
-│   └── Deeksha_G_Resume.txt
+│   └── Deeksha_G_Resume.pdf
 ├── src/
 │   ├── App.tsx             # Master Portfolio application & interactive sections
 │   ├── index.css           # Global typography, glassmorphism & Tailwind styles
