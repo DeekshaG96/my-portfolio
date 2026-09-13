@@ -3,6 +3,7 @@ import {
   Github, 
   Mail, 
   Linkedin, 
+  Phone,
   ArrowRight, 
   ArrowDown,
   ArrowUpRight,
@@ -20,23 +21,79 @@ import {
   Award,
   Layers,
   Sparkles,
-  MapPin
+  MapPin,
+  Calendar,
+  BookOpen,
+  Briefcase,
+  Terminal,
+  Database,
+  Code2,
+  Send,
+  ChevronUp
 } from 'lucide-react';
+
+interface Project {
+  num: string;
+  title: string;
+  tag: string;
+  category: 'Full-Stack' | 'AI & Cloud' | 'Security & Web3' | 'Mobile';
+  metric: string;
+  desc: string;
+  img: string;
+  github: string;
+  live?: string;
+  tech: string[];
+}
+
+interface ExperienceItem {
+  period: string;
+  role: string;
+  company: string;
+  badge: string;
+  badgeType?: 'primary' | 'success' | 'warning';
+  points: string[];
+}
+
+interface SkillCategory {
+  title: string;
+  icon: JSX.Element;
+  skills: string[];
+}
+
+interface ServiceItem {
+  title: string;
+  description: string;
+  icon: JSX.Element;
+}
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string>('All');
+  
+  // Contact Form State
+  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const copyEmail = () => {
     navigator.clipboard.writeText('deekshagpbangera@gmail.com');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2200);
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formState.name || !formState.email || !formState.message) return;
+    setFormSubmitted(true);
+    setTimeout(() => {
+      setFormState({ name: '', email: '', subject: '', message: '' });
+      setFormSubmitted(false);
+    }, 5000);
   };
 
   const projectCategories = ['All', 'Full-Stack', 'AI & Cloud', 'Security & Web3', 'Mobile'];
 
-  const projects = [
+  const projects: Project[] = [
     {
       num: '01',
       title: 'RazorOps AI | Autonomous Reconciliation',
@@ -47,7 +104,7 @@ export default function App() {
       img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/razorops-ai',
       live: 'https://razorops-ai.web.app',
-      tech: ['React 19', 'Gemini AI', 'Firebase', 'E2E Testing', 'Tailwind CSS']
+      tech: ['React 19', 'Gemini AI', 'Firebase', 'E2E Testing (19/19)', 'Tailwind CSS']
     },
     {
       num: '02',
@@ -55,7 +112,7 @@ export default function App() {
       tag: 'Full-Stack / Restaurant ERP',
       category: 'Full-Stack',
       metric: 'Customer + Admin KDS + Android',
-      desc: 'Full-stack multi-tier food ordering & restaurant ERP with real-time table reservations, live Kitchen Display System (KDS Kanban), JWT auth, and Capacitor Android mobile app.',
+      desc: 'Full-stack multi-tier food ordering & restaurant ERP with real-time table reservations, live Kitchen Display System (KDS Kanban), JWT authentication, and Capacitor Android mobile app.',
       img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/food-delivery-app',
       live: 'https://naanstop-customer.vercel.app',
@@ -67,7 +124,7 @@ export default function App() {
       tag: 'Google Solution Challenge 2026',
       category: 'AI & Cloud',
       metric: 'Gemini 1.5 Flash + Maps',
-      desc: 'AI-assisted logistics intelligence prototype for Google Solution Challenge 2026. Predicts supply-chain disruption risks, calculates Scope 3 GLEC emissions, and simulates war room disaster drills.',
+      desc: 'AI-assisted logistics intelligence prototype for Google Solution Challenge 2026. Predicts supply-chain disruption risks, calculates Scope 3 GLEC emissions, and simulates war room disaster recovery routing.',
       img: 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/eco-track-logistics',
       live: 'https://techspire-13303696-1c68d.web.app',
@@ -79,7 +136,7 @@ export default function App() {
       tag: 'Enterprise HRMS & Payroll',
       category: 'Full-Stack',
       metric: 'Enterprise RBAC & Payroll',
-      desc: 'Modern Human Resources Management Suite engineered for enterprise administration, role-based departmental oversight, interactive Recharts analytics, and automated payroll ledgers.',
+      desc: 'Modern Human Resources Management Suite engineered for enterprise administration, role-based departmental oversight, interactive Recharts analytics, and automated payroll calculation ledgers.',
       img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/the-architectural-ledger',
       live: 'https://the-architectural-ledger.netlify.app/',
@@ -155,18 +212,6 @@ export default function App() {
       github: 'https://github.com/DeekshaG96/soul_journal',
       live: 'https://soul-journal-65327.web.app/',
       tech: ['Flutter', 'Dart', 'Firebase', 'Cloud Firestore', 'Biometrics', 'Web']
-    },
-    {
-      num: '11',
-      title: 'AI Text Summarizer',
-      tag: 'NLP / GenAI Engine',
-      category: 'AI & Cloud',
-      metric: 'Transformer NLP API',
-      desc: 'High-throughput document intelligence workspace integrating Hugging Face transformer models to parse, synthesize, and extract key action items from lengthy technical documents.',
-      img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/aitextsummarizer',
-      live: 'https://aitextsummarizer-omega.vercel.app',
-      tech: ['JavaScript', 'Hugging Face API', 'HTML5', 'CSS3', 'Vercel']
     }
   ];
 
@@ -174,58 +219,20 @@ export default function App() {
     ? projects 
     : projects.filter(p => p.category === activeCategory);
 
-  const services = [
-    {
-      title: 'Full-Stack Engineering',
-      desc: 'Developing high-performance, responsive applications with React 19, Next.js, Node.js, and clean RESTful APIs.',
-      icon: <Cpu className="w-6 h-6 text-emerald-400" />
-    },
-    {
-      title: 'Applied AI & GenAI Systems',
-      desc: 'Integrating Google Gemini 2.5 Flash, structured prompt design, and machine learning models for production workflows.',
-      icon: <Brain className="w-6 h-6 text-emerald-400" />
-    },
-    {
-      title: 'Cloud & Infrastructure',
-      desc: 'Architecting resilient AWS and Google Cloud environments with automated CI/CD and cost-optimized compute.',
-      icon: <Cloud className="w-6 h-6 text-emerald-400" />
-    },
-    {
-      title: 'Network Security & ZTNA',
-      desc: 'Configuring enterprise firewalls, Zero-Trust Network Access (ZTNA), and automated threat surface assessments.',
-      icon: <ShieldCheck className="w-6 h-6 text-emerald-400" />
-    }
-  ];
-
-  const skillDomains = [
-    {
-      category: 'Frontend',
-      items: ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React 19', 'Next.js', 'Tailwind CSS', 'Flutter']
-    },
-    {
-      category: 'Backend & Cloud',
-      items: ['Python', 'Java', 'C++', 'Node.js', 'Express', 'AWS (EC2/S3/VPC)', 'Google Cloud', 'Docker', 'SQL']
-    },
-    {
-      category: 'AI & Security',
-      items: ['Google Gemini AI', 'Prompt Design', 'Scikit-Learn', 'Zero-Trust (ZTNA)', 'Fortinet Security', 'Postman API']
-    }
-  ];
-
-  const experience = [
+  const experiences: ExperienceItem[] = [
     { 
-      date: 'May 2026 - Present', 
-      title: 'Open Source Software Contributor', 
+      period: 'May 2026 - Present', 
+      role: 'Open Source Software Contributor', 
       company: 'GirlScript Summer of Code (GSSoC)',
       badge: 'Open Source',
       points: [
-        'Contributing core features and bug fixes to developer and security tooling open-source repositories.',
+        'Actively contributing core features, automated triage pipelines, and bug fixes across community repositories.',
         'Configured automated GitHub Actions CI/CD workflows for linting, testing, and branch validation, cutting review cycles by 25%.'
       ]
     },
     { 
-      date: 'Oct 2025 - Dec 2025', 
-      title: 'Network Security Engineering Intern', 
+      period: 'Oct 2025 - Dec 2025', 
+      role: 'Network Security Engineering Intern', 
       company: 'Fortinet (via AICTE & EduSkills)',
       badge: 'Grade O (90-100%)',
       points: [
@@ -234,8 +241,8 @@ export default function App() {
       ]
     },
     { 
-      date: 'Jan 2025 - Mar 2025', 
-      title: 'Cybersecurity Engineering Intern', 
+      period: 'Jan 2025 - Mar 2025', 
+      role: 'Cybersecurity Engineering Intern', 
       company: 'Palo Alto Networks (via AICTE & EduSkills)',
       badge: 'Grade E (80-89%)',
       points: [
@@ -244,18 +251,18 @@ export default function App() {
       ]
     },
     { 
-      date: 'Nov 2024 - Dec 2024', 
-      title: 'AI Product Intern', 
-      company: 'TechSaksham (Microsoft & SAP CSR)',
-      badge: '94% ML Accuracy',
+      period: 'Nov 2024 - Dec 2024', 
+      role: 'AI & Cloud Product Intern', 
+      company: 'TechSaksham (Microsoft & SAP CSR Initiative)',
+      badge: '94% ML Accuracy Honors',
       points: [
         'Engineered deep learning computer vision pipelines for sustainable agriculture, achieving 94% prediction accuracy.',
         'Optimized model inference latency for edge processing across 10,000+ agricultural data records.'
       ]
     },
     { 
-      date: 'Oct 2024 - Dec 2024', 
-      title: 'Cloud Infrastructure Engineering Intern', 
+      period: 'Oct 2024 - Dec 2024', 
+      role: 'Cloud Infrastructure Engineering Intern', 
       company: 'AWS Academy',
       badge: 'Grade A Evaluation',
       points: [
@@ -265,98 +272,166 @@ export default function App() {
     }
   ];
 
+  const skillCategories: SkillCategory[] = [
+    {
+      title: 'Programming Languages',
+      icon: <Code2 className="w-5 h-5 text-emerald-400" />,
+      skills: ['Python', 'Java', 'C++', 'TypeScript', 'JavaScript (ES6+)', 'Solidity', 'SQL', 'Dart']
+    },
+    {
+      title: 'Frontend Architecture',
+      icon: <Layers className="w-5 h-5 text-emerald-400" />,
+      skills: ['React 19', 'Next.js', 'Tailwind CSS v4', 'HTML5 / CSS3', 'Vite', 'Redux Toolkit', 'Flutter']
+    },
+    {
+      title: 'Backend & APIs',
+      icon: <Terminal className="w-5 h-5 text-emerald-400" />,
+      skills: ['Node.js', 'Express', 'FastAPI', 'RESTful APIs', 'JWT Authentication', 'Postman API Testing']
+    },
+    {
+      title: 'Cloud & DevOps',
+      icon: <Cloud className="w-5 h-5 text-emerald-400" />,
+      skills: ['AWS (EC2, S3, VPC, IAM)', 'Google Cloud', 'Firebase Hosting', 'Docker', 'GitHub Actions CI/CD']
+    },
+    {
+      title: 'Database & Storage',
+      icon: <Database className="w-5 h-5 text-emerald-400" />,
+      skills: ['MongoDB Atlas', 'PostgreSQL', 'Supabase', 'Cloud Firestore', 'MySQL', 'Local JSON Storage']
+    },
+    {
+      title: 'AI, ML & Security',
+      icon: <Brain className="w-5 h-5 text-emerald-400" />,
+      skills: ['Google Gemini AI', 'Scikit-Learn', 'PyTorch', 'CNNs', 'Zero-Trust (ZTNA)', 'Fortinet Firewalls']
+    }
+  ];
+
+  const services: ServiceItem[] = [
+    {
+      title: 'Full-Stack Web Development',
+      description: 'Building high-performance, responsive applications with React 19, Next.js, Node.js, and clean RESTful APIs.',
+      icon: <Cpu className="w-6 h-6 text-emerald-400" />
+    },
+    {
+      title: 'Applied AI & GenAI Systems',
+      description: 'Integrating Google Gemini AI, prompt design, and scikit-learn models for operational business workflows.',
+      icon: <Brain className="w-6 h-6 text-emerald-400" />
+    },
+    {
+      title: 'Cloud Architecture & DevOps',
+      description: 'Architecting resilient AWS and Google Cloud environments with automated CI/CD pipelines and cost-optimized compute.',
+      icon: <Cloud className="w-6 h-6 text-emerald-400" />
+    },
+    {
+      title: 'Network Security & Defense',
+      description: 'Implementing Zero-Trust Network Access (ZTNA), stateful firewall policies, and secure cryptographic verification.',
+      icon: <ShieldCheck className="w-6 h-6 text-emerald-400" />
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-[#090d0a] text-[#94a3b8] font-sans antialiased selection:bg-emerald-500/20 selection:text-emerald-400">
       
-      {/* Background Ambient Glows */}
+      {/* Background Ambient Lighting */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[5%] left-[50%] -translate-x-1/2 w-[550px] h-[350px] bg-emerald-500/10 blur-[130px] rounded-full" />
-        <div className="absolute top-[40%] right-[-5%] w-[450px] h-[450px] bg-emerald-600/5 blur-[150px] rounded-full" />
+        <div className="absolute top-[3%] left-[50%] -translate-x-1/2 w-[600px] h-[350px] bg-emerald-500/10 blur-[140px] rounded-full" />
+        <div className="absolute top-[35%] right-[-10%] w-[500px] h-[500px] bg-emerald-600/5 blur-[160px] rounded-full" />
+        <div className="absolute top-[70%] left-[-10%] w-[500px] h-[500px] bg-emerald-500/5 blur-[160px] rounded-full" />
       </div>
 
-      {/* Floating Pill Header & Nav (Bedimcode style) */}
+      {/* ==================== FLOATING NAVBAR ==================== */}
       <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-5 pb-3">
-        <nav className="max-w-4xl mx-auto bg-[#111612]/90 backdrop-blur-xl border border-emerald-500/20 rounded-full px-6 py-3 flex justify-between items-center shadow-xl shadow-black/40">
-          <a href="#home" className="font-cursive text-2xl text-white hover:text-emerald-400 transition-colors select-none">
+        <nav className="max-w-5xl mx-auto bg-[#111612]/90 backdrop-blur-xl border border-emerald-500/20 rounded-full px-6 py-3 flex justify-between items-center shadow-xl shadow-black/40">
+          <a href="#home" className="font-cursive text-2xl sm:text-3xl text-white hover:text-emerald-400 transition-colors select-none">
             Deeksha G<span className="text-emerald-400 font-sans">.</span>
           </a>
 
-          <div className="hidden md:flex items-center gap-7 text-xs font-medium uppercase tracking-wider text-slate-300">
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:flex items-center gap-6 text-xs font-medium uppercase tracking-wider text-slate-300">
             <a href="#home" className="hover:text-emerald-400 transition-colors">Home</a>
-            <a href="#work" className="hover:text-emerald-400 transition-colors">Works</a>
-            <a href="#services" className="hover:text-emerald-400 transition-colors">My Services</a>
+            <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
+            <a href="#projects" className="hover:text-emerald-400 transition-colors">Projects</a>
+            <a href="#experience" className="hover:text-emerald-400 transition-colors">Experience</a>
             <a href="#skills" className="hover:text-emerald-400 transition-colors">Skills</a>
-            <a href="#journey" className="hover:text-emerald-400 transition-colors">Career</a>
+            <a href="#education" className="hover:text-emerald-400 transition-colors">Education</a>
             <a href="#contact" className="hover:text-emerald-400 transition-colors">Contact</a>
           </div>
 
-          <div className="hidden md:flex items-center gap-3">
-            <a 
-              href="#contact" 
-              className="bg-emerald-400 hover:bg-emerald-300 text-black font-semibold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-md shadow-emerald-400/20 hover:shadow-emerald-400/30"
-            >
-              Contact me
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-white p-1" 
-            onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            aria-label="Toggle Menu"
-          >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </nav>
-
-        {/* Mobile Nav Drawer */}
-        {isMenuOpen && (
-          <div className="md:hidden max-w-sm mx-auto mt-2 bg-[#111612] border border-emerald-500/20 rounded-3xl p-6 flex flex-col gap-4 text-sm font-medium shadow-2xl">
-            <a href="#home" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400">Home</a>
-            <a href="#work" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400">Works</a>
-            <a href="#services" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400">My Services</a>
-            <a href="#skills" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400">Skills</a>
-            <a href="#journey" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400">Career</a>
-            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400">Contact</a>
+          {/* Desktop CTA Buttons */}
+          <div className="hidden sm:flex items-center gap-3">
             <a 
               href="./Deeksha_G_Resume.pdf" 
               download="Deeksha_G_Resume.pdf" 
-              className="bg-emerald-400 text-black text-center py-2.5 rounded-full text-xs font-bold uppercase tracking-wider mt-2"
+              className="inline-flex items-center gap-1.5 bg-[#161d17] hover:bg-[#1f2a20] text-slate-200 border border-emerald-500/30 text-xs font-bold uppercase tracking-wider px-3.5 py-2 rounded-full transition-all"
             >
-              Download Resume (PDF)
+              Resume <Download size={13} />
+            </a>
+            <a 
+              href="#contact" 
+              className="bg-emerald-400 hover:bg-emerald-300 text-black font-semibold text-xs uppercase tracking-wider px-4 py-2 rounded-full transition-all shadow-md shadow-emerald-400/20 hover:shadow-emerald-400/30"
+            >
+              Hire Me
+            </a>
+          </div>
+
+          {/* Mobile Menu Toggle Button */}
+          <button 
+            className="lg:hidden text-white p-1 focus:outline-none" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)} 
+            aria-label="Toggle Menu"
+          >
+            {isMenuOpen ? <X size={22} className="text-emerald-400" /> : <Menu size={22} />}
+          </button>
+        </nav>
+
+        {/* Mobile Navigation Dropdown */}
+        {isMenuOpen && (
+          <div className="lg:hidden max-w-sm mx-auto mt-2 bg-[#111612]/95 backdrop-blur-2xl border border-emerald-500/20 rounded-3xl p-6 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+            <a href="#home" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Home</a>
+            <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">About Me</a>
+            <a href="#projects" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Featured Projects</a>
+            <a href="#experience" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Career Experience</a>
+            <a href="#skills" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Technical Skills</a>
+            <a href="#education" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Education</a>
+            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Contact</a>
+            
+            <a 
+              href="./Deeksha_G_Resume.pdf" 
+              download="Deeksha_G_Resume.pdf" 
+              className="inline-flex items-center justify-center gap-2 bg-emerald-400 text-black text-center py-2.5 rounded-full text-xs font-bold uppercase tracking-wider mt-2 shadow-md shadow-emerald-400/20"
+            >
+              Download Resume (PDF) <Download size={14} />
             </a>
           </div>
         )}
       </header>
 
-      {/* Main Content */}
-      <main className="relative z-10 max-w-4xl mx-auto px-6 pt-32 pb-24 space-y-28">
+      {/* ==================== MAIN CONTENT CONTAINER ==================== */}
+      <main className="relative z-10 max-w-5xl mx-auto px-6 pt-32 pb-24 space-y-32">
 
-        {/* ==================== HOME SECTION ==================== */}
-        <section id="home" className="text-center space-y-8">
-          {/* Subtitle pill */}
+        {/* ==================== 1. HERO SECTION ==================== */}
+        <section id="home" className="text-center space-y-8 pt-4">
+          
+          {/* Eyebrow Status Pill */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-medium tracking-wide">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Hi! I'm Deeksha — Based in Mangaluru, India
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            Full-Stack Software Engineer • Available for Roles
           </div>
 
-          {/* Main Title (Bedimcode headline style) */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight font-headline">
-            Creative Engineer & <br />
-            <span className="text-gradient">Software Developer</span>
-          </h1>
+          {/* Headline */}
+          <div className="space-y-3">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight font-headline">
+              Creative Engineer & <br />
+              <span className="text-gradient">Full-Stack Cloud Architect</span>
+            </h1>
+            <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              B.E. in Computer Science & Business Systems from SIT Mangaluru (7.8 CGPA, 2026). Building resilient cloud architectures, scalable full-stack applications, and applied AI systems.
+            </p>
+          </div>
 
-          {/* Description */}
-          <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
-            I build resilient cloud architectures, scalable full-stack applications, and applied AI systems that solve real-world problems.
-          </p>
-
-          {/* Centerpiece: Bedimcode Portrait Card with Rotating Circular Badge */}
+          {/* Centerpiece: Bedimcode Portrait Card with Continuous Rotating Badge */}
           <div className="relative w-64 sm:w-72 h-80 sm:h-96 mx-auto my-8">
-            {/* Ambient emerald backlight */}
             <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full" />
 
-            {/* Rounded Card Container */}
             <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden border-2 border-emerald-400/40 shadow-2xl shadow-emerald-500/20 bg-gradient-to-b from-emerald-900/40 via-[#111612] to-[#090d0a]">
               <img 
                 src="./assets/avatar.jpg" 
@@ -365,7 +440,7 @@ export default function App() {
               />
             </div>
 
-            {/* Circular Rotating Badge (Bedimcode Signature) */}
+            {/* Rotating Circular Badge */}
             <div className="absolute -bottom-5 -right-5 w-24 h-24 rounded-full bg-[#111612] border-2 border-emerald-400/60 flex items-center justify-center shadow-xl shadow-black/80">
               <svg className="w-full h-full animate-spin-slow p-1" viewBox="0 0 100 100">
                 <path 
@@ -385,44 +460,130 @@ export default function App() {
             </div>
           </div>
 
-          {/* About Me Split Block below Avatar (Bedimcode structure) */}
-          <div className="grid md:grid-cols-2 gap-8 text-left pt-6 max-w-2xl mx-auto border-t border-emerald-500/10">
-            <div className="space-y-2">
-              <p className="text-sm text-slate-300 leading-relaxed">
-                <span className="font-semibold text-white">About Me:</span> CSBS Engineer (7.8 CGPA) at SIT Mangaluru who enjoys <span className="text-emerald-400 font-medium">cloud architecture</span> and <span className="text-emerald-400 font-medium">applied AI engineering</span>, disciplined, and passionate about reliable software.
-              </p>
+          {/* Standardized Hero Metrics Bar */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto pt-4 pb-2">
+            <div className="bedim-card rounded-2xl p-4 text-center">
+              <p className="text-2xl sm:text-3xl font-bold text-emerald-400 font-headline">5+</p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 pt-1">Internships</p>
             </div>
-            <div className="space-y-4">
-              <p className="text-sm text-slate-400 leading-relaxed">
-                If you have an engineering role or project in mind, explore my work below and let's connect to build together.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <a 
-                  href="#contact" 
-                  className="inline-flex items-center gap-2 bg-emerald-400 hover:bg-emerald-300 text-black text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-md shadow-emerald-400/20"
-                >
-                  Contact me <ArrowRight size={14} />
-                </a>
-                <a 
-                  href="./Deeksha_G_Resume.pdf" 
-                  download="Deeksha_G_Resume.pdf" 
-                  className="inline-flex items-center gap-2 bg-[#161d17] hover:bg-[#1f2a20] text-slate-200 border border-emerald-500/30 text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-full transition-all"
-                >
-                  Resume <Download size={14} />
-                </a>
+            <div className="bedim-card rounded-2xl p-4 text-center">
+              <p className="text-2xl sm:text-3xl font-bold text-emerald-400 font-headline">10+</p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 pt-1">Live Projects</p>
+            </div>
+            <div className="bedim-card rounded-2xl p-4 text-center">
+              <p className="text-2xl sm:text-3xl font-bold text-emerald-400 font-headline">7.8</p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 pt-1">CGPA (CSBS)</p>
+            </div>
+            <div className="bedim-card rounded-2xl p-4 text-center">
+              <p className="text-2xl sm:text-3xl font-bold text-emerald-400 font-headline">Grade O</p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 pt-1">Security Honors</p>
+            </div>
+          </div>
+
+          {/* Quick CTA Actions */}
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <a 
+              href="#contact" 
+              className="inline-flex items-center gap-2 bg-emerald-400 hover:bg-emerald-300 text-black text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full transition-all shadow-md shadow-emerald-400/20"
+            >
+              Get In Touch <ArrowRight size={14} />
+            </a>
+            <a 
+              href="./Deeksha_G_Resume.pdf" 
+              download="Deeksha_G_Resume.pdf" 
+              className="inline-flex items-center gap-2 bg-[#161d17] hover:bg-[#1f2a20] text-slate-200 border border-emerald-500/30 text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-full transition-all"
+            >
+              Download CV <Download size={14} />
+            </a>
+          </div>
+        </section>
+
+        {/* ==================== 2. ABOUT ME SECTION ==================== */}
+        <section id="about" className="space-y-8">
+          <div className="text-center space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Profile Overview</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
+              About <span className="text-gradient">Me</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+              Bridging technical software engineering with business systems strategy.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            {/* Biography Card */}
+            <div className="bedim-card rounded-3xl p-6 sm:p-8 space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-2 text-white font-bold text-sm uppercase tracking-wider font-headline">
+                  <Briefcase size={16} className="text-emerald-400" />
+                  <span>Engineering Philosophy</span>
+                </div>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  I am a pre-final year Computer Science & Business Systems engineering student at <span className="text-white font-semibold">Srinivas Institute of Technology (SIT), Mangaluru</span> with an academic record of <span className="text-emerald-400 font-semibold">7.8 CGPA</span> (graduating in June 2026).
+                </p>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  My experience spans enterprise internships at <span className="text-slate-200">Fortinet</span> (Grade O), <span className="text-slate-200">Palo Alto Networks</span> (Grade E), <span className="text-slate-200">TechSaksham / Microsoft & SAP</span> (94% accuracy), and <span className="text-slate-200">AWS Academy</span> (Grade A), along with open-source contributions in GSSoC 2024.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-emerald-500/10 flex flex-wrap gap-4 text-xs">
+                <div className="flex items-center gap-1.5 text-slate-300">
+                  <MapPin size={14} className="text-emerald-400" />
+                  <span>Mangaluru, India</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-slate-300">
+                  <Calendar size={14} className="text-emerald-400" />
+                  <span>Graduating June 2026</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 4 Pillars of Excellence */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bedim-card rounded-2xl p-5 space-y-2">
+                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                  <GraduationCap size={18} />
+                </div>
+                <h3 className="text-sm font-bold text-white font-headline">B.E. in CSBS</h3>
+                <p className="text-xs text-slate-400">7.8 CGPA • VTU Affiliated curriculum covering DSA, Cloud, OS & AI.</p>
+              </div>
+
+              <div className="bedim-card rounded-2xl p-5 space-y-2">
+                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                  <Award size={18} />
+                </div>
+                <h3 className="text-sm font-bold text-white font-headline">5 Internships</h3>
+                <p className="text-xs text-slate-400">Fortinet Grade O, Palo Alto Grade E, TechSaksham 94%, AWS Grade A.</p>
+              </div>
+
+              <div className="bedim-card rounded-2xl p-5 space-y-2">
+                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                  <Sparkles size={18} />
+                </div>
+                <h3 className="text-sm font-bold text-white font-headline">Hackathons</h3>
+                <p className="text-xs text-slate-400">Google Solution Challenge '26, Razorpay AI Buildathon '26, Srinathon 2.0.</p>
+              </div>
+
+              <div className="bedim-card rounded-2xl p-5 space-y-2">
+                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                  <ShieldCheck size={18} />
+                </div>
+                <h3 className="text-sm font-bold text-white font-headline">Security & Cloud</h3>
+                <p className="text-xs text-slate-400">Zero-Trust Network Access (ZTNA), AWS Core Infrastructure & Web3.</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ==================== WORK SECTION ==================== */}
-        <section id="work" className="space-y-8">
+        {/* ==================== 3. FEATURED PROJECTS SECTION ==================== */}
+        <section id="projects" className="space-y-8">
           <div className="text-center space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Portfolio Work</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
-              View My <span className="text-gradient">Work</span>
+              Featured <span className="text-gradient">Projects</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400">
-              A curation of 0→1 engineering platforms demonstrating scalable architecture, modern UX, and applied AI.
+            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+              Real-world engineering platforms built with modern tech stacks, live production URLs, and public GitHub code.
             </p>
 
             {/* Category Filter Pills */}
@@ -443,7 +604,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* 3-Column Work Grid (Bedimcode cards) */}
+          {/* 3-Column Work Grid (Standardized Card Architecture) */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((p) => (
               <div 
@@ -451,7 +612,7 @@ export default function App() {
                 className="bedim-card rounded-3xl p-4 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Image container with view arrow */}
+                  {/* Image Container with View Arrow */}
                   <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-black/40 border border-emerald-500/20">
                     <img 
                       src={p.img} 
@@ -459,7 +620,7 @@ export default function App() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                       referrerPolicy="no-referrer"
                     />
-                    <span className="absolute top-2.5 left-2.5 bg-black/80 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-bold text-emerald-400 border border-emerald-500/30">
+                    <span className="absolute top-2.5 left-2.5 bg-black/85 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-bold text-emerald-400 border border-emerald-500/30">
                       {p.metric}
                     </span>
                     <a 
@@ -478,17 +639,20 @@ export default function App() {
                     <span className="text-xs font-bold text-emerald-400 font-headline block">
                       {p.num}
                     </span>
-                    <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors font-headline">
+                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-emerald-400 transition-colors font-headline line-clamp-1">
                       {p.title}
                     </h3>
-                    <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-slate-400 line-clamp-3 leading-relaxed">
                       {p.desc}
                     </p>
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-emerald-500/10 flex items-center justify-between text-[11px]">
-                  <span className="text-slate-500 truncate max-w-[140px]">{p.tech.slice(0, 2).join(', ')}</span>
+                {/* Footer with Tech & Action Links */}
+                <div className="pt-3 border-t border-emerald-500/10 flex items-center justify-between text-[11px] mt-2">
+                  <span className="text-slate-500 truncate max-w-[130px]">
+                    {p.tech.slice(0, 2).join(', ')}
+                  </span>
                   <div className="flex items-center gap-3">
                     {p.live && (
                       <a 
@@ -515,120 +679,36 @@ export default function App() {
           </div>
         </section>
 
-        {/* ==================== SERVICES SECTION ==================== */}
-        <section id="services" className="space-y-8">
+        {/* ==================== 4. EXPERIENCE & INTERNSHIPS ==================== */}
+        <section id="experience" className="space-y-8">
           <div className="text-center space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Career Timeline</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
-              <span className="text-gradient">My</span> Services
+              Work <span className="text-gradient">Experience</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400">
-              Specialized technical disciplines I deliver for enterprise software and modern web applications.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-5">
-            {services.map((s, idx) => (
-              <div key={idx} className="bedim-card rounded-3xl p-6 space-y-3 group">
-                <div className="w-12 h-12 rounded-2xl bg-[#1a231b] border border-emerald-500/30 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
-                  {s.icon}
-                </div>
-                <h3 className="text-lg font-bold text-white font-headline">{s.title}</h3>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ==================== SKILLS SECTION ==================== */}
-        <section id="skills" className="space-y-8">
-          <div className="text-center space-y-2">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
-              My <span className="text-gradient">Skills</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-400">
-              Toolchains and technologies learned through dedicated coursework, project building, and 5 completed internships.
+            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+              Chronological track record of 5 enterprise internships and open-source contributions.
             </p>
           </div>
 
           <div className="space-y-4">
-            {skillDomains.map((d, i) => (
-              <div key={i} className="bedim-card rounded-3xl p-6 space-y-3">
-                <div className="flex items-center gap-2 text-white font-bold text-sm uppercase tracking-wider font-headline">
-                  <Layers size={16} className="text-emerald-400" />
-                  <span>{d.category}</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {d.items.map((skill) => (
-                    <span 
-                      key={skill} 
-                      className="px-3 py-1.5 rounded-xl bg-[#182019] text-slate-200 border border-emerald-500/20 text-xs font-medium hover:border-emerald-400/60 hover:text-white transition-colors"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ==================== CAREER & INTERNSHIPS ==================== */}
-        <section id="journey" className="space-y-8">
-          <div className="text-center space-y-2">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
-              <span className="text-gradient">Career</span> Journey
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-400">
-              Track record of 5 enterprise & open source internships, certifications, and academic foundation.
-            </p>
-          </div>
-
-          {/* Education Card */}
-          <div className="bedim-card rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start gap-4">
-            <div className="space-y-1.5">
-              <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
-                <GraduationCap size={15} /> Bachelor of Engineering (B.E.)
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-white font-headline">
-                Computer Science & Business Systems (CSBS)
-              </h3>
-              <p className="text-sm text-slate-300">
-                Srinivas Institute of Technology (SIT), Mangaluru • VTU
-              </p>
-              <p className="text-xs text-slate-400 pt-1">
-                Core: DSA, DBMS, Operating Systems, Computer Networks, Cloud Computing, Artificial Intelligence.
-              </p>
-            </div>
-            <div className="sm:text-right shrink-0">
-              <span className="text-xs text-slate-400">2022 – 2026</span>
-              <p className="text-2xl font-bold text-emerald-400 font-headline">7.8 CGPA</p>
-              <span className="inline-block mt-1 text-[11px] font-semibold text-emerald-300 bg-emerald-950/70 border border-emerald-500/30 px-2 py-0.5 rounded-full">
-                Graduating June 2026
-              </span>
-            </div>
-          </div>
-
-          {/* 5 Internships */}
-          <div className="space-y-4">
-            {experience.map((exp, idx) => (
+            {experiences.map((exp, idx) => (
               <div key={idx} className="bedim-card rounded-3xl p-6 space-y-3">
-                <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-1 border-b border-emerald-500/10 pb-3">
+                <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-1.5 border-b border-emerald-500/10 pb-3">
                   <div>
-                    <div className="flex items-center gap-2">
-                      <h4 className="text-base sm:text-lg font-bold text-white font-headline">{exp.title}</h4>
-                      {exp.badge && (
-                        <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                          {exp.badge}
-                        </span>
-                      )}
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="text-base sm:text-lg font-bold text-white font-headline">{exp.role}</h3>
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                        {exp.badge}
+                      </span>
                     </div>
-                    <p className="text-xs font-medium text-slate-300">{exp.company}</p>
+                    <p className="text-xs font-medium text-slate-300 pt-0.5">{exp.company}</p>
                   </div>
-                  <span className="text-xs text-emerald-400 font-medium">{exp.date}</span>
+                  <span className="text-xs text-emerald-400 font-medium whitespace-nowrap">{exp.period}</span>
                 </div>
                 <ul className="space-y-1.5 text-xs text-slate-400">
                   {exp.points.map((pt, pidx) => (
-                    <li key={pidx} className="flex gap-2">
+                    <li key={pidx} className="flex gap-2 leading-relaxed">
                       <span className="text-emerald-400 font-bold">•</span>
                       <span>{pt}</span>
                     </li>
@@ -639,67 +719,206 @@ export default function App() {
           </div>
         </section>
 
-        {/* ==================== CONTACT SECTION ==================== */}
-        <section id="contact" className="space-y-8">
+        {/* ==================== 5. EDUCATION SECTION ==================== */}
+        <section id="education" className="space-y-8">
           <div className="text-center space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Academic Background</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
-              Contact <span className="text-gradient">Me</span>
+              Formal <span className="text-gradient">Education</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400">
-              Have a full-time engineering opportunity or collaboration in mind? Let's connect!
+            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+              University degree foundation blending core computer science with enterprise business management.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Contact Form */}
-            <div className="bedim-card rounded-3xl p-6 sm:p-8 space-y-4">
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Name</label>
-                  <input 
-                    type="text" 
-                    placeholder="Your name" 
-                    className="w-full bg-[#182019] border border-emerald-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-emerald-400 outline-none transition-colors"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Email</label>
-                  <input 
-                    type="email" 
-                    placeholder="your.email@example.com" 
-                    className="w-full bg-[#182019] border border-emerald-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-emerald-400 outline-none transition-colors"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Message</label>
-                  <textarea 
-                    rows={4} 
-                    placeholder="Tell me about the engineering opportunity or project..." 
-                    className="w-full bg-[#182019] border border-emerald-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-emerald-400 outline-none transition-colors resize-none"
-                  />
-                </div>
-                <button 
-                  className="w-full bg-emerald-400 hover:bg-emerald-300 text-black font-bold uppercase tracking-wider text-xs py-3.5 rounded-xl transition-all shadow-md shadow-emerald-400/20 flex items-center justify-center gap-2"
-                >
-                  Send Message <ArrowRight size={15} />
-                </button>
-              </form>
+          <div className="bedim-card rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start gap-6">
+            <div className="space-y-2">
+              <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                <GraduationCap size={16} /> Bachelor of Engineering (B.E.)
+              </span>
+              <h3 className="text-xl sm:text-2xl font-bold text-white font-headline">
+                Computer Science & Business Systems (CSBS)
+              </h3>
+              <p className="text-sm text-slate-300 font-medium">
+                Srinivas Institute of Technology (SIT), Mangaluru
+              </p>
+              <p className="text-xs text-slate-400">
+                Affiliated with Visvesvaraya Technological University (VTU), Belagavi
+              </p>
+              <p className="text-xs text-slate-400 pt-2 leading-relaxed max-w-xl">
+                <span className="text-slate-300 font-semibold">Key Coursework:</span> Data Structures & Algorithms, Object-Oriented Programming (Java/C++), Operating Systems, Database Management Systems (DBMS), Computer Networks, Software Engineering, Cloud Computing, Artificial Intelligence.
+              </p>
             </div>
 
-            {/* Direct Contact Cards */}
-            <div className="space-y-3 flex flex-col justify-between">
+            <div className="sm:text-right shrink-0 bg-[#161d17] border border-emerald-500/20 rounded-2xl p-5 w-full sm:w-auto">
+              <span className="text-xs text-slate-400 block">2022 – 2026</span>
+              <p className="text-3xl font-bold text-emerald-400 font-headline my-1">7.8 CGPA</p>
+              <span className="inline-block text-[11px] font-semibold text-emerald-300 bg-emerald-950/70 border border-emerald-500/30 px-3 py-1 rounded-full">
+                Graduating June 2026
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* ==================== 6. SKILLS SECTION ==================== */}
+        <section id="skills" className="space-y-8">
+          <div className="text-center space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Technical Arsenal</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
+              Technical <span className="text-gradient">Skills</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+              Standard categorization of programming languages, frameworks, cloud services, and security competencies.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {skillCategories.map((domain, i) => (
+              <div key={i} className="bedim-card rounded-3xl p-6 space-y-3 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2.5 text-white font-bold text-sm uppercase tracking-wider font-headline">
+                    <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center">
+                      {domain.icon}
+                    </div>
+                    <span>{domain.title}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {domain.skills.map((skill) => (
+                      <span 
+                        key={skill} 
+                        className="px-2.5 py-1 rounded-lg bg-[#182019] text-slate-200 border border-emerald-500/20 text-xs font-medium hover:border-emerald-400/60 hover:text-white transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ==================== 7. SERVICES SECTION ==================== */}
+        <section id="services" className="space-y-8">
+          <div className="text-center space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Core Offerings</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
+              My <span className="text-gradient">Services</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+              Specialized technical competencies I bring to engineering teams and digital projects.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-5">
+            {services.map((s, idx) => (
+              <div key={idx} className="bedim-card rounded-3xl p-6 space-y-3 group">
+                <div className="w-12 h-12 rounded-2xl bg-[#1a231b] border border-emerald-500/30 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                  {s.icon}
+                </div>
+                <h3 className="text-lg font-bold text-white font-headline">{s.title}</h3>
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{s.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ==================== 8. CONTACT SECTION ==================== */}
+        <section id="contact" className="space-y-8">
+          <div className="text-center space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Get In Touch</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
+              Contact <span className="text-gradient">Me</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+              Interested in discussing a software engineering role, internship, or technical collaboration? Let's connect!
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            {/* Functional Contact Form */}
+            <div className="bedim-card rounded-3xl p-6 sm:p-8 space-y-4">
+              <h3 className="text-lg font-bold text-white font-headline">Send a Direct Message</h3>
+              
+              {formSubmitted ? (
+                <div className="bg-emerald-950/80 border border-emerald-500/40 rounded-2xl p-6 text-center space-y-2 animate-fadeIn">
+                  <div className="w-10 h-10 rounded-full bg-emerald-400 text-black flex items-center justify-center mx-auto">
+                    <Check size={20} />
+                  </div>
+                  <h4 className="text-base font-bold text-white font-headline">Message Dispatched!</h4>
+                  <p className="text-xs text-slate-300">
+                    Thank you! Your message has been sent. Deeksha will get back to you promptly at {formState.email || 'your email'}.
+                  </p>
+                </div>
+              ) : (
+                <form className="space-y-4" onSubmit={handleFormSubmit}>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Your Name *</label>
+                    <input 
+                      type="text" 
+                      required
+                      placeholder="e.g. Priya Sharma" 
+                      value={formState.name}
+                      onChange={(e) => setFormState({...formState, name: e.target.value})}
+                      className="w-full bg-[#182019] border border-emerald-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-emerald-400 outline-none transition-colors"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Email Address *</label>
+                    <input 
+                      type="email" 
+                      required
+                      placeholder="e.g. priya@company.com" 
+                      value={formState.email}
+                      onChange={(e) => setFormState({...formState, email: e.target.value})}
+                      className="w-full bg-[#182019] border border-emerald-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-emerald-400 outline-none transition-colors"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Subject</label>
+                    <input 
+                      type="text" 
+                      placeholder="e.g. Software Engineering Opportunity" 
+                      value={formState.subject}
+                      onChange={(e) => setFormState({...formState, subject: e.target.value})}
+                      className="w-full bg-[#182019] border border-emerald-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-emerald-400 outline-none transition-colors"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Message *</label>
+                    <textarea 
+                      rows={4} 
+                      required
+                      placeholder="Tell me about the engineering opportunity, timeline, or requirements..." 
+                      value={formState.message}
+                      onChange={(e) => setFormState({...formState, message: e.target.value})}
+                      className="w-full bg-[#182019] border border-emerald-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-emerald-400 outline-none transition-colors resize-none"
+                    />
+                  </div>
+                  <button 
+                    type="submit"
+                    className="w-full bg-emerald-400 hover:bg-emerald-300 text-black font-bold uppercase tracking-wider text-xs py-3.5 rounded-xl transition-all shadow-md shadow-emerald-400/20 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    Send Message <Send size={14} />
+                  </button>
+                </form>
+              )}
+            </div>
+
+            {/* Direct Channels Cards */}
+            <div className="space-y-3">
               <button 
                 onClick={copyEmail}
-                className="bedim-card rounded-2xl p-5 text-left flex items-center justify-between group hover:border-emerald-400/60 w-full"
+                className="bedim-card rounded-2xl p-5 text-left flex items-center justify-between group hover:border-emerald-400/60 w-full cursor-pointer"
               >
                 <div className="space-y-0.5">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-                    <Mail size={13} /> Email Address
+                    <Mail size={13} /> Official Email
                   </span>
                   <p className="text-sm font-semibold text-white">deekshagpbangera@gmail.com</p>
                 </div>
                 <span className="text-xs font-medium text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-3 py-1 rounded-full">
-                  {copied ? 'Copied!' : 'Copy Email'}
+                  {copiedEmail ? 'Copied!' : 'Copy'}
                 </span>
               </button>
 
@@ -711,9 +930,9 @@ export default function App() {
               >
                 <div className="space-y-0.5">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-                    <Linkedin size={13} /> Professional Profile
+                    <Linkedin size={13} /> LinkedIn Profile
                   </span>
-                  <p className="text-sm font-semibold text-white">LinkedIn: deeksha-g-cybersec</p>
+                  <p className="text-sm font-semibold text-white">linkedin.com/in/deeksha-g-cybersec</p>
                 </div>
                 <ArrowUpRight size={18} className="text-slate-400 group-hover:text-emerald-400 transition-colors" />
               </a>
@@ -726,9 +945,9 @@ export default function App() {
               >
                 <div className="space-y-0.5">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-                    <Github size={13} /> Open Source Code
+                    <Github size={13} /> GitHub Profile
                   </span>
-                  <p className="text-sm font-semibold text-white">GitHub: DeekshaG96</p>
+                  <p className="text-sm font-semibold text-white">github.com/DeekshaG96</p>
                 </div>
                 <ArrowUpRight size={18} className="text-slate-400 group-hover:text-emerald-400 transition-colors" />
               </a>
@@ -736,9 +955,22 @@ export default function App() {
               <div className="bedim-card rounded-2xl p-5 flex items-center justify-between">
                 <div className="space-y-0.5">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-                    <MapPin size={13} /> Location & Availability
+                    <Phone size={13} /> Contact Telephone
                   </span>
-                  <p className="text-sm font-semibold text-white">Mangaluru, India • Open to Relocate & Remote</p>
+                  <p className="text-sm font-semibold text-white">+91 91108 55431</p>
+                </div>
+                <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-full">
+                  Available
+                </span>
+              </div>
+
+              <div className="bedim-card rounded-2xl p-5 flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                    <MapPin size={13} /> Location & Mobility
+                  </span>
+                  <p className="text-sm font-semibold text-white">Mangaluru, India</p>
+                  <p className="text-xs text-slate-400">Open to Relocation across India & Global Remote</p>
                 </div>
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
               </div>
@@ -749,33 +981,62 @@ export default function App() {
 
       {/* ==================== FOOTER ==================== */}
       <footer className="border-t border-emerald-500/10 bg-[#070a08] py-14 text-center space-y-6">
-        <div className="max-w-4xl mx-auto px-6 space-y-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider text-white font-headline max-w-xl mx-auto leading-snug">
-            COLLABORATE WITH DEEKSHA AND START YOUR JOURNEY IN CREATIVE ENGINEERING TODAY.
+        <div className="max-w-4xl mx-auto px-6 space-y-5">
+          <a href="#home" className="font-cursive text-3xl text-white inline-block hover:text-emerald-400 transition-colors">
+            Deeksha G<span className="text-emerald-400 font-sans">.</span>
+          </a>
+
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-wider text-white font-headline max-w-xl mx-auto leading-snug">
+            Collaborate with Deeksha and build reliable engineering systems today.
           </h2>
 
-          <div className="flex justify-center gap-6 text-xs uppercase tracking-wider font-semibold text-slate-400 pt-2">
-            <a href="#work" className="hover:text-emerald-400 transition-colors">Work</a>
-            <a href="#services" className="hover:text-emerald-400 transition-colors">Services</a>
+          <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-wider font-semibold text-slate-400 pt-2">
+            <a href="#home" className="hover:text-emerald-400 transition-colors">Home</a>
+            <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
+            <a href="#projects" className="hover:text-emerald-400 transition-colors">Projects</a>
+            <a href="#experience" className="hover:text-emerald-400 transition-colors">Experience</a>
             <a href="#skills" className="hover:text-emerald-400 transition-colors">Skills</a>
-            <a href="#journey" className="hover:text-emerald-400 transition-colors">Career</a>
+            <a href="#education" className="hover:text-emerald-400 transition-colors">Education</a>
             <a href="./Deeksha_G_Resume.pdf" download="Deeksha_G_Resume.pdf" className="text-emerald-400 hover:text-emerald-300">Resume PDF</a>
           </div>
 
           <div className="flex justify-center gap-4 pt-2">
-            <a href="https://github.com/DeekshaG96" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-[#111612] border border-emerald-500/20 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400 transition-colors">
+            <a 
+              href="https://github.com/DeekshaG96" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="w-10 h-10 rounded-full bg-[#111612] border border-emerald-500/20 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400 transition-colors shadow-sm"
+              title="GitHub Profile"
+            >
               <Github size={16} />
             </a>
-            <a href="https://linkedin.com/in/deeksha-g-cybersec" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-[#111612] border border-emerald-500/20 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400 transition-colors">
+            <a 
+              href="https://linkedin.com/in/deeksha-g-cybersec" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="w-10 h-10 rounded-full bg-[#111612] border border-emerald-500/20 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400 transition-colors shadow-sm"
+              title="LinkedIn Profile"
+            >
               <Linkedin size={16} />
             </a>
-            <button onClick={copyEmail} className="w-9 h-9 rounded-full bg-[#111612] border border-emerald-500/20 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400 transition-colors" title="Copy Email">
+            <button 
+              onClick={copyEmail} 
+              className="w-10 h-10 rounded-full bg-[#111612] border border-emerald-500/20 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400 transition-colors shadow-sm cursor-pointer" 
+              title="Copy Email Address"
+            >
               <Mail size={16} />
             </button>
+            <a 
+              href="#home"
+              className="w-10 h-10 rounded-full bg-[#111612] border border-emerald-500/20 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400 transition-colors shadow-sm"
+              title="Back to Top"
+            >
+              <ChevronUp size={16} />
+            </a>
           </div>
 
           <p className="text-xs text-slate-500 pt-4">
-            © 2026 Deeksha G. All Rights Reserved. Built with React 19 & Tailwind CSS.
+            © {new Date().getFullYear()} Deeksha G. All Rights Reserved. Built with React 19, TypeScript & Tailwind CSS.
           </p>
         </div>
       </footer>
