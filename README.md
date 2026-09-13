@@ -24,7 +24,6 @@ Personal portfolio website showcasing full-stack engineering, cloud architecture
 | SIT Global Success Hub | Institutional student academic outcome prediction portal | Python, Streamlit, Scikit-Learn | [Demo](https://student-success-dashboard-cpnswmcahqbt6zwqkhwghy.streamlit.app/) / [Code](https://github.com/DeekshaG96/Student-Success-Dashboard) |
 | VotX | Decentralized electronic voting dApp with Ethereum smart contracts | Solidity, Sepolia, Hardhat, React | [Demo](https://blockchainproj-7nj1.vercel.app) / [Code](https://github.com/DeekshaG96/blockchain_proj) |
 | Smart Farmer Connect | Agritech marketplace platform developed at Srinathon 2.0 Hackathon | Next.js, TypeScript, Tailwind | [Demo](https://v0-smart-farm-connect-ui.vercel.app/) / [Code](https://github.com/DeekshaG96/smart-farm-connect) |
-| Netflix Platform | Video streaming web application designed with Clean Architecture | React 18, TypeScript, TMDB API | [Demo](https://netflix-clone-eight-liard-22.vercel.app) / [Code](https://github.com/DeekshaG96/_netflix-clone_) |
 
 ## Background & Experience
 

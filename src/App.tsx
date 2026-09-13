@@ -180,18 +180,6 @@ export default function App() {
     },
     {
       num: '08',
-      title: 'Netflix Platform (Clean Architecture)',
-      tag: 'Clean Architecture / Streaming',
-      category: 'Full-Stack',
-      metric: 'Clean Architecture & TMDB',
-      desc: 'High-fidelity video streaming web application designed with Clean Architecture principles. Features Firebase Auth, dynamic TMDB API integration, real-time movie search, and responsive video overlay.',
-      img: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/_netflix-clone_',
-      live: 'https://netflix-clone-eight-liard-22.vercel.app',
-      tech: ['React 18', 'TypeScript', 'Tailwind CSS', 'Firebase Auth', 'TMDB API', 'Framer Motion']
-    },
-    {
-      num: '09',
       title: 'PlantGuard AI Diagnostics',
       tag: 'Computer Vision / TechSaksham',
       category: 'AI & Cloud',
@@ -202,7 +190,7 @@ export default function App() {
       tech: ['Python', 'PyTorch', 'TensorFlow', 'CNN', 'OpenCV', 'Jupyter']
     },
     {
-      num: '10',
+      num: '09',
       title: 'Soul Journal & Mental Wellness',
       tag: 'Mobile / Flutter & Cloud',
       category: 'Mobile',
@@ -212,6 +200,18 @@ export default function App() {
       github: 'https://github.com/DeekshaG96/soul_journal',
       live: 'https://soul-journal-65327.web.app/',
       tech: ['Flutter', 'Dart', 'Firebase', 'Cloud Firestore', 'Biometrics', 'Web']
+    },
+    {
+      num: '10',
+      title: 'AI Text Summarizer',
+      tag: 'NLP / GenAI Engine',
+      category: 'AI & Cloud',
+      metric: 'Transformer NLP API',
+      desc: 'High-throughput document intelligence workspace integrating Hugging Face transformer models to parse, synthesize, and extract key action items from lengthy technical documents.',
+      img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/aitextsummarizer',
+      live: 'https://aitextsummarizer-omega.vercel.app',
+      tech: ['JavaScript', 'Hugging Face API', 'HTML5', 'CSS3', 'Vercel']
     }
   ];
 
