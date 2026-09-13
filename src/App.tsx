@@ -273,9 +273,9 @@ export default function App() {
             href="#header" 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-xl font-black tracking-tighter text-slate-900 hover:text-sky-600 transition-colors"
+            className="font-cursive text-3xl md:text-4xl text-slate-900 hover:text-sky-600 transition-colors tracking-wide select-none pt-1"
           >
-            DEEKSHA G<span className="text-sky-600">.</span>
+            Deeksha G<span className="text-sky-600 font-sans">.</span>
           </motion.a>
           
           {/* Desktop Nav */}
@@ -325,9 +325,10 @@ export default function App() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-10 max-w-4xl"
           >
-            <div className="space-y-2 py-4">
-              <h1 className="font-cursive text-7xl sm:text-8xl md:text-[9rem] lg:text-[11rem] font-normal leading-[1.15] tracking-normal text-slate-900 select-none drop-shadow-sm">
-                Deeksha <span className="aesthetic-gradient">G.</span>
+            <div className="space-y-4">
+              <h1 className="text-7xl md:text-[9.5rem] font-black tracking-tighter leading-[0.88] text-slate-900">
+                DEEKSHA<br/>
+                <span className="aesthetic-gradient">G.</span>
               </h1>
             </div>
             
