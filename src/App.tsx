@@ -3,7 +3,6 @@ import {
   Github, 
   Mail, 
   Linkedin, 
-  Phone,
   ArrowRight, 
   ArrowDown,
   ArrowUpRight,
@@ -951,18 +950,6 @@ export default function App() {
                 </div>
                 <ArrowUpRight size={18} className="text-slate-400 group-hover:text-emerald-400 transition-colors" />
               </a>
-
-              <div className="bedim-card rounded-2xl p-5 flex items-center justify-between">
-                <div className="space-y-0.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-                    <Phone size={13} /> Contact Telephone
-                  </span>
-                  <p className="text-sm font-semibold text-white">+91 91108 55431</p>
-                </div>
-                <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-full">
-                  Available
-                </span>
-              </div>
 
               <div className="bedim-card rounded-2xl p-5 flex items-center justify-between">
                 <div className="space-y-0.5">
