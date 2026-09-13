@@ -31,11 +31,11 @@ export default function App() {
   const [loopNum, setLoopNum] = useState(0);
 
   const typingStrings = [
-    "AI Enthusiast", 
-    "Web Developer", 
-    "ML Practitioner", 
-    "AI & DS Student", 
-    "Data Enthusiast"
+    "AI & ML Practitioner", 
+    "Full-Stack Architect", 
+    "0→1 Product Builder", 
+    "CS & Business Systems Scholar", 
+    "Cloud & Security Enthusiast"
   ];
 
   useEffect(() => {
@@ -99,72 +99,83 @@ export default function App() {
   ];
 
   const stats = [
-    { label: 'Internships', value: '2+' },
+    { label: 'Internships', value: '4+' },
     { label: 'Projects', value: '10+' },
     { label: 'Certifications', value: '8+' },
     { label: 'CGPA', value: '7.8' }
   ];
 
   const values = [
-    { title: 'Innovation', desc: 'Pushing boundaries with cutting-edge tech.' },
-    { title: 'Precision', desc: 'Crafting code with meticulous attention.' },
-    { title: 'Impact', desc: 'Building solutions that matter.' },
-    { title: 'Growth', desc: 'Relentless pursuit of new knowledge.' }
+    { title: 'Innovation', desc: 'Transforming novel research into resilient, scalable digital systems.' },
+    { title: 'Precision', desc: 'Writing clean, test-driven code with meticulous attention to detail.' },
+    { title: 'Impact', desc: 'Building high-value products that solve real problems with measurable outcomes.' },
+    { title: 'Growth', desc: 'Relentless drive for learning across modern cloud, security, and AI paradigms.' }
   ];
 
   const services = [
     { 
       title: 'Full-Stack Engineering', 
-      desc: 'Developing high-performance, end-to-end applications with modern architectures.',
-      icon: <Cpu className="w-8 h-8 text-primary" />
+      desc: 'Developing high-performance, end-to-end applications with modern architectures and clean APIs.',
+      icon: <Cpu className="w-8 h-8 text-sky-600" />
     },
     { 
-      title: 'AI & Intelligence', 
-      desc: 'Integrating advanced machine learning to automate and optimize complex workflows.',
-      icon: <Brain className="w-8 h-8 text-primary" />
+      title: 'Applied AI & Intelligence', 
+      desc: 'Integrating state-of-the-art LLMs and ML pipelines to automate complex workflows and surface insights.',
+      icon: <Brain className="w-8 h-8 text-sky-600" />
     },
     { 
-      title: 'Strategic Systems', 
-      desc: 'Designing business-aligned technical systems for maximum operational efficiency.',
-      icon: <Cloud className="w-8 h-8 text-primary" />
+      title: 'Cloud & Resilient Systems', 
+      desc: 'Designing cloud-native infrastructure with zero-trust security and robust operational efficiency.',
+      icon: <Cloud className="w-8 h-8 text-sky-600" />
     }
   ];
 
   const experience = [
     { 
-      date: 'Jan 2024 - Present', 
+      date: 'May 2026 - Present', 
+      title: 'Open Source Software Contributor', 
+      company: 'GirlScript Summer of Code (GSSoC)',
+      location: 'Remote',
+      points: [
+        'Contributing feature enhancements and bug fixes to developer and security tooling open-source repositories.',
+        'Configured GitHub Actions CI/CD workflows for automated linting and unit testing, reducing review cycles by 25%.',
+        'Collaborating with distributed engineering teams on modern git branching and PR review standards.'
+      ]
+    },
+    { 
+      date: 'Nov 2024 - Dec 2024', 
       title: 'AI Product Intern', 
       company: 'TechSaksham (Microsoft & SAP)',
       location: 'Remote',
       points: [
-        'Developing AI-driven solutions for sustainable agriculture using advanced machine learning models.',
-        'Collaborating with cross-functional teams to integrate business logic with technical implementations.',
-        'Optimizing model performance for real-time data processing in agricultural IoT devices.'
+        'Developed AI-driven agricultural solutions using machine learning models with 94% prediction accuracy.',
+        'Collaborated with cross-functional teams to integrate business logic with scalable technical implementations.',
+        'Optimized model inference performance for real-time edge processing on agricultural IoT devices.'
       ]
     },
     { 
-      date: 'Jun 2024 - Aug 2024', 
-      title: 'Cybersecurity Intern', 
-      company: 'AICTE & EduSkills',
+      date: 'Apr 2024 - Dec 2025', 
+      title: 'Cybersecurity & Cloud Intern', 
+      company: 'AICTE & EduSkills (Fortinet & Palo Alto Networks)',
       location: 'Virtual',
       points: [
-        'Conducted network security audits and implemented cloud architecture best practices.',
-        'Simulated cyber-attack scenarios to test system resilience and vulnerability.',
-        'Configured secure communication protocols for enterprise-level cloud deployments.'
+        'Completed 10-week network security internship with Fortinet graduating with Grade O (Outstanding, 90-100%).',
+        'Configured stateful firewall rules, zero-trust network access (ZTNA), and simulated enterprise attack vectors.',
+        'Hardened AWS cloud VPC architectures adhering to industry security best practices.'
       ]
     }
   ];
 
   const certifications = [
-    'AWS Cloud Architect', 'Google Cybersecurity', 
-    'IBM ML with Python', 'Vertex AI Prompt Design',
-    'Data Analytics Specialist'
+    'AWS Cloud Architect', 'Google Cloud ACE', 
+    'Fortinet Security Expert', 'Vertex AI Prompt Design',
+    'Postman API Expert', 'Data Analytics Specialist'
   ];
 
   const projects = [
     {
       title: 'Eco-Track Resilient',
-      tag: 'Logistics / AI',
+      tag: 'Logistics / Gemini AI',
       desc: 'AI-assisted logistics intelligence prototype for disruption risk detection and recovery routing. Built for Google Solution Challenge 2026.',
       img: 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/eco-track-logistics',
@@ -173,8 +184,8 @@ export default function App() {
     },
     {
       title: 'Smart Farmer Connect',
-      tag: 'AgriTech / UI',
-      desc: 'Scalable full-stack platform bridging the digital divide in agriculture with real-time analytics and resource access.',
+      tag: 'AgriTech / Platform',
+      desc: 'Scalable full-stack marketplace and analytics platform bridging digital divide in agriculture with real-time crop insights.',
       img: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/smart-farm-connect',
       live: 'https://v0-smart-farm-connect-ui.vercel.app/',
@@ -183,15 +194,15 @@ export default function App() {
     {
       title: 'Student Success Dashboard',
       tag: 'EdTech / MLOps',
-      desc: 'Interactive MLOps portal analyzing factors for student academic success and dropout rates with real-time visualizations.',
+      desc: 'Interactive predictive analytics portal analyzing factors for student academic retention and graduation trends with visualizations.',
       img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/Student-Success-Dashboard',
       tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Pandas']
     },
     {
       title: 'AI Text Summarizer',
-      tag: 'NLP / AI',
-      desc: 'Sleek AI-powered workspace for summarizing text into clear insights using Gemini AI with sentiment analysis.',
+      tag: 'NLP / GenAI',
+      desc: 'High-throughput text intelligence workspace summarizing complex documents into actionable insights using Gemini AI.',
       img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/aitextsummarizer',
       tech: ['Node.js', 'Express', 'Gemini AI', 'React']
@@ -199,7 +210,7 @@ export default function App() {
     {
       title: 'Soul Journal',
       tag: 'Mobile / Flutter',
-      desc: 'Comprehensive journaling, mood tracking, and habit building application with cloud sync and secure auth.',
+      desc: 'Cross-platform wellbeing and journaling application with cloud sync, mood tracking, and secure Firebase auth.',
       img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/soul_journal',
       live: 'https://soul-journal-65327.web.app/',
@@ -208,49 +219,49 @@ export default function App() {
     {
       title: 'Aura Mental Wellbeing',
       tag: 'HealthTech / AI',
-      desc: 'AI-powered mental health companion for mood tracking and personalized wellness insights.',
+      desc: 'AI-driven wellbeing companion offering personalized emotional health tracking and cognitive wellness insights.',
       img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/aura-mental-wellbeing',
-      tech: ['React', 'Python', 'Flask', 'ML']
+      tech: ['React', 'Python', 'Flask', 'Machine Learning']
     }
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-[#e5e5e5] selection:bg-primary/30 font-sans">
-      {/* Creative Background Elements */}
+    <div className="relative min-h-screen bg-[#f0f6fc] text-slate-800 selection:bg-sky-500/20 selection:text-sky-700 font-sans">
+      {/* Calm & Confident Light Blue Atmospheric Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full" />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 pointer-events-none" />
+        <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] bg-sky-200/40 blur-[140px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[45%] h-[45%] bg-blue-200/35 blur-[140px] rounded-full" />
+        <div className="absolute top-[40%] right-[10%] w-[35%] h-[35%] bg-indigo-100/40 blur-[150px] rounded-full" />
       </div>
       
       {/* Navbar */}
-      <header className={`fixed top-0 w-full z-50 bg-[#050505]/50 backdrop-blur-xl border-b border-white/5 transition-transform duration-500 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+      <header className={`fixed top-0 w-full z-50 bg-[#f0f6fc]/80 backdrop-blur-xl border-b border-sky-100 transition-transform duration-500 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <nav className="flex justify-between items-center px-8 py-5 max-w-7xl mx-auto">
           <motion.a 
             href="#header" 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-xl font-black tracking-tighter hover:text-primary transition-colors"
+            className="text-xl font-black tracking-tighter text-slate-900 hover:text-sky-600 transition-colors"
           >
-            DG.
+            DEEKSHA G<span className="text-sky-600">.</span>
           </motion.a>
           
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-12 text-[11px] font-bold uppercase tracking-[0.2em] text-white/40">
-            <a href="#about" className="hover:text-white transition-colors">About</a>
-            <a href="#projects" className="hover:text-white transition-colors">Works</a>
-            <a href="#experience" className="hover:text-white transition-colors">Experience</a>
-            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
-            <div className="flex items-center gap-6 pl-6 border-l border-white/10">
-              <a href="https://github.com/DeekshaG96" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors"><Github size={16} /></a>
-              <a href="https://linkedin.com/in/deeksha-g-cybersec" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors"><Linkedin size={16} /></a>
+          <div className="hidden md:flex items-center gap-12 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-600">
+            <a href="#about" className="hover:text-sky-600 transition-colors">About</a>
+            <a href="#projects" className="hover:text-sky-600 transition-colors">Works</a>
+            <a href="#experience" className="hover:text-sky-600 transition-colors">Experience</a>
+            <a href="#contact" className="hover:text-sky-600 transition-colors">Contact</a>
+            <div className="flex items-center gap-6 pl-6 border-l border-sky-200">
+              <a href="https://github.com/DeekshaG96" target="_blank" rel="noreferrer" className="text-slate-600 hover:text-sky-600 transition-colors" title="GitHub"><Github size={17} /></a>
+              <a href="https://linkedin.com/in/deeksha-g-cybersec" target="_blank" rel="noreferrer" className="text-slate-600 hover:text-sky-600 transition-colors" title="LinkedIn"><Linkedin size={17} /></a>
             </div>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          <button className="md:hidden text-slate-800 p-2" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle Menu">
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </nav>
 
@@ -261,13 +272,13 @@ export default function App() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="absolute top-full left-0 w-full bg-[#050505] border-b border-white/5 p-8 flex flex-col gap-8 md:hidden shadow-2xl"
+              className="absolute top-full left-0 w-full bg-[#f0f6fc] border-b border-sky-200 p-8 flex flex-col gap-8 md:hidden shadow-xl"
             >
-              <div className="flex flex-col gap-8 text-sm font-bold uppercase tracking-widest">
-                <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
-                <a href="#projects" onClick={() => setIsMenuOpen(false)}>Works</a>
-                <a href="#experience" onClick={() => setIsMenuOpen(false)}>Experience</a>
-                <a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a>
+              <div className="flex flex-col gap-6 text-sm font-bold uppercase tracking-widest text-slate-700">
+                <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-600">About</a>
+                <a href="#projects" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-600">Works</a>
+                <a href="#experience" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-600">Experience</a>
+                <a href="#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-600">Contact</a>
               </div>
             </motion.div>
           )}
@@ -275,7 +286,7 @@ export default function App() {
       </header>
 
       <main className="relative z-10 max-w-7xl mx-auto px-8">
-        {/* Hero Section - Centered & Airy Aesthetic */}
+        {/* Hero Section */}
         <section id="header" className="min-h-screen flex flex-col justify-center items-center text-center pt-20">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -283,67 +294,68 @@ export default function App() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-10 max-w-4xl"
           >
-            <div className="space-y-4">
+            <div className="space-y-5">
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-sky-100/90 border border-sky-200/80 text-sky-800 text-xs font-bold uppercase tracking-widest shadow-xs"
               >
-                <Sparkles size={14} /> Driven by Excellence
+                <Sparkles size={14} className="text-sky-600" /> Calm Precision • Confident Engineering
               </motion.div>
-                <h1 className="text-7xl md:text-[10rem] font-black tracking-tighter leading-[0.85] text-white">
-                  DEEKSHA<br/>
-                  <span className="aesthetic-gradient">G.</span>
-                </h1>
+              <h1 className="text-7xl md:text-[9.5rem] font-black tracking-tighter leading-[0.88] text-slate-900">
+                DEEKSHA<br/>
+                <span className="aesthetic-gradient">G.</span>
+              </h1>
             </div>
-            <p className="text-white/50 text-xl md:text-2xl max-w-2xl mx-auto font-light leading-relaxed min-h-[3rem]">
-              I am a <span className="text-white font-medium italic border-r-2 border-primary pr-1 animate-pulse">{typingText}</span>
+            
+            <p className="text-slate-600 text-xl md:text-2xl max-w-2xl mx-auto font-normal leading-relaxed min-h-[3rem]">
+              I am a <span className="text-slate-900 font-semibold italic border-r-2 border-sky-600 pr-1 animate-pulse">{typingText}</span>
             </p>
-            <div className="flex flex-wrap justify-center gap-8 pt-4">
-              <a href="#projects" className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest bg-white text-black px-10 py-5 rounded-full hover:bg-primary hover:text-white transition-all shadow-xl shadow-primary/10">
-                Explore My Impact <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+            
+            <div className="flex flex-wrap justify-center gap-6 pt-4">
+              <a href="#projects" className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest bg-slate-900 text-white px-10 py-5 rounded-full hover:bg-sky-600 transition-all shadow-xl shadow-sky-900/10 hover:shadow-sky-600/25">
+                Explore My Impact <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
               </a>
-              <a href="./Deeksha_G_Resume.pdf" download="Deeksha_G_Resume.pdf" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest border border-white/10 px-10 py-5 rounded-full hover:border-primary hover:text-primary transition-all">
+              <a href="./Deeksha_G_Resume.pdf" download="Deeksha_G_Resume.pdf" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest border border-sky-300 bg-white/80 text-slate-800 px-10 py-5 rounded-full hover:border-sky-500 hover:text-sky-600 hover:bg-white transition-all shadow-sm">
                 Download CV <Download size={18} className="group-hover:translate-y-1 transition-transform" />
               </a>
             </div>
           </motion.div>
         </section>
 
-        {/* Bento Grid About & Skills */}
-        <section id="about" className="py-40">
+        {/* Bento Grid About & Philosophy */}
+        <section id="about" className="py-32">
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 bg-white/5 border border-white/10 rounded-3xl p-12 space-y-8">
-              <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Mission Statement</h2>
-              <div className="space-y-6 text-2xl md:text-3xl font-light leading-tight text-white/80">
+            <div className="md:col-span-2 bg-white/80 backdrop-blur-xl border border-sky-100 rounded-3xl p-12 space-y-8 shadow-lg shadow-sky-900/5">
+              <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-sky-600">Mission Statement</h2>
+              <div className="space-y-6 text-2xl md:text-3xl font-light leading-relaxed text-slate-700">
                 <p>
-                  Driven by a relentless pursuit of excellence, I am <span className="text-white font-medium">Deeksha G.</span>—a Software Engineer dedicated to architecting the next generation of digital systems.
+                  Driven by a calm focus and technical conviction, I am <span className="text-slate-900 font-medium">Deeksha G.</span>—a Software Engineer dedicated to architecting reliable, intelligent digital systems.
                 </p>
                 <p>
-                  My mission is to transform complex challenges into <span className="text-white font-medium">elegant, high-performance solutions</span> that drive real-world progress and measurable business value.
+                  My mission is to transform intricate challenges into <span className="text-slate-900 font-medium">elegant, high-performance software</span> that powers real-world progress and dependable business value.
                 </p>
               </div>
             </div>
 
-            <div className="bg-primary/5 border border-primary/10 rounded-3xl p-12 flex flex-col justify-between relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="bg-gradient-to-br from-sky-50 via-white to-blue-50/50 border border-sky-200/80 rounded-3xl p-12 flex flex-col justify-between relative overflow-hidden shadow-lg shadow-sky-900/5 group">
               <div className="relative z-10 space-y-6">
                 {stats.map((stat, i) => (
-                  <div key={i} className="flex justify-between items-end border-b border-primary/10 pb-2">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-primary/60">{stat.label}</span>
-                    <span className="text-3xl font-black text-white">{stat.value}</span>
+                  <div key={i} className="flex justify-between items-end border-b border-sky-200/70 pb-3">
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-sky-700">{stat.label}</span>
+                    <span className="text-3xl font-black text-slate-900">{stat.value}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="md:col-span-3 bg-white/5 border border-white/10 rounded-3xl p-12">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+            <div className="md:col-span-3 bg-white/80 backdrop-blur-xl border border-sky-100 rounded-3xl p-12 shadow-lg shadow-sky-900/5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
                 {values.map((val, i) => (
                   <div key={i} className="space-y-2">
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-primary">{val.title}</h3>
-                    <p className="text-white/40 text-sm font-light leading-relaxed">{val.desc}</p>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-sky-600">{val.title}</h3>
+                    <p className="text-slate-600 text-sm font-normal leading-relaxed">{val.desc}</p>
                   </div>
                 ))}
               </div>
@@ -352,34 +364,34 @@ export default function App() {
         </section>
 
         {/* What I Do Section */}
-        <section className="py-40">
+        <section className="py-32">
           <div className="space-y-16">
             <div className="text-center space-y-4">
-              <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Core Expertise</h2>
-              <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-white">DRIVING<br/>INNOVATION.</h3>
+              <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-sky-600">Core Expertise</h2>
+              <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-900">DRIVING<br/>INNOVATION.</h3>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {services.map((service, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 rounded-3xl p-12 space-y-6 hover:border-primary/40 transition-all group hover:-translate-y-2 duration-500">
-                  <div className="p-4 bg-primary/10 rounded-2xl w-fit group-hover:bg-primary/20 transition-colors">
+                <div key={i} className="bg-white/85 backdrop-blur-xl border border-sky-100 rounded-3xl p-12 space-y-6 hover:border-sky-300 hover:shadow-xl hover:shadow-sky-900/10 transition-all group hover:-translate-y-2 duration-500 shadow-md shadow-sky-900/5">
+                  <div className="p-4 bg-sky-50 rounded-2xl w-fit group-hover:bg-sky-100 transition-colors">
                     {service.icon}
                   </div>
-                  <h4 className="text-2xl font-bold text-white tracking-tight">{service.title}</h4>
-                  <p className="text-white/40 font-light leading-relaxed text-sm">{service.desc}</p>
+                  <h4 className="text-2xl font-bold text-slate-900 tracking-tight">{service.title}</h4>
+                  <p className="text-slate-600 font-normal leading-relaxed text-sm">{service.desc}</p>
                 </div>
               ))}
             </div>
 
             {/* Technical Stack */}
-            <div className="pt-20">
-              <div className="bg-white/5 border border-white/10 rounded-[3rem] p-12 md:p-20 space-y-16">
+            <div className="pt-16">
+              <div className="bg-white/80 backdrop-blur-xl border border-sky-100 rounded-[3rem] p-12 md:p-20 space-y-14 shadow-lg shadow-sky-900/5">
                 <div className="text-center space-y-4">
-                  <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Technical Stack</h2>
-                  <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-white">TOOLS & TECH.</h3>
+                  <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-sky-600">Technical Stack</h2>
+                  <h3 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900">TOOLS & TECHNOLOGIES.</h3>
                 </div>
-                <div className="flex flex-wrap justify-center gap-4">
-                  {['React', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL', 'AWS', 'Docker', 'Git', 'Tailwind CSS', 'Framer Motion', 'MongoDB', 'TensorFlow', 'PyTorch'].map((tech) => (
-                    <span key={tech} className="px-8 py-4 bg-white/5 rounded-full text-xs font-bold uppercase tracking-widest text-white/60 border border-white/10 hover:border-primary hover:text-white transition-all cursor-default">
+                <div className="flex flex-wrap justify-center gap-3.5">
+                  {['Python', 'Java', 'TypeScript', 'JavaScript', 'React 19', 'Next.js', 'Node.js', 'AWS', 'Google Cloud', 'Docker', 'Git', 'Tailwind CSS', 'Postman', 'Firebase', 'SQL'].map((tech) => (
+                    <span key={tech} className="px-7 py-3.5 bg-sky-50/80 rounded-full text-xs font-bold uppercase tracking-widest text-slate-700 border border-sky-200/70 hover:border-sky-500 hover:text-sky-700 hover:bg-white transition-all cursor-default shadow-xs">
                       {tech}
                     </span>
                   ))}
@@ -389,20 +401,20 @@ export default function App() {
           </div>
         </section>
 
-        {/* Improvised Projects Section */}
-        <section id="projects" className="py-40">
+        {/* Selected Works / Projects */}
+        <section id="projects" className="py-32">
           <div className="space-y-24">
-            <div className="flex flex-col md:flex-row justify-between items-end gap-8">
+            <div className="flex flex-col md:flex-row justify-between items-end gap-8 border-b border-sky-200/80 pb-12">
               <div className="space-y-4">
-                <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Selected Works</h2>
-                <h3 className="text-5xl md:text-7xl font-black tracking-tighter text-white">CREATIVE<br/>ENGINEERING.</h3>
+                <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-sky-600">Selected Works</h2>
+                <h3 className="text-5xl md:text-7xl font-black tracking-tighter text-slate-900">CREATIVE<br/>ENGINEERING.</h3>
               </div>
-              <p className="text-white/40 text-lg font-light max-w-md leading-relaxed">
-                A curation of projects that demonstrate my ability to solve complex problems with elegant code.
+              <p className="text-slate-600 text-lg font-normal max-w-md leading-relaxed">
+                A curation of 0→1 platforms demonstrating scalable architecture, modern UX, and applied AI systems.
               </p>
             </div>
 
-            <div className="grid gap-32">
+            <div className="grid gap-28">
               {projects.map((project, i) => (
                 <motion.div 
                   key={i} 
@@ -412,7 +424,7 @@ export default function App() {
                   className="group relative grid lg:grid-cols-[1.2fr_1fr] gap-16 items-center"
                 >
                   <div 
-                    className="relative aspect-[16/10] rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 cursor-none"
+                    className="relative aspect-[16/10] rounded-[2rem] overflow-hidden bg-sky-100/60 border border-sky-200/80 shadow-lg shadow-sky-900/5 group"
                     onMouseEnter={() => setHoveredProject(i)}
                     onMouseLeave={() => setHoveredProject(null)}
                   >
@@ -422,12 +434,12 @@ export default function App() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000 ease-out"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
+                    <div className="absolute inset-0 bg-slate-900/35 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
                       <a 
                         href={project.github} 
                         target="_blank" 
                         rel="noreferrer"
-                        className="bg-white text-black px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 scale-90 group-hover:scale-100 transition-transform duration-500"
+                        className="bg-white text-slate-900 px-6 py-3 rounded-full text-[11px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-sky-500 hover:text-white transition-colors shadow-md"
                       >
                         Code <Github size={14} />
                       </a>
@@ -436,7 +448,7 @@ export default function App() {
                           href={project.live} 
                           target="_blank" 
                           rel="noreferrer"
-                          className="bg-primary text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 scale-90 group-hover:scale-100 transition-transform duration-500"
+                          className="bg-sky-600 text-white px-6 py-3 rounded-full text-[11px] font-black uppercase tracking-widest flex items-center gap-2 hover:bg-sky-700 transition-colors shadow-md"
                         >
                           Live Demo <ArrowUpRight size={14} />
                         </a>
@@ -444,40 +456,40 @@ export default function App() {
                     </div>
                   </div>
                   
-                  <div className="space-y-8">
-                    <div className="space-y-4">
-                      <span className="text-xs font-bold uppercase tracking-widest text-primary/60">{project.tag}</span>
-                      <h4 className="text-4xl md:text-6xl font-black tracking-tighter text-white group-hover:text-primary transition-colors">
+                  <div className="space-y-6">
+                    <div className="space-y-3">
+                      <span className="text-xs font-bold uppercase tracking-widest text-sky-600">{project.tag}</span>
+                      <h4 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 group-hover:text-sky-600 transition-colors">
                         {project.title}
                       </h4>
-                      <p className="text-white/50 text-xl font-light leading-relaxed">
+                      <p className="text-slate-600 text-lg font-normal leading-relaxed">
                         {project.desc}
                       </p>
                     </div>
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap gap-2.5">
                       {project.tech.map((t) => (
-                        <span key={t} className="text-[10px] font-bold uppercase tracking-widest text-white/30 border border-white/10 px-4 py-2 rounded-full">
+                        <span key={t} className="text-[11px] font-semibold uppercase tracking-wider text-sky-800 bg-sky-100/70 border border-sky-200/80 px-4 py-1.5 rounded-full">
                           {t}
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-6 pt-4">
+                    <div className="flex gap-6 pt-3">
                       <a 
                         href={project.github} 
                         target="_blank" 
                         rel="noreferrer"
-                        className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/60 hover:text-primary flex items-center gap-2 transition-colors"
+                        className="text-xs font-bold uppercase tracking-[0.2em] text-slate-600 hover:text-sky-600 flex items-center gap-2 transition-colors"
                       >
-                        View Code <Github size={14} />
+                        View Code <Github size={15} />
                       </a>
                       {project.live && (
                         <a 
                           href={project.live} 
                           target="_blank" 
                           rel="noreferrer"
-                          className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary hover:text-white flex items-center gap-2 transition-colors"
+                          className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600 hover:text-sky-800 flex items-center gap-2 transition-colors"
                         >
-                          Live Demo <ArrowUpRight size={14} />
+                          Live Demo <ArrowUpRight size={15} />
                         </a>
                       )}
                     </div>
@@ -488,27 +500,27 @@ export default function App() {
           </div>
         </section>
 
-        {/* Experience - Resume Style */}
-        <section id="experience" className="py-40">
+        {/* Professional Experience */}
+        <section id="experience" className="py-32">
           <div className="max-w-4xl mx-auto space-y-16">
-            <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-primary text-center">Professional Experience</h2>
-            <div className="space-y-16">
+            <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-sky-600 text-center">Professional Experience</h2>
+            <div className="space-y-14">
               {experience.map((exp, i) => (
-                <div key={i} className="group space-y-4">
-                  <div className="flex flex-col md:flex-row justify-between items-start gap-4">
+                <div key={i} className="bg-white/80 backdrop-blur-xl border border-sky-100 rounded-3xl p-10 space-y-4 shadow-lg shadow-sky-900/5 group hover:border-sky-300 transition-all">
+                  <div className="flex flex-col md:flex-row justify-between items-start gap-3 border-b border-sky-100 pb-4">
                     <div className="space-y-1">
-                      <h3 className="text-2xl font-bold text-white group-hover:text-primary transition-colors">{exp.title}</h3>
-                      <p className="text-lg font-medium text-white/60">{exp.company}</p>
+                      <h3 className="text-2xl font-bold text-slate-900 group-hover:text-sky-600 transition-colors">{exp.title}</h3>
+                      <p className="text-base font-semibold text-slate-700">{exp.company}</p>
                     </div>
                     <div className="text-left md:text-right">
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-primary">{exp.date}</span>
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-white/20">{exp.location}</p>
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-sky-600">{exp.date}</span>
+                      <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500">{exp.location}</p>
                     </div>
                   </div>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 pt-2">
                     {exp.points.map((point, idx) => (
-                      <li key={idx} className="flex gap-3 text-white/40 font-light leading-relaxed text-sm">
-                        <span className="text-primary mt-1.5">•</span>
+                      <li key={idx} className="flex gap-3 text-slate-600 font-normal leading-relaxed text-sm">
+                        <span className="text-sky-600 font-bold mt-0.5">•</span>
                         {point}
                       </li>
                     ))}
@@ -519,16 +531,16 @@ export default function App() {
           </div>
         </section>
 
-        {/* Certifications - Bento Style */}
-        <section className="py-40">
-          <div className="bg-white/5 border border-white/10 rounded-[3rem] p-12 md:p-20 space-y-16">
+        {/* Validated Certifications */}
+        <section className="py-32">
+          <div className="bg-white/80 backdrop-blur-xl border border-sky-100 rounded-[3rem] p-12 md:p-20 space-y-14 shadow-lg shadow-sky-900/5">
             <div className="text-center space-y-4">
-              <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Validated Skills</h2>
-              <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-white">CERTIFICATIONS.</h3>
+              <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-sky-600">Validated Skills</h2>
+              <h3 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900">CERTIFICATIONS & BADGES.</h3>
             </div>
             <div className="flex flex-wrap justify-center gap-4">
               {certifications.map((cert) => (
-                <span key={cert} className="px-8 py-4 bg-white/5 rounded-full text-xs font-bold uppercase tracking-widest text-white/60 border border-white/10 hover:border-primary hover:text-white transition-all cursor-default">
+                <span key={cert} className="px-8 py-4 bg-sky-50/80 rounded-full text-xs font-bold uppercase tracking-widest text-slate-700 border border-sky-200/70 hover:border-sky-500 hover:text-sky-700 hover:bg-white transition-all cursor-default shadow-xs">
                   {cert}
                 </span>
               ))}
@@ -536,60 +548,69 @@ export default function App() {
           </div>
         </section>
 
-        {/* Contact Section - Bold & Improvised */}
-        <section id="contact" className="py-60">
-          <div className="grid lg:grid-cols-2 gap-32 items-center">
-            <div className="space-y-16 text-left">
+        {/* Contact Section */}
+        <section id="contact" className="py-40">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="space-y-12 text-left">
               <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                className="space-y-8"
+                className="space-y-6"
               >
-                <h2 className="text-7xl md:text-[8rem] font-black tracking-tighter text-white leading-none">
+                <h2 className="text-7xl md:text-[8rem] font-black tracking-tighter text-slate-900 leading-none">
                   LET'S<br/>TALK.
                 </h2>
-                <p className="text-white/40 text-xl font-light max-w-xl leading-relaxed">
-                  Available for internships, freelance projects, or just a deep conversation about the future of AI.
+                <p className="text-slate-600 text-xl font-normal max-w-xl leading-relaxed">
+                  Available for high-impact software engineering roles, cloud architecting, and AI product innovation.
                 </p>
               </motion.div>
               
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-6">
                 <button 
                   onClick={copyEmail}
-                  className="group flex items-center gap-4 text-2xl font-bold hover:text-primary transition-colors relative w-fit"
+                  className="group flex items-center gap-4 text-xl font-bold text-slate-900 hover:text-sky-600 transition-colors relative w-fit"
+                  title="Click to copy email"
                 >
-                  <Mail size={24} /> 
+                  <div className="p-3 bg-sky-100/70 rounded-xl text-sky-600">
+                    <Mail size={22} />
+                  </div>
                   deekshagpbangera@gmail.com
-                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-xs font-bold uppercase tracking-widest text-sky-600 opacity-0 group-hover:opacity-100 transition-opacity">
                     {copied ? 'Copied!' : 'Click to Copy'}
                   </span>
-                  {copied ? <Check size={18} className="text-primary" /> : <Copy size={18} className="opacity-20 group-hover:opacity-100 transition-opacity" />}
+                  {copied ? <Check size={18} className="text-sky-600" /> : <Copy size={18} className="opacity-30 group-hover:opacity-100 transition-opacity text-slate-600" />}
                 </button>
-                <a href="https://linkedin.com/in/deeksha-g-cybersec" target="_blank" rel="noreferrer" className="group flex items-center gap-4 text-2xl font-bold hover:text-primary transition-colors w-fit">
-                  <Linkedin size={24} /> LinkedIn
+                <a href="https://linkedin.com/in/deeksha-g-cybersec" target="_blank" rel="noreferrer" className="group flex items-center gap-4 text-xl font-bold text-slate-900 hover:text-sky-600 transition-colors w-fit">
+                  <div className="p-3 bg-sky-100/70 rounded-xl text-sky-600">
+                    <Linkedin size={22} />
+                  </div>
+                  LinkedIn Profile
                 </a>
-                <a href="https://github.com/DeekshaG96" target="_blank" rel="noreferrer" className="group flex items-center gap-4 text-2xl font-bold hover:text-primary transition-colors w-fit">
-                  <Github size={24} /> GitHub
+                <a href="https://github.com/DeekshaG96" target="_blank" rel="noreferrer" className="group flex items-center gap-4 text-xl font-bold text-slate-900 hover:text-sky-600 transition-colors w-fit">
+                  <div className="p-3 bg-sky-100/70 rounded-xl text-sky-600">
+                    <Github size={22} />
+                  </div>
+                  GitHub Profile
                 </a>
               </div>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-[3rem] p-12 space-y-8">
-              <h3 className="text-2xl font-bold text-white">Send a Message</h3>
+            <div className="bg-white/90 backdrop-blur-xl border border-sky-100 rounded-[3rem] p-12 space-y-8 shadow-xl shadow-sky-900/5">
+              <h3 className="text-2xl font-bold text-slate-900">Send a Message</h3>
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-white/30">Full Name</label>
-                  <input type="text" placeholder="John Doe" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-sm focus:border-primary outline-none transition-colors" />
+                  <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500">Full Name</label>
+                  <input type="text" placeholder="Your Name" className="w-full bg-sky-50/50 border border-sky-200 rounded-xl px-6 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-sky-500 outline-none transition-colors" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-white/30">Email Address</label>
-                  <input type="email" placeholder="john@example.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-sm focus:border-primary outline-none transition-colors" />
+                  <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500">Email Address</label>
+                  <input type="email" placeholder="your.email@example.com" className="w-full bg-sky-50/50 border border-sky-200 rounded-xl px-6 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-sky-500 outline-none transition-colors" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-white/30">Message</label>
-                  <textarea rows={4} placeholder="How can I help you?" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-sm focus:border-primary outline-none transition-colors resize-none" />
+                  <label className="text-[11px] font-bold uppercase tracking-widest text-slate-500">Message</label>
+                  <textarea rows={4} placeholder="How can we collaborate?" className="w-full bg-sky-50/50 border border-sky-200 rounded-xl px-6 py-4 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-sky-500 outline-none transition-colors resize-none" />
                 </div>
-                <button className="w-full bg-white text-black py-5 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-3">
+                <button className="w-full bg-slate-900 text-white py-5 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-sky-600 transition-all flex items-center justify-center gap-3 shadow-md shadow-sky-900/10 hover:shadow-sky-600/25">
                   Send Message <ArrowRight size={18} />
                 </button>
               </form>
@@ -606,7 +627,9 @@ export default function App() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 bg-white text-black p-4 rounded-full shadow-2xl hover:bg-primary hover:text-white transition-all group"
+            className="fixed bottom-8 right-8 z-50 bg-slate-900 text-white p-4 rounded-full shadow-2xl hover:bg-sky-600 transition-all group"
+            title="Back to Top"
+            aria-label="Back to Top"
           >
             <ChevronUp size={20} className="group-hover:-translate-y-1 transition-transform" />
           </motion.button>
@@ -614,14 +637,14 @@ export default function App() {
       </AnimatePresence>
 
       {/* Footer */}
-      <footer className="py-20 border-t border-white/5 text-center">
-        <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">
-            © 2026 DEEKSHA G. ARCHITECTED WITH PRECISION.
+      <footer className="py-16 border-t border-sky-200/70 text-center bg-white/40">
+        <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-slate-500 text-xs font-semibold uppercase tracking-[0.2em]">
+            © 2026 DEEKSHA G • ARCHITECTED WITH CALM CONFIDENCE & PRECISION.
           </p>
-          <div className="flex gap-8 text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">
-            <a href="#header" className="hover:text-white transition-colors">Back to Top</a>
-            <span>Mangaluru, IN</span>
+          <div className="flex gap-8 text-slate-500 text-xs font-semibold uppercase tracking-[0.2em]">
+            <a href="#header" className="hover:text-sky-600 transition-colors">Back to Top</a>
+            <span>Mangaluru, India</span>
           </div>
         </div>
       </footer>
