@@ -59,13 +59,6 @@ Chronological track record of five enterprise internships:
 - Timeline: 2022 to 2026 (Graduating June 2026)
 - Academic Standing: 7.8 CGPA
 
-### 7. Direct Communication Channels
-- Official Email: deekshagpbangera@gmail.com
-- Telephone: +91 91108 55431
-- LinkedIn Profile: https://linkedin.com/in/deeksha-g-cybersec
-- GitHub Profile: https://github.com/DeekshaG96
-- Geographic Mobility: Mangaluru, India (Open to relocation across India and global remote opportunities)
-
 ## Repository Structure
 
 ```text
@@ -148,15 +141,6 @@ Categorized filtering across Full-Stack, AI & Cloud, Security & Web3, and Mobile
 This repository includes continuous deployment configurations for both GitHub Pages and Netlify:
 - GitHub Pages: Triggered automatically upon push to main via `.github/workflows/deploy.yml`.
 - Netlify: Configured with `netlify.toml` for Single Page Application routing and header caching.
-
-## Contact Information
-
-- Candidate: Deeksha G
-- Email: deekshagpbangera@gmail.com
-- Telephone: +91 91108 55431
-- LinkedIn: https://linkedin.com/in/deeksha-g-cybersec
-- GitHub: https://github.com/DeekshaG96
-- Portfolio URL: https://deekshag96.github.io/my-portfolio/
 
 ## License
 
