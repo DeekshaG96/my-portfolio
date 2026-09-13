@@ -1,178 +1,163 @@
-<div align="center">
+# Personal Portfolio Website | Deeksha G
 
-  <!-- Cyber-Noir Header Banner -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:050505,50:0f172a,100:0284c7&height=240&section=header&text=🌌%20Deeksha%20G.%20Portfolio&fontSize=52&fontAlignY=38&animation=twinkling&fontColor=38bdf8&desc=Cyber-Noir%20Interactive%20Web%20Experience%20•%20React%2019%20%7C%20Tailwind%204%20%7C%20Motion&descAlignY=62&descAlign=50" width="100%" alt="Portfolio Header" />
+A responsive personal portfolio website engineered to showcase full-stack applications, applied artificial intelligence systems, cloud architectures, enterprise internships, and engineering credentials.
 
-  <p align="center">
-    <strong>An ultra-modern, Cyber-Noir personal portfolio built for high performance, dynamic animations, and showcasing AI & 0→1 engineering projects.</strong>
-  </p>
+## Overview
 
-  <p align="center">
-    <a href="https://iitsmedeeksha.netlify.app/" target="_blank">
-      <img src="https://img.shields.io/badge/Live_Demo-iitsmedeeksha.netlify.app-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Live Demo" />
-    </a>
-    <a href="https://github.com/DeekshaG96/my-portfolio/stargazers">
-      <img src="https://img.shields.io/github/stars/DeekshaG96/my-portfolio?style=for-the-badge&color=38bdf8" alt="GitHub Stars" />
-    </a>
-    <a href="https://github.com/DeekshaG96/my-portfolio/blob/main/LICENSE">
-      <img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License" />
-    </a>
-  </p>
+- Candidate: Deeksha G
+- Degree: Bachelor of Engineering (B.E.) in Computer Science and Business Systems (CSBS)
+- Institution: Srinivas Institute of Technology (SIT), Mangaluru (Affiliated with VTU Belagavi)
+- Academic Standing: 7.8 / 10.0 CGPA (Graduating June 2026)
+- Live Production URL: https://deekshag96.github.io/my-portfolio/
+- Netlify Production Mirror: https://iitsmedeeksha.netlify.app/
 
-  <p align="center">
-    <img src="https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React 19" />
-    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
-    <img src="https://img.shields.io/badge/Vite_6-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
-    <img src="https://img.shields.io/badge/Tailwind_CSS_4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-    <img src="https://img.shields.io/badge/Motion-000000?style=flat-square&logo=framer&logoColor=white" alt="Motion" />
-    <img src="https://img.shields.io/badge/Google_Gemini_AI-4285F4?style=flat-square&logo=google&logoColor=white" alt="Gemini AI" />
-    <img src="https://img.shields.io/badge/Netlify_Deployed-00AD9F?style=flat-square&logo=netlify&logoColor=white" alt="Netlify" />
-  </p>
+## Architectural Foundation
 
-</div>
+- Core Framework: React 19 with Vite 6 build system
+- Language: TypeScript with strict mode enabled
+- Styling: Tailwind CSS v4 with design tokens and responsive utilities
+- Icons: Lucide React icon library
+- Deployment Target: GitHub Pages (Automated via GitHub Actions CI/CD) and Netlify
 
----
+## Key Sections and Capabilities
 
-## 🌐 Live Preview
+### 1. Navigation and Identity
+- Floating navigation bar with responsive mobile menu drawer.
+- Quick action button for direct PDF resume retrieval (`./Deeksha_G_Resume.pdf`).
+- Direct navigation anchors across all functional portfolio sections.
 
-Experience the live, interactive portfolio at:  
-👉 **[https://iitsmedeeksha.netlify.app](https://iitsmedeeksha.netlify.app/)**
+### 2. Hero Presentation
+- Developer portrait card integrated with an automated continuous circular SVG badge.
+- Quantified metrics overview highlighting 5 enterprise internships, 10 production projects, and academic standing.
+- Direct dual action paths for communication and curriculum vitae download.
 
----
+### 3. About and Engineering Philosophy
+- Comprehensive overview bridging technical computer science concepts with enterprise business systems.
+- Core capability highlights across algorithms, cloud infrastructure, machine learning, and cybersecurity.
 
-## ✨ Key Features
+### 4. Technical Skills
+- Programming Languages: Python, Java, C++, TypeScript, JavaScript (ES6+), Solidity, SQL, Dart
+- Frontend Development: React 19, Next.js, Tailwind CSS v4, HTML5, CSS3, Vite, Redux Toolkit, Flutter
+- Backend and APIs: Node.js, Express, FastAPI, RESTful APIs, JWT Authentication, Postman
+- Cloud and Infrastructure: Amazon Web Services (EC2, S3, VPC, IAM), Google Cloud Platform, Firebase, Docker, GitHub Actions CI/CD
+- Databases and Storage: MongoDB Atlas, PostgreSQL, Supabase, Cloud Firestore, MySQL
+- Security and Machine Learning: Google Gemini AI, Scikit-Learn, PyTorch, Zero-Trust (ZTNA), Fortinet Firewalls
 
-- 🌌 **Cyber-Noir Aesthetics & Glassmorphism:** Deep dark theme (`#050505`) accented with neon cyan (`#38bdf8`), frosted glass overlays, and subtle grainy gradient depth.
-- ⚡ **High-Performance Architecture:** Engineered with **React 19**, **Vite 6**, and **Tailwind CSS 4** for sub-second page loads and zero layout shift.
-- 🪄 **Dynamic Micro-Interactions & Motion:**
-  - Typewriter hero with animated cycling roles (*AI Enthusiast, Web Developer, ML Practitioner, AI & DS Student*).
-  - Scroll-aware auto-hiding navigation bar with blur backdrop.
-  - Interactive smooth scroll-to-top floating button.
-  - Hover-lift cards with animated border glows.
-- 🍱 **Bento-Grid Identity & Metrics:**
-  - Mission Statement & Engineering Philosophy.
-  - Live metric counters (2+ Internships, 10+ Projects, 8+ Certifications, 7.8 CGPA).
-  - Core values breakdown (*Innovation, Precision, Impact, Growth*).
-- 🚀 **Curated 0-to-1 Projects Showcase:**
-  - Deep links to live demos and GitHub source repositories.
-  - Covers AgriTech, FinTech, MLOps, NLP, and Mobile platforms.
-- 🤖 **Google Gemini AI Ready:** Integrated with `@google/genai` for intelligent, real-time AI capabilities.
-- 📱 **100% Responsive Design:** Flawless layout across smartphones, tablets, laptops, and ultra-wide displays.
+### 5. Work Experience and Internships
+Chronological track record of five enterprise internships:
+- GirlScript Summer of Code (GSSoC 2024): Open Source Software Contributor
+- Fortinet (via AICTE and EduSkills): Network Security Engineering Intern (Grade O Outstanding, 90-100%)
+- Palo Alto Networks (via AICTE and EduSkills): Cybersecurity Engineering Intern (Grade E Excellent, 80-89%)
+- TechSaksham (Microsoft and SAP CSR Initiative): AI and Cloud Product Intern (94% ML Accuracy Honors)
+- AWS Academy: Cloud Infrastructure Engineering Intern (Grade A Evaluation)
 
----
+### 6. Formal Education
+- Degree: Bachelor of Engineering (B.E.)
+- Major: Computer Science and Business Systems (CSBS)
+- Institution: Srinivas Institute of Technology (SIT), Mangaluru
+- University Affiliation: Visvesvaraya Technological University (VTU), Belagavi
+- Timeline: 2022 to 2026 (Graduating June 2026)
+- Academic Standing: 7.8 CGPA
 
-## 🛠️ Tech Stack & Dependencies
+### 7. Direct Communication Channels
+- Official Email: deekshagpbangera@gmail.com
+- Telephone: +91 91108 55431
+- LinkedIn Profile: https://linkedin.com/in/deeksha-g-cybersec
+- GitHub Profile: https://github.com/DeekshaG96
+- Geographic Mobility: Mangaluru, India (Open to relocation across India and global remote opportunities)
 
-| Category | Technologies / Libraries |
-| :--- | :--- |
-| **Framework & Core** | [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Vite 6](https://vitejs.dev/) |
-| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/), Custom Glassmorphism CSS |
-| **Animations** | [Motion (Framer Motion v12)](https://motion.dev/) |
-| **Icons** | [Lucide React](https://lucide.dev/) |
-| **AI Integration** | [@google/genai](https://www.npmjs.com/package/@google/genai) |
-| **Deployment** | [Netlify](https://www.netlify.com/) (configured via `netlify.toml`) |
+## Repository Structure
 
----
-
-## 📂 Project Architecture
-
-```plaintext
+```text
 my-portfolio/
-├── public/                 # Static assets & downloadable CV
-│   └── Deeksha_G_Resume.pdf
-├── src/
-│   ├── App.tsx             # Master Portfolio application & interactive sections
-│   ├── index.css           # Global typography, glassmorphism & Tailwind styles
-│   └── main.tsx            # React 19 root entry point
-├── .env.example            # Environment variable template
-├── netlify.toml            # Netlify SPA routing & build headers
-├── package.json            # Dependencies & build scripts
-├── tsconfig.json           # TypeScript configuration
-└── vite.config.ts          # Vite bundler configuration
+|-- .github/
+|   `-- workflows/
+|       `-- deploy.yml          # Automated GitHub Pages CI/CD workflow
+|-- public/
+|   |-- assets/
+|   |   `-- avatar.jpg          # Developer portrait asset
+|   |-- Deeksha_G_Resume.pdf    # Downloadable resume document
+|   |-- Deeksha_G_Resume.tex    # LaTeX resume source
+|   `-- Deeksha_G_Resume.txt    # Plaintext resume version
+|-- src/
+|   |-- App.tsx                 # Core application layout and section components
+|   |-- index.css               # Global typography, tokens, and custom styling
+|   |-- main.tsx                # Application mounting entry point
+|   `-- vite-env.d.ts           # Vite TypeScript definitions
+|-- index.html                  # HTML5 document entry and metadata
+|-- package.json                # Project dependencies and script definitions
+|-- tsconfig.json               # TypeScript compiler configuration
+|-- tsconfig.app.json           # Application-level TypeScript settings
+|-- tsconfig.node.json          # Build tooling TypeScript settings
+`-- vite.config.ts              # Vite configuration and build parameters
 ```
 
----
+## Featured Projects Catalog
 
-## 🚀 Featured Projects Highlighted in Portfolio
+Categorized filtering across Full-Stack, AI & Cloud, Security & Web3, and Mobile:
 
-| Project | Tech Stack | Highlights |
-| :--- | :--- | :--- |
-| 🚚 **[Eco-Track Resilient](https://techspire-13303696-1c68d.web.app)** | React, Gemini AI, Firebase, Google Maps | AI logistics risk detection & recovery routing (Google Solution Challenge 2026). |
-| 🌾 **[Smart Farmer Connect](https://v0-smart-farm-connect-ui.vercel.app/)** | Next.js, TypeScript, Tailwind CSS, Vercel | Scalable platform connecting farmers to resources with real-time analytics. |
-| 📊 **[Student Success Dashboard](https://github.com/DeekshaG96/Student-Success-Dashboard)** | Python, Streamlit, Scikit-Learn, Pandas | Interactive MLOps portal analyzing student academic retention & trends. |
-| 📝 **[AI Text Summarizer](https://github.com/DeekshaG96/aitextsummarizer)** | Node.js, Express, Gemini AI, React | AI NLP workspace transforming dense text into actionable takeaways. |
-| 📱 **[Soul Journal](https://soul-journal-65327.web.app/)** | Flutter, Firebase, Riverpod, Firestore | Cross-platform mental wellness, mood-tracking, and habit-building app. |
-| 🧠 **[Aura Mental Wellbeing](https://github.com/DeekshaG96/aura-mental-wellbeing)** | React, Python, Flask, ML | AI-driven companion offering personalized wellbeing insights. |
+| Index | Project Name | Category | Primary Tech Stack | Live Demo | Repository |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 01 | RazorOps AI | AI & Cloud | React 19, Gemini AI, Firebase, E2E Testing, Tailwind | https://razorops-ai.web.app | https://github.com/DeekshaG96/razorops-ai |
+| 02 | NaanStop Food Delivery & Kitchen OS | Full-Stack | React 18, Node.js, Express, MongoDB Atlas, Capacitor Android, JWT | https://naanstop-customer.vercel.app | https://github.com/DeekshaG96/food-delivery-app |
+| 03 | Eco-Track Resilient | AI & Cloud | Google Gemini 1.5 Flash, React, Google Maps API, Firebase | https://techspire-13303696-1c68d.web.app | https://github.com/DeekshaG96/eco-track-logistics |
+| 04 | The Architectural Ledger | Full-Stack | React 19, Vite, Tailwind CSS v4, Firebase, Recharts | https://the-architectural-ledger.netlify.app/ | https://github.com/DeekshaG96/the-architectural-ledger |
+| 05 | SIT Global Success Hub | AI & Cloud | Python, Streamlit, Scikit-Learn, Gemini 1.5 Pro, Bcrypt | https://student-success-dashboard-cpnswmcahqbt6zwqkhwghy.streamlit.app/ | https://github.com/DeekshaG96/Student-Success-Dashboard |
+| 06 | VotX Decentralized Voting System | Security & Web3 | Solidity, Ethereum Sepolia, Hardhat, Ethers.js, React | https://blockchainproj-7nj1.vercel.app | https://github.com/DeekshaG96/blockchain_proj |
+| 07 | Smart Farmer Connect | Full-Stack | Next.js, React, TypeScript, Tailwind CSS, REST API | https://v0-smart-farm-connect-ui.vercel.app/ | https://github.com/DeekshaG96/smart-farm-connect |
+| 08 | Netflix Platform (Clean Architecture) | Full-Stack | React 18, TypeScript, Tailwind CSS, Firebase Auth, TMDB API | https://netflix-clone-eight-liard-22.vercel.app | https://github.com/DeekshaG96/_netflix-clone_ |
+| 09 | PlantGuard AI Diagnostics | AI & Cloud | Python, PyTorch, TensorFlow, CNN, OpenCV, Jupyter | N/A | https://github.com/DeekshaG96/Plant-Disease-Detection-System-for-Sustainable-Agriculture-P2- |
+| 10 | Soul Journal & Mental Wellness | Mobile | Flutter, Dart, Firebase, Cloud Firestore, Biometrics | https://soul-journal-65327.web.app/ | https://github.com/DeekshaG96/soul_journal |
 
----
+## Local Setup and Build Instructions
 
-## 💻 Getting Started Locally
+### Prerequisites
+- Node.js: version 18.0 or higher
+- npm: version 9.0 or higher
 
-### 1. Prerequisites
-- **Node.js**: v18.0.0 or higher
-- **npm** or **pnpm** or **yarn**
+### Commands
 
-### 2. Clone the Repository
-```bash
-git clone https://github.com/DeekshaG96/my-portfolio.git
-cd my-portfolio
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/DeekshaG96/my-portfolio.git
+   cd my-portfolio
+   ```
 
-### 3. Install Dependencies
-```bash
-npm install
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### 4. Configure Environment Variables (Optional)
-If utilizing Gemini AI features locally:
-```bash
-cp .env.example .env
-```
-Add your API key:
-```env
-VITE_GEMINI_API_KEY=your_gemini_api_key_here
-```
+3. Start development server:
+   ```bash
+   npm run dev
+   ```
 
-### 5. Launch the Local Development Server
-```bash
-npm run dev
-```
-Open your browser and navigate to `http://localhost:3000`.
+4. Build production bundle:
+   ```bash
+   npm run build
+   ```
 
-### 6. Build for Production
-```bash
-npm run build
-```
-The optimized production bundle will be generated in the `dist/` directory.
+5. Preview production build locally:
+   ```bash
+   npm run preview
+   ```
 
----
+## Deployment Configuration
 
-## 🚀 Deployment
+This repository includes continuous deployment configurations for both GitHub Pages and Netlify:
+- GitHub Pages: Triggered automatically upon push to main via `.github/workflows/deploy.yml`.
+- Netlify: Configured with `netlify.toml` for Single Page Application routing and header caching.
 
-### Deploy on Netlify (Configured)
-This repository includes a pre-configured `netlify.toml`:
-```toml
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-```
-Simply connect your GitHub repository to Netlify with build settings:
-- **Build Command:** `npm run build`
-- **Publish Directory:** `dist`
+## Contact Information
 
----
+- Candidate: Deeksha G
+- Email: deekshagpbangera@gmail.com
+- Telephone: +91 91108 55431
+- LinkedIn: https://linkedin.com/in/deeksha-g-cybersec
+- GitHub: https://github.com/DeekshaG96
+- Portfolio URL: https://deekshag96.github.io/my-portfolio/
 
-## 📬 Contact & Connect
+## License
 
-**Deeksha G P Bangera** — Software Engineer • AI & Cloud Architect
-- 🌐 **Portfolio:** [iitsmedeeksha.netlify.app](https://iitsmedeeksha.netlify.app/)
-- 💼 **LinkedIn:** [linkedin.com/in/deeksha-g-cybersec](https://linkedin.com/in/deeksha-g-cybersec)
-- 🐙 **GitHub:** [@DeekshaG96](https://github.com/DeekshaG96)
-- 📧 **Email:** [deekshagpbangera@gmail.com](mailto:deekshagpbangera@gmail.com)
-
----
-
-<div align="center">
-  <sub>Designed & Developed with 💻 and ☕ by <strong>Deeksha G</strong> • Star ⭐ this repository if you find it inspiring!</sub>
-</div>
+Distributed under the MIT License. See the LICENSE file for details.
