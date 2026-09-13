@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Great+Vibes&family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-headline: "Manrope", sans-serif;
+  --font-headline: "Plus Jakarta Sans", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-label: "Inter", sans-serif;
   --font-cursive: "Great Vibes", "Alex Brush", cursive;
@@ -29,7 +29,7 @@
 
 @layer base {
   * {
-    border-color: rgba(186, 230, 253, 0.4);
+    border-color: rgba(186, 230, 253, 0.5);
   }
   body {
     background-color: #f0f6fc;
@@ -37,21 +37,50 @@
     font-family: var(--font-body);
     selection-background-color: rgba(2, 132, 199, 0.2);
     selection-color: #0284c7;
+    overflow-x: hidden;
   }
   html {
     scroll-behavior: smooth;
   }
+
+  /* Custom Sleek Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f0f6fc;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
 }
 
 @layer utilities {
+  .mesh-bg {
+    background-size: 28px 28px;
+    background-image: radial-gradient(circle, rgba(2, 132, 199, 0.08) 1px, transparent 1px);
+  }
   .glass-card {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(186, 230, 253, 0.6);
-    box-shadow: 0 10px 30px -10px rgba(14, 116, 144, 0.08);
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(224, 242, 254, 0.85);
+    box-shadow: 0 15px 35px -10px rgba(14, 116, 144, 0.06), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+  }
+  .glass-card-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow: 0 25px 50px -12px rgba(2, 132, 199, 0.12), inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+    transform: translateY(-4px);
   }
   .hero-glow {
-    background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.18) 0%, transparent 70%);
   }
   .aesthetic-gradient {
     background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%);
@@ -71,21 +100,11 @@
   100% { background-position: 200% 0; }
 }
 
-@keyframes scroll {
-  0% { transform: translateY(0); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(10px); opacity: 0; }
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
 }
 
-@keyframes fadeUp {
-  0% { transform: translateY(20px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-.animate-fade-up {
-  animation: fadeUp 0.8s ease-out forwards;
-}
-
-.animate-scroll {
-  animation: scroll 2s infinite;
+.animate-pulse-slow {
+  animation: pulseGlow 6s ease-in-out infinite;
 }
