@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { 
   Github, 
   Mail, 
-  Linkedin, 
   ArrowRight, 
   ArrowDown,
   ArrowUpRight,
@@ -917,21 +916,6 @@ export default function App() {
               </button>
 
               <a 
-                href="https://linkedin.com/in/deeksha-g-cybersec" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="bedim-card rounded-2xl p-5 flex items-center justify-between group hover:border-emerald-400/60"
-              >
-                <div className="space-y-0.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-                    <Linkedin size={13} /> LinkedIn Profile
-                  </span>
-                  <p className="text-sm font-semibold text-white">linkedin.com/in/deeksha-g-cybersec</p>
-                </div>
-                <ArrowUpRight size={18} className="text-slate-400 group-hover:text-emerald-400 transition-colors" />
-              </a>
-
-              <a 
                 href="https://github.com/DeekshaG96" 
                 target="_blank" 
                 rel="noreferrer" 
@@ -980,15 +964,6 @@ export default function App() {
               title="GitHub Profile"
             >
               <Github size={16} />
-            </a>
-            <a 
-              href="https://linkedin.com/in/deeksha-g-cybersec" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="w-10 h-10 rounded-full bg-[#111612] border border-emerald-500/20 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400 transition-colors shadow-sm"
-              title="LinkedIn Profile"
-            >
-              <Linkedin size={16} />
             </a>
             <button 
               onClick={copyEmail} 
