@@ -5,7 +5,8 @@ import {
   Linkedin, 
   ArrowRight, 
   ArrowDown,
-  ArrowUpRight, 
+  ArrowUpRight,
+  ExternalLink, 
   Download, 
   Copy, 
   Check, 
@@ -33,88 +34,127 @@ export default function App() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const projectCategories = ['All', 'AI & Cloud', 'Full-Stack', 'Security & Web3', 'Mobile'];
+  const projectCategories = ['All', 'Full-Stack', 'AI & Cloud', 'Security & Web3', 'Mobile'];
 
   const projects = [
     {
       num: '01',
-      title: 'RazorOps AI',
-      tag: 'FinTech / Automated Reconciliation',
+      title: 'NaanStop Food Delivery & Kitchen OS',
+      tag: 'Full-Stack / Restaurant ERP',
       category: 'Full-Stack',
-      metric: '-40% Audit Overhead',
-      desc: 'Cloud-native financial operations portal simulating transaction batch clearing, status lifecycles, and liquidity forecasting. Automated API test suites with Postman validate idempotency and cut manual auditing overhead by 40%.',
-      img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96',
-      tech: ['React 19', 'JavaScript', 'Firebase', 'SQL', 'Postman API', 'Tailwind CSS']
+      metric: 'Customer + Admin KDS + Android',
+      desc: 'Full-stack multi-tier food ordering & restaurant ERP with real-time table reservations, live Kitchen Display System (KDS Kanban), JWT auth, and Capacitor Android mobile app.',
+      img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/food-delivery-app',
+      live: 'https://naanstop-customer.vercel.app',
+      tech: ['React 18', 'Node.js', 'Express', 'MongoDB Atlas', 'Capacitor Android', 'JWT']
     },
     {
       num: '02',
-      title: 'Eco-Track Logistics',
-      tag: 'Logistics / Gemini 2.5 Flash',
+      title: 'Eco-Track Resilient',
+      tag: 'Google Solution Challenge 2026',
       category: 'AI & Cloud',
-      metric: '+25% Route Resilience',
-      desc: 'AI-assisted logistics intelligence platform for supply chain disruption risk detection and recovery routing. Integrates Google Gemini 2.5 Flash reasoning with real-time IoT sensor telemetry in Firebase (+25% routing resilience). Built for Google Solution Challenge 2026.',
+      metric: 'Gemini 1.5 Flash + Maps',
+      desc: 'AI-assisted logistics intelligence prototype for Google Solution Challenge 2026. Predicts supply-chain disruption risks, calculates Scope 3 GLEC emissions, and simulates war room disaster drills.',
       img: 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/eco-track-logistics',
       live: 'https://techspire-13303696-1c68d.web.app',
-      tech: ['React', 'Gemini AI', 'Firebase', 'Google Maps API', 'CI/CD']
+      tech: ['Gemini 1.5 Flash', 'React', 'Vite', 'Google Maps API', 'Firebase', 'Tailwind CSS']
     },
     {
       num: '03',
-      title: 'Smart Farmer Connect',
-      tag: 'AgriTech / Next.js Platform',
-      category: 'Full-Stack',
-      metric: '+40% User Engagement',
-      desc: 'Scalable full-stack marketplace and crop intelligence portal connecting farmers to agronomy analytics and direct commercial buyers. Features dynamic pricing models and localized weather analytics (+40% user engagement).',
-      img: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/smart-farm-connect',
-      live: 'https://v0-smart-farm-connect-ui.vercel.app/',
-      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'REST API']
+      title: 'Forensic Pro Suite',
+      tag: 'Cybersecurity / NIST SP 800-86',
+      category: 'Security & Web3',
+      metric: 'Xterm.js CLI & NIST Compliant',
+      desc: 'High-fidelity Digital Forensics Workstation with automated artifact triage, SHA-256 integrity hashing, geospatial threat attribution, Supabase evidence vault, and jsPDF chain-of-custody reports.',
+      img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/forensic-pro-suite',
+      live: 'https://forensic-pro-suite-new.vercel.app/',
+      tech: ['Next.js 16', 'React 19', 'FastAPI', 'Python', 'Supabase', 'Xterm.js']
     },
     {
       num: '04',
-      title: 'VotX Protocol',
-      tag: 'Web3 / Cryptography',
-      category: 'Security & Web3',
-      metric: '10,000+ Anonymous Ballots',
-      desc: 'Decentralized electronic voting platform deploying gas-optimized Solidity smart contracts on Polygon with Zero-Knowledge proofs (ZK-proofs) for complete voter anonymity and tamper-proof ballot verification across 10,000+ simulated voters.',
-      img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96',
-      tech: ['Solidity', 'Polygon', 'ZK-Proofs', 'Web3.js', 'Smart Contracts']
+      title: 'The Architectural Ledger',
+      tag: 'Enterprise HRMS & Payroll',
+      category: 'Full-Stack',
+      metric: 'Enterprise RBAC & Payroll',
+      desc: 'Modern Human Resources Management Suite engineered for enterprise administration, role-based departmental oversight, interactive Recharts analytics, and automated payroll ledgers.',
+      img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/the-architectural-ledger',
+      live: 'https://the-architectural-ledger.netlify.app/',
+      tech: ['React 19', 'Vite', 'Tailwind CSS v4', 'Firebase', 'Recharts', 'Lucide React']
     },
     {
       num: '05',
-      title: 'Student Success Dashboard',
-      tag: 'EdTech / MLOps',
+      title: 'SIT Global Success Hub',
+      tag: 'EdTech / MLOps Portal',
       category: 'AI & Cloud',
-      metric: 'Real-Time ML Forecasting',
-      desc: 'Interactive predictive machine learning portal analyzing educational indicators to forecast student retention and graduation outcomes in real time with feature-importance visual explainability.',
+      metric: 'Random Forest + Gemini AI',
+      desc: 'Institutional student success platform for Srinivas Institute of Technology CSBS scholars. Implements scikit-learn Random Forest outcome prediction, Google Gemini 1.5 Pro AI mentor, and zero-leak bcrypt auth.',
       img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/Student-Success-Dashboard',
-      tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Pandas', 'Matplotlib']
+      live: 'https://student-success-dashboard-cpnswmcahqbt6zwqkhwghy.streamlit.app/',
+      tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Gemini 1.5 Pro', 'Bcrypt', 'Pandas']
     },
     {
       num: '06',
-      title: 'Soul Journal',
-      tag: 'Mobile / Flutter & Cloud',
-      category: 'Mobile',
-      metric: 'Riverpod & Biometrics',
-      desc: 'Cross-platform mental wellness and habit-building mobile application engineered in Flutter with Riverpod state architecture, biometric security, and real-time Cloud Firestore synchronization.',
-      img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/soul_journal',
-      live: 'https://soul-journal-65327.web.app/',
-      tech: ['Flutter', 'Firebase', 'Riverpod', 'Cloud Firestore', 'Dart']
+      title: 'VotX Decentralized Voting System',
+      tag: 'Web3 / Smart Contracts',
+      category: 'Security & Web3',
+      metric: 'Sepolia Ethereum dApp',
+      desc: 'Tamper-proof electronic voting dApp with Solidity ^0.8.24 smart contracts on Sepolia Testnet. Employs MetaMask decentralized identity (DID) to eliminate double-voting and record immutable ballots.',
+      img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/blockchain_proj',
+      live: 'https://blockchainproj-7nj1.vercel.app',
+      tech: ['Solidity', 'Ethereum Sepolia', 'Hardhat', 'Ethers.js', 'React', 'Tailwind CSS']
     },
     {
       num: '07',
+      title: 'Smart Farmer Connect',
+      tag: 'Agritech / Srinathon 2.0',
+      category: 'Full-Stack',
+      metric: '24-Hr Hackathon Build',
+      desc: 'Agritech marketplace platform developed at Srinathon 2.0 International Hackathon bridging farmers directly with consumers. Features real-time crop market pricing and localized weather analytics.',
+      img: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/smart-farm-connect',
+      live: 'https://v0-smart-farm-connect-ui.vercel.app/',
+      tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'REST API', 'Vercel']
+    },
+    {
+      num: '08',
+      title: 'PlantGuard AI Diagnostics',
+      tag: 'Computer Vision / TechSaksham',
+      category: 'AI & Cloud',
+      metric: 'Microsoft & SAP 94% Honors',
+      desc: 'AICTE-TechSaksham (Microsoft & SAP) capstone deep learning model utilizing Convolutional Neural Networks (CNN) to detect agricultural crop diseases from leaf imagery with high accuracy.',
+      img: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/Plant-Disease-Detection-System-for-Sustainable-Agriculture-P2-',
+      tech: ['Python', 'PyTorch', 'TensorFlow', 'CNN', 'OpenCV', 'Jupyter']
+    },
+    {
+      num: '09',
+      title: 'Soul Journal & Mental Wellness',
+      tag: 'Mobile / Flutter & Cloud',
+      category: 'Mobile',
+      metric: 'Cross-Platform Flutter & Web',
+      desc: 'Cross-platform mindful journaling and wellness mobile application engineered in Flutter. Features biometric security, mood tracking analytics, Pomodoro focus timer, and Cloud Firestore sync.',
+      img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/soul_journal',
+      live: 'https://soul-journal-65327.web.app/',
+      tech: ['Flutter', 'Dart', 'Firebase', 'Cloud Firestore', 'Biometrics', 'Web']
+    },
+    {
+      num: '10',
       title: 'AI Text Summarizer',
       tag: 'NLP / GenAI Engine',
       category: 'AI & Cloud',
-      metric: 'Sub-Second LLM Ingestion',
-      desc: 'High-throughput document intelligence workspace leveraging Google Gemini LLM API to parse, summarize, and extract sentiment and core action items from dense documents and meeting transcripts.',
+      metric: 'Transformer NLP API',
+      desc: 'High-throughput document intelligence workspace integrating Hugging Face transformer models to parse, synthesize, and extract key action items from lengthy technical documents.',
       img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/aitextsummarizer',
-      tech: ['Node.js', 'Express', 'Gemini AI', 'React 19', 'Tailwind CSS']
+      live: 'https://aitextsummarizer-omega.vercel.app',
+      tech: ['JavaScript', 'Hugging Face API', 'HTML5', 'CSS3', 'Vercel']
     }
   ];
 
@@ -436,15 +476,27 @@ export default function App() {
                 </div>
 
                 <div className="pt-3 border-t border-emerald-500/10 flex items-center justify-between text-[11px]">
-                  <span className="text-slate-500 truncate max-w-[170px]">{p.tech.slice(0, 3).join(', ')}</span>
-                  <a 
-                    href={p.github} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"
-                  >
-                    Code <Github size={12} />
-                  </a>
+                  <span className="text-slate-500 truncate max-w-[140px]">{p.tech.slice(0, 2).join(', ')}</span>
+                  <div className="flex items-center gap-3">
+                    {p.live && (
+                      <a 
+                        href={p.live} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"
+                      >
+                        Live <ExternalLink size={12} />
+                      </a>
+                    )}
+                    <a 
+                      href={p.github} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="text-slate-400 hover:text-white font-semibold flex items-center gap-1"
+                    >
+                      Code <Github size={12} />
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
