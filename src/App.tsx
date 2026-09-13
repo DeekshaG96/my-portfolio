@@ -75,18 +75,6 @@ export default function App() {
     },
     {
       num: '04',
-      title: 'Forensic Pro Suite',
-      tag: 'Cybersecurity / NIST SP 800-86',
-      category: 'Security & Web3',
-      metric: 'Xterm.js CLI & NIST Compliant',
-      desc: 'High-fidelity Digital Forensics Workstation with automated artifact triage, SHA-256 integrity hashing, geospatial threat attribution, Supabase evidence vault, and jsPDF chain-of-custody reports.',
-      img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/forensic-pro-suite',
-      live: 'https://forensic-pro-suite-new.vercel.app/',
-      tech: ['Next.js 16', 'React 19', 'FastAPI', 'Python', 'Supabase', 'Xterm.js']
-    },
-    {
-      num: '05',
       title: 'The Architectural Ledger',
       tag: 'Enterprise HRMS & Payroll',
       category: 'Full-Stack',
@@ -98,7 +86,7 @@ export default function App() {
       tech: ['React 19', 'Vite', 'Tailwind CSS v4', 'Firebase', 'Recharts', 'Lucide React']
     },
     {
-      num: '06',
+      num: '05',
       title: 'SIT Global Success Hub',
       tag: 'EdTech / MLOps Portal',
       category: 'AI & Cloud',
@@ -110,7 +98,7 @@ export default function App() {
       tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Gemini 1.5 Pro', 'Bcrypt', 'Pandas']
     },
     {
-      num: '07',
+      num: '06',
       title: 'VotX Decentralized Voting System',
       tag: 'Web3 / Smart Contracts',
       category: 'Security & Web3',
@@ -122,7 +110,7 @@ export default function App() {
       tech: ['Solidity', 'Ethereum Sepolia', 'Hardhat', 'Ethers.js', 'React', 'Tailwind CSS']
     },
     {
-      num: '08',
+      num: '07',
       title: 'Smart Farmer Connect',
       tag: 'Agritech / Srinathon 2.0',
       category: 'Full-Stack',
@@ -132,6 +120,18 @@ export default function App() {
       github: 'https://github.com/DeekshaG96/smart-farm-connect',
       live: 'https://v0-smart-farm-connect-ui.vercel.app/',
       tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'REST API', 'Vercel']
+    },
+    {
+      num: '08',
+      title: 'Netflix Platform (Clean Architecture)',
+      tag: 'Clean Architecture / Streaming',
+      category: 'Full-Stack',
+      metric: 'Clean Architecture & TMDB',
+      desc: 'High-fidelity video streaming web application designed with Clean Architecture principles. Features Firebase Auth, dynamic TMDB API integration, real-time movie search, and responsive video overlay.',
+      img: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/_netflix-clone_',
+      live: 'https://netflix-clone-eight-liard-22.vercel.app',
+      tech: ['React 18', 'TypeScript', 'Tailwind CSS', 'Firebase Auth', 'TMDB API', 'Framer Motion']
     },
     {
       num: '09',
