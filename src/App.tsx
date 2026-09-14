@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Github, 
   Mail, 
   ArrowRight, 
-  ArrowDown,
   ArrowUpRight,
   ExternalLink, 
   Download, 
@@ -19,7 +18,6 @@ import {
   Layers,
   Sparkles,
   Calendar,
-  BookOpen,
   Briefcase,
   Terminal,
   Database,
@@ -64,6 +62,38 @@ export default function App() {
   // Contact Form State
   const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  // Typewriter Animation State (Amelia Portfolio style)
+  const typewriterWords = [
+    'Full-Stack Developer',
+    'Applied AI Engineer',
+    'Cloud & DevOps Builder',
+    '7th Sem CSBS Engineer'
+  ];
+  const [wordIndex, setWordIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = typewriterWords[wordIndex];
+
+    if (!isDeleting && subIndex === currentWord.length) {
+      const timeout = setTimeout(() => setIsDeleting(true), 2200);
+      return () => clearTimeout(timeout);
+    }
+
+    if (isDeleting && subIndex === 0) {
+      setIsDeleting(false);
+      setWordIndex((prev) => (prev + 1) % typewriterWords.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (isDeleting ? -1 : 1));
+    }, isDeleting ? 35 : 85);
+
+    return () => clearTimeout(timeout);
+  }, [subIndex, isDeleting, wordIndex]);
 
   const copyEmail = () => {
     navigator.clipboard.writeText('deekshagpbangera@gmail.com');
@@ -265,62 +295,62 @@ export default function App() {
   const skillCategories: SkillCategory[] = [
     {
       title: 'Programming Languages',
-      icon: <Code2 className="w-5 h-5 text-emerald-400" />,
+      icon: <Code2 className="w-5 h-5 text-[#6d4300]" />,
       skills: ['Python', 'Java', 'C++', 'TypeScript', 'JavaScript (ES6+)', 'Solidity', 'SQL', 'Dart']
     },
     {
       title: 'Frontend Architecture',
-      icon: <Layers className="w-5 h-5 text-emerald-400" />,
+      icon: <Layers className="w-5 h-5 text-[#6d4300]" />,
       skills: ['React 19', 'Next.js', 'Tailwind CSS v4', 'HTML5 / CSS3', 'Vite', 'Redux Toolkit', 'Flutter']
     },
     {
       title: 'Backend & APIs',
-      icon: <Terminal className="w-5 h-5 text-emerald-400" />,
+      icon: <Terminal className="w-5 h-5 text-[#6d4300]" />,
       skills: ['Node.js', 'Express', 'FastAPI', 'RESTful APIs', 'JWT Authentication', 'Postman API Testing']
     },
     {
       title: 'Cloud & DevOps',
-      icon: <Cloud className="w-5 h-5 text-emerald-400" />,
+      icon: <Cloud className="w-5 h-5 text-[#6d4300]" />,
       skills: ['AWS (EC2, S3, VPC, IAM)', 'Google Cloud', 'Firebase Hosting', 'Docker', 'GitHub Actions CI/CD']
     },
     {
       title: 'Database & Storage',
-      icon: <Database className="w-5 h-5 text-emerald-400" />,
+      icon: <Database className="w-5 h-5 text-[#6d4300]" />,
       skills: ['MongoDB Atlas', 'PostgreSQL', 'Supabase', 'Cloud Firestore', 'MySQL', 'Local JSON Storage']
     },
     {
       title: 'AI, ML & Security',
-      icon: <Brain className="w-5 h-5 text-emerald-400" />,
+      icon: <Brain className="w-5 h-5 text-[#6d4300]" />,
       skills: ['Google Gemini AI', 'Scikit-Learn', 'PyTorch', 'CNNs', 'Zero-Trust (ZTNA)', 'Fortinet Firewalls']
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#090d0a] text-[#94a3b8] font-sans antialiased selection:bg-emerald-500/20 selection:text-emerald-400">
+    <div className="min-h-screen font-sans antialiased text-[#57534e]">
       
-      {/* Background Ambient Lighting */}
+      {/* Background Soft Glow Accents */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[3%] left-[50%] -translate-x-1/2 w-[600px] h-[350px] bg-emerald-500/10 blur-[140px] rounded-full" />
-        <div className="absolute top-[35%] right-[-10%] w-[500px] h-[500px] bg-emerald-600/5 blur-[160px] rounded-full" />
-        <div className="absolute top-[70%] left-[-10%] w-[500px] h-[500px] bg-emerald-500/5 blur-[160px] rounded-full" />
+        <div className="absolute top-[-5%] left-[20%] w-[650px] h-[450px] bg-[#f8d7b3]/40 blur-[130px] rounded-full" />
+        <div className="absolute top-[35%] right-[-10%] w-[550px] h-[550px] bg-[#eed0ab]/35 blur-[150px] rounded-full" />
+        <div className="absolute top-[75%] left-[-10%] w-[600px] h-[600px] bg-[#faebd7]/50 blur-[160px] rounded-full" />
       </div>
 
       {/* ==================== FLOATING NAVBAR ==================== */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 pb-3 bg-gradient-to-b from-[#090d0a] via-[#090d0a]/90 to-transparent">
-        <nav className="max-w-5xl mx-auto bg-[#111612]/90 backdrop-blur-xl border border-emerald-500/20 rounded-full px-6 py-3 flex justify-between items-center shadow-xl shadow-black/40">
-          <a href="#home" className="font-cursive text-2xl sm:text-3xl text-white hover:text-emerald-400 transition-colors select-none">
-            Deeksha G<span className="text-emerald-400 font-sans">.</span>
+      <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-3.5 pb-2 bg-gradient-to-b from-[#fffdfa] via-[#fffdfa]/95 to-transparent">
+        <nav className="max-w-6xl mx-auto bg-white/85 backdrop-blur-xl border border-[#6d4300]/15 rounded-full px-6 py-3 flex justify-between items-center shadow-lg shadow-[#6d4300]/5">
+          <a href="#home" className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1c1917] hover:text-[#6d4300] transition-colors select-none font-headline">
+            Deeksha <span className="text-[#6d4300]">G.</span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-6 text-xs font-medium uppercase tracking-wider text-slate-300">
-            <a href="#home" className="hover:text-emerald-400 transition-colors">Home</a>
-            <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
-            <a href="#projects" className="hover:text-emerald-400 transition-colors">Projects</a>
-            <a href="#experience" className="hover:text-emerald-400 transition-colors">Experience</a>
-            <a href="#skills" className="hover:text-emerald-400 transition-colors">Skills</a>
-            <a href="#education" className="hover:text-emerald-400 transition-colors">Education</a>
-            <a href="#contact" className="hover:text-emerald-400 transition-colors">Contact</a>
+          <div className="hidden lg:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-[#44403c]">
+            <a href="#home" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Home</a>
+            <a href="#about" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">About</a>
+            <a href="#projects" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Projects</a>
+            <a href="#experience" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Experience</a>
+            <a href="#education" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Education</a>
+            <a href="#skills" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Skills</a>
+            <a href="#contact" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Contact</a>
           </div>
 
           {/* Desktop CTA Buttons */}
@@ -328,43 +358,43 @@ export default function App() {
             <a 
               href="./Deeksha_G_Resume.pdf" 
               download="Deeksha_G_Resume.pdf" 
-              className="inline-flex items-center gap-1.5 bg-[#161d17] hover:bg-[#1f2a20] text-slate-200 border border-emerald-500/30 text-xs font-bold uppercase tracking-wider px-3.5 py-2 rounded-full transition-all"
+              className="inline-flex items-center gap-1.5 btn-outline-caramel text-xs font-bold uppercase tracking-wider px-4 py-2"
             >
               Resume <Download size={13} />
             </a>
             <a 
               href="#contact" 
-              className="bg-emerald-400 hover:bg-emerald-300 text-black font-semibold text-xs uppercase tracking-wider px-4 py-2 rounded-full transition-all shadow-md shadow-emerald-400/20 hover:shadow-emerald-400/30"
+              className="btn-caramel text-xs font-bold uppercase tracking-wider px-5 py-2.5"
             >
-              Hire Me
+              Contact Me
             </a>
           </div>
 
           {/* Mobile Menu Toggle Button */}
           <button 
-            className="lg:hidden text-white p-1 focus:outline-none" 
+            className="lg:hidden text-[#1c1917] p-1 focus:outline-none" 
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
             aria-label="Toggle Menu"
           >
-            {isMenuOpen ? <X size={22} className="text-emerald-400" /> : <Menu size={22} />}
+            {isMenuOpen ? <X size={24} className="text-[#6d4300]" /> : <Menu size={24} />}
           </button>
         </nav>
 
         {/* Mobile Navigation Dropdown */}
         {isMenuOpen && (
-          <div className="lg:hidden max-w-sm mx-auto mt-2 bg-[#111612]/95 backdrop-blur-2xl border border-emerald-500/20 rounded-3xl p-6 flex flex-col gap-4 text-sm font-medium shadow-2xl">
-            <a href="#home" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Home</a>
-            <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">About Me</a>
-            <a href="#projects" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Featured Projects</a>
-            <a href="#experience" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Career Experience</a>
-            <a href="#skills" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Technical Skills</a>
-            <a href="#education" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Education</a>
-            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-white hover:text-emerald-400 py-1">Contact</a>
+          <div className="lg:hidden max-w-sm mx-auto mt-2 bg-white/95 backdrop-blur-2xl border border-[#6d4300]/20 rounded-3xl p-6 flex flex-col gap-4 text-sm font-semibold shadow-2xl">
+            <a href="#home" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Home</a>
+            <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">About Me</a>
+            <a href="#projects" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Featured Projects</a>
+            <a href="#experience" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Career Experience</a>
+            <a href="#education" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Education</a>
+            <a href="#skills" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Technical Skills</a>
+            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Contact</a>
             
             <a 
               href="./Deeksha_G_Resume.pdf" 
               download="Deeksha_G_Resume.pdf" 
-              className="inline-flex items-center justify-center gap-2 bg-emerald-400 text-black text-center py-2.5 rounded-full text-xs font-bold uppercase tracking-wider mt-2 shadow-md shadow-emerald-400/20"
+              className="inline-flex items-center justify-center gap-2 btn-caramel text-center py-2.5 text-xs font-bold uppercase tracking-wider mt-2"
             >
               Download Resume (PDF) <Download size={14} />
             </a>
@@ -373,168 +403,203 @@ export default function App() {
       </header>
 
       {/* ==================== MAIN CONTENT CONTAINER ==================== */}
-      <main className="relative z-10 max-w-5xl mx-auto px-6 pt-32 pb-24 space-y-32">
+      <main className="relative z-10 max-w-6xl mx-auto px-6 pt-28 sm:pt-36 pb-24 space-y-28 sm:space-y-36">
 
-        {/* ==================== 1. HERO SECTION ==================== */}
-        <section id="home" className="text-center space-y-8 pt-4">
-          
-          {/* Eyebrow Status Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-medium tracking-wide">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            7th Sem Engineer (2023 – 2027) • Available for Roles
-          </div>
-
-          {/* Headline */}
-          <div className="space-y-3">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight font-headline">
-              Creative Engineer & <br />
-              <span className="text-gradient">Full-Stack Cloud Architect</span>
-            </h1>
-            <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              7th Sem B.E. in Computer Science & Business Systems (2023–2027) at SIT Mangaluru (7.8 CGPA). Building resilient cloud architectures, scalable full-stack applications, and applied AI systems.
-            </p>
-          </div>
-
-          {/* Centerpiece: Bedimcode Portrait Card with Continuous Rotating Badge */}
-          <div className="relative w-64 sm:w-72 h-80 sm:h-96 mx-auto my-8">
-            <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full" />
-
-            <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden border-2 border-emerald-400/40 shadow-2xl shadow-emerald-500/20 bg-gradient-to-b from-emerald-900/40 via-[#111612] to-[#090d0a]">
-              <img 
-                src="./assets/avatar.jpg" 
-                alt="Deeksha G" 
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-
-            {/* Rotating Circular Badge */}
-            <div className="absolute -bottom-5 -right-5 w-24 h-24 rounded-full bg-[#111612] border-2 border-emerald-400/60 flex items-center justify-center shadow-xl shadow-black/80">
-              <svg className="w-full h-full animate-spin-slow p-1" viewBox="0 0 100 100">
-                <path 
-                  id="circlePath" 
-                  d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" 
-                  fill="transparent" 
+        {/* ==================== 1. HERO SECTION (AMELIA TUTORIAL STYLE) ==================== */}
+        <section id="home" className="min-h-[80vh] flex items-center pt-2 sm:pt-6">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full">
+            
+            {/* Left Column: Organic Contoured Pebble Avatar */}
+            <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
+              <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[460px] animate-float-pebble">
+                {/* Ambient Glow Backdrop */}
+                <div className="absolute inset-0 bg-[#d4a373]/30 blur-[60px] rounded-full scale-90 -z-10" />
+                
+                {/* Organic Pebble Composite Image */}
+                <img 
+                  src="./assets/avatar-blob.png" 
+                  alt="Deeksha G. - Software Engineer" 
+                  className="w-full h-auto drop-shadow-2xl select-none"
                 />
-                <text className="text-[9.5px] font-bold uppercase tracking-[0.22em] fill-emerald-400">
-                  <textPath href="#circlePath">
-                    EXPLORE • MORE • LET'S BUILD •
-                  </textPath>
-                </text>
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center text-emerald-400">
-                <ArrowDown size={16} />
+
+                {/* Micro floating badge */}
+                <div className="absolute -bottom-2 -right-2 sm:bottom-4 sm:right-0 bg-white/95 backdrop-blur-md border border-[#6d4300]/20 rounded-2xl p-3 shadow-xl flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-[#6d4300] text-white flex items-center justify-center text-xs font-bold">
+                    <Sparkles size={15} />
+                  </div>
+                  <div>
+                    <span className="text-[10px] uppercase tracking-wider text-[#78350f] font-bold block">Academic Record</span>
+                    <span className="text-xs font-bold text-[#1c1917]">7.8 CGPA • 7th Sem</span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Standardized Hero Metrics Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto pt-4 pb-2">
-            <div className="bedim-card rounded-2xl p-4 text-center">
-              <p className="text-2xl sm:text-3xl font-bold text-emerald-400 font-headline">7th Sem</p>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 pt-1">B.E. (2023 – 2027)</p>
-            </div>
-            <div className="bedim-card rounded-2xl p-4 text-center">
-              <p className="text-2xl sm:text-3xl font-bold text-emerald-400 font-headline">7.8</p>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 pt-1">CGPA (CSBS)</p>
-            </div>
-            <div className="bedim-card rounded-2xl p-4 text-center">
-              <p className="text-2xl sm:text-3xl font-bold text-emerald-400 font-headline">5+</p>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 pt-1">Internships</p>
-            </div>
-            <div className="bedim-card rounded-2xl p-4 text-center">
-              <p className="text-2xl sm:text-3xl font-bold text-emerald-400 font-headline">10+</p>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 pt-1">Live Projects</p>
-            </div>
-          </div>
+            {/* Right Column: Narrative & Typewriter Content */}
+            <div className="lg:col-span-7 space-y-6 order-1 lg:order-2 text-center lg:text-left">
+              
+              {/* Status Pill */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#faebd7]/90 border border-[#6d4300]/25 text-[#6d4300] text-xs font-semibold tracking-wide shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-[#6d4300] animate-pulse" />
+                <span>7th Sem Engineer (2023 – 2027) • Open for Roles</span>
+              </div>
 
-          {/* Quick CTA Actions */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <a 
-              href="#contact" 
-              className="inline-flex items-center gap-2 bg-emerald-400 hover:bg-emerald-300 text-black text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full transition-all shadow-md shadow-emerald-400/20"
-            >
-              Get In Touch <ArrowRight size={14} />
-            </a>
-            <a 
-              href="./Deeksha_G_Resume.pdf" 
-              download="Deeksha_G_Resume.pdf" 
-              className="inline-flex items-center gap-2 bg-[#161d17] hover:bg-[#1f2a20] text-slate-200 border border-emerald-500/30 text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-full transition-all"
-            >
-              Download CV <Download size={14} />
-            </a>
+              {/* Greeting & Headline */}
+              <div className="space-y-2">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1c1917] tracking-tight font-headline">
+                  Hey I'm <span className="text-gradient">Deeksha</span>
+                </h1>
+
+                {/* Animated Typewriter Subtitle */}
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1c1917] font-headline min-h-[44px] flex items-center justify-center lg:justify-start">
+                  <span>I'm a&nbsp;</span>
+                  <span className="text-[#6d4300] text-caramel-glow">
+                    {typewriterWords[wordIndex].substring(0, subIndex)}
+                  </span>
+                  <span className="cursor-blink border-r-3 border-[#6d4300] ml-1 h-7 inline-block"></span>
+                </div>
+              </div>
+
+              {/* High-Signal Summary */}
+              <p className="text-sm sm:text-base text-[#44403c] leading-relaxed max-w-xl mx-auto lg:mx-0">
+                7th Semester undergraduate pursuing <strong className="text-[#1c1917]">B.E. in Computer Science & Business Systems</strong> at <strong className="text-[#1c1917]">Srinivas Institute of Technology (SIT), Mangaluru</strong> (Batch 2023–2027, 7.8 CGPA). Hands-on experience architecting scalable full-stack applications, applied AI workflows, and resilient cloud systems across 5 technical internships.
+              </p>
+
+              {/* Key Metrics Strip */}
+              <div className="grid grid-cols-3 gap-3 max-w-lg mx-auto lg:mx-0 pt-1">
+                <div className="amelia-card rounded-2xl p-3.5 text-center">
+                  <span className="block text-xl sm:text-2xl font-extrabold text-[#6d4300] font-headline">7.8</span>
+                  <span className="text-[11px] text-[#57534e] font-medium">CGPA (2023–2027)</span>
+                </div>
+                <div className="amelia-card rounded-2xl p-3.5 text-center">
+                  <span className="block text-xl sm:text-2xl font-extrabold text-[#6d4300] font-headline">5</span>
+                  <span className="text-[11px] text-[#57534e] font-medium">Internships</span>
+                </div>
+                <div className="amelia-card rounded-2xl p-3.5 text-center">
+                  <span className="block text-xl sm:text-2xl font-extrabold text-[#6d4300] font-headline">10+</span>
+                  <span className="text-[11px] text-[#57534e] font-medium">Live Projects</span>
+                </div>
+              </div>
+
+              {/* Circular Social Buttons (Iconic Amelia Tutorial Style) */}
+              <div className="flex items-center justify-center lg:justify-start gap-4 pt-2">
+                <a 
+                  href="https://github.com/DeekshaG96" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="social-circle"
+                  title="GitHub Profile"
+                >
+                  <Github size={19} />
+                </a>
+                <button 
+                  onClick={copyEmail}
+                  className="social-circle cursor-pointer"
+                  title="Copy Official Email"
+                >
+                  {copiedEmail ? <Check size={19} /> : <Mail size={19} />}
+                </button>
+                <a 
+                  href="./Deeksha_G_Resume.pdf" 
+                  download="Deeksha_G_Resume.pdf" 
+                  className="social-circle"
+                  title="Download Resume PDF"
+                >
+                  <Download size={19} />
+                </a>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                <a 
+                  href="./Deeksha_G_Resume.pdf" 
+                  download="Deeksha_G_Resume.pdf"
+                  className="btn-caramel text-xs font-bold uppercase tracking-wider px-8 py-3.5 inline-flex items-center gap-2"
+                >
+                  Download CV <Download size={14} />
+                </a>
+                <a 
+                  href="#contact"
+                  className="btn-outline-caramel text-xs font-bold uppercase tracking-wider px-7 py-3.5 inline-flex items-center gap-2"
+                >
+                  Contact Me <ArrowRight size={14} />
+                </a>
+              </div>
+            </div>
+
           </div>
         </section>
 
-        {/* ==================== 2. ABOUT ME SECTION ==================== */}
+        {/* ==================== 2. ABOUT SECTION ==================== */}
         <section id="about" className="space-y-8">
           <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Profile Overview</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Profile & Focus</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
               About <span className="text-gradient">Me</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
-              Bridging technical software engineering with business systems strategy.
+            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
+              Academic foundation in computer science and business systems, complemented by enterprise-grade engineering experience.
             </p>
           </div>
 
           <div className="grid md:grid-cols-5 gap-6 items-stretch">
             {/* Background & Engineering Narrative */}
-            <div className="md:col-span-3 bedim-card rounded-3xl p-6 sm:p-8 space-y-4 flex flex-col justify-between">
+            <div className="md:col-span-3 amelia-card rounded-3xl p-6 sm:p-8 space-y-4 flex flex-col justify-between">
               <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 text-white font-bold text-sm uppercase tracking-wider font-headline">
-                  <Briefcase size={16} className="text-emerald-400" />
+                <div className="inline-flex items-center gap-2 text-[#1c1917] font-bold text-sm uppercase tracking-wider font-headline">
+                  <Briefcase size={16} className="text-[#6d4300]" />
                   <span>Engineering Focus</span>
                 </div>
-                <p className="text-sm text-slate-300 leading-relaxed">
-                  I am a 7th Semester undergraduate pursuing <span className="text-white font-semibold">B.E. in Computer Science & Business Systems</span> at <span className="text-white font-semibold">Srinivas Institute of Technology (SIT), Mangaluru</span> (Batch 2023–2027, 7.8 CGPA).
+                <p className="text-sm text-[#44403c] leading-relaxed">
+                  I am a 7th Semester undergraduate pursuing <span className="text-[#1c1917] font-semibold">B.E. in Computer Science & Business Systems</span> at <span className="text-[#1c1917] font-semibold">Srinivas Institute of Technology (SIT), Mangaluru</span> (Batch 2023–2027, 7.8 CGPA).
                 </p>
-                <p className="text-sm text-slate-400 leading-relaxed">
-                  My technical focus centers on architecting scalable full-stack applications, integrating intelligent AI workflows, and deploying resilient cloud services. Through 5 internships across cybersecurity (Fortinet, Palo Alto Networks), applied AI (Microsoft & SAP TechSaksham), and cloud computing (AWS Academy), I prioritize clean code, performance, and reliable system design.
+                <p className="text-sm text-[#57534e] leading-relaxed">
+                  My technical focus centers on architecting scalable full-stack applications, integrating intelligent AI workflows, and deploying resilient cloud services. Through 5 internships across cybersecurity (<span className="text-[#1c1917] font-medium">Fortinet, Palo Alto Networks</span>), applied AI (<span className="text-[#1c1917] font-medium">Microsoft & SAP TechSaksham</span>), and cloud computing (<span className="text-[#1c1917] font-medium">AWS Academy</span>), I prioritize clean code, performance, and reliable system design.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-emerald-500/10 flex flex-wrap items-center justify-between gap-4 text-xs">
-                <div className="flex items-center gap-1.5 text-slate-300">
-                  <Calendar size={14} className="text-emerald-400" />
+              <div className="pt-4 border-t border-[#6d4300]/15 flex flex-wrap items-center justify-between gap-4 text-xs">
+                <div className="flex items-center gap-1.5 text-[#57534e]">
+                  <Calendar size={14} className="text-[#6d4300]" />
                   <span>7th Semester • Batch 2023 – 2027</span>
                 </div>
-                <span className="text-emerald-400 font-semibold bg-emerald-950/60 border border-emerald-500/30 px-3 py-1 rounded-full">
-                  7.8 CGPA
+                <span className="text-[#6d4300] font-bold bg-[#fceade] border border-[#6d4300]/30 px-3 py-1 rounded-full">
+                  7.8 CGPA • VTU Affiliated
                 </span>
               </div>
             </div>
 
             {/* Core Competencies */}
-            <div className="md:col-span-2 bedim-card rounded-3xl p-6 sm:p-8 space-y-4 flex flex-col justify-between">
+            <div className="md:col-span-2 amelia-card rounded-3xl p-6 sm:p-8 space-y-4 flex flex-col justify-between">
               <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 text-white font-bold text-sm uppercase tracking-wider font-headline">
-                  <Sparkles size={16} className="text-emerald-400" />
+                <div className="inline-flex items-center gap-2 text-[#1c1917] font-bold text-sm uppercase tracking-wider font-headline">
+                  <Sparkles size={16} className="text-[#6d4300]" />
                   <span>Core Strengths</span>
                 </div>
-                <ul className="space-y-3 text-xs text-slate-300">
+                <ul className="space-y-3 text-xs text-[#44403c]">
                   <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1 shrink-0" />
-                    <span><strong className="text-white">Full-Stack Web:</strong> React 19, Next.js, TypeScript, Node.js, Express, Tailwind CSS</span>
+                    <span className="w-2 h-2 rounded-full bg-[#6d4300] mt-1 shrink-0" />
+                    <span><strong className="text-[#1c1917]">Full-Stack Web:</strong> React 19, Next.js, TypeScript, Node.js, Express, Tailwind CSS</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1 shrink-0" />
-                    <span><strong className="text-white">Applied AI & ML:</strong> Google Gemini API, Hugging Face NLP, PyTorch Computer Vision</span>
+                    <span className="w-2 h-2 rounded-full bg-[#6d4300] mt-1 shrink-0" />
+                    <span><strong className="text-[#1c1917]">Applied AI & ML:</strong> Google Gemini API, Hugging Face NLP, PyTorch Computer Vision</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1 shrink-0" />
-                    <span><strong className="text-white">Cloud & DevOps:</strong> AWS, Google Cloud, Firebase, Docker, GitHub Actions CI/CD</span>
+                    <span className="w-2 h-2 rounded-full bg-[#6d4300] mt-1 shrink-0" />
+                    <span><strong className="text-[#1c1917]">Cloud & DevOps:</strong> AWS, Google Cloud, Firebase, Docker, GitHub Actions CI/CD</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1 shrink-0" />
-                    <span><strong className="text-white">CS Foundations:</strong> Data Structures, Algorithms, DBMS, Operating Systems, Networks</span>
+                    <span className="w-2 h-2 rounded-full bg-[#6d4300] mt-1 shrink-0" />
+                    <span><strong className="text-[#1c1917]">CS Foundations:</strong> Data Structures, Algorithms, DBMS, Operating Systems, Networks</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="pt-4 border-t border-emerald-500/10">
+              <div className="pt-4 border-t border-[#6d4300]/15">
                 <a 
                   href="#projects" 
-                  className="text-xs font-bold text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1.5 transition-colors uppercase tracking-wider"
+                  className="text-xs font-bold text-[#6d4300] hover:text-[#543400] inline-flex items-center gap-1.5 transition-colors uppercase tracking-wider"
                 >
                   View Featured Projects <ArrowRight size={13} />
                 </a>
@@ -543,141 +608,144 @@ export default function App() {
           </div>
         </section>
 
-        {/* ==================== 3. FEATURED PROJECTS SECTION ==================== */}
+        {/* ==================== 3. FEATURED PROJECTS ==================== */}
         <section id="projects" className="space-y-8">
           <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Portfolio Work</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Proof of Work</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
               Featured <span className="text-gradient">Projects</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
-              Real-world engineering platforms built with modern tech stacks, live production URLs, and public GitHub code.
+            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
+              Production-ready web applications, applied AI workflows, and enterprise platforms built with modern technologies.
             </p>
-
-            {/* Category Filter Pills */}
-            <div className="flex flex-wrap justify-center gap-2 pt-4">
-              {projectCategories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
-                    activeCategory === cat
-                      ? 'bg-emerald-400 text-black font-semibold shadow-md shadow-emerald-400/20'
-                      : 'bg-[#111612] text-slate-400 border border-emerald-500/20 hover:text-white hover:border-emerald-400/50'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
           </div>
 
-          {/* 3-Column Work Grid (Standardized Card Architecture) */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap justify-center gap-2 pt-2">
+            {projectCategories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                  activeCategory === cat
+                    ? 'bg-[#6d4300] text-white shadow-md shadow-[#6d4300]/25'
+                    : 'bg-white/80 text-[#57534e] hover:text-[#1c1917] border border-[#6d4300]/15 hover:border-[#6d4300]/40'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Projects Grid */}
+          <div className="grid md:grid-cols-2 gap-6 pt-4">
             {filteredProjects.map((p) => (
               <div 
-                key={p.title} 
-                className="bedim-card rounded-3xl p-4 flex flex-col justify-between group"
+                key={p.num} 
+                className="amelia-card rounded-3xl overflow-hidden flex flex-col justify-between group"
               >
                 <div>
-                  {/* Image Container with View Arrow */}
-                  <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-black/40 border border-emerald-500/20">
+                  {/* Project Image Banner */}
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-[#faebd7]">
                     <img 
                       src={p.img} 
                       alt={p.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <span className="absolute top-2.5 left-2.5 bg-black/85 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-bold text-emerald-400 border border-emerald-500/30">
-                      {p.metric}
-                    </span>
-                    <a 
-                      href={p.live || p.github} 
-                      target="_blank" 
-                      rel="noreferrer"
-                      className="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-emerald-400 hover:bg-emerald-300 text-black flex items-center justify-center transition-all shadow-md"
-                      title={p.live ? "Live Demo" : "View Code"}
-                    >
-                      <ArrowUpRight size={15} />
-                    </a>
+                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider text-[#6d4300] border border-[#6d4300]/20">
+                      {p.num} • {p.category}
+                    </div>
+                    {p.metric && (
+                      <div className="absolute bottom-3 right-3 bg-[#1c1917]/85 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold text-white">
+                        {p.metric}
+                      </div>
+                    )}
                   </div>
 
-                  {/* Card Details */}
-                  <div className="pt-4 pb-2 space-y-1.5">
-                    <span className="text-xs font-bold text-emerald-400 font-headline block">
-                      {p.num}
-                    </span>
-                    <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-emerald-400 transition-colors font-headline line-clamp-1">
+                  {/* Project Details */}
+                  <div className="p-6 sm:p-7 space-y-3">
+                    <span className="text-xs font-bold text-[#b45309] block uppercase tracking-wider">{p.tag}</span>
+                    <h3 className="text-xl font-bold text-[#1c1917] font-headline group-hover:text-[#6d4300] transition-colors">
                       {p.title}
                     </h3>
-                    <p className="text-xs text-slate-400 line-clamp-3 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed line-clamp-3">
                       {p.desc}
                     </p>
+
+                    {/* Tech Badges */}
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {p.tech.map((t) => (
+                        <span 
+                          key={t}
+                          className="px-2.5 py-1 rounded-lg bg-[#fceade]/70 text-[#6d4300] border border-[#6d4300]/20 text-[11px] font-semibold"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                {/* Footer with Tech & Action Links */}
-                <div className="pt-3 border-t border-emerald-500/10 flex items-center justify-between text-[11px] mt-2">
-                  <span className="text-slate-500 truncate max-w-[130px]">
-                    {p.tech.slice(0, 2).join(', ')}
-                  </span>
-                  <div className="flex items-center gap-3">
-                    {p.live && (
-                      <a 
-                        href={p.live} 
-                        target="_blank" 
-                        rel="noreferrer" 
-                        className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"
-                      >
-                        Live <ExternalLink size={12} />
-                      </a>
-                    )}
+                {/* Card Links Footer */}
+                <div className="px-6 pb-6 pt-2 border-t border-[#6d4300]/10 flex items-center justify-between">
+                  <a 
+                    href={p.github} 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#57534e] hover:text-[#6d4300] transition-colors uppercase tracking-wider"
+                  >
+                    <Github size={14} /> Source Code
+                  </a>
+                  {p.live && (
                     <a 
-                      href={p.github} 
+                      href={p.live} 
                       target="_blank" 
-                      rel="noreferrer" 
-                      className="text-slate-400 hover:text-white font-semibold flex items-center gap-1"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#6d4300] hover:text-[#543400] transition-colors uppercase tracking-wider"
                     >
-                      Code <Github size={12} />
+                      Live Demo <ExternalLink size={13} />
                     </a>
-                  </div>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* ==================== 4. EXPERIENCE & INTERNSHIPS ==================== */}
+        {/* ==================== 4. CAREER EXPERIENCE ==================== */}
         <section id="experience" className="space-y-8">
           <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Career Timeline</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
-              Work <span className="text-gradient">Experience</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Professional Trajectory</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
+              Career <span className="text-gradient">Experience</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
-              Chronological track record of 5 enterprise internships and open-source contributions.
+            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
+              5 Technical internships across enterprise cybersecurity, applied AI, cloud architecture, and open-source ecosystems.
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 max-w-4xl mx-auto">
             {experiences.map((exp, idx) => (
-              <div key={idx} className="bedim-card rounded-3xl p-6 space-y-3">
-                <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-1.5 border-b border-emerald-500/10 pb-3">
+              <div 
+                key={idx} 
+                className="amelia-card rounded-3xl p-6 sm:p-7 space-y-3"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#6d4300]/10 pb-3">
                   <div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="text-base sm:text-lg font-bold text-white font-headline">{exp.role}</h3>
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-base sm:text-lg font-bold text-[#1c1917] font-headline">{exp.role}</h3>
+                      <span className="text-[11px] font-bold text-[#6d4300] bg-[#fceade] border border-[#6d4300]/30 px-2.5 py-0.5 rounded-full">
                         {exp.badge}
                       </span>
                     </div>
-                    <p className="text-xs font-medium text-slate-300 pt-0.5">{exp.company}</p>
+                    <p className="text-xs font-semibold text-[#78350f] pt-0.5">{exp.company}</p>
                   </div>
-                  <span className="text-xs text-emerald-400 font-medium whitespace-nowrap">{exp.period}</span>
+                  <span className="text-xs text-[#6d4300] font-bold whitespace-nowrap">{exp.period}</span>
                 </div>
-                <ul className="space-y-1.5 text-xs text-slate-400">
+                <ul className="space-y-1.5 text-xs sm:text-sm text-[#57534e]">
                   {exp.points.map((pt, pidx) => (
                     <li key={pidx} className="flex gap-2 leading-relaxed">
-                      <span className="text-emerald-400 font-bold">•</span>
+                      <span className="text-[#6d4300] font-bold">•</span>
                       <span>{pt}</span>
                     </li>
                   ))}
@@ -687,65 +755,65 @@ export default function App() {
           </div>
         </section>
 
-        {/* ==================== 5. EDUCATION SECTION ==================== */}
+        {/* ==================== 5. FORMAL EDUCATION ==================== */}
         <section id="education" className="space-y-8">
           <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Academic Background</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Academic Foundation</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
               Formal <span className="text-gradient">Education</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
               University degree foundation blending core computer science with enterprise business management.
             </p>
           </div>
 
-          <div className="bedim-card rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start gap-6">
-            <div className="space-y-2">
-              <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
-                <GraduationCap size={16} /> Bachelor of Engineering (B.E.)
+          <div className="amelia-card rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start gap-6 max-w-4xl mx-auto">
+            <div className="space-y-2.5">
+              <span className="text-xs font-bold text-[#6d4300] uppercase tracking-wider flex items-center gap-1.5">
+                <GraduationCap size={17} /> Bachelor of Engineering (B.E.)
               </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-white font-headline">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#1c1917] font-headline">
                 Computer Science & Business Systems (CSBS)
               </h3>
-              <p className="text-sm text-slate-300 font-medium">
+              <p className="text-sm text-[#44403c] font-semibold">
                 Srinivas Institute of Technology (SIT), Mangaluru
               </p>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-[#57534e]">
                 Affiliated with Visvesvaraya Technological University (VTU), Belagavi
               </p>
-              <p className="text-xs text-slate-400 pt-2 leading-relaxed max-w-xl">
-                <span className="text-slate-300 font-semibold">Key Coursework:</span> Data Structures & Algorithms, Object-Oriented Programming (Java/C++), Operating Systems, Database Management Systems (DBMS), Computer Networks, Software Engineering, Cloud Computing, Artificial Intelligence.
+              <p className="text-xs sm:text-sm text-[#57534e] pt-2 leading-relaxed max-w-xl">
+                <span className="text-[#1c1917] font-bold">Key Coursework:</span> Data Structures & Algorithms, Object-Oriented Programming (Java/C++), Operating Systems, Database Management Systems (DBMS), Computer Networks, Software Engineering, Cloud Computing, Artificial Intelligence.
               </p>
             </div>
 
-            <div className="sm:text-right shrink-0 bg-[#161d17] border border-emerald-500/20 rounded-2xl p-5 w-full sm:w-auto">
-              <span className="text-xs text-slate-400 block">7th Semester • 2023 – 2027</span>
-              <p className="text-3xl font-bold text-emerald-400 font-headline my-1">7.8 CGPA</p>
-              <span className="inline-block text-[11px] font-semibold text-emerald-300 bg-emerald-950/70 border border-emerald-500/30 px-3 py-1 rounded-full">
+            <div className="sm:text-right shrink-0 bg-[#fceade]/80 border border-[#6d4300]/25 rounded-2xl p-5 w-full sm:w-auto text-center sm:text-right">
+              <span className="text-xs text-[#78350f] font-semibold block">7th Semester • 2023 – 2027</span>
+              <p className="text-3xl font-extrabold text-[#6d4300] font-headline my-1">7.8 CGPA</p>
+              <span className="inline-block text-[11px] font-bold text-[#6d4300] bg-white/90 border border-[#6d4300]/30 px-3 py-1 rounded-full shadow-sm">
                 Graduating 2027
               </span>
             </div>
           </div>
         </section>
 
-        {/* ==================== 6. SKILLS SECTION ==================== */}
+        {/* ==================== 6. TECHNICAL SKILLS ==================== */}
         <section id="skills" className="space-y-8">
           <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Technical Arsenal</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Technical Arsenal</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
               Technical <span className="text-gradient">Skills</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
-              Standard categorization of programming languages, frameworks, cloud services, and security competencies.
+            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
+              Categorized programming languages, frameworks, cloud services, and security competencies.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {skillCategories.map((domain, i) => (
-              <div key={i} className="bedim-card rounded-3xl p-6 space-y-3 flex flex-col justify-between">
+              <div key={i} className="amelia-card rounded-3xl p-6 space-y-3 flex flex-col justify-between">
                 <div className="space-y-3">
-                  <div className="flex items-center gap-2.5 text-white font-bold text-sm uppercase tracking-wider font-headline">
-                    <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center">
+                  <div className="flex items-center gap-2.5 text-[#1c1917] font-bold text-sm uppercase tracking-wider font-headline">
+                    <div className="w-8 h-8 rounded-xl bg-[#faebd7] border border-[#6d4300]/25 flex items-center justify-center">
                       {domain.icon}
                     </div>
                     <span>{domain.title}</span>
@@ -754,7 +822,7 @@ export default function App() {
                     {domain.skills.map((skill) => (
                       <span 
                         key={skill} 
-                        className="px-2.5 py-1 rounded-lg bg-[#182019] text-slate-200 border border-emerald-500/20 text-xs font-medium hover:border-emerald-400/60 hover:text-white transition-colors"
+                        className="px-2.5 py-1 rounded-lg bg-white/90 text-[#44403c] border border-[#6d4300]/15 text-xs font-medium hover:border-[#6d4300]/50 hover:text-[#6d4300] transition-colors shadow-xs"
                       >
                         {skill}
                       </span>
@@ -769,78 +837,78 @@ export default function App() {
         {/* ==================== 7. CONTACT SECTION ==================== */}
         <section id="contact" className="space-y-8">
           <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Get In Touch</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Get In Touch</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
               Contact <span className="text-gradient">Me</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
-              Interested in discussing a software engineering role, internship, or technical collaboration? Let's connect!
+            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
+              Interested in discussing a software engineering role, internship, or technical collaboration? Send a direct message!
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="grid md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
             {/* Functional Contact Form */}
-            <div className="bedim-card rounded-3xl p-6 sm:p-8 space-y-4">
-              <h3 className="text-lg font-bold text-white font-headline">Send a Direct Message</h3>
+            <div className="amelia-card rounded-3xl p-6 sm:p-8 space-y-4">
+              <h3 className="text-lg font-bold text-[#1c1917] font-headline">Send a Direct Message</h3>
               
               {formSubmitted ? (
-                <div className="bg-emerald-950/80 border border-emerald-500/40 rounded-2xl p-6 text-center space-y-2 animate-fadeIn">
-                  <div className="w-10 h-10 rounded-full bg-emerald-400 text-black flex items-center justify-center mx-auto">
+                <div className="bg-[#fceade] border border-[#6d4300]/30 rounded-2xl p-6 text-center space-y-2 animate-fadeIn">
+                  <div className="w-10 h-10 rounded-full bg-[#6d4300] text-white flex items-center justify-center mx-auto">
                     <Check size={20} />
                   </div>
-                  <h4 className="text-base font-bold text-white font-headline">Message Dispatched!</h4>
-                  <p className="text-xs text-slate-300">
+                  <h4 className="text-base font-bold text-[#1c1917] font-headline">Message Dispatched!</h4>
+                  <p className="text-xs text-[#57534e]">
                     Thank you! Your message has been sent. Deeksha will get back to you promptly at {formState.email || 'your email'}.
                   </p>
                 </div>
               ) : (
                 <form className="space-y-4" onSubmit={handleFormSubmit}>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Your Name *</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#44403c]">Your Name *</label>
                     <input 
                       type="text" 
                       required
                       placeholder="e.g. Priya Sharma" 
                       value={formState.name}
                       onChange={(e) => setFormState({...formState, name: e.target.value})}
-                      className="w-full bg-[#182019] border border-emerald-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-emerald-400 outline-none transition-colors"
+                      className="w-full bg-white/90 border border-[#6d4300]/20 rounded-xl px-4 py-3 text-sm text-[#1c1917] placeholder:text-stone-400 focus:border-[#6d4300] outline-none transition-colors"
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Email Address *</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#44403c]">Email Address *</label>
                     <input 
                       type="email" 
                       required
                       placeholder="e.g. priya@company.com" 
                       value={formState.email}
                       onChange={(e) => setFormState({...formState, email: e.target.value})}
-                      className="w-full bg-[#182019] border border-emerald-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-emerald-400 outline-none transition-colors"
+                      className="w-full bg-white/90 border border-[#6d4300]/20 rounded-xl px-4 py-3 text-sm text-[#1c1917] placeholder:text-stone-400 focus:border-[#6d4300] outline-none transition-colors"
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Subject</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#44403c]">Subject</label>
                     <input 
                       type="text" 
                       placeholder="e.g. Software Engineering Opportunity" 
                       value={formState.subject}
                       onChange={(e) => setFormState({...formState, subject: e.target.value})}
-                      className="w-full bg-[#182019] border border-emerald-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-emerald-400 outline-none transition-colors"
+                      className="w-full bg-white/90 border border-[#6d4300]/20 rounded-xl px-4 py-3 text-sm text-[#1c1917] placeholder:text-stone-400 focus:border-[#6d4300] outline-none transition-colors"
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">Message *</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-[#44403c]">Message *</label>
                     <textarea 
                       rows={4} 
                       required
                       placeholder="Tell me about the engineering opportunity, timeline, or requirements..." 
                       value={formState.message}
                       onChange={(e) => setFormState({...formState, message: e.target.value})}
-                      className="w-full bg-[#182019] border border-emerald-500/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-emerald-400 outline-none transition-colors resize-none"
+                      className="w-full bg-white/90 border border-[#6d4300]/20 rounded-xl px-4 py-3 text-sm text-[#1c1917] placeholder:text-stone-400 focus:border-[#6d4300] outline-none transition-colors resize-none"
                     />
                   </div>
                   <button 
                     type="submit"
-                    className="w-full bg-emerald-400 hover:bg-emerald-300 text-black font-bold uppercase tracking-wider text-xs py-3.5 rounded-xl transition-all shadow-md shadow-emerald-400/20 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full btn-caramel text-xs font-bold uppercase tracking-wider py-3.5 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Send Message <Send size={14} />
                   </button>
@@ -848,19 +916,19 @@ export default function App() {
               )}
             </div>
 
-            {/* Direct Channels Cards */}
-            <div className="space-y-3">
+            {/* Direct Verified Channels Cards */}
+            <div className="space-y-3.5">
               <button 
                 onClick={copyEmail}
-                className="bedim-card rounded-2xl p-5 text-left flex items-center justify-between group hover:border-emerald-400/60 w-full cursor-pointer"
+                className="amelia-card rounded-2xl p-5 text-left flex items-center justify-between group hover:border-[#6d4300]/50 w-full cursor-pointer"
               >
                 <div className="space-y-0.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#6d4300] flex items-center gap-1.5">
                     <Mail size={13} /> Official Email
                   </span>
-                  <p className="text-sm font-semibold text-white">deekshagpbangera@gmail.com</p>
+                  <p className="text-sm font-bold text-[#1c1917]">deekshagpbangera@gmail.com</p>
                 </div>
-                <span className="text-xs font-medium text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-3 py-1 rounded-full">
+                <span className="text-xs font-bold text-[#6d4300] bg-[#fceade] border border-[#6d4300]/30 px-3 py-1 rounded-full">
                   {copiedEmail ? 'Copied!' : 'Copy'}
                 </span>
               </button>
@@ -869,40 +937,56 @@ export default function App() {
                 href="https://github.com/DeekshaG96" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="bedim-card rounded-2xl p-5 flex items-center justify-between group hover:border-emerald-400/60"
+                className="amelia-card rounded-2xl p-5 flex items-center justify-between group hover:border-[#6d4300]/50"
               >
                 <div className="space-y-0.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#6d4300] flex items-center gap-1.5">
                     <Github size={13} /> GitHub Profile
                   </span>
-                  <p className="text-sm font-semibold text-white">github.com/DeekshaG96</p>
+                  <p className="text-sm font-bold text-[#1c1917]">github.com/DeekshaG96</p>
                 </div>
-                <ArrowUpRight size={18} className="text-slate-400 group-hover:text-emerald-400 transition-colors" />
+                <ArrowUpRight size={18} className="text-[#57534e] group-hover:text-[#6d4300] transition-colors" />
               </a>
+
+              <div className="amelia-card rounded-2xl p-5 space-y-2 bg-[#fdfaf5]">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#78350f] block">
+                  Quick Resume Download
+                </span>
+                <p className="text-xs text-[#57534e]">
+                  Looking for the latest ATS-optimized single-page engineering resume?
+                </p>
+                <a 
+                  href="./Deeksha_G_Resume.pdf" 
+                  download="Deeksha_G_Resume.pdf"
+                  className="btn-caramel text-xs font-bold uppercase tracking-wider px-4 py-2 inline-flex items-center gap-2 mt-1"
+                >
+                  Download PDF <Download size={13} />
+                </a>
+              </div>
             </div>
           </div>
         </section>
       </main>
 
       {/* ==================== FOOTER ==================== */}
-      <footer className="border-t border-emerald-500/10 bg-[#070a08] py-14 text-center space-y-6">
+      <footer className="border-t border-[#6d4300]/15 bg-white/70 backdrop-blur-md py-14 text-center space-y-6">
         <div className="max-w-4xl mx-auto px-6 space-y-5">
-          <a href="#home" className="font-cursive text-3xl text-white inline-block hover:text-emerald-400 transition-colors">
-            Deeksha G<span className="text-emerald-400 font-sans">.</span>
+          <a href="#home" className="text-3xl font-extrabold text-[#1c1917] inline-block hover:text-[#6d4300] transition-colors font-headline">
+            Deeksha <span className="text-[#6d4300]">G.</span>
           </a>
 
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-wider text-white font-headline max-w-xl mx-auto leading-snug">
+          <h2 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-[#1c1917] font-headline max-w-xl mx-auto leading-snug">
             Collaborate with Deeksha and build reliable engineering systems today.
           </h2>
 
-          <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-wider font-semibold text-slate-400 pt-2">
-            <a href="#home" className="hover:text-emerald-400 transition-colors">Home</a>
-            <a href="#about" className="hover:text-emerald-400 transition-colors">About</a>
-            <a href="#projects" className="hover:text-emerald-400 transition-colors">Projects</a>
-            <a href="#experience" className="hover:text-emerald-400 transition-colors">Experience</a>
-            <a href="#skills" className="hover:text-emerald-400 transition-colors">Skills</a>
-            <a href="#education" className="hover:text-emerald-400 transition-colors">Education</a>
-            <a href="./Deeksha_G_Resume.pdf" download="Deeksha_G_Resume.pdf" className="text-emerald-400 hover:text-emerald-300">Resume PDF</a>
+          <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-wider font-bold text-[#57534e] pt-2">
+            <a href="#home" className="hover:text-[#6d4300] transition-colors">Home</a>
+            <a href="#about" className="hover:text-[#6d4300] transition-colors">About</a>
+            <a href="#projects" className="hover:text-[#6d4300] transition-colors">Projects</a>
+            <a href="#experience" className="hover:text-[#6d4300] transition-colors">Experience</a>
+            <a href="#education" className="hover:text-[#6d4300] transition-colors">Education</a>
+            <a href="#skills" className="hover:text-[#6d4300] transition-colors">Skills</a>
+            <a href="./Deeksha_G_Resume.pdf" download="Deeksha_G_Resume.pdf" className="text-[#6d4300] hover:underline">Resume PDF</a>
           </div>
 
           <div className="flex justify-center gap-4 pt-2">
@@ -910,28 +994,28 @@ export default function App() {
               href="https://github.com/DeekshaG96" 
               target="_blank" 
               rel="noreferrer" 
-              className="w-10 h-10 rounded-full bg-[#111612] border border-emerald-500/20 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400 transition-colors shadow-sm"
+              className="social-circle"
               title="GitHub Profile"
             >
               <Github size={16} />
             </a>
             <button 
               onClick={copyEmail} 
-              className="w-10 h-10 rounded-full bg-[#111612] border border-emerald-500/20 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400 transition-colors shadow-sm cursor-pointer" 
+              className="social-circle cursor-pointer" 
               title="Copy Email Address"
             >
               <Mail size={16} />
             </button>
             <a 
               href="#home"
-              className="w-10 h-10 rounded-full bg-[#111612] border border-emerald-500/20 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400 transition-colors shadow-sm"
+              className="social-circle"
               title="Back to Top"
             >
               <ChevronUp size={16} />
             </a>
           </div>
 
-          <p className="text-xs text-slate-500 pt-4">
+          <p className="text-xs text-[#78716c] pt-4 font-medium">
             © {new Date().getFullYear()} Deeksha G. All Rights Reserved. Built with React 19, TypeScript & Tailwind CSS.
           </p>
         </div>
