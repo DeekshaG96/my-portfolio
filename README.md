@@ -2,7 +2,7 @@
 
 Personal portfolio website built with React 19, TypeScript, and Tailwind CSS.
 
-Live: [my-portfolio-ten-phi-81.vercel.app](https://my-portfolio-ten-phi-81.vercel.app/) | [GitHub Pages Mirror](https://deekshag96.github.io/my-portfolio/)
+Live: [my-portfolio-ten-phi-81.vercel.app](https://my-portfolio-ten-phi-81.vercel.app/) | [LinkedIn](https://linkedin.com/in/deeksha-g-cybersec) | [GitHub Pages Mirror](https://deekshag96.github.io/my-portfolio/)
 
 ## Tech Stack
 

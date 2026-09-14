@@ -24,7 +24,8 @@ import {
   GraduationCap, 
   Calendar,
   Sparkles,
-  MousePointer
+  MousePointer,
+  Linkedin
 } from 'lucide-react';
 
 interface Project {
@@ -340,6 +341,17 @@ export default function App() {
                 <Github size={17} />
               </a>
 
+              {/* LinkedIn Link */}
+              <a 
+                href="https://linkedin.com/in/deeksha-g-cybersec" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="w-9 h-9 rounded-xl flex items-center justify-center text-[var(--text-color)] hover:text-sky-500 hover:bg-[var(--border-color)]/40 transition-colors"
+                title="LinkedIn Profile"
+              >
+                <Linkedin size={17} />
+              </a>
+
               {/* Direct Resume Download */}
               <a 
                 href="./Deeksha_G_Resume.pdf" 
@@ -380,10 +392,28 @@ export default function App() {
             <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Services</a>
             <a href="#portfolio" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Projects</a>
             <a href="#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Contact</a>
+            <div className="flex items-center gap-3 pt-2 border-t border-[var(--border-color)]">
+              <a 
+                href="https://github.com/DeekshaG96" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="flex-1 py-2 rounded-xl b-card flex items-center justify-center gap-1.5 text-xs font-semibold hover:text-sky-500 transition-colors"
+              >
+                <Github size={15} /> GitHub
+              </a>
+              <a 
+                href="https://linkedin.com/in/deeksha-g-cybersec" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="flex-1 py-2 rounded-xl b-card flex items-center justify-center gap-1.5 text-xs font-semibold hover:text-sky-500 transition-colors"
+              >
+                <Linkedin size={15} /> LinkedIn
+              </a>
+            </div>
             <a 
               href="./Deeksha_G_Resume.pdf" 
               download="Deeksha_G_Resume.pdf" 
-              className="bg-sky-500 text-white text-center py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider mt-2 flex items-center justify-center gap-2"
+              className="bg-sky-500 text-white text-center py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider mt-1 flex items-center justify-center gap-2"
             >
               Download Resume (PDF) <Download size={14} />
             </a>
@@ -405,6 +435,15 @@ export default function App() {
               title="GitHub"
             >
               <Github size={19} />
+            </a>
+            <a 
+              href="https://linkedin.com/in/deeksha-g-cybersec" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="hover:text-sky-500 transition-transform hover:-translate-y-1"
+              title="LinkedIn"
+            >
+              <Linkedin size={19} />
             </a>
             <a 
               href="mailto:deekshagpbangera@gmail.com" 
@@ -884,6 +923,21 @@ export default function App() {
               </a>
             </div>
 
+            {/* LinkedIn Card */}
+            <div className="b-card p-5 rounded-2xl text-center space-y-2">
+              <Linkedin size={22} className="mx-auto text-sky-500" />
+              <h4 className="text-xs font-bold text-[var(--title-color)]">LinkedIn</h4>
+              <span className="text-xs text-[var(--text-color)] block font-medium">deeksha-g-cybersec</span>
+              <a 
+                href="https://linkedin.com/in/deeksha-g-cybersec" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="inline-flex items-center gap-1 text-xs font-bold text-sky-500 hover:text-sky-600 uppercase tracking-wider transition-colors pt-1"
+              >
+                <span>Connect with me</span> <ArrowRight size={13} />
+              </a>
+            </div>
+
             {/* Availability Pill */}
             <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold text-center flex items-center justify-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -972,6 +1026,35 @@ export default function App() {
             <a href="#services" className="hover:text-sky-500 transition-colors">Services</a>
             <a href="#portfolio" className="hover:text-sky-500 transition-colors">Projects</a>
             <a href="#contact" className="hover:text-sky-500 transition-colors">Contact</a>
+          </div>
+
+          {/* Footer Social Links */}
+          <div className="flex justify-center items-center gap-3 text-[var(--text-color)] pt-1">
+            <a 
+              href="https://github.com/DeekshaG96" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="w-8 h-8 rounded-lg b-card flex items-center justify-center hover:text-sky-500 transition-colors"
+              title="GitHub"
+            >
+              <Github size={15} />
+            </a>
+            <a 
+              href="https://linkedin.com/in/deeksha-g-cybersec" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="w-8 h-8 rounded-lg b-card flex items-center justify-center hover:text-sky-500 transition-colors"
+              title="LinkedIn"
+            >
+              <Linkedin size={15} />
+            </a>
+            <a 
+              href="mailto:deekshagpbangera@gmail.com" 
+              className="w-8 h-8 rounded-lg b-card flex items-center justify-center hover:text-sky-500 transition-colors"
+              title="Email"
+            >
+              <Mail size={15} />
+            </a>
           </div>
 
           <p className="text-[11px] font-medium pt-4 border-t border-[var(--border-color)]/60 max-w-md mx-auto">
