@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { 
   Github, 
   Mail, 
-  ArrowRight, 
   ArrowUpRight,
   ExternalLink, 
   Download, 
@@ -10,20 +9,12 @@ import {
   Check, 
   Menu, 
   X,
-  Brain, 
-  Cloud, 
-  ShieldCheck, 
-  GraduationCap, 
-  Award,
-  Layers,
-  Sparkles,
-  Calendar,
-  Briefcase,
-  Terminal,
-  Database,
   Code2,
+  Briefcase,
+  GraduationCap,
   Send,
-  ChevronUp
+  Calendar,
+  Sparkles
 } from 'lucide-react';
 
 interface Project {
@@ -44,13 +35,11 @@ interface ExperienceItem {
   role: string;
   company: string;
   badge: string;
-  badgeType?: 'primary' | 'success' | 'warning';
   points: string[];
 }
 
 interface SkillCategory {
   title: string;
-  icon: JSX.Element;
   skills: string[];
 }
 
@@ -59,41 +48,12 @@ export default function App() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>('All');
   
+  // GreatStack Interactive Tabs in About Section
+  const [activeTab, setActiveTab] = useState<'Skills' | 'Experience' | 'Education'>('Skills');
+
   // Contact Form State
   const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
-
-  // Typewriter Animation State (Amelia Portfolio style)
-  const typewriterWords = [
-    'Full-Stack Developer',
-    'Applied AI Engineer',
-    'Cloud & DevOps Builder',
-    '7th Sem CSBS Engineer'
-  ];
-  const [wordIndex, setWordIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentWord = typewriterWords[wordIndex];
-
-    if (!isDeleting && subIndex === currentWord.length) {
-      const timeout = setTimeout(() => setIsDeleting(true), 2200);
-      return () => clearTimeout(timeout);
-    }
-
-    if (isDeleting && subIndex === 0) {
-      setIsDeleting(false);
-      setWordIndex((prev) => (prev + 1) % typewriterWords.length);
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setSubIndex((prev) => prev + (isDeleting ? -1 : 1));
-    }, isDeleting ? 35 : 85);
-
-    return () => clearTimeout(timeout);
-  }, [subIndex, isDeleting, wordIndex]);
 
   const copyEmail = () => {
     navigator.clipboard.writeText('deekshagpbangera@gmail.com');
@@ -124,7 +84,7 @@ export default function App() {
       img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/razorops-ai',
       live: 'https://razorops-ai.web.app',
-      tech: ['React 19', 'Gemini AI', 'Firebase', 'E2E Testing (19/19)', 'Tailwind CSS']
+      tech: ['React 19', 'Gemini AI', 'Firebase', 'E2E Testing', 'Tailwind CSS']
     },
     {
       num: '02',
@@ -203,7 +163,7 @@ export default function App() {
       title: 'PlantGuard AI Diagnostics',
       tag: 'Computer Vision / TechSaksham',
       category: 'AI & Cloud',
-      metric: 'Microsoft & SAP 94% Honors',
+      metric: 'Microsoft & SAP Honors',
       desc: 'AICTE-TechSaksham (Microsoft & SAP) capstone deep learning model utilizing Convolutional Neural Networks (CNN) to detect agricultural crop diseases from leaf imagery with high accuracy.',
       img: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/Plant-Disease-Detection-System-for-Sustainable-Agriculture-P2-',
@@ -242,7 +202,7 @@ export default function App() {
   const experiences: ExperienceItem[] = [
     { 
       period: 'May 2026 - Present', 
-      role: 'Open Source Software Contributor', 
+      role: 'Open Source Contributor', 
       company: 'GirlScript Summer of Code (GSSoC)',
       badge: 'Open Source',
       points: [
@@ -254,9 +214,9 @@ export default function App() {
       period: 'Oct 2025 - Dec 2025', 
       role: 'Network Security Engineering Intern', 
       company: 'Fortinet (via AICTE & EduSkills)',
-      badge: 'Grade O (90-100%)',
+      badge: 'Grade O (Outstanding)',
       points: [
-        'Graduated with Grade O (Outstanding, 90-100%) across enterprise network security engineering curriculum.',
+        'Graduated with Grade O across enterprise network security engineering curriculum.',
         'Configured stateful firewall inspection rules, Zero-Trust Network Access (ZTNA), and simulated enterprise attack vectors.'
       ]
     },
@@ -264,9 +224,9 @@ export default function App() {
       period: 'Jan 2025 - Mar 2025', 
       role: 'Cybersecurity Engineering Intern', 
       company: 'Palo Alto Networks (via AICTE & EduSkills)',
-      badge: 'Grade E (80-89%)',
+      badge: 'Grade E (Excellent)',
       points: [
-        'Completed 10-week intensive cybersecurity track, achieving Grade E (Excellent, 80-89%).',
+        'Completed 10-week intensive cybersecurity track, achieving Grade E (Excellent).',
         'Analyzed real-time network traffic telemetry, investigated simulated SOC alarms, and mitigated perimeter vulnerabilities.'
       ]
     },
@@ -274,7 +234,7 @@ export default function App() {
       period: 'Nov 2024 - Dec 2024', 
       role: 'AI & Cloud Product Intern', 
       company: 'TechSaksham (Microsoft & SAP CSR Initiative)',
-      badge: '94% ML Accuracy Honors',
+      badge: '94% Accuracy Honors',
       points: [
         'Engineered deep learning computer vision pipelines for sustainable agriculture, achieving 94% prediction accuracy.',
         'Optimized model inference latency for edge processing across 10,000+ agricultural data records.'
@@ -295,728 +255,502 @@ export default function App() {
   const skillCategories: SkillCategory[] = [
     {
       title: 'Programming Languages',
-      icon: <Code2 className="w-5 h-5 text-[#6d4300]" />,
       skills: ['Python', 'Java', 'C++', 'TypeScript', 'JavaScript (ES6+)', 'Solidity', 'SQL', 'Dart']
     },
     {
       title: 'Frontend Architecture',
-      icon: <Layers className="w-5 h-5 text-[#6d4300]" />,
       skills: ['React 19', 'Next.js', 'Tailwind CSS v4', 'HTML5 / CSS3', 'Vite', 'Redux Toolkit', 'Flutter']
     },
     {
       title: 'Backend & APIs',
-      icon: <Terminal className="w-5 h-5 text-[#6d4300]" />,
       skills: ['Node.js', 'Express', 'FastAPI', 'RESTful APIs', 'JWT Authentication', 'Postman API Testing']
     },
     {
       title: 'Cloud & DevOps',
-      icon: <Cloud className="w-5 h-5 text-[#6d4300]" />,
       skills: ['AWS (EC2, S3, VPC, IAM)', 'Google Cloud', 'Firebase Hosting', 'Docker', 'GitHub Actions CI/CD']
     },
     {
       title: 'Database & Storage',
-      icon: <Database className="w-5 h-5 text-[#6d4300]" />,
       skills: ['MongoDB Atlas', 'PostgreSQL', 'Supabase', 'Cloud Firestore', 'MySQL', 'Local JSON Storage']
     },
     {
       title: 'AI, ML & Security',
-      icon: <Brain className="w-5 h-5 text-[#6d4300]" />,
       skills: ['Google Gemini AI', 'Scikit-Learn', 'PyTorch', 'CNNs', 'Zero-Trust (ZTNA)', 'Fortinet Firewalls']
     }
   ];
 
   return (
-    <div className="min-h-screen font-sans antialiased text-[#57534e]">
+    <div className="min-h-screen bg-[#080808] text-[#ababab] font-sans antialiased selection:bg-[#ff004f]/30 selection:text-white">
       
-      {/* Background Soft Glow Accents */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[-5%] left-[20%] w-[650px] h-[450px] bg-[#f8d7b3]/40 blur-[130px] rounded-full" />
-        <div className="absolute top-[35%] right-[-10%] w-[550px] h-[550px] bg-[#eed0ab]/35 blur-[150px] rounded-full" />
-        <div className="absolute top-[75%] left-[-10%] w-[600px] h-[600px] bg-[#faebd7]/50 blur-[160px] rounded-full" />
-      </div>
-
-      {/* ==================== FLOATING NAVBAR ==================== */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-3.5 pb-2 bg-gradient-to-b from-[#fffdfa] via-[#fffdfa]/95 to-transparent">
-        <nav className="max-w-6xl mx-auto bg-white/85 backdrop-blur-xl border border-[#6d4300]/15 rounded-full px-6 py-3 flex justify-between items-center shadow-lg shadow-[#6d4300]/5">
-          <a href="#home" className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1c1917] hover:text-[#6d4300] transition-colors select-none font-headline">
-            Deeksha <span className="text-[#6d4300]">G.</span>
+      {/* ==================== HEADER & NAVBAR ==================== */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#080808]/90 backdrop-blur-md border-b border-white/10 px-6 lg:px-20 py-5">
+        <nav className="max-w-7xl mx-auto flex items-center justify-between">
+          <a href="#home" className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-headline">
+            <span className="text-[#ff004f]">D</span>eeksha.
           </a>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-[#44403c]">
-            <a href="#home" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Home</a>
-            <a href="#about" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">About</a>
-            <a href="#projects" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Projects</a>
-            <a href="#experience" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Experience</a>
-            <a href="#education" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Education</a>
-            <a href="#skills" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Skills</a>
-            <a href="#contact" className="hover:text-[#6d4300] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#6d4300] hover:after:w-full after:transition-all">Contact</a>
+          {/* Desktop Nav Links */}
+          <div className="hidden md:flex items-center gap-9">
+            <a href="#home" className="nav-link">Home</a>
+            <a href="#about" className="nav-link">About</a>
+            <a href="#projects" className="nav-link">Portfolio</a>
+            <a href="#contact" className="nav-link">Contact</a>
           </div>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Desktop Right CTA */}
+          <div className="hidden sm:flex items-center gap-4">
             <a 
               href="./Deeksha_G_Resume.pdf" 
               download="Deeksha_G_Resume.pdf" 
-              className="inline-flex items-center gap-1.5 btn-outline-caramel text-xs font-bold uppercase tracking-wider px-4 py-2"
+              className="text-xs font-bold uppercase tracking-wider text-white hover:text-[#ff004f] transition-colors inline-flex items-center gap-1.5"
             >
               Resume <Download size={13} />
             </a>
             <a 
               href="#contact" 
-              className="btn-caramel text-xs font-bold uppercase tracking-wider px-5 py-2.5"
+              className="btn-greatstack-solid text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg"
             >
               Contact Me
             </a>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Hamburger Toggle */}
           <button 
-            className="lg:hidden text-[#1c1917] p-1 focus:outline-none" 
+            className="md:hidden text-white p-1 focus:outline-none" 
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            aria-label="Toggle Menu"
+            aria-label="Toggle Navigation"
           >
-            {isMenuOpen ? <X size={24} className="text-[#6d4300]" /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={26} className="text-[#ff004f]" /> : <Menu size={26} />}
           </button>
         </nav>
 
-        {/* Mobile Navigation Dropdown */}
+        {/* Mobile Slide-down Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden max-w-sm mx-auto mt-2 bg-white/95 backdrop-blur-2xl border border-[#6d4300]/20 rounded-3xl p-6 flex flex-col gap-4 text-sm font-semibold shadow-2xl">
-            <a href="#home" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Home</a>
-            <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">About Me</a>
-            <a href="#projects" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Featured Projects</a>
-            <a href="#experience" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Career Experience</a>
-            <a href="#education" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Education</a>
-            <a href="#skills" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Technical Skills</a>
-            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-[#1c1917] hover:text-[#6d4300] py-1">Contact</a>
+          <div className="md:hidden bg-[#111111] border border-white/10 rounded-2xl p-6 mt-3 space-y-4 shadow-2xl">
+            <a href="#home" onClick={() => setIsMenuOpen(false)} className="block text-white hover:text-[#ff004f] font-semibold">Home</a>
+            <a href="#about" onClick={() => setIsMenuOpen(false)} className="block text-white hover:text-[#ff004f] font-semibold">About</a>
+            <a href="#projects" onClick={() => setIsMenuOpen(false)} className="block text-white hover:text-[#ff004f] font-semibold">Portfolio</a>
+            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="block text-white hover:text-[#ff004f] font-semibold">Contact</a>
             
             <a 
               href="./Deeksha_G_Resume.pdf" 
               download="Deeksha_G_Resume.pdf" 
-              className="inline-flex items-center justify-center gap-2 btn-caramel text-center py-2.5 text-xs font-bold uppercase tracking-wider mt-2"
+              className="btn-greatstack-solid text-center w-full py-2.5 text-xs font-bold uppercase tracking-wider block rounded-lg mt-2"
             >
-              Download Resume (PDF) <Download size={14} />
+              Download CV (PDF)
             </a>
           </div>
         )}
       </header>
 
-      {/* ==================== MAIN CONTENT CONTAINER ==================== */}
-      <main className="relative z-10 max-w-6xl mx-auto px-6 pt-28 sm:pt-36 pb-24 space-y-28 sm:space-y-36">
+      {/* ==================== MAIN BODY ==================== */}
+      <main className="max-w-7xl mx-auto px-6 lg:px-20 pt-28 space-y-28 sm:space-y-36 pb-20">
 
-        {/* ==================== 1. HERO SECTION (AMELIA TUTORIAL STYLE) ==================== */}
-        <section id="home" className="min-h-[80vh] flex items-center pt-2 sm:pt-6">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full">
+        {/* ==================== 1. HERO SECTION (GREATSTACK STYLE) ==================== */}
+        <section id="home" className="min-h-[85vh] flex items-center pt-8 sm:pt-14">
+          <div className="grid md:grid-cols-12 gap-10 items-center w-full">
             
-            {/* Left Column: Organic Contoured Pebble Avatar */}
-            <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
-              <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[460px] animate-float-pebble">
-                {/* Ambient Glow Backdrop */}
-                <div className="absolute inset-0 bg-[#d4a373]/30 blur-[60px] rounded-full scale-90 -z-10" />
-                
-                {/* Organic Pebble Composite Image */}
-                <img 
-                  src="./assets/avatar-blob.png" 
-                  alt="Deeksha G. - Software Engineer" 
-                  className="w-full h-auto drop-shadow-2xl select-none"
-                />
-
-                {/* Micro floating badge */}
-                <div className="absolute -bottom-2 -right-2 sm:bottom-4 sm:right-0 bg-white/95 backdrop-blur-md border border-[#6d4300]/20 rounded-2xl p-3 shadow-xl flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-[#6d4300] text-white flex items-center justify-center text-xs font-bold">
-                    <Sparkles size={15} />
-                  </div>
-                  <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#78350f] font-bold block">Academic Record</span>
-                    <span className="text-xs font-bold text-[#1c1917]">7.8 CGPA • 7th Sem</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Narrative & Typewriter Content */}
-            <div className="lg:col-span-7 space-y-6 order-1 lg:order-2 text-center lg:text-left">
+            {/* Left Column: Big Headline & Info */}
+            <div className="md:col-span-7 space-y-6 text-left">
               
-              {/* Status Pill */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#faebd7]/90 border border-[#6d4300]/25 text-[#6d4300] text-xs font-semibold tracking-wide shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-[#6d4300] animate-pulse" />
-                <span>7th Sem Engineer (2023 – 2027) • Open for Roles</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141414] border border-[#ff004f]/30 text-white text-xs font-semibold tracking-wide">
+                <span className="w-2 h-2 rounded-full bg-[#ff004f] animate-pulse" />
+                <span>7th Sem Engineer (2023 – 2027) • SIT Mangaluru</span>
               </div>
 
-              {/* Greeting & Headline */}
-              <div className="space-y-2">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1c1917] tracking-tight font-headline">
-                  Hey I'm <span className="text-gradient">Deeksha</span>
+              <div className="space-y-3">
+                <p className="text-xl sm:text-2xl font-semibold text-[#ababab]">
+                  Computer Science & Business Systems Undergraduate
+                </p>
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] font-headline">
+                  Hi, I'm <span className="text-[#ff004f]">Deeksha</span><br />
+                  From SIT Mangaluru.
                 </h1>
-
-                {/* Animated Typewriter Subtitle */}
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1c1917] font-headline min-h-[44px] flex items-center justify-center lg:justify-start">
-                  <span>I'm a&nbsp;</span>
-                  <span className="text-[#6d4300] text-caramel-glow">
-                    {typewriterWords[wordIndex].substring(0, subIndex)}
-                  </span>
-                  <span className="cursor-blink border-r-3 border-[#6d4300] ml-1 h-7 inline-block"></span>
-                </div>
               </div>
 
-              {/* High-Signal Summary */}
-              <p className="text-sm sm:text-base text-[#44403c] leading-relaxed max-w-xl mx-auto lg:mx-0">
-                7th Semester undergraduate pursuing <strong className="text-[#1c1917]">B.E. in Computer Science & Business Systems</strong> at <strong className="text-[#1c1917]">Srinivas Institute of Technology (SIT), Mangaluru</strong> (Batch 2023–2027, 7.8 CGPA). Hands-on experience architecting scalable full-stack applications, applied AI workflows, and resilient cloud systems across 5 technical internships.
+              <p className="text-sm sm:text-base text-[#ababab] leading-relaxed max-w-xl">
+                Hands-on experience architecting modern full-stack web applications, integrating applied AI models, and deploying resilient cloud services across 5 technical internships. Focused on building production-grade software solutions with clean code.
               </p>
 
-              {/* Key Metrics Strip */}
-              <div className="grid grid-cols-3 gap-3 max-w-lg mx-auto lg:mx-0 pt-1">
-                <div className="amelia-card rounded-2xl p-3.5 text-center">
-                  <span className="block text-xl sm:text-2xl font-extrabold text-[#6d4300] font-headline">7.8</span>
-                  <span className="text-[11px] text-[#57534e] font-medium">CGPA (2023–2027)</span>
+              {/* Metrics Strip */}
+              <div className="grid grid-cols-3 gap-4 max-w-md pt-2">
+                <div className="bg-[#121212] border border-white/10 rounded-xl p-4 text-center">
+                  <span className="block text-2xl font-bold text-white font-headline">2023–27</span>
+                  <span className="text-[11px] text-[#888] font-medium">Batch (7th Sem)</span>
                 </div>
-                <div className="amelia-card rounded-2xl p-3.5 text-center">
-                  <span className="block text-xl sm:text-2xl font-extrabold text-[#6d4300] font-headline">5</span>
-                  <span className="text-[11px] text-[#57534e] font-medium">Internships</span>
+                <div className="bg-[#121212] border border-white/10 rounded-xl p-4 text-center">
+                  <span className="block text-2xl font-bold text-[#ff004f] font-headline">5</span>
+                  <span className="text-[11px] text-[#888] font-medium">Internships</span>
                 </div>
-                <div className="amelia-card rounded-2xl p-3.5 text-center">
-                  <span className="block text-xl sm:text-2xl font-extrabold text-[#6d4300] font-headline">10+</span>
-                  <span className="text-[11px] text-[#57534e] font-medium">Live Projects</span>
+                <div className="bg-[#121212] border border-white/10 rounded-xl p-4 text-center">
+                  <span className="block text-2xl font-bold text-white font-headline">10+</span>
+                  <span className="text-[11px] text-[#888] font-medium">Live Projects</span>
                 </div>
-              </div>
-
-              {/* Circular Social Buttons (Iconic Amelia Tutorial Style) */}
-              <div className="flex items-center justify-center lg:justify-start gap-4 pt-2">
-                <a 
-                  href="https://github.com/DeekshaG96" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="social-circle"
-                  title="GitHub Profile"
-                >
-                  <Github size={19} />
-                </a>
-                <button 
-                  onClick={copyEmail}
-                  className="social-circle cursor-pointer"
-                  title="Copy Official Email"
-                >
-                  {copiedEmail ? <Check size={19} /> : <Mail size={19} />}
-                </button>
-                <a 
-                  href="./Deeksha_G_Resume.pdf" 
-                  download="Deeksha_G_Resume.pdf" 
-                  className="social-circle"
-                  title="Download Resume PDF"
-                >
-                  <Download size={19} />
-                </a>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-4 pt-4">
                 <a 
                   href="./Deeksha_G_Resume.pdf" 
                   download="Deeksha_G_Resume.pdf"
-                  className="btn-caramel text-xs font-bold uppercase tracking-wider px-8 py-3.5 inline-flex items-center gap-2"
+                  className="btn-greatstack btn-greatstack-solid"
                 >
                   Download CV <Download size={14} />
                 </a>
                 <a 
                   href="#contact"
-                  className="btn-outline-caramel text-xs font-bold uppercase tracking-wider px-7 py-3.5 inline-flex items-center gap-2"
+                  className="btn-greatstack"
                 >
-                  Contact Me <ArrowRight size={14} />
+                  Contact Me
                 </a>
+              </div>
+            </div>
+
+            {/* Right Column: Avatar Portrait (GreatStack User Image) */}
+            <div className="md:col-span-5 flex justify-center">
+              <div className="relative w-full max-w-[360px] sm:max-w-[420px] group">
+                <div className="absolute inset-0 bg-[#ff004f]/20 blur-[80px] rounded-full scale-90 -z-10 group-hover:bg-[#ff004f]/30 transition-all duration-500" />
+                <div className="rounded-3xl overflow-hidden border-2 border-white/10 group-hover:border-[#ff004f]/50 transition-all duration-500 shadow-2xl shadow-black/80 bg-[#141414]">
+                  <img 
+                    src="./assets/avatar.jpg" 
+                    alt="Deeksha G. - Software Engineer" 
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
               </div>
             </div>
 
           </div>
         </section>
 
-        {/* ==================== 2. ABOUT SECTION ==================== */}
-        <section id="about" className="space-y-8">
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Profile & Focus</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
-              About <span className="text-gradient">Me</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
-              Academic foundation in computer science and business systems, complemented by enterprise-grade engineering experience.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-5 gap-6 items-stretch">
-            {/* Background & Engineering Narrative */}
-            <div className="md:col-span-3 amelia-card rounded-3xl p-6 sm:p-8 space-y-4 flex flex-col justify-between">
-              <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 text-[#1c1917] font-bold text-sm uppercase tracking-wider font-headline">
-                  <Briefcase size={16} className="text-[#6d4300]" />
-                  <span>Engineering Focus</span>
-                </div>
-                <p className="text-sm text-[#44403c] leading-relaxed">
-                  I am a 7th Semester undergraduate pursuing <span className="text-[#1c1917] font-semibold">B.E. in Computer Science & Business Systems</span> at <span className="text-[#1c1917] font-semibold">Srinivas Institute of Technology (SIT), Mangaluru</span> (Batch 2023–2027, 7.8 CGPA).
-                </p>
-                <p className="text-sm text-[#57534e] leading-relaxed">
-                  My technical focus centers on architecting scalable full-stack applications, integrating intelligent AI workflows, and deploying resilient cloud services. Through 5 internships across cybersecurity (<span className="text-[#1c1917] font-medium">Fortinet, Palo Alto Networks</span>), applied AI (<span className="text-[#1c1917] font-medium">Microsoft & SAP TechSaksham</span>), and cloud computing (<span className="text-[#1c1917] font-medium">AWS Academy</span>), I prioritize clean code, performance, and reliable system design.
-                </p>
+        {/* ==================== 2. ABOUT SECTION (GREATSTACK SIGNATURE TABS) ==================== */}
+        <section id="about" className="pt-4">
+          <div className="grid md:grid-cols-12 gap-10 lg:gap-16 items-start">
+            
+            {/* About Col 1: Portrait */}
+            <div className="md:col-span-5 flex justify-center">
+              <div className="sticky top-28 rounded-3xl overflow-hidden border border-white/10 w-full max-w-[360px] bg-[#121212] shadow-xl">
+                <img 
+                  src="./assets/avatar.jpg" 
+                  alt="About Deeksha G." 
+                  className="w-full h-auto object-cover object-top"
+                />
               </div>
+            </div>
 
-              <div className="pt-4 border-t border-[#6d4300]/15 flex flex-wrap items-center justify-between gap-4 text-xs">
-                <div className="flex items-center gap-1.5 text-[#57534e]">
-                  <Calendar size={14} className="text-[#6d4300]" />
-                  <span>7th Semester • Batch 2023 – 2027</span>
-                </div>
-                <span className="text-[#6d4300] font-bold bg-[#fceade] border border-[#6d4300]/30 px-3 py-1 rounded-full">
-                  7.8 CGPA • VTU Affiliated
+            {/* About Col 2: Text & Interactive Tabs */}
+            <div className="md:col-span-7 space-y-6">
+              <h2 className="sub-title">About Me</h2>
+
+              <p className="text-sm sm:text-base text-[#ababab] leading-relaxed">
+                I am a 7th Semester undergraduate pursuing <strong className="text-white">B.E. in Computer Science & Business Systems</strong> at <strong className="text-white">Srinivas Institute of Technology (SIT), Mangaluru</strong> (Batch 2023–2027). My engineering journey focuses on developing scalable full-stack architectures, implementing intelligent AI workflows, and architecting resilient cloud systems.
+              </p>
+              <p className="text-sm sm:text-base text-[#ababab] leading-relaxed">
+                Through 5 enterprise internships across cybersecurity (<strong className="text-white">Fortinet, Palo Alto Networks</strong>), applied AI (<strong className="text-white">Microsoft & SAP TechSaksham</strong>), and cloud infrastructure (<strong className="text-white">AWS Academy</strong>), alongside open-source contributions in GSSoC, I prioritize clean code, performance, and reliable system design.
+              </p>
+
+              {/* GreatStack Tab Titles */}
+              <div className="flex items-center pt-3 border-b border-white/10">
+                <span 
+                  onClick={() => setActiveTab('Skills')}
+                  className={`tab-links ${activeTab === 'Skills' ? 'active-link' : ''}`}
+                >
+                  Skills
+                </span>
+                <span 
+                  onClick={() => setActiveTab('Experience')}
+                  className={`tab-links ${activeTab === 'Experience' ? 'active-link' : ''}`}
+                >
+                  Experience
+                </span>
+                <span 
+                  onClick={() => setActiveTab('Education')}
+                  className={`tab-links ${activeTab === 'Education' ? 'active-link' : ''}`}
+                >
+                  Education
                 </span>
               </div>
+
+              {/* Tab Contents: SKILLS */}
+              {activeTab === 'Skills' && (
+                <div className="space-y-4 pt-1 animate-fadeIn">
+                  {skillCategories.map((sc, idx) => (
+                    <div key={idx} className="space-y-1">
+                      <span className="text-[#ff004f] font-bold text-sm block">{sc.title}</span>
+                      <p className="text-sm text-white">
+                        {sc.skills.join(' • ')}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Tab Contents: EXPERIENCE */}
+              {activeTab === 'Experience' && (
+                <div className="space-y-5 pt-1 animate-fadeIn">
+                  {experiences.map((exp, idx) => (
+                    <div key={idx} className="space-y-1 border-b border-white/5 pb-3">
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <span className="text-[#ff004f] font-bold text-sm">{exp.role}</span>
+                        <span className="text-xs text-[#888]">{exp.period}</span>
+                      </div>
+                      <p className="text-xs font-semibold text-white">{exp.company} <span className="text-[#ff004f]/80 font-normal">({exp.badge})</span></p>
+                      <ul className="text-xs text-[#ababab] space-y-1 pt-1">
+                        {exp.points.map((pt, pidx) => (
+                          <li key={pidx} className="flex gap-2 leading-relaxed">
+                            <span className="text-[#ff004f]">•</span>
+                            <span>{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Tab Contents: EDUCATION */}
+              {activeTab === 'Education' && (
+                <div className="space-y-4 pt-1 animate-fadeIn">
+                  <div className="space-y-1">
+                    <span className="text-[#ff004f] font-bold text-sm block">Bachelor of Engineering (B.E.)</span>
+                    <p className="text-sm font-semibold text-white">
+                      Computer Science & Business Systems (CSBS)
+                    </p>
+                    <p className="text-xs text-[#ababab]">
+                      Srinivas Institute of Technology (SIT), Mangaluru • VTU Affiliated
+                    </p>
+                    <p className="text-xs text-[#ff004f] font-medium pt-1">
+                      7th Semester • Batch 2023 – 2027 (Graduating 2027)
+                    </p>
+                  </div>
+                  <div className="pt-2">
+                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-1">Key Engineering Coursework</span>
+                    <p className="text-xs text-[#ababab] leading-relaxed">
+                      Data Structures & Algorithms, Object-Oriented Programming (Java/C++), Operating Systems, Database Management Systems (DBMS), Computer Networks, Software Engineering, Cloud Computing, Artificial Intelligence.
+                    </p>
+                  </div>
+                </div>
+              )}
+
             </div>
 
-            {/* Core Competencies */}
-            <div className="md:col-span-2 amelia-card rounded-3xl p-6 sm:p-8 space-y-4 flex flex-col justify-between">
-              <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 text-[#1c1917] font-bold text-sm uppercase tracking-wider font-headline">
-                  <Sparkles size={16} className="text-[#6d4300]" />
-                  <span>Core Strengths</span>
+          </div>
+        </section>
+
+        {/* ==================== 3. PORTFOLIO / MY WORK (GREATSTACK STYLE) ==================== */}
+        <section id="projects" className="space-y-8 pt-4">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold text-[#ff004f] uppercase tracking-widest">Featured Creations</p>
+              <h2 className="sub-title">My Work</h2>
+            </div>
+            {/* Filter Pills */}
+            <div className="flex flex-wrap gap-2">
+              {projectCategories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                    activeCategory === cat
+                      ? 'bg-[#ff004f] text-white shadow-md shadow-[#ff004f]/30'
+                      : 'bg-[#141414] text-[#ababab] hover:text-white border border-white/10 hover:border-[#ff004f]/40'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Work Cards Grid with GreatStack Slide-up Hover Layer */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-2">
+            {filteredProjects.map((p) => (
+              <div key={p.num} className="work-card group">
+                <img 
+                  src={p.img} 
+                  alt={p.title} 
+                  className="w-full h-72 sm:h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                
+                {/* GreatStack Signature Slide-up Gradient Layer */}
+                <div className="work-layer space-y-2.5">
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-black bg-white px-2.5 py-0.5 rounded-full">
+                    {p.num} • {p.category}
+                  </span>
+                  <h3 className="text-lg font-bold text-white font-headline leading-tight">
+                    {p.title}
+                  </h3>
+                  <p className="text-xs text-white/90 line-clamp-3 leading-relaxed">
+                    {p.desc}
+                  </p>
+                  
+                  {/* Action Icons inside Hover Layer */}
+                  <div className="flex items-center justify-center gap-3 pt-2">
+                    <a 
+                      href={p.github} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-black hover:text-white transition-colors"
+                      title="View Source Code"
+                    >
+                      <Github size={18} />
+                    </a>
+                    {p.live && (
+                      <a 
+                        href={p.live} 
+                        target="_blank" 
+                        rel="noreferrer"
+                        className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-black hover:text-white transition-colors"
+                        title="Live Demonstration"
+                      >
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
+                  </div>
                 </div>
-                <ul className="space-y-3 text-xs text-[#44403c]">
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-2 h-2 rounded-full bg-[#6d4300] mt-1 shrink-0" />
-                    <span><strong className="text-[#1c1917]">Full-Stack Web:</strong> React 19, Next.js, TypeScript, Node.js, Express, Tailwind CSS</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-2 h-2 rounded-full bg-[#6d4300] mt-1 shrink-0" />
-                    <span><strong className="text-[#1c1917]">Applied AI & ML:</strong> Google Gemini API, Hugging Face NLP, PyTorch Computer Vision</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-2 h-2 rounded-full bg-[#6d4300] mt-1 shrink-0" />
-                    <span><strong className="text-[#1c1917]">Cloud & DevOps:</strong> AWS, Google Cloud, Firebase, Docker, GitHub Actions CI/CD</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="w-2 h-2 rounded-full bg-[#6d4300] mt-1 shrink-0" />
-                    <span><strong className="text-[#1c1917]">CS Foundations:</strong> Data Structures, Algorithms, DBMS, Operating Systems, Networks</span>
-                  </li>
-                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center pt-6">
+            <a 
+              href="https://github.com/DeekshaG96?tab=repositories" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="btn-greatstack inline-flex items-center gap-2"
+            >
+              See More on GitHub <ArrowUpRight size={16} />
+            </a>
+          </div>
+        </section>
+
+        {/* ==================== 4. CONTACT SECTION (GREATSTACK STYLE) ==================== */}
+        <section id="contact" className="pt-4">
+          <div className="grid md:grid-cols-12 gap-10 lg:gap-16 items-start">
+            
+            {/* Contact Left Column */}
+            <div className="md:col-span-5 space-y-6">
+              <h2 className="sub-title">Contact Me</h2>
+              
+              <p className="text-sm text-[#ababab] leading-relaxed">
+                Interested in discussing a software engineering role, technical collaboration, or an internship opportunity? Feel free to reach out directly.
+              </p>
+
+              <div className="space-y-4 pt-2">
+                <button 
+                  onClick={copyEmail}
+                  className="flex items-center gap-3 text-left group cursor-pointer w-full text-white"
+                >
+                  <div className="w-10 h-10 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center group-hover:bg-[#ff004f] group-hover:border-[#ff004f] transition-all">
+                    <Mail size={18} className="text-[#ff004f] group-hover:text-white transition-colors" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-[#888] uppercase tracking-wider block">Official Email</span>
+                    <span className="text-sm font-semibold text-white group-hover:text-[#ff004f] transition-colors">
+                      deekshagpbangera@gmail.com
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-[#ff004f] border border-[#ff004f]/40 px-2 py-0.5 rounded ml-auto">
+                    {copiedEmail ? 'Copied!' : 'Copy'}
+                  </span>
+                </button>
+
+                <a 
+                  href="https://github.com/DeekshaG96" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="flex items-center gap-3 text-left group w-full text-white"
+                >
+                  <div className="w-10 h-10 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center group-hover:bg-[#ff004f] group-hover:border-[#ff004f] transition-all">
+                    <Github size={18} className="text-[#ff004f] group-hover:text-white transition-colors" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-[#888] uppercase tracking-wider block">GitHub Profile</span>
+                    <span className="text-sm font-semibold text-white group-hover:text-[#ff004f] transition-colors">
+                      github.com/DeekshaG96
+                    </span>
+                  </div>
+                  <ArrowUpRight size={16} className="text-[#888] group-hover:text-[#ff004f] ml-auto transition-colors" />
+                </a>
               </div>
 
-              <div className="pt-4 border-t border-[#6d4300]/15">
+              {/* Social Icons & Download CV */}
+              <div className="pt-2">
                 <a 
-                  href="#projects" 
-                  className="text-xs font-bold text-[#6d4300] hover:text-[#543400] inline-flex items-center gap-1.5 transition-colors uppercase tracking-wider"
+                  href="./Deeksha_G_Resume.pdf" 
+                  download="Deeksha_G_Resume.pdf"
+                  className="btn-greatstack btn-greatstack-solid"
                 >
-                  View Featured Projects <ArrowRight size={13} />
+                  Download CV <Download size={14} />
                 </a>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* ==================== 3. FEATURED PROJECTS ==================== */}
-        <section id="projects" className="space-y-8">
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Proof of Work</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
-              Featured <span className="text-gradient">Projects</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
-              Production-ready web applications, applied AI workflows, and enterprise platforms built with modern technologies.
-            </p>
-          </div>
-
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap justify-center gap-2 pt-2">
-            {projectCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                  activeCategory === cat
-                    ? 'bg-[#6d4300] text-white shadow-md shadow-[#6d4300]/25'
-                    : 'bg-white/80 text-[#57534e] hover:text-[#1c1917] border border-[#6d4300]/15 hover:border-[#6d4300]/40'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 gap-6 pt-4">
-            {filteredProjects.map((p) => (
-              <div 
-                key={p.num} 
-                className="amelia-card rounded-3xl overflow-hidden flex flex-col justify-between group"
-              >
-                <div>
-                  {/* Project Image Banner */}
-                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-[#faebd7]">
-                    <img 
-                      src={p.img} 
-                      alt={p.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider text-[#6d4300] border border-[#6d4300]/20">
-                      {p.num} • {p.category}
-                    </div>
-                    {p.metric && (
-                      <div className="absolute bottom-3 right-3 bg-[#1c1917]/85 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold text-white">
-                        {p.metric}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Project Details */}
-                  <div className="p-6 sm:p-7 space-y-3">
-                    <span className="text-xs font-bold text-[#b45309] block uppercase tracking-wider">{p.tag}</span>
-                    <h3 className="text-xl font-bold text-[#1c1917] font-headline group-hover:text-[#6d4300] transition-colors">
-                      {p.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed line-clamp-3">
-                      {p.desc}
-                    </p>
-
-                    {/* Tech Badges */}
-                    <div className="flex flex-wrap gap-1.5 pt-2">
-                      {p.tech.map((t) => (
-                        <span 
-                          key={t}
-                          className="px-2.5 py-1 rounded-lg bg-[#fceade]/70 text-[#6d4300] border border-[#6d4300]/20 text-[11px] font-semibold"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card Links Footer */}
-                <div className="px-6 pb-6 pt-2 border-t border-[#6d4300]/10 flex items-center justify-between">
-                  <a 
-                    href={p.github} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#57534e] hover:text-[#6d4300] transition-colors uppercase tracking-wider"
-                  >
-                    <Github size={14} /> Source Code
-                  </a>
-                  {p.live && (
-                    <a 
-                      href={p.live} 
-                      target="_blank" 
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#6d4300] hover:text-[#543400] transition-colors uppercase tracking-wider"
-                    >
-                      Live Demo <ExternalLink size={13} />
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ==================== 4. CAREER EXPERIENCE ==================== */}
-        <section id="experience" className="space-y-8">
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Professional Trajectory</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
-              Career <span className="text-gradient">Experience</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
-              5 Technical internships across enterprise cybersecurity, applied AI, cloud architecture, and open-source ecosystems.
-            </p>
-          </div>
-
-          <div className="space-y-4 max-w-4xl mx-auto">
-            {experiences.map((exp, idx) => (
-              <div 
-                key={idx} 
-                className="amelia-card rounded-3xl p-6 sm:p-7 space-y-3"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#6d4300]/10 pb-3">
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="text-base sm:text-lg font-bold text-[#1c1917] font-headline">{exp.role}</h3>
-                      <span className="text-[11px] font-bold text-[#6d4300] bg-[#fceade] border border-[#6d4300]/30 px-2.5 py-0.5 rounded-full">
-                        {exp.badge}
-                      </span>
-                    </div>
-                    <p className="text-xs font-semibold text-[#78350f] pt-0.5">{exp.company}</p>
-                  </div>
-                  <span className="text-xs text-[#6d4300] font-bold whitespace-nowrap">{exp.period}</span>
-                </div>
-                <ul className="space-y-1.5 text-xs sm:text-sm text-[#57534e]">
-                  {exp.points.map((pt, pidx) => (
-                    <li key={pidx} className="flex gap-2 leading-relaxed">
-                      <span className="text-[#6d4300] font-bold">•</span>
-                      <span>{pt}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ==================== 5. FORMAL EDUCATION ==================== */}
-        <section id="education" className="space-y-8">
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Academic Foundation</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
-              Formal <span className="text-gradient">Education</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
-              University degree foundation blending core computer science with enterprise business management.
-            </p>
-          </div>
-
-          <div className="amelia-card rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start gap-6 max-w-4xl mx-auto">
-            <div className="space-y-2.5">
-              <span className="text-xs font-bold text-[#6d4300] uppercase tracking-wider flex items-center gap-1.5">
-                <GraduationCap size={17} /> Bachelor of Engineering (B.E.)
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#1c1917] font-headline">
-                Computer Science & Business Systems (CSBS)
-              </h3>
-              <p className="text-sm text-[#44403c] font-semibold">
-                Srinivas Institute of Technology (SIT), Mangaluru
-              </p>
-              <p className="text-xs text-[#57534e]">
-                Affiliated with Visvesvaraya Technological University (VTU), Belagavi
-              </p>
-              <p className="text-xs sm:text-sm text-[#57534e] pt-2 leading-relaxed max-w-xl">
-                <span className="text-[#1c1917] font-bold">Key Coursework:</span> Data Structures & Algorithms, Object-Oriented Programming (Java/C++), Operating Systems, Database Management Systems (DBMS), Computer Networks, Software Engineering, Cloud Computing, Artificial Intelligence.
-              </p>
-            </div>
-
-            <div className="sm:text-right shrink-0 bg-[#fceade]/80 border border-[#6d4300]/25 rounded-2xl p-5 w-full sm:w-auto text-center sm:text-right">
-              <span className="text-xs text-[#78350f] font-semibold block">7th Semester • 2023 – 2027</span>
-              <p className="text-3xl font-extrabold text-[#6d4300] font-headline my-1">7.8 CGPA</p>
-              <span className="inline-block text-[11px] font-bold text-[#6d4300] bg-white/90 border border-[#6d4300]/30 px-3 py-1 rounded-full shadow-sm">
-                Graduating 2027
-              </span>
-            </div>
-          </div>
-        </section>
-
-        {/* ==================== 6. TECHNICAL SKILLS ==================== */}
-        <section id="skills" className="space-y-8">
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Technical Arsenal</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
-              Technical <span className="text-gradient">Skills</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
-              Categorized programming languages, frameworks, cloud services, and security competencies.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {skillCategories.map((domain, i) => (
-              <div key={i} className="amelia-card rounded-3xl p-6 space-y-3 flex flex-col justify-between">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2.5 text-[#1c1917] font-bold text-sm uppercase tracking-wider font-headline">
-                    <div className="w-8 h-8 rounded-xl bg-[#faebd7] border border-[#6d4300]/25 flex items-center justify-center">
-                      {domain.icon}
-                    </div>
-                    <span>{domain.title}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {domain.skills.map((skill) => (
-                      <span 
-                        key={skill} 
-                        className="px-2.5 py-1 rounded-lg bg-white/90 text-[#44403c] border border-[#6d4300]/15 text-xs font-medium hover:border-[#6d4300]/50 hover:text-[#6d4300] transition-colors shadow-xs"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ==================== 7. CONTACT SECTION ==================== */}
-        <section id="contact" className="space-y-8">
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#6d4300]">Get In Touch</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1c1917] font-headline">
-              Contact <span className="text-gradient">Me</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-[#57534e] max-w-xl mx-auto">
-              Interested in discussing a software engineering role, internship, or technical collaboration? Send a direct message!
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
-            {/* Functional Contact Form */}
-            <div className="amelia-card rounded-3xl p-6 sm:p-8 space-y-4">
-              <h3 className="text-lg font-bold text-[#1c1917] font-headline">Send a Direct Message</h3>
-              
+            {/* Contact Right Column: Form */}
+            <div className="md:col-span-7 bg-[#101010] border border-white/10 rounded-2xl p-6 sm:p-8">
               {formSubmitted ? (
-                <div className="bg-[#fceade] border border-[#6d4300]/30 rounded-2xl p-6 text-center space-y-2 animate-fadeIn">
-                  <div className="w-10 h-10 rounded-full bg-[#6d4300] text-white flex items-center justify-center mx-auto">
+                <div className="bg-[#1a1013] border border-[#ff004f]/40 rounded-xl p-6 text-center space-y-2 animate-fadeIn">
+                  <div className="w-10 h-10 rounded-full bg-[#ff004f] text-white flex items-center justify-center mx-auto">
                     <Check size={20} />
                   </div>
-                  <h4 className="text-base font-bold text-[#1c1917] font-headline">Message Dispatched!</h4>
-                  <p className="text-xs text-[#57534e]">
-                    Thank you! Your message has been sent. Deeksha will get back to you promptly at {formState.email || 'your email'}.
+                  <h4 className="text-base font-bold text-white font-headline">Message Dispatched!</h4>
+                  <p className="text-xs text-[#ababab]">
+                    Thank you! Your message has been sent. Deeksha will respond promptly at {formState.email || 'your email'}.
                   </p>
                 </div>
               ) : (
-                <form className="space-y-4" onSubmit={handleFormSubmit}>
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#44403c]">Your Name *</label>
-                    <input 
-                      type="text" 
-                      required
-                      placeholder="e.g. Priya Sharma" 
-                      value={formState.name}
-                      onChange={(e) => setFormState({...formState, name: e.target.value})}
-                      className="w-full bg-white/90 border border-[#6d4300]/20 rounded-xl px-4 py-3 text-sm text-[#1c1917] placeholder:text-stone-400 focus:border-[#6d4300] outline-none transition-colors"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#44403c]">Email Address *</label>
-                    <input 
-                      type="email" 
-                      required
-                      placeholder="e.g. priya@company.com" 
-                      value={formState.email}
-                      onChange={(e) => setFormState({...formState, email: e.target.value})}
-                      className="w-full bg-white/90 border border-[#6d4300]/20 rounded-xl px-4 py-3 text-sm text-[#1c1917] placeholder:text-stone-400 focus:border-[#6d4300] outline-none transition-colors"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#44403c]">Subject</label>
-                    <input 
-                      type="text" 
-                      placeholder="e.g. Software Engineering Opportunity" 
-                      value={formState.subject}
-                      onChange={(e) => setFormState({...formState, subject: e.target.value})}
-                      className="w-full bg-white/90 border border-[#6d4300]/20 rounded-xl px-4 py-3 text-sm text-[#1c1917] placeholder:text-stone-400 focus:border-[#6d4300] outline-none transition-colors"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#44403c]">Message *</label>
-                    <textarea 
-                      rows={4} 
-                      required
-                      placeholder="Tell me about the engineering opportunity, timeline, or requirements..." 
-                      value={formState.message}
-                      onChange={(e) => setFormState({...formState, message: e.target.value})}
-                      className="w-full bg-white/90 border border-[#6d4300]/20 rounded-xl px-4 py-3 text-sm text-[#1c1917] placeholder:text-stone-400 focus:border-[#6d4300] outline-none transition-colors resize-none"
-                    />
-                  </div>
+                <form onSubmit={handleFormSubmit} className="space-y-2">
+                  <input 
+                    type="text" 
+                    required
+                    placeholder="Your Name" 
+                    value={formState.name}
+                    onChange={(e) => setFormState({...formState, name: e.target.value})}
+                    className="greatstack-input"
+                  />
+                  <input 
+                    type="email" 
+                    required
+                    placeholder="Your Email" 
+                    value={formState.email}
+                    onChange={(e) => setFormState({...formState, email: e.target.value})}
+                    className="greatstack-input"
+                  />
+                  <input 
+                    type="text" 
+                    placeholder="Subject (e.g. Software Engineering Role)" 
+                    value={formState.subject}
+                    onChange={(e) => setFormState({...formState, subject: e.target.value})}
+                    className="greatstack-input"
+                  />
+                  <textarea 
+                    rows={5} 
+                    required
+                    placeholder="Your Message" 
+                    value={formState.message}
+                    onChange={(e) => setFormState({...formState, message: e.target.value})}
+                    className="greatstack-input resize-none"
+                  />
                   <button 
-                    type="submit"
-                    className="w-full btn-caramel text-xs font-bold uppercase tracking-wider py-3.5 flex items-center justify-center gap-2 cursor-pointer"
+                    type="submit" 
+                    className="btn-greatstack btn-greatstack-solid mt-4 w-full sm:w-auto"
                   >
-                    Send Message <Send size={14} />
+                    Submit <Send size={14} />
                   </button>
                 </form>
               )}
             </div>
 
-            {/* Direct Verified Channels Cards */}
-            <div className="space-y-3.5">
-              <button 
-                onClick={copyEmail}
-                className="amelia-card rounded-2xl p-5 text-left flex items-center justify-between group hover:border-[#6d4300]/50 w-full cursor-pointer"
-              >
-                <div className="space-y-0.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#6d4300] flex items-center gap-1.5">
-                    <Mail size={13} /> Official Email
-                  </span>
-                  <p className="text-sm font-bold text-[#1c1917]">deekshagpbangera@gmail.com</p>
-                </div>
-                <span className="text-xs font-bold text-[#6d4300] bg-[#fceade] border border-[#6d4300]/30 px-3 py-1 rounded-full">
-                  {copiedEmail ? 'Copied!' : 'Copy'}
-                </span>
-              </button>
-
-              <a 
-                href="https://github.com/DeekshaG96" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="amelia-card rounded-2xl p-5 flex items-center justify-between group hover:border-[#6d4300]/50"
-              >
-                <div className="space-y-0.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#6d4300] flex items-center gap-1.5">
-                    <Github size={13} /> GitHub Profile
-                  </span>
-                  <p className="text-sm font-bold text-[#1c1917]">github.com/DeekshaG96</p>
-                </div>
-                <ArrowUpRight size={18} className="text-[#57534e] group-hover:text-[#6d4300] transition-colors" />
-              </a>
-
-              <div className="amelia-card rounded-2xl p-5 space-y-2 bg-[#fdfaf5]">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#78350f] block">
-                  Quick Resume Download
-                </span>
-                <p className="text-xs text-[#57534e]">
-                  Looking for the latest ATS-optimized single-page engineering resume?
-                </p>
-                <a 
-                  href="./Deeksha_G_Resume.pdf" 
-                  download="Deeksha_G_Resume.pdf"
-                  className="btn-caramel text-xs font-bold uppercase tracking-wider px-4 py-2 inline-flex items-center gap-2 mt-1"
-                >
-                  Download PDF <Download size={13} />
-                </a>
-              </div>
-            </div>
           </div>
         </section>
+
       </main>
 
       {/* ==================== FOOTER ==================== */}
-      <footer className="border-t border-[#6d4300]/15 bg-white/70 backdrop-blur-md py-14 text-center space-y-6">
-        <div className="max-w-4xl mx-auto px-6 space-y-5">
-          <a href="#home" className="text-3xl font-extrabold text-[#1c1917] inline-block hover:text-[#6d4300] transition-colors font-headline">
-            Deeksha <span className="text-[#6d4300]">G.</span>
-          </a>
-
-          <h2 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-[#1c1917] font-headline max-w-xl mx-auto leading-snug">
-            Collaborate with Deeksha and build reliable engineering systems today.
-          </h2>
-
-          <div className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-wider font-bold text-[#57534e] pt-2">
-            <a href="#home" className="hover:text-[#6d4300] transition-colors">Home</a>
-            <a href="#about" className="hover:text-[#6d4300] transition-colors">About</a>
-            <a href="#projects" className="hover:text-[#6d4300] transition-colors">Projects</a>
-            <a href="#experience" className="hover:text-[#6d4300] transition-colors">Experience</a>
-            <a href="#education" className="hover:text-[#6d4300] transition-colors">Education</a>
-            <a href="#skills" className="hover:text-[#6d4300] transition-colors">Skills</a>
-            <a href="./Deeksha_G_Resume.pdf" download="Deeksha_G_Resume.pdf" className="text-[#6d4300] hover:underline">Resume PDF</a>
-          </div>
-
-          <div className="flex justify-center gap-4 pt-2">
-            <a 
-              href="https://github.com/DeekshaG96" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="social-circle"
-              title="GitHub Profile"
-            >
-              <Github size={16} />
-            </a>
-            <button 
-              onClick={copyEmail} 
-              className="social-circle cursor-pointer" 
-              title="Copy Email Address"
-            >
-              <Mail size={16} />
-            </button>
-            <a 
-              href="#home"
-              className="social-circle"
-              title="Back to Top"
-            >
-              <ChevronUp size={16} />
-            </a>
-          </div>
-
-          <p className="text-xs text-[#78716c] pt-4 font-medium">
-            © {new Date().getFullYear()} Deeksha G. All Rights Reserved. Built with React 19, TypeScript & Tailwind CSS.
+      <footer className="border-t border-white/10 bg-[#050505] py-10 text-center space-y-4">
+        <div className="max-w-7xl mx-auto px-6 space-y-3">
+          <p className="text-xs text-[#737373]">
+            Copyright © {new Date().getFullYear()} Deeksha G. All Rights Reserved. Built with React 19, TypeScript & Tailwind CSS.
           </p>
         </div>
       </footer>
