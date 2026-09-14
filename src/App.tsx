@@ -411,7 +411,7 @@ export default function App() {
           {/* Eyebrow Status Pill */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-medium tracking-wide">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Final-Year Engineer (7th Sem CSBS) • Available for Roles
+            7th Sem Engineer (2023 – 2027) • Available for Roles
           </div>
 
           {/* Headline */}
@@ -421,7 +421,7 @@ export default function App() {
               <span className="text-gradient">Full-Stack Cloud Architect</span>
             </h1>
             <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              Final-Year (7th Sem) B.E. in Computer Science & Business Systems at SIT Mangaluru (7.8 CGPA). Building resilient cloud architectures, scalable full-stack applications, and applied AI systems.
+              7th Sem B.E. in Computer Science & Business Systems (2023–2027) at SIT Mangaluru (7.8 CGPA). Building resilient cloud architectures, scalable full-stack applications, and applied AI systems.
             </p>
           </div>
 
@@ -461,7 +461,7 @@ export default function App() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto pt-4 pb-2">
             <div className="bedim-card rounded-2xl p-4 text-center">
               <p className="text-2xl sm:text-3xl font-bold text-emerald-400 font-headline">7th Sem</p>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 pt-1">Final Year B.E.</p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 pt-1">B.E. (2023 – 2027)</p>
             </div>
             <div className="bedim-card rounded-2xl p-4 text-center">
               <p className="text-2xl sm:text-3xl font-bold text-emerald-400 font-headline">7.8</p>
@@ -516,7 +516,7 @@ export default function App() {
                   <span>Academic & Professional Background</span>
                 </div>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  I am a final-year (7th Semester) Computer Science & Business Systems engineering student at <span className="text-white font-semibold">Srinivas Institute of Technology (SIT), Mangaluru</span> with an academic record of <span className="text-emerald-400 font-semibold">7.8 CGPA</span> (Graduating 2026).
+                  I am a 7th Semester Computer Science & Business Systems engineering student (Batch 2023–2027) at <span className="text-white font-semibold">Srinivas Institute of Technology (SIT), Mangaluru</span> with an academic record of <span className="text-emerald-400 font-semibold">7.8 CGPA</span>.
                 </p>
                 <p className="text-sm text-slate-400 leading-relaxed">
                   My experience spans enterprise internships at <span className="text-slate-200">Fortinet</span> (Grade O), <span className="text-slate-200">Palo Alto Networks</span> (Grade E), <span className="text-slate-200">TechSaksham / Microsoft & SAP</span> (94% accuracy), and <span className="text-slate-200">AWS Academy</span> (Grade A), along with open-source contributions in GSSoC 2024.
@@ -526,7 +526,7 @@ export default function App() {
               <div className="pt-4 border-t border-emerald-500/10 flex flex-wrap gap-4 text-xs">
                 <div className="flex items-center gap-1.5 text-slate-300">
                   <Calendar size={14} className="text-emerald-400" />
-                  <span>Final Year • 7th Semester (Graduating 2026)</span>
+                  <span>7th Semester • Batch 2023 – 2027</span>
                 </div>
               </div>
             </div>
@@ -537,8 +537,8 @@ export default function App() {
                 <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                   <GraduationCap size={18} />
                 </div>
-                <h3 className="text-sm font-bold text-white font-headline">Final Year B.E.</h3>
-                <p className="text-xs text-slate-400">7th Semester • 7.8 CGPA • VTU Affiliated CSBS covering Cloud, AI & Systems.</p>
+                <h3 className="text-sm font-bold text-white font-headline">B.E. (7th Sem)</h3>
+                <p className="text-xs text-slate-400">7th Semester (2023–2027) • 7.8 CGPA • VTU Affiliated CSBS covering Cloud, AI & Systems.</p>
               </div>
 
               <div className="bedim-card rounded-2xl p-5 space-y-2">
@@ -744,10 +744,10 @@ export default function App() {
             </div>
 
             <div className="sm:text-right shrink-0 bg-[#161d17] border border-emerald-500/20 rounded-2xl p-5 w-full sm:w-auto">
-              <span className="text-xs text-slate-400 block">Final Year (7th Sem) • 2022 – 2026</span>
+              <span className="text-xs text-slate-400 block">7th Semester • 2023 – 2027</span>
               <p className="text-3xl font-bold text-emerald-400 font-headline my-1">7.8 CGPA</p>
               <span className="inline-block text-[11px] font-semibold text-emerald-300 bg-emerald-950/70 border border-emerald-500/30 px-3 py-1 rounded-full">
-                Graduating 2026
+                Graduating 2027
               </span>
             </div>
           </div>
