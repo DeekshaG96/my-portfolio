@@ -460,7 +460,7 @@ export default function App() {
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-600 dark:text-sky-400 text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>7th Sem Engineer (Batch 2023–2027) • Open for Roles</span>
+              <span>Software & AI Engineer • Batch 2023–2027 • Open for Roles</span>
             </div>
 
             <div className="space-y-1">
@@ -574,7 +574,7 @@ export default function App() {
             {/* Narrative Bio */}
             <div className="space-y-3 text-sm text-[var(--text-color)] leading-relaxed">
               <p>
-                I am a 7th Semester Computer Science & Business Systems (CSBS) engineering undergraduate at Srinivas Institute of Technology (SIT), Mangaluru (Batch 2023–2027, VTU affiliated).
+                I am a Computer Science & Business Systems (CSBS) engineering undergraduate at Srinivas Institute of Technology (SIT), Mangaluru (Batch 2023–2027, VTU affiliated).
               </p>
               <p>
                 I specialize in building production-ready web applications, integrating applied AI (Gemini 2.5 Flash), and deploying cloud architectures. Having completed 5 internships across Fortinet (Grade O), Palo Alto Networks (Grade E), Microsoft TechSaksham, AWS Academy, and open source contributions at GSSoC '26, I build with clean architecture and strict quality standards.
@@ -740,7 +740,7 @@ export default function App() {
                 </div>
                 <div className="text-left sm:text-right">
                   <span className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-bold">
-                    Batch 2023 – 2027 (7th Semester)
+                    Batch 2023 – 2027
                   </span>
                   <p className="text-xs text-[var(--text-color-light)] mt-1 flex items-center sm:justify-end gap-1">
                     <Calendar size={13} className="text-sky-500" /> Affiliated to VTU Belagavi • AICTE Approved
