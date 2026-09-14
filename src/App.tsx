@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { 
   Github, 
   Mail, 
@@ -61,7 +61,7 @@ export default function App() {
     setTimeout(() => setCopiedEmail(false), 2200);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) return;
     setFormSubmitted(true);
