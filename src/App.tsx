@@ -11,7 +11,6 @@ import {
   Check, 
   Menu, 
   X,
-  Cpu, 
   Brain, 
   Cloud, 
   ShieldCheck, 
@@ -55,12 +54,6 @@ interface SkillCategory {
   title: string;
   icon: JSX.Element;
   skills: string[];
-}
-
-interface ServiceItem {
-  title: string;
-  description: string;
-  icon: JSX.Element;
 }
 
 export default function App() {
@@ -302,29 +295,6 @@ export default function App() {
     }
   ];
 
-  const services: ServiceItem[] = [
-    {
-      title: 'Full-Stack Web Development',
-      description: 'Building high-performance, responsive applications with React 19, Next.js, Node.js, and clean RESTful APIs.',
-      icon: <Cpu className="w-6 h-6 text-emerald-400" />
-    },
-    {
-      title: 'Applied AI & GenAI Systems',
-      description: 'Integrating Google Gemini AI, prompt design, and scikit-learn models for operational business workflows.',
-      icon: <Brain className="w-6 h-6 text-emerald-400" />
-    },
-    {
-      title: 'Cloud Architecture & DevOps',
-      description: 'Architecting resilient AWS and Google Cloud environments with automated CI/CD pipelines and cost-optimized compute.',
-      icon: <Cloud className="w-6 h-6 text-emerald-400" />
-    },
-    {
-      title: 'Network Security & Defense',
-      description: 'Implementing Zero-Trust Network Access (ZTNA), stateful firewall policies, and secure cryptographic verification.',
-      icon: <ShieldCheck className="w-6 h-6 text-emerald-400" />
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-[#090d0a] text-[#94a3b8] font-sans antialiased selection:bg-emerald-500/20 selection:text-emerald-400">
       
@@ -507,62 +477,67 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 items-stretch">
-            {/* Biography Card */}
-            <div className="bedim-card rounded-3xl p-6 sm:p-8 space-y-4 flex flex-col justify-between">
+          <div className="grid md:grid-cols-5 gap-6 items-stretch">
+            {/* Background & Engineering Narrative */}
+            <div className="md:col-span-3 bedim-card rounded-3xl p-6 sm:p-8 space-y-4 flex flex-col justify-between">
               <div className="space-y-3">
                 <div className="inline-flex items-center gap-2 text-white font-bold text-sm uppercase tracking-wider font-headline">
                   <Briefcase size={16} className="text-emerald-400" />
-                  <span>Academic & Professional Background</span>
+                  <span>Engineering Focus</span>
                 </div>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  I am a 7th Semester Computer Science & Business Systems engineering student (Batch 2023–2027) at <span className="text-white font-semibold">Srinivas Institute of Technology (SIT), Mangaluru</span> with an academic record of <span className="text-emerald-400 font-semibold">7.8 CGPA</span>.
+                  I am a 7th Semester undergraduate pursuing <span className="text-white font-semibold">B.E. in Computer Science & Business Systems</span> at <span className="text-white font-semibold">Srinivas Institute of Technology (SIT), Mangaluru</span> (Batch 2023–2027, 7.8 CGPA).
                 </p>
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  My experience spans enterprise internships at <span className="text-slate-200">Fortinet</span> (Grade O), <span className="text-slate-200">Palo Alto Networks</span> (Grade E), <span className="text-slate-200">TechSaksham / Microsoft & SAP</span> (94% accuracy), and <span className="text-slate-200">AWS Academy</span> (Grade A), along with open-source contributions in GSSoC 2024.
+                  My technical focus centers on architecting scalable full-stack applications, integrating intelligent AI workflows, and deploying resilient cloud services. Through 5 internships across cybersecurity (Fortinet, Palo Alto Networks), applied AI (Microsoft & SAP TechSaksham), and cloud computing (AWS Academy), I prioritize clean code, performance, and reliable system design.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-emerald-500/10 flex flex-wrap gap-4 text-xs">
+              <div className="pt-4 border-t border-emerald-500/10 flex flex-wrap items-center justify-between gap-4 text-xs">
                 <div className="flex items-center gap-1.5 text-slate-300">
                   <Calendar size={14} className="text-emerald-400" />
                   <span>7th Semester • Batch 2023 – 2027</span>
                 </div>
+                <span className="text-emerald-400 font-semibold bg-emerald-950/60 border border-emerald-500/30 px-3 py-1 rounded-full">
+                  7.8 CGPA
+                </span>
               </div>
             </div>
 
-            {/* 4 Pillars of Excellence */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bedim-card rounded-2xl p-5 space-y-2">
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                  <GraduationCap size={18} />
+            {/* Core Competencies */}
+            <div className="md:col-span-2 bedim-card rounded-3xl p-6 sm:p-8 space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-2 text-white font-bold text-sm uppercase tracking-wider font-headline">
+                  <Sparkles size={16} className="text-emerald-400" />
+                  <span>Core Strengths</span>
                 </div>
-                <h3 className="text-sm font-bold text-white font-headline">B.E. (7th Sem)</h3>
-                <p className="text-xs text-slate-400">7th Semester (2023–2027) • 7.8 CGPA • VTU Affiliated CSBS covering Cloud, AI & Systems.</p>
+                <ul className="space-y-3 text-xs text-slate-300">
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1 shrink-0" />
+                    <span><strong className="text-white">Full-Stack Web:</strong> React 19, Next.js, TypeScript, Node.js, Express, Tailwind CSS</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1 shrink-0" />
+                    <span><strong className="text-white">Applied AI & ML:</strong> Google Gemini API, Hugging Face NLP, PyTorch Computer Vision</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1 shrink-0" />
+                    <span><strong className="text-white">Cloud & DevOps:</strong> AWS, Google Cloud, Firebase, Docker, GitHub Actions CI/CD</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1 shrink-0" />
+                    <span><strong className="text-white">CS Foundations:</strong> Data Structures, Algorithms, DBMS, Operating Systems, Networks</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="bedim-card rounded-2xl p-5 space-y-2">
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                  <Award size={18} />
-                </div>
-                <h3 className="text-sm font-bold text-white font-headline">5 Internships</h3>
-                <p className="text-xs text-slate-400">Fortinet Grade O, Palo Alto Grade E, TechSaksham 94%, AWS Grade A.</p>
-              </div>
-
-              <div className="bedim-card rounded-2xl p-5 space-y-2">
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                  <Sparkles size={18} />
-                </div>
-                <h3 className="text-sm font-bold text-white font-headline">Hackathons</h3>
-                <p className="text-xs text-slate-400">Google Solution Challenge '26, Razorpay AI Buildathon '26, Srinathon 2.0.</p>
-              </div>
-
-              <div className="bedim-card rounded-2xl p-5 space-y-2">
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                  <ShieldCheck size={18} />
-                </div>
-                <h3 className="text-sm font-bold text-white font-headline">Security & Cloud</h3>
-                <p className="text-xs text-slate-400">Zero-Trust Network Access (ZTNA), AWS Core Infrastructure & Web3.</p>
+              <div className="pt-4 border-t border-emerald-500/10">
+                <a 
+                  href="#projects" 
+                  className="text-xs font-bold text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1.5 transition-colors uppercase tracking-wider"
+                >
+                  View Featured Projects <ArrowRight size={13} />
+                </a>
               </div>
             </div>
           </div>
@@ -791,32 +766,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* ==================== 7. SERVICES SECTION ==================== */}
-        <section id="services" className="space-y-8">
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Core Offerings</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white font-headline">
-              My <span className="text-gradient">Services</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
-              Specialized technical competencies I bring to engineering teams and digital projects.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-5">
-            {services.map((s, idx) => (
-              <div key={idx} className="bedim-card rounded-3xl p-6 space-y-3 group">
-                <div className="w-12 h-12 rounded-2xl bg-[#1a231b] border border-emerald-500/30 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
-                  {s.icon}
-                </div>
-                <h3 className="text-lg font-bold text-white font-headline">{s.title}</h3>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{s.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ==================== 8. CONTACT SECTION ==================== */}
+        {/* ==================== 7. CONTACT SECTION ==================== */}
         <section id="contact" className="space-y-8">
           <div className="text-center space-y-2">
             <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Get In Touch</span>
