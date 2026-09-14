@@ -2,23 +2,27 @@ import { useState, type FormEvent } from 'react';
 import { 
   Github, 
   Mail, 
-  ArrowUpRight,
-  ExternalLink, 
-  Download, 
-  Copy, 
-  Check, 
+  ArrowRight, 
   Menu, 
   X,
-  Code2,
+  Download,
+  Copy,
+  Check,
+  ChevronUp,
   Briefcase,
+  Zap,
   GraduationCap,
+  Award,
+  Sparkles,
+  ExternalLink,
+  Code2,
   Send,
   Calendar,
-  Sparkles
+  Layers,
+  CheckCircle2
 } from 'lucide-react';
 
 interface Project {
-  num: string;
   title: string;
   tag: string;
   category: 'Full-Stack' | 'AI & Cloud' | 'Security & Web3' | 'Mobile';
@@ -30,35 +34,19 @@ interface Project {
   tech: string[];
 }
 
-interface ExperienceItem {
-  period: string;
-  role: string;
-  company: string;
-  badge: string;
-  points: string[];
-}
-
-interface SkillCategory {
-  title: string;
-  skills: string[];
-}
-
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [copiedEmail, setCopiedEmail] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [copied, setCopied] = useState(false);
+  const [activeCategory, setActiveCategory] = useState('All');
   
-  // GreatStack Interactive Tabs in About Section
-  const [activeTab, setActiveTab] = useState<'Skills' | 'Experience' | 'Education'>('Skills');
-
   // Contact Form State
-  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const copyEmail = () => {
     navigator.clipboard.writeText('deekshagpbangera@gmail.com');
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2200);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2200);
   };
 
   const handleFormSubmit = (e: FormEvent) => {
@@ -66,132 +54,189 @@ export default function App() {
     if (!formState.name || !formState.email || !formState.message) return;
     setFormSubmitted(true);
     setTimeout(() => {
-      setFormState({ name: '', email: '', subject: '', message: '' });
+      setFormState({ name: '', email: '', message: '' });
       setFormSubmitted(false);
-    }, 5000);
+    }, 4500);
   };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const stats = [
+    { label: 'Academic Batch', value: '2023–27', note: '7th Sem • B.E. CSBS' },
+    { label: 'Internships', value: '5', note: 'AICTE, Fortinet & Industry' },
+    { label: 'Live Projects', value: '10+', note: 'Full 0→1 Deployments' },
+    { label: 'Cloud & AI Badges', value: '18+', note: 'Google Cloud & AWS' }
+  ];
+
+  const skillDomains = [
+    {
+      category: 'Languages',
+      items: ['Python', 'Java', 'C++', 'TypeScript', 'JavaScript', 'SQL', 'Solidity']
+    },
+    {
+      category: 'Frontend & Web',
+      items: ['React 19', 'Next.js', 'Tailwind CSS', 'Vite', 'HTML5 / CSS3', 'Responsive Design']
+    },
+    {
+      category: 'Backend & APIs',
+      items: ['Node.js', 'Express.js', 'REST APIs', 'Postman API', 'Firebase', 'Supabase']
+    },
+    {
+      category: 'Cloud & DevOps',
+      items: ['AWS (EC2, S3, VPC, IAM)', 'Google Cloud Platform (ACE)', 'Docker', 'Git / GitHub', 'GitHub Actions CI/CD']
+    },
+    {
+      category: 'AI & Security',
+      items: ['Google Gemini 2.5 Flash', 'Prompt Engineering', 'Scikit-Learn ML', 'Zero-Trust (ZTNA)', 'Fortinet Firewalls']
+    }
+  ];
+
+  const experience = [
+    { 
+      date: 'May 2026 - Present', 
+      title: 'Open Source Software Contributor', 
+      company: 'GirlScript Summer of Code (GSSoC)',
+      badge: 'Open Source',
+      points: [
+        'Contributing core features and bug fixes to developer and security tooling open-source repositories.',
+        'Configured automated GitHub Actions CI/CD workflows for linting, testing, and branch validation, cutting review cycles by 25%.',
+        'Collaborating with distributed engineering teams on modern pull request reviews and semantic releases.'
+      ]
+    },
+    { 
+      date: 'Oct 2025 - Dec 2025', 
+      title: 'Network Security Engineering Intern', 
+      company: 'Fortinet (via AICTE & EduSkills)',
+      badge: 'Grade O (90-100%)',
+      points: [
+        'Completed 10-week enterprise security program with Grade O (Outstanding, 90-100%).',
+        'Configured stateful firewall inspection rules, Zero-Trust Network Access (ZTNA), and simulated threat vectors.',
+        'Hardened virtualized network perimeters and conducted automated vulnerability assessments.'
+      ]
+    },
+    { 
+      date: 'Jan 2025 - Mar 2025', 
+      title: 'Cybersecurity Engineering Intern', 
+      company: 'Palo Alto Networks (via AICTE & EduSkills)',
+      badge: 'Grade E (80-89%)',
+      points: [
+        'Completed intensive 10-week cybersecurity track, achieving Grade E (Excellent, 80-89%).',
+        'Analyzed real-time network traffic telemetry, investigated simulated SOC alarms, and mitigated perimeter risks.',
+        'Constructed threat-modeling topologies and incident response automation playbooks.'
+      ]
+    },
+    { 
+      date: 'Nov 2024 - Dec 2024', 
+      title: 'AI Product Intern', 
+      company: 'TechSaksham (Microsoft & SAP Initiative)',
+      badge: '94% ML Accuracy',
+      points: [
+        'Engineered deep learning computer vision pipelines for sustainable agriculture, achieving 94% prediction accuracy.',
+        'Optimized model inference latency for edge processing across 10,000+ agricultural data records.',
+        'Collaborated with cross-functional product leads to translate business requirements into production ML architecture.'
+      ]
+    },
+    { 
+      date: 'Oct 2024 - Dec 2024', 
+      title: 'Cloud Infrastructure Engineering Intern', 
+      company: 'AWS Academy',
+      badge: 'Grade A Evaluation',
+      points: [
+        'Architected resilient cloud infrastructures utilizing AWS Core Services (EC2, S3, VPC, RDS, IAM) with Grade A evaluation.',
+        'Engineered multi-AZ subnet topologies, routing tables, and security group policies for scalable microservice hosting.',
+        'Implemented CloudWatch monitoring alarms and cloud cost-optimization strategies.'
+      ]
+    }
+  ];
+
+  const certifications = [
+    'Google Cloud ACE', '18+ GCP Skill Badges',
+    'AWS Academy Cloud Architect', 'Fortinet Network Security (FCA)', 
+    'Palo Alto Networks Cyber', 'Postman API Student Expert',
+    'Vertex AI Prompt Design', 'Data Analytics Specialist'
+  ];
 
   const projectCategories = ['All', 'Full-Stack', 'AI & Cloud', 'Security & Web3', 'Mobile'];
 
   const projects: Project[] = [
     {
-      num: '01',
-      title: 'RazorOps AI | Autonomous Reconciliation',
-      tag: 'Razorpay AI Buildathon 2026 (Track 4)',
+      title: 'RazorOps AI',
+      tag: 'FinTech / Automated Reconciliation',
       category: 'AI & Cloud',
       metric: 'Razorpay Buildathon • 93.4% Match',
       desc: 'Autonomous financial reconciliation and liquidity intelligence engine built for Razorpay AI Buildathon 2026. Segregates deterministic math from Gemini Copilot reasoning, detecting MDR variances and modeling RBI nodal settlement cycles.',
       img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/razorops-ai',
       live: 'https://razorops-ai.web.app',
-      tech: ['React 19', 'Gemini AI', 'Firebase', 'E2E Testing', 'Tailwind CSS']
+      tech: ['React 19', 'Gemini AI', 'Firebase', 'E2E Testing (19/19)', 'Tailwind CSS']
     },
     {
-      num: '02',
-      title: 'NaanStop Food Delivery & Kitchen OS',
-      tag: 'Full-Stack / Restaurant ERP',
+      title: 'NaanStop | Food Delivery Platform',
+      tag: 'Full-Stack / Kitchen KDS & App',
       category: 'Full-Stack',
-      metric: 'Customer + Admin KDS + Android',
-      desc: 'Full-stack multi-tier food ordering & restaurant ERP with real-time table reservations, live Kitchen Display System (KDS Kanban), JWT authentication, and Capacitor Android mobile app.',
+      metric: 'Real-Time KDS & Mobile App',
+      desc: 'Complete full-stack food delivery ecosystem featuring a customer storefront, kitchen display system (KDS), admin catalog manager, and native Android application with real-time order lifecycle tracking.',
       img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/food-delivery-app',
       live: 'https://naanstop-customer.vercel.app',
-      tech: ['React 18', 'Node.js', 'Express', 'MongoDB Atlas', 'Capacitor Android', 'JWT']
+      tech: ['React 19', 'TypeScript', 'Node.js', 'Express', 'Firebase', 'Android']
     },
     {
-      num: '03',
-      title: 'Eco-Track Resilient',
-      tag: 'Google Solution Challenge 2026',
+      title: 'Eco-Track Logistics',
+      tag: 'Logistics / Gemini 2.5 Flash',
       category: 'AI & Cloud',
-      metric: 'Gemini 1.5 Flash + Maps',
-      desc: 'AI-assisted logistics intelligence prototype for Google Solution Challenge 2026. Predicts supply-chain disruption risks, calculates Scope 3 GLEC emissions, and simulates war room disaster recovery routing.',
+      metric: '+25% Route Resilience',
+      desc: 'AI-assisted logistics intelligence platform for supply chain disruption detection and recovery routing. Integrates Google Gemini 2.5 Flash reasoning with real-time IoT sensor telemetry in Firebase (+25% routing resilience). Built for Google Solution Challenge 2026.',
       img: 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/eco-track-logistics',
       live: 'https://techspire-13303696-1c68d.web.app',
-      tech: ['Gemini 1.5 Flash', 'React', 'Vite', 'Google Maps API', 'Firebase', 'Tailwind CSS']
+      tech: ['React', 'Gemini AI', 'Firebase', 'Google Maps API', 'CI/CD']
     },
     {
-      num: '04',
       title: 'The Architectural Ledger',
       tag: 'Enterprise HRMS & Payroll',
       category: 'Full-Stack',
-      metric: 'Enterprise RBAC & Payroll',
-      desc: 'Modern Human Resources Management Suite engineered for enterprise administration, role-based departmental oversight, interactive Recharts analytics, and automated payroll calculation ledgers.',
+      metric: 'Enterprise RBAC & Auditing',
+      desc: 'Enterprise human resource management system featuring role-based access control, departmental salary indexing, attendance tracking, and cryptographically verified employee ledgers.',
       img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/the-architectural-ledger',
       live: 'https://the-architectural-ledger.netlify.app/',
-      tech: ['React 19', 'Vite', 'Tailwind CSS v4', 'Firebase', 'Recharts', 'Lucide React']
+      tech: ['React 19', 'TypeScript', 'Tailwind CSS', 'Vite', 'Lucide']
     },
     {
-      num: '05',
-      title: 'SIT Global Success Hub',
-      tag: 'EdTech / MLOps Portal',
-      category: 'AI & Cloud',
-      metric: 'Random Forest + Gemini AI',
-      desc: 'Institutional student success platform for Srinivas Institute of Technology CSBS scholars. Implements scikit-learn Random Forest outcome prediction, Google Gemini 1.5 Pro AI mentor, and zero-leak bcrypt auth.',
-      img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/Student-Success-Dashboard',
-      live: 'https://student-success-dashboard-cpnswmcahqbt6zwqkhwghy.streamlit.app/',
-      tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Gemini 1.5 Pro', 'Bcrypt', 'Pandas']
-    },
-    {
-      num: '06',
-      title: 'VotX Decentralized Voting System',
-      tag: 'Web3 / Smart Contracts',
-      category: 'Security & Web3',
-      metric: 'Sepolia Ethereum dApp',
-      desc: 'Tamper-proof electronic voting dApp with Solidity ^0.8.24 smart contracts on Sepolia Testnet. Employs MetaMask decentralized identity (DID) to eliminate double-voting and record immutable ballots.',
-      img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/blockchain_proj',
-      live: 'https://blockchainproj-7nj1.vercel.app',
-      tech: ['Solidity', 'Ethereum Sepolia', 'Hardhat', 'Ethers.js', 'React', 'Tailwind CSS']
-    },
-    {
-      num: '07',
       title: 'Smart Farmer Connect',
-      tag: 'Agritech / Srinathon 2.0',
+      tag: 'AgriTech / Marketplace Platform',
       category: 'Full-Stack',
-      metric: '24-Hr Hackathon Build',
-      desc: 'Agritech marketplace platform developed at Srinathon 2.0 International Hackathon bridging farmers directly with consumers. Features real-time crop market pricing and localized weather analytics.',
+      metric: '+40% User Engagement',
+      desc: 'Scalable full-stack marketplace and crop intelligence portal connecting farmers to agronomy analytics and direct commercial buyers. Features dynamic pricing models and localized weather analytics (+40% user engagement). Built for Srinathon 2.0.',
       img: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/smart-farm-connect',
       live: 'https://v0-smart-farm-connect-ui.vercel.app/',
-      tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'REST API', 'Vercel']
+      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'REST API']
     },
     {
-      num: '08',
-      title: 'PlantGuard AI Diagnostics',
-      tag: 'Computer Vision / TechSaksham',
+      title: 'VotX Protocol',
+      tag: 'Web3 / Cryptographic Governance',
+      category: 'Security & Web3',
+      metric: '10,000+ Anonymous Ballots',
+      desc: 'Decentralized electronic voting platform deploying gas-optimized Solidity smart contracts on Ethereum Sepolia with cryptographic verification for voter anonymity and tamper-proof ballot verification across 10,000+ simulated voters.',
+      img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/blockchain_proj',
+      live: 'https://blockchainproj-7nj1.vercel.app',
+      tech: ['Solidity', 'Ethereum Sepolia', 'Ethers.js', 'React', 'MetaMask']
+    },
+    {
+      title: 'SIT Global Success Hub',
+      tag: 'EdTech / Predictive MLOps',
       category: 'AI & Cloud',
-      metric: 'Microsoft & SAP Honors',
-      desc: 'AICTE-TechSaksham (Microsoft & SAP) capstone deep learning model utilizing Convolutional Neural Networks (CNN) to detect agricultural crop diseases from leaf imagery with high accuracy.',
-      img: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/Plant-Disease-Detection-System-for-Sustainable-Agriculture-P2-',
-      tech: ['Python', 'PyTorch', 'TensorFlow', 'CNN', 'OpenCV', 'Jupyter']
-    },
-    {
-      num: '09',
-      title: 'Soul Journal & Mental Wellness',
-      tag: 'Mobile / Flutter & Cloud',
-      category: 'Mobile',
-      metric: 'Cross-Platform Flutter & Web',
-      desc: 'Cross-platform mindful journaling and wellness mobile application engineered in Flutter. Features biometric security, mood tracking analytics, Pomodoro focus timer, and Cloud Firestore sync.',
-      img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/soul_journal',
-      live: 'https://soul-journal-65327.web.app/',
-      tech: ['Flutter', 'Dart', 'Firebase', 'Cloud Firestore', 'Biometrics', 'Web']
-    },
-    {
-      num: '10',
-      title: 'AI Text Summarizer',
-      tag: 'NLP / GenAI Engine',
-      category: 'AI & Cloud',
-      metric: 'Transformer NLP API',
-      desc: 'High-throughput document intelligence workspace integrating Hugging Face transformer models to parse, synthesize, and extract key action items from lengthy technical documents.',
-      img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
-      github: 'https://github.com/DeekshaG96/aitextsummarizer',
-      live: 'https://aitextsummarizer-omega.vercel.app',
-      tech: ['JavaScript', 'Hugging Face API', 'HTML5', 'CSS3', 'Vercel']
+      metric: 'Real-Time ML Forecasting',
+      desc: 'Interactive predictive machine learning portal analyzing educational indicators to forecast student retention and academic performance in real time with feature-importance visual explainability.',
+      img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96/Student-Success-Dashboard',
+      live: 'https://student-success-dashboard-cpnswmcahqbt6zwqkhwghy.streamlit.app/',
+      tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Pandas', 'Matplotlib']
     }
   ];
 
@@ -199,361 +244,214 @@ export default function App() {
     ? projects 
     : projects.filter(p => p.category === activeCategory);
 
-  const experiences: ExperienceItem[] = [
-    { 
-      period: 'May 2026 - Present', 
-      role: 'Open Source Contributor', 
-      company: 'GirlScript Summer of Code (GSSoC)',
-      badge: 'Open Source',
-      points: [
-        'Actively contributing core features, automated triage pipelines, and bug fixes across community repositories.',
-        'Configured automated GitHub Actions CI/CD workflows for linting, testing, and branch validation, cutting review cycles by 25%.'
-      ]
-    },
-    { 
-      period: 'Oct 2025 - Dec 2025', 
-      role: 'Network Security Engineering Intern', 
-      company: 'Fortinet (via AICTE & EduSkills)',
-      badge: 'Grade O (Outstanding)',
-      points: [
-        'Graduated with Grade O across enterprise network security engineering curriculum.',
-        'Configured stateful firewall inspection rules, Zero-Trust Network Access (ZTNA), and simulated enterprise attack vectors.'
-      ]
-    },
-    { 
-      period: 'Jan 2025 - Mar 2025', 
-      role: 'Cybersecurity Engineering Intern', 
-      company: 'Palo Alto Networks (via AICTE & EduSkills)',
-      badge: 'Grade E (Excellent)',
-      points: [
-        'Completed 10-week intensive cybersecurity track, achieving Grade E (Excellent).',
-        'Analyzed real-time network traffic telemetry, investigated simulated SOC alarms, and mitigated perimeter vulnerabilities.'
-      ]
-    },
-    { 
-      period: 'Nov 2024 - Dec 2024', 
-      role: 'AI & Cloud Product Intern', 
-      company: 'TechSaksham (Microsoft & SAP CSR Initiative)',
-      badge: '94% Accuracy Honors',
-      points: [
-        'Engineered deep learning computer vision pipelines for sustainable agriculture, achieving 94% prediction accuracy.',
-        'Optimized model inference latency for edge processing across 10,000+ agricultural data records.'
-      ]
-    },
-    { 
-      period: 'Oct 2024 - Dec 2024', 
-      role: 'Cloud Infrastructure Engineering Intern', 
-      company: 'AWS Academy',
-      badge: 'Grade A Evaluation',
-      points: [
-        'Architected resilient cloud infrastructures utilizing AWS Core Services (EC2, S3, VPC, RDS, IAM) with Grade A evaluation.',
-        'Engineered multi-AZ subnet topologies, routing tables, and security group policies for scalable microservice hosting.'
-      ]
-    }
-  ];
-
-  const skillCategories: SkillCategory[] = [
-    {
-      title: 'Programming Languages',
-      skills: ['Python', 'Java', 'C++', 'TypeScript', 'JavaScript (ES6+)', 'Solidity', 'SQL', 'Dart']
-    },
-    {
-      title: 'Frontend Architecture',
-      skills: ['React 19', 'Next.js', 'Tailwind CSS v4', 'HTML5 / CSS3', 'Vite', 'Redux Toolkit', 'Flutter']
-    },
-    {
-      title: 'Backend & APIs',
-      skills: ['Node.js', 'Express', 'FastAPI', 'RESTful APIs', 'JWT Authentication', 'Postman API Testing']
-    },
-    {
-      title: 'Cloud & DevOps',
-      skills: ['AWS (EC2, S3, VPC, IAM)', 'Google Cloud', 'Firebase Hosting', 'Docker', 'GitHub Actions CI/CD']
-    },
-    {
-      title: 'Database & Storage',
-      skills: ['MongoDB Atlas', 'PostgreSQL', 'Supabase', 'Cloud Firestore', 'MySQL', 'Local JSON Storage']
-    },
-    {
-      title: 'AI, ML & Security',
-      skills: ['Google Gemini AI', 'Scikit-Learn', 'PyTorch', 'CNNs', 'Zero-Trust (ZTNA)', 'Fortinet Firewalls']
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-[#080808] text-[#ababab] font-sans antialiased selection:bg-[#ff004f]/30 selection:text-white">
-      
-      {/* ==================== HEADER & NAVBAR ==================== */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#080808]/90 backdrop-blur-md border-b border-white/10 px-6 lg:px-20 py-5">
-        <nav className="max-w-7xl mx-auto flex items-center justify-between">
-          <a href="#home" className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-headline">
-            <span className="text-[#ff004f]">D</span>eeksha.
+    <div className="min-h-screen bg-[#f0f6fc] text-slate-900 font-sans selection:bg-sky-100 selection:text-sky-800">
+      {/* Sticky Clean Navbar */}
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          {/* Side Logo with requested signature script font */}
+          <a 
+            href="#header" 
+            className="font-cursive text-3xl text-slate-900 hover:text-sky-600 transition-colors select-none"
+          >
+            Deeksha G<span className="text-sky-600 font-sans">.</span>
           </a>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-9">
-            <a href="#home" className="nav-link">Home</a>
-            <a href="#about" className="nav-link">About</a>
-            <a href="#projects" className="nav-link">Portfolio</a>
-            <a href="#contact" className="nav-link">Contact</a>
-          </div>
-
-          {/* Desktop Right CTA */}
-          <div className="hidden sm:flex items-center gap-4">
-            <a 
-              href="./Deeksha_G_Resume.pdf" 
-              download="Deeksha_G_Resume.pdf" 
-              className="text-xs font-bold uppercase tracking-wider text-white hover:text-[#ff004f] transition-colors inline-flex items-center gap-1.5"
-            >
-              Resume <Download size={13} />
-            </a>
-            <a 
-              href="#contact" 
-              className="btn-greatstack-solid text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg"
-            >
-              Contact Me
-            </a>
-          </div>
-
-          {/* Mobile Hamburger Toggle */}
-          <button 
-            className="md:hidden text-white p-1 focus:outline-none" 
-            onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            aria-label="Toggle Navigation"
-          >
-            {isMenuOpen ? <X size={26} className="text-[#ff004f]" /> : <Menu size={26} />}
-          </button>
-        </nav>
-
-        {/* Mobile Slide-down Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-[#111111] border border-white/10 rounded-2xl p-6 mt-3 space-y-4 shadow-2xl">
-            <a href="#home" onClick={() => setIsMenuOpen(false)} className="block text-white hover:text-[#ff004f] font-semibold">Home</a>
-            <a href="#about" onClick={() => setIsMenuOpen(false)} className="block text-white hover:text-[#ff004f] font-semibold">About</a>
-            <a href="#projects" onClick={() => setIsMenuOpen(false)} className="block text-white hover:text-[#ff004f] font-semibold">Portfolio</a>
-            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="block text-white hover:text-[#ff004f] font-semibold">Contact</a>
+          {/* Nav Links */}
+          <div className="hidden md:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-slate-600">
+            <a href="#about" className="hover:text-sky-600 transition-colors">About</a>
+            <a href="#projects" className="hover:text-sky-600 transition-colors">Projects</a>
+            <a href="#skills" className="hover:text-sky-600 transition-colors">Skills</a>
+            <a href="#experience" className="hover:text-sky-600 transition-colors">Experience</a>
+            <a href="#education" className="hover:text-sky-600 transition-colors">Education</a>
+            <a href="#contact" className="hover:text-sky-600 transition-colors">Contact</a>
             
+            <div className="flex items-center gap-3 pl-3 border-l border-slate-200">
+              <a href="https://github.com/DeekshaG96" target="_blank" rel="noreferrer" className="text-slate-500 hover:text-slate-900" title="GitHub">
+                <Github size={18} />
+              </a>
+              <a 
+                href="./Deeksha_G_Resume.pdf" 
+                download="Deeksha_G_Resume.pdf" 
+                className="bg-slate-900 text-white hover:bg-sky-600 px-3.5 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors flex items-center gap-1.5 shadow-xs"
+              >
+                Resume <Download size={13} />
+              </a>
+            </div>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button className="md:hidden text-slate-700 p-1" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle Menu">
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+
+        {/* Mobile Dropdown */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-b border-slate-200 px-6 py-5 flex flex-col gap-4 text-sm font-semibold">
+            <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-600">About</a>
+            <a href="#projects" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-600">Projects</a>
+            <a href="#skills" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-600">Skills</a>
+            <a href="#experience" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-600">Experience</a>
+            <a href="#education" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-600">Education</a>
+            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-600">Contact</a>
             <a 
               href="./Deeksha_G_Resume.pdf" 
               download="Deeksha_G_Resume.pdf" 
-              className="btn-greatstack-solid text-center w-full py-2.5 text-xs font-bold uppercase tracking-wider block rounded-lg mt-2"
+              className="bg-slate-900 text-white text-center py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider"
             >
-              Download CV (PDF)
+              Download Resume (PDF)
             </a>
           </div>
         )}
+      </nav>
+
+      {/* Hero Section: Simple, Balanced & Best with Long Hair Avatar */}
+      <header id="header" className="max-w-4xl mx-auto px-6 pt-16 pb-14 text-center">
+        {/* Long Hair Tech Developer Avatar */}
+        <div className="flex justify-center mb-6">
+          <div className="relative group">
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-sky-400 to-indigo-500 rounded-full blur-md opacity-40 group-hover:opacity-75 transition duration-500" />
+            <img 
+              src="./assets/avatar.jpg" 
+              alt="Deeksha G" 
+              className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover object-top border-3 border-white shadow-xl shadow-sky-900/10"
+            />
+            <span className="absolute bottom-1 right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white shadow-xs" title="Available for Roles" />
+          </div>
+        </div>
+
+        {/* Availability Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-sky-800 text-xs font-semibold mb-5 shadow-xs">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          7th Sem Engineer (Batch 2023–2027) • Open for Software & AI Roles
+        </div>
+
+        {/* Clean, Refined Headline */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight font-headline">
+          Hi, I'm <span className="aesthetic-gradient">Deeksha G.</span>
+        </h1>
+
+        {/* Professional Subtitle */}
+        <p className="text-lg sm:text-xl text-slate-700 font-medium mt-4 max-w-2xl mx-auto leading-relaxed">
+          Software Engineer specializing in Cloud Infrastructure, Applied AI, and Scalable Web Systems.
+        </p>
+
+        {/* Concise Credibility Bio */}
+        <p className="text-sm md:text-base text-slate-500 mt-3 max-w-xl mx-auto leading-relaxed">
+          Pursuing B.E. in Computer Science & Business Systems (CSBS) at Srinivas Institute of Technology (SIT), Mangaluru (Batch 2023–2027). Open source contributor at GSSoC '26, Google Cloud ACE & AWS certified with 5 technical internships.
+        </p>
+
+        {/* Primary Action Buttons */}
+        <div className="flex flex-wrap justify-center items-center gap-3.5 mt-8">
+          <a 
+            href="#projects" 
+            className="bg-slate-900 text-white hover:bg-sky-600 px-6 py-3 rounded-xl text-sm font-semibold transition-colors shadow-sm flex items-center gap-2"
+          >
+            View Projects <ArrowRight size={16} />
+          </a>
+          <a 
+            href="./Deeksha_G_Resume.pdf" 
+            download="Deeksha_G_Resume.pdf" 
+            className="bg-white text-slate-800 border border-slate-300 hover:border-sky-500 hover:text-sky-600 px-6 py-3 rounded-xl text-sm font-semibold transition-colors shadow-xs flex items-center gap-2"
+          >
+            Download Resume <Download size={16} />
+          </a>
+          <button 
+            onClick={copyEmail}
+            className="bg-sky-50 text-sky-800 border border-sky-200 hover:bg-sky-100 px-5 py-3 rounded-xl text-sm font-semibold transition-colors flex items-center gap-2 shadow-xs"
+          >
+            {copied ? <Check size={16} className="text-emerald-600" /> : <Copy size={16} />}
+            {copied ? 'Email Copied!' : 'Copy Email'}
+          </button>
+        </div>
+
+        {/* Clean 4-Item Quick Stats Bar */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-slate-200/80 text-left">
+          {stats.map((s, idx) => (
+            <div key={idx} className="bg-white p-4 rounded-xl border border-slate-200/70 shadow-xs hover:border-sky-300 transition-colors">
+              <span className="text-2xl font-bold text-slate-900 font-headline">{s.value}</span>
+              <p className="text-xs font-semibold text-slate-700 mt-0.5">{s.label}</p>
+              <p className="text-[11px] text-slate-400">{s.note}</p>
+            </div>
+          ))}
+        </div>
       </header>
 
-      {/* ==================== MAIN BODY ==================== */}
-      <main className="max-w-7xl mx-auto px-6 lg:px-20 pt-28 space-y-28 sm:space-y-36 pb-20">
+      {/* Main Content Area */}
+      <main className="max-w-5xl mx-auto px-6 space-y-20 pb-24">
+        {/* About Section */}
+        <section id="about" className="space-y-6 pt-4">
+          <div className="space-y-1">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-sky-600">About Me</h2>
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 font-headline">Engineering with focus, precision, and purpose.</h3>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="md:col-span-2 bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 space-y-4 text-slate-600 leading-relaxed text-sm shadow-xs">
+              <p>
+                I am a final-year 7th Semester Computer Science & Business Systems (CSBS) engineering student at Srinivas Institute of Technology (SIT), Mangaluru (Batch 2023–2027, VTU affiliated). I engineer resilient, production-grade applications that combine strong computer science foundations with modern cloud and artificial intelligence architectures.
+              </p>
+              <p>
+                Having completed 5 technical internships—spanning enterprise network security at Fortinet (Grade O), Palo Alto Networks (Grade E), AI product engineering at TechSaksham (Microsoft & SAP), AWS cloud architecture, and open source contributions at GirlScript Summer of Code (GSSoC '26)—I deliver reliable, well-tested code with disciplined engineering habits.
+              </p>
+            </div>
 
-        {/* ==================== 1. HERO SECTION (GREATSTACK STYLE) ==================== */}
-        <section id="home" className="min-h-[85vh] flex items-center pt-8 sm:pt-14">
-          <div className="grid md:grid-cols-12 gap-10 items-center w-full">
-            
-            {/* Left Column: Big Headline & Info */}
-            <div className="md:col-span-7 space-y-6 text-left">
-              
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141414] border border-[#ff004f]/30 text-white text-xs font-semibold tracking-wide">
-                <span className="w-2 h-2 rounded-full bg-[#ff004f] animate-pulse" />
-                <span>7th Sem Engineer (2023 – 2027) • SIT Mangaluru</span>
-              </div>
-
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 space-y-4 shadow-xs flex flex-col justify-between">
               <div className="space-y-3">
-                <p className="text-xl sm:text-2xl font-semibold text-[#ababab]">
-                  Computer Science & Business Systems Undergraduate
-                </p>
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] font-headline">
-                  Hi, I'm <span className="text-[#ff004f]">Deeksha</span><br />
-                  From SIT Mangaluru.
-                </h1>
+                <div className="inline-flex items-center gap-2 text-slate-900 font-bold text-xs uppercase tracking-wider">
+                  <Sparkles size={16} className="text-sky-600" />
+                  <span>Core Strengths</span>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-600">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 size={13} className="text-sky-600 shrink-0" />
+                    <span><strong>Full-Stack Web:</strong> React 19, TypeScript, Next.js</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 size={13} className="text-sky-600 shrink-0" />
+                    <span><strong>Applied AI:</strong> Gemini Flash, LangChain, Vision</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 size={13} className="text-sky-600 shrink-0" />
+                    <span><strong>Cloud & DevOps:</strong> AWS, Google Cloud, Docker</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 size={13} className="text-sky-600 shrink-0" />
+                    <span><strong>CS Foundations:</strong> DSA, DBMS, OS, Networks</span>
+                  </li>
+                </ul>
               </div>
 
-              <p className="text-sm sm:text-base text-[#ababab] leading-relaxed max-w-xl">
-                Hands-on experience architecting modern full-stack web applications, integrating applied AI models, and deploying resilient cloud services across 5 technical internships. Focused on building production-grade software solutions with clean code.
-              </p>
-
-              {/* Metrics Strip */}
-              <div className="grid grid-cols-3 gap-4 max-w-md pt-2">
-                <div className="bg-[#121212] border border-white/10 rounded-xl p-4 text-center">
-                  <span className="block text-2xl font-bold text-white font-headline">2023–27</span>
-                  <span className="text-[11px] text-[#888] font-medium">Batch (7th Sem)</span>
-                </div>
-                <div className="bg-[#121212] border border-white/10 rounded-xl p-4 text-center">
-                  <span className="block text-2xl font-bold text-[#ff004f] font-headline">5</span>
-                  <span className="text-[11px] text-[#888] font-medium">Internships</span>
-                </div>
-                <div className="bg-[#121212] border border-white/10 rounded-xl p-4 text-center">
-                  <span className="block text-2xl font-bold text-white font-headline">10+</span>
-                  <span className="text-[11px] text-[#888] font-medium">Live Projects</span>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-4">
+              <div className="pt-3 border-t border-slate-100">
                 <a 
-                  href="./Deeksha_G_Resume.pdf" 
-                  download="Deeksha_G_Resume.pdf"
-                  className="btn-greatstack btn-greatstack-solid"
+                  href="#projects" 
+                  className="text-xs font-bold text-sky-600 hover:text-sky-800 inline-flex items-center gap-1.5 transition-colors uppercase tracking-wider"
                 >
-                  Download CV <Download size={14} />
-                </a>
-                <a 
-                  href="#contact"
-                  className="btn-greatstack"
-                >
-                  Contact Me
+                  Explore Projects <ArrowRight size={13} />
                 </a>
               </div>
             </div>
-
-            {/* Right Column: Avatar Portrait (GreatStack User Image) */}
-            <div className="md:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-[360px] sm:max-w-[420px] group">
-                <div className="absolute inset-0 bg-[#ff004f]/20 blur-[80px] rounded-full scale-90 -z-10 group-hover:bg-[#ff004f]/30 transition-all duration-500" />
-                <div className="rounded-3xl overflow-hidden border-2 border-white/10 group-hover:border-[#ff004f]/50 transition-all duration-500 shadow-2xl shadow-black/80 bg-[#141414]">
-                  <img 
-                    src="./assets/avatar.jpg" 
-                    alt="Deeksha G. - Software Engineer" 
-                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-              </div>
-            </div>
-
           </div>
         </section>
 
-        {/* ==================== 2. ABOUT SECTION (GREATSTACK SIGNATURE TABS) ==================== */}
-        <section id="about" className="pt-4">
-          <div className="grid md:grid-cols-12 gap-10 lg:gap-16 items-start">
-            
-            {/* About Col 1: Portrait */}
-            <div className="md:col-span-5 flex justify-center">
-              <div className="sticky top-28 rounded-3xl overflow-hidden border border-white/10 w-full max-w-[360px] bg-[#121212] shadow-xl">
-                <img 
-                  src="./assets/avatar.jpg" 
-                  alt="About Deeksha G." 
-                  className="w-full h-auto object-cover object-top"
-                />
-              </div>
-            </div>
-
-            {/* About Col 2: Text & Interactive Tabs */}
-            <div className="md:col-span-7 space-y-6">
-              <h2 className="sub-title">About Me</h2>
-
-              <p className="text-sm sm:text-base text-[#ababab] leading-relaxed">
-                I am a 7th Semester undergraduate pursuing <strong className="text-white">B.E. in Computer Science & Business Systems</strong> at <strong className="text-white">Srinivas Institute of Technology (SIT), Mangaluru</strong> (Batch 2023–2027). My engineering journey focuses on developing scalable full-stack architectures, implementing intelligent AI workflows, and architecting resilient cloud systems.
-              </p>
-              <p className="text-sm sm:text-base text-[#ababab] leading-relaxed">
-                Through 5 enterprise internships across cybersecurity (<strong className="text-white">Fortinet, Palo Alto Networks</strong>), applied AI (<strong className="text-white">Microsoft & SAP TechSaksham</strong>), and cloud infrastructure (<strong className="text-white">AWS Academy</strong>), alongside open-source contributions in GSSoC, I prioritize clean code, performance, and reliable system design.
-              </p>
-
-              {/* GreatStack Tab Titles */}
-              <div className="flex items-center pt-3 border-b border-white/10">
-                <span 
-                  onClick={() => setActiveTab('Skills')}
-                  className={`tab-links ${activeTab === 'Skills' ? 'active-link' : ''}`}
-                >
-                  Skills
-                </span>
-                <span 
-                  onClick={() => setActiveTab('Experience')}
-                  className={`tab-links ${activeTab === 'Experience' ? 'active-link' : ''}`}
-                >
-                  Experience
-                </span>
-                <span 
-                  onClick={() => setActiveTab('Education')}
-                  className={`tab-links ${activeTab === 'Education' ? 'active-link' : ''}`}
-                >
-                  Education
-                </span>
-              </div>
-
-              {/* Tab Contents: SKILLS */}
-              {activeTab === 'Skills' && (
-                <div className="space-y-4 pt-1 animate-fadeIn">
-                  {skillCategories.map((sc, idx) => (
-                    <div key={idx} className="space-y-1">
-                      <span className="text-[#ff004f] font-bold text-sm block">{sc.title}</span>
-                      <p className="text-sm text-white">
-                        {sc.skills.join(' • ')}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Tab Contents: EXPERIENCE */}
-              {activeTab === 'Experience' && (
-                <div className="space-y-5 pt-1 animate-fadeIn">
-                  {experiences.map((exp, idx) => (
-                    <div key={idx} className="space-y-1 border-b border-white/5 pb-3">
-                      <div className="flex items-center justify-between gap-2 flex-wrap">
-                        <span className="text-[#ff004f] font-bold text-sm">{exp.role}</span>
-                        <span className="text-xs text-[#888]">{exp.period}</span>
-                      </div>
-                      <p className="text-xs font-semibold text-white">{exp.company} <span className="text-[#ff004f]/80 font-normal">({exp.badge})</span></p>
-                      <ul className="text-xs text-[#ababab] space-y-1 pt-1">
-                        {exp.points.map((pt, pidx) => (
-                          <li key={pidx} className="flex gap-2 leading-relaxed">
-                            <span className="text-[#ff004f]">•</span>
-                            <span>{pt}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Tab Contents: EDUCATION */}
-              {activeTab === 'Education' && (
-                <div className="space-y-4 pt-1 animate-fadeIn">
-                  <div className="space-y-1">
-                    <span className="text-[#ff004f] font-bold text-sm block">Bachelor of Engineering (B.E.)</span>
-                    <p className="text-sm font-semibold text-white">
-                      Computer Science & Business Systems (CSBS)
-                    </p>
-                    <p className="text-xs text-[#ababab]">
-                      Srinivas Institute of Technology (SIT), Mangaluru • VTU Affiliated
-                    </p>
-                    <p className="text-xs text-[#ff004f] font-medium pt-1">
-                      7th Semester • Batch 2023 – 2027 (Graduating 2027)
-                    </p>
-                  </div>
-                  <div className="pt-2">
-                    <span className="text-xs font-bold text-white uppercase tracking-wider block mb-1">Key Engineering Coursework</span>
-                    <p className="text-xs text-[#ababab] leading-relaxed">
-                      Data Structures & Algorithms, Object-Oriented Programming (Java/C++), Operating Systems, Database Management Systems (DBMS), Computer Networks, Software Engineering, Cloud Computing, Artificial Intelligence.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-            </div>
-
-          </div>
-        </section>
-
-        {/* ==================== 3. PORTFOLIO / MY WORK (GREATSTACK STYLE) ==================== */}
-        <section id="projects" className="space-y-8 pt-4">
+        {/* Projects Section (Netlify Style: Clean Visible Cards & Action Links) */}
+        <section id="projects" className="space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-bold text-[#ff004f] uppercase tracking-widest">Featured Creations</p>
-              <h2 className="sub-title">My Work</h2>
+              <h2 className="text-xs font-bold uppercase tracking-wider text-sky-600">Featured Work</h2>
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 font-headline">Flagship Projects</h3>
             </div>
-            {/* Filter Pills */}
-            <div className="flex flex-wrap gap-2">
+            
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap gap-1.5">
               {projectCategories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                     activeCategory === cat
-                      ? 'bg-[#ff004f] text-white shadow-md shadow-[#ff004f]/30'
-                      : 'bg-[#141414] text-[#ababab] hover:text-white border border-white/10 hover:border-[#ff004f]/40'
+                      ? 'bg-slate-900 text-white shadow-xs'
+                      : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
                   }`}
                 >
                   {cat}
@@ -562,196 +460,303 @@ export default function App() {
             </div>
           </div>
 
-          {/* Work Cards Grid with GreatStack Slide-up Hover Layer */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-2">
+          {/* Projects Grid: 2-Column Clean Architecture */}
+          <div className="grid md:grid-cols-2 gap-6">
             {filteredProjects.map((p) => (
-              <div key={p.num} className="work-card group">
-                <img 
-                  src={p.img} 
-                  alt={p.title} 
-                  className="w-full h-72 sm:h-80 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                
-                {/* GreatStack Signature Slide-up Gradient Layer */}
-                <div className="work-layer space-y-2.5">
-                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-black bg-white px-2.5 py-0.5 rounded-full">
-                    {p.num} • {p.category}
-                  </span>
-                  <h3 className="text-lg font-bold text-white font-headline leading-tight">
-                    {p.title}
-                  </h3>
-                  <p className="text-xs text-white/90 line-clamp-3 leading-relaxed">
-                    {p.desc}
-                  </p>
-                  
-                  {/* Action Icons inside Hover Layer */}
-                  <div className="flex items-center justify-center gap-3 pt-2">
-                    <a 
-                      href={p.github} 
-                      target="_blank" 
-                      rel="noreferrer"
-                      className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-black hover:text-white transition-colors"
-                      title="View Source Code"
-                    >
-                      <Github size={18} />
-                    </a>
-                    {p.live && (
-                      <a 
-                        href={p.live} 
-                        target="_blank" 
-                        rel="noreferrer"
-                        className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-black hover:text-white transition-colors"
-                        title="Live Demonstration"
-                      >
-                        <ExternalLink size={18} />
-                      </a>
-                    )}
+              <div 
+                key={p.title} 
+                className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
+                    <img 
+                      src={p.img} 
+                      alt={p.title} 
+                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" 
+                      referrerPolicy="no-referrer"
+                    />
+                    <span className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-bold text-emerald-700 border border-emerald-200 shadow-xs">
+                      {p.metric}
+                    </span>
                   </div>
+                  
+                  <div className="p-6 space-y-3">
+                    <div>
+                      <span className="text-[11px] font-semibold text-sky-600 uppercase tracking-wider block">{p.tag}</span>
+                      <h4 className="text-xl font-bold text-slate-900 font-headline mt-0.5">{p.title}</h4>
+                    </div>
+
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      {p.desc}
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {p.tech.map((t) => (
+                        <span key={t} className="text-[11px] bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md font-medium border border-slate-200/60">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="px-6 pb-6 pt-2 flex gap-5 border-t border-slate-100">
+                  <a 
+                    href={p.github} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="text-xs font-semibold text-slate-700 hover:text-sky-600 flex items-center gap-1.5 transition-colors"
+                  >
+                    <Github size={15} /> Source Code
+                  </a>
+                  {p.live && (
+                    <a 
+                      href={p.live} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="text-xs font-semibold text-sky-600 hover:text-sky-800 flex items-center gap-1.5 transition-colors"
+                    >
+                      <ExternalLink size={14} /> Live Demo
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section id="skills" className="space-y-8">
+          <div>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-sky-600">Technical Expertise</h2>
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 font-headline">Skills & Tech Stack</h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {skillDomains.map((domain) => (
+              <div key={domain.category} className="bg-white border border-slate-200/80 rounded-2xl p-6 space-y-3 shadow-xs">
+                <h4 className="text-sm font-bold uppercase tracking-wider text-slate-900 border-b border-slate-100 pb-2 flex items-center justify-between">
+                  <span>{domain.category}</span>
+                  <Code2 size={15} className="text-sky-600" />
+                </h4>
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {domain.items.map((item) => (
+                    <span key={item} className="text-xs bg-sky-50/70 text-sky-900 border border-sky-100 px-2.5 py-1 rounded-md font-medium">
+                      {item}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center pt-6">
-            <a 
-              href="https://github.com/DeekshaG96?tab=repositories" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="btn-greatstack inline-flex items-center gap-2"
-            >
-              See More on GitHub <ArrowUpRight size={16} />
-            </a>
+          {/* Validated Badges Pill Cloud */}
+          <div className="bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 space-y-4 shadow-xs text-center">
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-sky-600">
+              <Award size={15} />
+              <span>Certifications & Verified Badges</span>
+            </div>
+            <div className="flex flex-wrap justify-center gap-2 pt-1">
+              {certifications.map((c) => (
+                <span key={c} className="px-4 py-2 bg-slate-50 border border-slate-200/80 rounded-full text-xs font-semibold text-slate-700 hover:border-sky-400 hover:text-sky-700 transition-colors">
+                  {c}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* ==================== 4. CONTACT SECTION (GREATSTACK STYLE) ==================== */}
-        <section id="contact" className="pt-4">
-          <div className="grid md:grid-cols-12 gap-10 lg:gap-16 items-start">
-            
-            {/* Contact Left Column */}
-            <div className="md:col-span-5 space-y-6">
-              <h2 className="sub-title">Contact Me</h2>
-              
-              <p className="text-sm text-[#ababab] leading-relaxed">
-                Interested in discussing a software engineering role, technical collaboration, or an internship opportunity? Feel free to reach out directly.
-              </p>
+        {/* Experience Section */}
+        <section id="experience" className="space-y-8">
+          <div>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-sky-600">Career History</h2>
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 font-headline">Technical Internships</h3>
+          </div>
 
-              <div className="space-y-4 pt-2">
-                <button 
-                  onClick={copyEmail}
-                  className="flex items-center gap-3 text-left group cursor-pointer w-full text-white"
-                >
-                  <div className="w-10 h-10 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center group-hover:bg-[#ff004f] group-hover:border-[#ff004f] transition-all">
-                    <Mail size={18} className="text-[#ff004f] group-hover:text-white transition-colors" />
-                  </div>
+          <div className="space-y-5">
+            {experience.map((exp, idx) => (
+              <div key={idx} className="bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 space-y-3 shadow-xs hover:border-slate-300 transition-all">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
                   <div>
-                    <span className="text-[11px] font-bold text-[#888] uppercase tracking-wider block">Official Email</span>
-                    <span className="text-sm font-semibold text-white group-hover:text-[#ff004f] transition-colors">
-                      deekshagpbangera@gmail.com
+                    <h4 className="text-lg font-bold text-slate-900 font-headline">{exp.title}</h4>
+                    <p className="text-sm font-semibold text-sky-700">{exp.company}</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-medium text-slate-500">{exp.date}</span>
+                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-50 text-sky-800 border border-sky-200">
+                      {exp.badge}
                     </span>
                   </div>
-                  <span className="text-[11px] text-[#ff004f] border border-[#ff004f]/40 px-2 py-0.5 rounded ml-auto">
-                    {copiedEmail ? 'Copied!' : 'Copy'}
+                </div>
+
+                <ul className="space-y-2 pt-1">
+                  {exp.points.map((p, pIdx) => (
+                    <li key={pIdx} className="flex items-start gap-2.5 text-slate-600 text-sm leading-relaxed">
+                      <span className="text-sky-600 font-bold mt-0.5">•</span>
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Education Section */}
+        <section id="education" className="space-y-6">
+          <div>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-sky-600">Academic Background</h2>
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 font-headline">Degree & Institution</h3>
+          </div>
+
+          <div className="bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 shadow-xs space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-sky-600">Bachelor of Engineering</span>
+                <h4 className="text-xl font-bold text-slate-900 font-headline">Computer Science & Business Systems (CSBS)</h4>
+                <p className="text-sm font-semibold text-slate-700">Srinivas Institute of Technology (SIT), Mangaluru</p>
+              </div>
+              <div className="text-left sm:text-right">
+                <span className="inline-block px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-full text-xs font-bold">
+                  Batch 2023 – 2027 (7th Semester)
+                </span>
+                <p className="text-xs text-slate-500 mt-1">Affiliated to VTU Belagavi • AICTE Approved</p>
+              </div>
+            </div>
+
+            <div className="space-y-2 pt-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Core Engineering Coursework</span>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Data Structures & Algorithms, Operating Systems, Database Management Systems, Computer Networks, Software Engineering, Object-Oriented Programming (Java/C++), Cloud Computing, and Artificial Intelligence.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="space-y-8 pt-4">
+          <div>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-sky-600">Get In Touch</h2>
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 font-headline">Let's Connect & Collaborate</h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div className="space-y-6">
+              <p className="text-slate-600 text-base leading-relaxed">
+                I am actively seeking software engineering, AI engineering, and cloud architect roles with immediate joining availability. Whether you have an open opportunity or an innovative project, feel free to reach out.
+              </p>
+
+              <div className="space-y-3">
+                <button
+                  onClick={copyEmail}
+                  className="w-full bg-white border border-slate-200/80 hover:border-sky-400 p-4 rounded-xl flex items-center justify-between transition-colors shadow-xs group text-left"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-sky-50 text-sky-700 flex items-center justify-center">
+                      <Mail size={18} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Direct Email</p>
+                      <p className="text-sm font-bold text-slate-900 group-hover:text-sky-600 transition-colors">deekshagpbangera@gmail.com</p>
+                    </div>
+                  </div>
+                  <span className="text-xs font-bold text-sky-600 flex items-center gap-1">
+                    {copied ? <Check size={14} /> : <Copy size={14} />}
+                    {copied ? 'Copied' : 'Copy'}
                   </span>
                 </button>
 
-                <a 
-                  href="https://github.com/DeekshaG96" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/DeekshaG96"
+                  target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-3 text-left group w-full text-white"
+                  className="w-full bg-white border border-slate-200/80 hover:border-sky-400 p-4 rounded-xl flex items-center justify-between transition-colors shadow-xs group"
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center group-hover:bg-[#ff004f] group-hover:border-[#ff004f] transition-all">
-                    <Github size={18} className="text-[#ff004f] group-hover:text-white transition-colors" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-slate-900 text-white flex items-center justify-center">
+                      <Github size={18} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">GitHub Profile</p>
+                      <p className="text-sm font-bold text-slate-900 group-hover:text-sky-600 transition-colors">github.com/DeekshaG96</p>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-[11px] font-bold text-[#888] uppercase tracking-wider block">GitHub Profile</span>
-                    <span className="text-sm font-semibold text-white group-hover:text-[#ff004f] transition-colors">
-                      github.com/DeekshaG96
-                    </span>
-                  </div>
-                  <ArrowUpRight size={16} className="text-[#888] group-hover:text-[#ff004f] ml-auto transition-colors" />
-                </a>
-              </div>
-
-              {/* Social Icons & Download CV */}
-              <div className="pt-2">
-                <a 
-                  href="./Deeksha_G_Resume.pdf" 
-                  download="Deeksha_G_Resume.pdf"
-                  className="btn-greatstack btn-greatstack-solid"
-                >
-                  Download CV <Download size={14} />
+                  <span className="text-xs font-bold text-sky-600">View &rarr;</span>
                 </a>
               </div>
             </div>
 
-            {/* Contact Right Column: Form */}
-            <div className="md:col-span-7 bg-[#101010] border border-white/10 rounded-2xl p-6 sm:p-8">
+            {/* Direct Message Form */}
+            <div className="bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 shadow-xs space-y-4">
+              <h4 className="text-base font-bold text-slate-900 font-headline">Send a Direct Message</h4>
               {formSubmitted ? (
-                <div className="bg-[#1a1013] border border-[#ff004f]/40 rounded-xl p-6 text-center space-y-2 animate-fadeIn">
-                  <div className="w-10 h-10 rounded-full bg-[#ff004f] text-white flex items-center justify-center mx-auto">
-                    <Check size={20} />
-                  </div>
-                  <h4 className="text-base font-bold text-white font-headline">Message Dispatched!</h4>
-                  <p className="text-xs text-[#ababab]">
-                    Thank you! Your message has been sent. Deeksha will respond promptly at {formState.email || 'your email'}.
-                  </p>
+                <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-6 rounded-xl text-center space-y-2">
+                  <CheckCircle2 size={28} className="mx-auto text-emerald-600" />
+                  <p className="font-bold text-sm">Message Sent Successfully!</p>
+                  <p className="text-xs text-emerald-700">Thank you for reaching out. I'll get back to you promptly.</p>
                 </div>
               ) : (
-                <form onSubmit={handleFormSubmit} className="space-y-2">
-                  <input 
-                    type="text" 
-                    required
-                    placeholder="Your Name" 
-                    value={formState.name}
-                    onChange={(e) => setFormState({...formState, name: e.target.value})}
-                    className="greatstack-input"
-                  />
-                  <input 
-                    type="email" 
-                    required
-                    placeholder="Your Email" 
-                    value={formState.email}
-                    onChange={(e) => setFormState({...formState, email: e.target.value})}
-                    className="greatstack-input"
-                  />
-                  <input 
-                    type="text" 
-                    placeholder="Subject (e.g. Software Engineering Role)" 
-                    value={formState.subject}
-                    onChange={(e) => setFormState({...formState, subject: e.target.value})}
-                    className="greatstack-input"
-                  />
-                  <textarea 
-                    rows={5} 
-                    required
-                    placeholder="Your Message" 
-                    value={formState.message}
-                    onChange={(e) => setFormState({...formState, message: e.target.value})}
-                    className="greatstack-input resize-none"
-                  />
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-700">Your Name</label>
+                    <input 
+                      type="text" 
+                      required 
+                      value={formState.name}
+                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                      placeholder="e.g. Alex Smith"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 focus:bg-white focus:border-sky-500 outline-none transition-colors"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-700">Email Address</label>
+                    <input 
+                      type="email" 
+                      required 
+                      value={formState.email}
+                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                      placeholder="alex@company.com"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 focus:bg-white focus:border-sky-500 outline-none transition-colors"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-700">Message</label>
+                    <textarea 
+                      rows={3} 
+                      required 
+                      value={formState.message}
+                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                      placeholder="Hi Deeksha, I'd like to connect regarding..."
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 focus:bg-white focus:border-sky-500 outline-none transition-colors resize-none"
+                    />
+                  </div>
+
                   <button 
-                    type="submit" 
-                    className="btn-greatstack btn-greatstack-solid mt-4 w-full sm:w-auto"
+                    type="submit"
+                    className="w-full bg-slate-900 text-white hover:bg-sky-600 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-xs"
                   >
-                    Submit <Send size={14} />
+                    Send Message <Send size={14} />
                   </button>
                 </form>
               )}
             </div>
-
           </div>
         </section>
-
       </main>
 
-      {/* ==================== FOOTER ==================== */}
-      <footer className="border-t border-white/10 bg-[#050505] py-10 text-center space-y-4">
-        <div className="max-w-7xl mx-auto px-6 space-y-3">
-          <p className="text-xs text-[#737373]">
-            Copyright © {new Date().getFullYear()} Deeksha G. All Rights Reserved. Built with React 19, TypeScript & Tailwind CSS.
+      {/* Clean Footer */}
+      <footer className="border-t border-slate-200/80 bg-white py-8 text-center text-xs text-slate-500">
+        <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="font-medium">
+            &copy; {new Date().getFullYear()} Deeksha G. Architected with Focus & Precision.
           </p>
+          <div className="flex items-center gap-6 font-semibold uppercase tracking-wider">
+            <button onClick={scrollToTop} className="hover:text-sky-600 transition-colors flex items-center gap-1">
+              Back to Top <ChevronUp size={14} />
+            </button>
+          </div>
         </div>
       </footer>
     </div>
