@@ -2,7 +2,7 @@
 
 Personal portfolio website built with React 19, TypeScript, and Tailwind CSS.
 
-Live: [deekshag96.github.io/my-portfolio](https://deekshag96.github.io/my-portfolio/) | [Netlify Mirror](https://iitsmedeeksha.netlify.app/)
+Live: [my-portfolio-ten-phi-81.vercel.app](https://my-portfolio-ten-phi-81.vercel.app/) | [GitHub Pages Mirror](https://deekshag96.github.io/my-portfolio/)
 
 ## Tech Stack
 
