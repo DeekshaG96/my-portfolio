@@ -301,12 +301,12 @@ export default function App() {
       {/* ==================== HEADER / NAVBAR ==================== */}
       <header className="sticky top-0 z-50 bg-[var(--container-color)]/90 backdrop-blur-md border-b border-[var(--border-color)]">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo with Bedimcode accent dot */}
+          {/* Logo with Signature Script Font & Accent Dot */}
           <a 
             href="#home" 
-            className="text-xl font-bold font-headline text-[var(--title-color)] hover:text-sky-500 transition-colors flex items-center"
+            className="font-signature text-3xl sm:text-4xl text-[var(--title-color)] hover:text-sky-500 transition-all flex items-center select-none leading-none tracking-normal"
           >
-            Deeksha<span className="text-sky-500 font-extrabold text-2xl leading-none">.</span>
+            <span>Deeksha</span><span className="text-sky-500 font-sans text-2xl font-black leading-none ml-0.5">.</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -452,7 +452,10 @@ export default function App() {
             >
               <Mail size={19} />
             </a>
-            <div className="w-[1.5px] h-12 bg-[var(--border-color)] mt-2" />
+            <div className="w-[1.5px] h-10 bg-[var(--border-color)] mt-1" />
+            <span className="font-signature text-2xl text-[var(--text-color-light)] select-none [writing-mode:vertical-rl] rotate-180 tracking-widest opacity-80 pt-2 hover:text-sky-500 transition-colors">
+              Deeksha
+            </span>
           </div>
 
           {/* Hero Content (Center) */}
@@ -1011,8 +1014,8 @@ export default function App() {
       <footer className="border-t border-[var(--border-color)] bg-[var(--container-color)] py-12 text-center text-xs text-[var(--text-color-light)]">
         <div className="max-w-5xl mx-auto px-6 space-y-6">
           <div>
-            <h2 className="text-2xl font-bold font-headline text-[var(--title-color)]">
-              Deeksha<span className="text-sky-500">.</span>
+            <h2 className="font-signature text-3xl sm:text-4xl text-[var(--title-color)]">
+              Deeksha<span className="text-sky-500 font-sans text-2xl font-black ml-0.5">.</span>
             </h2>
             <p className="text-xs text-[var(--text-color-light)] mt-1">
               Software Engineer • Applied AI & Cloud Architecture
