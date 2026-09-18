@@ -251,10 +251,15 @@ export default function App() {
   ];
 
   const certifications = [
-    'Google Cloud ACE', '18+ GCP Skill Badges',
-    'AWS Academy Cloud Architect', 'Fortinet Network Security (FCA)', 
-    'Palo Alto Networks Cyber', 'Postman API Student Expert',
-    'Vertex AI Prompt Design', 'Data Analytics Specialist'
+    'Pearson: Artificial Intelligence (PLD3-uSKY)',
+    'Pearson: Data Analytics (waLMM-H9e3)',
+    'Pearson: JavaScript (m39T-uTnz)',
+    'Pearson: HTML5 App Dev (58VV-4wLq)',
+    'Google Cloud ACE',
+    'AWS Academy Cloud Architect',
+    'Fortinet Network Security (Grade O)',
+    'Postman API Student Expert',
+    'Vertex AI Prompt Specialist'
   ];
 
   const experienceItems = [
