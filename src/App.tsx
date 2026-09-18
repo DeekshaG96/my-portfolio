@@ -266,7 +266,7 @@ export default function App() {
     {
       title: 'Open Source Software Contributor',
       company: 'GirlScript Summer of Code (GSSoC)',
-      date: 'May 2024 - Present',
+      date: 'May 2024 - Aug 2024',
       badge: 'Open Source',
       desc: 'Contributing core features and bug fixes to developer and security tooling open-source repositories with automated GitHub Actions CI/CD workflows.'
     },
