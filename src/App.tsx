@@ -266,14 +266,14 @@ export default function App() {
     {
       title: 'Open Source Software Contributor',
       company: 'GirlScript Summer of Code (GSSoC)',
-      date: 'May 2026 - Present',
+      date: 'May 2024 - Present',
       badge: 'Open Source',
       desc: 'Contributing core features and bug fixes to developer and security tooling open-source repositories with automated GitHub Actions CI/CD workflows.'
     },
     {
       title: 'Network Security Engineering Intern',
       company: 'Fortinet (via AICTE & EduSkills)',
-      date: 'Oct 2025 - Dec 2025',
+      date: 'Oct 2024 - Dec 2024',
       badge: 'Grade O (Outstanding, 90-100%)',
       desc: 'Configured stateful firewall inspection rules, Zero-Trust Network Access (ZTNA) perimeters, and simulated enterprise threat vectors.'
     },
@@ -585,7 +585,7 @@ export default function App() {
                 I am a Computer Science & Business Systems (CSBS) engineering undergraduate at Srinivas Institute of Technology (SIT), Mangaluru (Batch 2023–2027, VTU affiliated).
               </p>
               <p>
-                I specialize in building production-ready web applications, integrating applied AI (Gemini 2.5 Flash), and deploying cloud architectures. Having completed 5 internships across Fortinet (Grade O), Palo Alto Networks (Grade E), Microsoft TechSaksham, AWS Academy, and open source contributions at GSSoC '26, I build with clean architecture and strict quality standards.
+                I specialize in building production-ready web applications, integrating applied AI (Gemini 2.5 Flash), and deploying cloud architectures. Having completed 5 internships across Fortinet (Grade O), Palo Alto Networks (Grade E), Microsoft TechSaksham, AWS Academy, and open source contributions at GSSoC, I build with clean architecture and strict quality standards.
               </p>
             </div>
 
