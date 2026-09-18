@@ -62,8 +62,8 @@ export default function App() {
   const officialResume = {
     name: 'Deeksha G — Master ATS Resume',
     filename: 'Deeksha_G_Resume.pdf',
-    url: './Deeksha_G_Resume.pdf?v=20260918_v4',
-    desc: 'Verified 1-Page ATS Resume • B.E. Computer Science & Business Systems (Expected June 2027) • Full-Stack & Applied AI'
+    url: './Deeksha_G_Resume.pdf?v=20260918_v7',
+    desc: 'Verified 1-Page ATS Resume • B.E. Computer Science & Business Systems • NBEC 2026 Round 2 Shortlist • Full-Stack & AI'
   };
 
   // Contact Form State
@@ -146,6 +146,17 @@ export default function App() {
       github: 'https://github.com/DeekshaG96/eco-track-logistics',
       live: 'https://techspire-13303696-1c68d.web.app',
       tech: ['React', 'Gemini AI', 'Firebase', 'Google Maps API', 'CI/CD']
+    },
+    {
+      title: 'Hybrid Composite Regression Analysis',
+      tag: '🏆 NBEC 2026 National Round 2 • Sustainable Materials & Analytics',
+      category: 'AI & Cloud',
+      metric: 'R² > 0.98 • 30.5 MPa Tensile Strength',
+      desc: 'Developed hybrid natural-fibre composites using coconut coir, flax fibre, epoxy resin, and recycled Single-Use Plastics (SUP) across CF, CFP, and CFT configurations. Evaluated mechanical tensile, flexural, and Charpy impact performance adhering to ASTM standards. Applied second-order polynomial regression to strain-force data, achieving R² > 0.98 goodness-of-fit. Shortlisted for and presented in Round 2 of the National Bio Entrepreneurship Competition (NBEC 2026).',
+      img: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1000',
+      github: 'https://github.com/DeekshaG96',
+      live: 'https://deekshag.vercel.app',
+      tech: ['Polynomial Regression', 'Data Analytics', 'ASTM Testing', 'Materials Science', 'Bio-Entrepreneurship']
     },
     {
       title: 'The Architectural Ledger',
@@ -1161,12 +1172,12 @@ export default function App() {
             <div className="px-6 py-3 border-t border-[var(--border-color)] bg-[var(--container-color)] flex flex-wrap items-center justify-between gap-3 text-xs">
               <div className="flex items-center gap-2 text-[var(--text-color-light)]">
                 <Sparkles size={14} className="text-sky-500" />
-                <span>Verified Credentials:</span>
+                <span>Verified Honors & Credentials:</span>
+                <span className="font-mono text-amber-500 dark:text-amber-400 font-bold">NBEC 2026 (Round 2)</span>
+                <span>•</span>
                 <span className="font-mono text-sky-600 dark:text-sky-400 font-bold">PLD3-uSKY (AI)</span>
                 <span>•</span>
                 <span className="font-mono text-sky-600 dark:text-sky-400 font-bold">waLMM-H9e3 (Data)</span>
-                <span>•</span>
-                <span className="font-mono text-sky-600 dark:text-sky-400 font-bold">m39T-uTnz (JS)</span>
               </div>
               <a
                 href="https://www.linkedin.com/in/deeksha-g-cybersec/details/certifications/"
