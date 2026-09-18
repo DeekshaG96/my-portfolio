@@ -1,10 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -25,15 +19,23 @@
       ]
     },
     {
-      "source": "/Deeksha_G_Resume.pdf",
+      "source": "/(.*)\\.pdf",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=86400, must-revalidate"
+          "value": "no-cache, no-store, must-revalidate, max-age=0"
+        },
+        {
+          "key": "Pragma",
+          "value": "no-cache"
+        },
+        {
+          "key": "Expires",
+          "value": "0"
         },
         {
           "key": "Content-Disposition",
-          "value": "inline; filename=\"Deeksha_G_Resume.pdf\""
+          "value": "inline"
         }
       ]
     }

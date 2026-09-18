@@ -25,7 +25,8 @@ import {
   Calendar,
   Sparkles,
   MousePointer,
-  Linkedin
+  Linkedin,
+  FileText
 } from 'lucide-react';
 
 interface Project {
@@ -56,6 +57,35 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [qualificationTab, setQualificationTab] = useState<'experience' | 'education'>('experience');
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const [activeResumeType, setActiveResumeType] = useState<'master' | 'ge' | 'openai' | 'drdo'>('master');
+
+  const resumeMap = {
+    master: {
+      name: 'Master ATS Resume (Full-Stack & Applied AI)',
+      filename: 'Deeksha_G_Resume.pdf',
+      url: './Deeksha_G_Resume.pdf?v=20260918_v3',
+      desc: 'Clean 1-page ATS master resume optimized for general software engineering, full-stack, and applied AI positions.'
+    },
+    ge: {
+      name: 'GE Aerospace Data Science Intern Resume',
+      filename: 'Deeksha_G_GE_Aerospace_Resume.pdf',
+      url: './Deeksha_G_GE_Aerospace_Resume.pdf?v=20260918_v3',
+      desc: 'Targeted for GE Aerospace Data Science Internship (machine learning pipelines, statistical modeling, sub-second query latency).'
+    },
+    openai: {
+      name: 'OpenAI Emerging Talent Resume (SWE 2027)',
+      filename: 'Deeksha_G_OpenAI_Resume.pdf',
+      url: './Deeksha_G_OpenAI_Resume.pdf?v=20260918_v3',
+      desc: 'Targeted for OpenAI Applied Emerging Talent 2027 (applied AI systems, API test suites with 19/19 assertions, distributed reliability).'
+    },
+    drdo: {
+      name: 'DRDO CASDIC 6-Month Intern Resume',
+      filename: 'Deeksha_G_DRDO_CASDIC_Resume.pdf',
+      url: './Deeksha_G_DRDO_CASDIC_Resume.pdf?v=20260918_v3',
+      desc: 'Targeted for DRDO CASDIC Computer Science Division (secure computing, embedded telemetry, Fortinet ZTNA Grade O).'
+    }
+  };
 
   // Contact Form State
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
@@ -109,8 +139,8 @@ export default function App() {
       title: 'RazorOps AI',
       tag: 'FinTech / Autonomous Reconciliation',
       category: 'AI & Cloud',
-      metric: 'Razorpay Buildathon • 93.4% Match',
-      desc: 'Autonomous financial reconciliation and liquidity intelligence engine built for Razorpay AI Buildathon 2026. Segregates deterministic math from Gemini Copilot reasoning, detecting MDR variances and modeling RBI nodal settlement cycles.',
+      metric: '5,000+ Records • 19/19 Assertions',
+      desc: 'Autonomous financial reconciliation and liquidity intelligence engine built for Razorpay AI Buildathon. Decouples deterministic math from Gemini reasoning across 5,000+ transaction records, reducing manual audit overhead by 40%.',
       img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/razorops-ai',
       live: 'https://razorops-ai.web.app',
@@ -120,8 +150,8 @@ export default function App() {
       title: 'NaanStop | Food Delivery Platform',
       tag: 'Full-Stack / Kitchen KDS & Mobile App',
       category: 'Full-Stack',
-      metric: 'Real-Time KDS & Mobile App',
-      desc: 'Complete full-stack food delivery ecosystem featuring a customer storefront, kitchen display system (KDS), admin catalog manager, and native Android application with real-time order lifecycle tracking.',
+      metric: '500+ Daily Orders • Sub-250ms Latency',
+      desc: 'Complete full-stack commerce platform serving 500+ daily orders with real-time Kitchen Display System (KDS), admin catalog manager, and native Android application with sub-250ms state synchronization.',
       img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/food-delivery-app',
       live: 'https://naanstop-customer.vercel.app',
@@ -129,10 +159,10 @@ export default function App() {
     },
     {
       title: 'Eco-Track Logistics',
-      tag: 'Logistics / Gemini 2.5 Flash',
+      tag: 'Logistics / Gemini AI',
       category: 'AI & Cloud',
-      metric: '+25% Route Resilience',
-      desc: 'AI-assisted logistics intelligence platform for supply chain disruption detection and recovery routing. Integrates Google Gemini 2.5 Flash reasoning with real-time IoT sensor telemetry in Firebase (+25% routing resilience). Built for Google Solution Challenge 2026.',
+      metric: '10,000+ Points • +25% Resilience',
+      desc: 'AI-assisted logistics intelligence platform for supply chain disruption detection and recovery routing. Interfaces Gemini AI reasoning with real-time IoT sensor telemetry (10,000+ points) to cut transit delays by 30%.',
       img: 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=1000',
       github: 'https://github.com/DeekshaG96/eco-track-logistics',
       live: 'https://techspire-13303696-1c68d.web.app',
@@ -357,14 +387,13 @@ export default function App() {
                 <Linkedin size={17} />
               </a>
 
-              {/* Direct Resume Download */}
-              <a 
-                href="./Deeksha_G_Resume.pdf" 
-                download="Deeksha_G_Resume.pdf" 
+              {/* Interactive Resume Portal Button */}
+              <button 
+                onClick={() => setIsResumeModalOpen(true)}
                 className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm"
               >
-                Resume <Download size={13} />
-              </a>
+                <FileText size={13} /> Resume
+              </button>
             </div>
           </nav>
 
@@ -415,13 +444,12 @@ export default function App() {
                 <Linkedin size={15} /> LinkedIn
               </a>
             </div>
-            <a 
-              href="./Deeksha_G_Resume.pdf" 
-              download="Deeksha_G_Resume.pdf" 
-              className="bg-sky-500 text-white text-center py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider mt-1 flex items-center justify-center gap-2"
+            <button 
+              onClick={() => { setIsResumeModalOpen(true); setIsMenuOpen(false); }}
+              className="bg-sky-500 text-white text-center py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider mt-1 flex items-center justify-center gap-2 shadow-sm"
             >
-              Download Resume (PDF) <Download size={14} />
-            </a>
+              <FileText size={14} /> View & Download Resume
+            </button>
           </div>
         )}
       </header>
@@ -468,7 +496,7 @@ export default function App() {
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-600 dark:text-sky-400 text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Software & AI Engineer • Batch 2023–2027 • Open for Roles</span>
+              <span>Software & AI Engineer • Expected June 2027 • Open for Roles</span>
             </div>
 
             <div className="space-y-1">
@@ -495,13 +523,12 @@ export default function App() {
               >
                 Say Hello <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
               </a>
-              <a 
-                href="./Deeksha_G_Resume.pdf" 
-                download="Deeksha_G_Resume.pdf" 
-                className="b-card px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-[var(--title-color)] hover:text-sky-500 transition-all flex items-center gap-2"
+              <button 
+                onClick={() => setIsResumeModalOpen(true)}
+                className="b-card px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-[var(--title-color)] hover:text-sky-500 transition-all flex items-center gap-2 shadow-sm"
               >
-                Download CV <Download size={14} />
-              </a>
+                <FileText size={14} className="text-sky-500" /> View & Download CV
+              </button>
               <button 
                 onClick={copyEmail}
                 className="px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 bg-sky-500/10 hover:bg-sky-500/20 transition-all flex items-center gap-1.5"
@@ -523,10 +550,10 @@ export default function App() {
                   className="w-full h-full object-cover object-top rounded-[60%_40%_30%_70%/60%_30%_70%_40%]"
                 />
               </div>
-              <span 
-                className="absolute bottom-4 right-4 w-5 h-5 rounded-full bg-emerald-500 border-2 border-[var(--container-color)] shadow-md animate-pulse" 
-                title="Actively Available for Roles"
-              />
+              <div className="absolute -bottom-3 -right-3 b-card px-4 py-2 rounded-xl text-xs font-bold text-[var(--title-color)] flex items-center gap-2 shadow-lg">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                <span>Open for Internships</span>
+              </div>
             </div>
           </div>
         </div>
@@ -541,51 +568,51 @@ export default function App() {
         </div>
       </section>
 
-      {/* ==================== 2. ABOUT ME SECTION ==================== */}
+      {/* ==================== 2. ABOUT SECTION ==================== */}
       <section id="about" className="max-w-5xl mx-auto px-6 py-16">
         <span className="section__subtitle">My Introduction</span>
         <h2 className="section__title">About Me</h2>
 
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          {/* Avatar Thumbnail with Clean Round Border */}
-          <div className="flex justify-center">
-            <div className="w-64 h-64 sm:w-72 sm:h-72 b-card p-2 rounded-3xl overflow-hidden relative group">
+          {/* About Image with Stats Cards */}
+          <div className="relative flex justify-center">
+            <div className="w-64 sm:w-72 aspect-square rounded-3xl overflow-hidden b-card p-2">
               <img 
                 src="./assets/avatar.jpg" 
                 alt="Deeksha G" 
-                className="w-full h-full object-cover object-top rounded-2xl group-hover:scale-103 transition-transform duration-500"
+                className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
           </div>
 
-          {/* About Info & 3 Iconic Bedimcode Stat Boxes */}
-          <div className="space-y-6">
-            {/* 3 Bedimcode Bento Boxes */}
-            <div className="grid grid-cols-3 gap-3 text-center">
-              <div className="b-card p-4 rounded-xl">
-                <Briefcase size={18} className="mx-auto text-sky-500 mb-1.5" />
-                <h3 className="text-xs font-bold text-[var(--title-color)]">Experience</h3>
+          {/* About Information & Stats */}
+          <div className="space-y-5">
+            {/* 3 Bedimcode Experience Cards */}
+            <div className="grid grid-cols-3 gap-3">
+              <div className="b-card p-3.5 rounded-2xl text-center">
+                <Briefcase className="w-5 h-5 text-sky-500 mx-auto mb-1" />
+                <h4 className="text-xs font-bold text-[var(--title-color)] font-headline">Experience</h4>
                 <span className="text-[11px] text-[var(--text-color-light)]">5 Internships</span>
               </div>
-              <div className="b-card p-4 rounded-xl">
-                <Code2 size={18} className="mx-auto text-sky-500 mb-1.5" />
-                <h3 className="text-xs font-bold text-[var(--title-color)]">Completed</h3>
+              <div className="b-card p-3.5 rounded-2xl text-center">
+                <CheckCircle2 className="w-5 h-5 text-sky-500 mx-auto mb-1" />
+                <h4 className="text-xs font-bold text-[var(--title-color)] font-headline">Completed</h4>
                 <span className="text-[11px] text-[var(--text-color-light)]">10+ Projects</span>
               </div>
-              <div className="b-card p-4 rounded-xl">
-                <GraduationCap size={18} className="mx-auto text-sky-500 mb-1.5" />
-                <h3 className="text-xs font-bold text-[var(--title-color)]">Education</h3>
-                <span className="text-[11px] text-[var(--text-color-light)]">Batch 2023–27</span>
+              <div className="b-card p-3.5 rounded-2xl text-center">
+                <GraduationCap className="w-5 h-5 text-sky-500 mx-auto mb-1" />
+                <h4 className="text-xs font-bold text-[var(--title-color)] font-headline">Degree</h4>
+                <span className="text-[11px] text-[var(--text-color-light)]">B.E. CSBS '27</span>
               </div>
             </div>
 
             {/* Narrative Bio */}
             <div className="space-y-3 text-sm text-[var(--text-color)] leading-relaxed">
               <p>
-                I am a Computer Science & Business Systems (CSBS) engineering undergraduate at Srinivas Institute of Technology (SIT), Mangaluru (Batch 2023–2027, VTU affiliated).
+                I am a Computer Science & Business Systems (CSBS) engineering undergraduate at Srinivas Institute of Technology (SIT), Mangaluru (Expected June 2027, VTU affiliated).
               </p>
               <p>
-                I specialize in building production-ready web applications, integrating applied AI (Gemini 2.5 Flash), and deploying cloud architectures. Having completed 5 internships across Fortinet (Grade O), Palo Alto Networks (Grade E), Microsoft TechSaksham, AWS Academy, and open source contributions at GSSoC, I build with clean architecture and strict quality standards.
+                I specialize in building production-ready web applications, integrating applied AI, and deploying cloud architectures. Having completed enterprise internships across Fortinet (Grade O), Palo Alto Networks (Grade E), Microsoft TechSaksham (94% accuracy), AWS Academy (Grade A), and open-source contributions at GSSoC (May 2024 – Aug 2024), I build with clean architecture and strict quality standards.
               </p>
             </div>
 
@@ -611,13 +638,12 @@ export default function App() {
 
             {/* Action */}
             <div className="pt-2">
-              <a 
-                href="./Deeksha_G_Resume.pdf" 
-                download="Deeksha_G_Resume.pdf" 
+              <button 
+                onClick={() => setIsResumeModalOpen(true)}
                 className="bg-sky-500 hover:bg-sky-600 text-white px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center gap-2 shadow-sm"
               >
-                Download Resume (PDF) <Download size={14} />
-              </a>
+                <FileText size={14} /> View Master Resume (PDF)
+              </button>
             </div>
           </div>
         </div>
@@ -748,7 +774,7 @@ export default function App() {
                 </div>
                 <div className="text-left sm:text-right">
                   <span className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-bold">
-                    Batch 2023 – 2027
+                    Expected June 2027
                   </span>
                   <p className="text-xs text-[var(--text-color-light)] mt-1 flex items-center sm:justify-end gap-1">
                     <Calendar size={13} className="text-sky-500" /> Affiliated to VTU Belagavi • AICTE Approved
@@ -1080,6 +1106,121 @@ export default function App() {
         >
           <ChevronUp size={20} />
         </button>
+      )}
+
+      {/* ==================== RESUME PORTAL MODAL ==================== */}
+      {isResumeModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md">
+          <div className="bg-[var(--container-color)] border border-[var(--border-color)] rounded-3xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+            
+            {/* Modal Header */}
+            <div className="px-6 py-4 border-b border-[var(--border-color)] flex items-center justify-between bg-[var(--body-color)]/50">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-sky-500/10 text-sky-500 flex items-center justify-center shadow-inner">
+                  <FileText size={20} />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold font-headline text-[var(--title-color)]">
+                    Official Resume & Verified Credentials
+                  </h3>
+                  <p className="text-xs text-[var(--text-color-light)]">
+                    Direct live preview • Verified 1-Page PDF • Zero CGPA Mention
+                  </p>
+                </div>
+              </div>
+
+              <button 
+                onClick={() => setIsResumeModalOpen(false)}
+                className="p-2 rounded-xl text-[var(--text-color)] hover:bg-[var(--border-color)] transition-colors"
+                aria-label="Close Resume Modal"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Resume Type Selector Tabs */}
+            <div className="px-6 py-3 border-b border-[var(--border-color)] flex flex-wrap items-center justify-between gap-3 bg-[var(--container-color)]">
+              <div className="flex flex-wrap gap-2">
+                {(['master', 'ge', 'openai', 'drdo'] as const).map((type) => (
+                  <button
+                    key={type}
+                    onClick={() => setActiveResumeType(type)}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                      activeResumeType === type
+                        ? 'bg-sky-500 text-white shadow-sm shadow-sky-500/20'
+                        : 'bg-[var(--body-color)] border border-[var(--border-color)] text-[var(--text-color)] hover:border-sky-500'
+                    }`}
+                  >
+                    {type === 'master' && 'Master ATS Resume'}
+                    {type === 'ge' && 'GE Aerospace (Data Science)'}
+                    {type === 'openai' && 'OpenAI (SWE 2027)'}
+                    {type === 'drdo' && 'DRDO CASDIC'}
+                  </button>
+                ))}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2">
+                <a
+                  href={resumeMap[activeResumeType].url}
+                  download={resumeMap[activeResumeType].filename}
+                  className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm"
+                >
+                  <Download size={13} /> Download PDF
+                </a>
+                <a
+                  href={resumeMap[activeResumeType].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="b-card px-3.5 py-2 rounded-xl text-xs font-bold text-[var(--title-color)] hover:text-sky-500 transition-all flex items-center gap-1.5"
+                >
+                  <ExternalLink size={13} /> Open Tab
+                </a>
+              </div>
+            </div>
+
+            {/* Selected Resume Context Banner */}
+            <div className="px-6 py-2 bg-sky-500/5 border-b border-[var(--border-color)] text-xs text-[var(--text-color)] flex items-center justify-between">
+              <span className="font-semibold text-sky-600 dark:text-sky-400">
+                {resumeMap[activeResumeType].name}:
+              </span>
+              <span className="text-[var(--text-color-light)] text-[11px] truncate max-w-md hidden sm:inline">
+                {resumeMap[activeResumeType].desc}
+              </span>
+            </div>
+
+            {/* Embedded Live PDF Viewer */}
+            <div className="flex-1 p-4 bg-[var(--body-color)] overflow-hidden flex flex-col">
+              <iframe
+                src={resumeMap[activeResumeType].url}
+                className="w-full flex-1 rounded-2xl border border-[var(--border-color)] shadow-inner bg-slate-950 min-h-[500px]"
+                title="Deeksha G Resume Viewer"
+              />
+            </div>
+
+            {/* Modal Footer with Verification Links */}
+            <div className="px-6 py-3 border-t border-[var(--border-color)] bg-[var(--container-color)] flex flex-wrap items-center justify-between gap-3 text-xs">
+              <div className="flex items-center gap-2 text-[var(--text-color-light)]">
+                <Sparkles size={14} className="text-sky-500" />
+                <span>Pearson Certiport IDs:</span>
+                <span className="font-mono text-sky-600 dark:text-sky-400 font-bold">PLD3-uSKY (AI)</span>
+                <span>•</span>
+                <span className="font-mono text-sky-600 dark:text-sky-400 font-bold">waLMM-H9e3 (Data)</span>
+                <span>•</span>
+                <span className="font-mono text-sky-600 dark:text-sky-400 font-bold">m39T-uTnz (JS)</span>
+              </div>
+              <a
+                href="https://www.linkedin.com/in/deeksha-g-cybersec/details/certifications/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sky-500 hover:underline font-bold flex items-center gap-1"
+              >
+                Verify All Credentials on LinkedIn <ExternalLink size={12} />
+              </a>
+            </div>
+
+          </div>
+        </div>
       )}
     </div>
   );
