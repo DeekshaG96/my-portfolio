@@ -58,33 +58,12 @@ export default function App() {
   const [qualificationTab, setQualificationTab] = useState<'experience' | 'education'>('experience');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
-  const [activeResumeType, setActiveResumeType] = useState<'master' | 'ge' | 'openai' | 'drdo'>('master');
 
-  const resumeMap = {
-    master: {
-      name: 'Master ATS Resume (Full-Stack & Applied AI)',
-      filename: 'Deeksha_G_Resume.pdf',
-      url: './Deeksha_G_Resume.pdf?v=20260918_v3',
-      desc: 'Clean 1-page ATS master resume optimized for general software engineering, full-stack, and applied AI positions.'
-    },
-    ge: {
-      name: 'GE Aerospace Data Science Intern Resume',
-      filename: 'Deeksha_G_GE_Aerospace_Resume.pdf',
-      url: './Deeksha_G_GE_Aerospace_Resume.pdf?v=20260918_v3',
-      desc: 'Targeted for GE Aerospace Data Science Internship (machine learning pipelines, statistical modeling, sub-second query latency).'
-    },
-    openai: {
-      name: 'OpenAI Emerging Talent Resume (SWE 2027)',
-      filename: 'Deeksha_G_OpenAI_Resume.pdf',
-      url: './Deeksha_G_OpenAI_Resume.pdf?v=20260918_v3',
-      desc: 'Targeted for OpenAI Applied Emerging Talent 2027 (applied AI systems, API test suites with 19/19 assertions, distributed reliability).'
-    },
-    drdo: {
-      name: 'DRDO CASDIC 6-Month Intern Resume',
-      filename: 'Deeksha_G_DRDO_CASDIC_Resume.pdf',
-      url: './Deeksha_G_DRDO_CASDIC_Resume.pdf?v=20260918_v3',
-      desc: 'Targeted for DRDO CASDIC Computer Science Division (secure computing, embedded telemetry, Fortinet ZTNA Grade O).'
-    }
+  const officialResume = {
+    name: 'Deeksha G — Master ATS Resume',
+    filename: 'Deeksha_G_Resume.pdf',
+    url: './Deeksha_G_Resume.pdf?v=20260918_v4',
+    desc: 'Verified 1-Page ATS Resume • B.E. Computer Science & Business Systems (Expected June 2027) • Full-Stack & Applied AI'
   };
 
   // Contact Form State
@@ -1121,10 +1100,10 @@ export default function App() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold font-headline text-[var(--title-color)]">
-                    Official Resume & Verified Credentials
+                    Official Technical Resume (Master ATS)
                   </h3>
                   <p className="text-xs text-[var(--text-color-light)]">
-                    Direct live preview • Verified 1-Page PDF • Zero CGPA Mention
+                    Verified 1-Page Technical Resume • Strictly Zero CGPA Mention • Batch 2027
                   </p>
                 </div>
               </div>
@@ -1138,38 +1117,28 @@ export default function App() {
               </button>
             </div>
 
-            {/* Resume Type Selector Tabs */}
+            {/* Action Bar */}
             <div className="px-6 py-3 border-b border-[var(--border-color)] flex flex-wrap items-center justify-between gap-3 bg-[var(--container-color)]">
-              <div className="flex flex-wrap gap-2">
-                {(['master', 'ge', 'openai', 'drdo'] as const).map((type) => (
-                  <button
-                    key={type}
-                    onClick={() => setActiveResumeType(type)}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      activeResumeType === type
-                        ? 'bg-sky-500 text-white shadow-sm shadow-sky-500/20'
-                        : 'bg-[var(--body-color)] border border-[var(--border-color)] text-[var(--text-color)] hover:border-sky-500'
-                    }`}
-                  >
-                    {type === 'master' && 'Master ATS Resume'}
-                    {type === 'ge' && 'GE Aerospace (Data Science)'}
-                    {type === 'openai' && 'OpenAI (SWE 2027)'}
-                    {type === 'drdo' && 'DRDO CASDIC'}
-                  </button>
-                ))}
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 rounded-xl text-xs font-semibold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+                  Master Full-Stack & Applied AI Resume
+                </span>
+                <span className="text-xs text-[var(--text-color-light)] hidden sm:inline">
+                  • 1 Page • Pure ASCII • ATS Grade A+
+                </span>
               </div>
 
               {/* Action Buttons */}
               <div className="flex items-center gap-2">
                 <a
-                  href={resumeMap[activeResumeType].url}
-                  download={resumeMap[activeResumeType].filename}
+                  href={officialResume.url}
+                  download={officialResume.filename}
                   className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm"
                 >
                   <Download size={13} /> Download PDF
                 </a>
                 <a
-                  href={resumeMap[activeResumeType].url}
+                  href={officialResume.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="b-card px-3.5 py-2 rounded-xl text-xs font-bold text-[var(--title-color)] hover:text-sky-500 transition-all flex items-center gap-1.5"
@@ -1179,22 +1148,12 @@ export default function App() {
               </div>
             </div>
 
-            {/* Selected Resume Context Banner */}
-            <div className="px-6 py-2 bg-sky-500/5 border-b border-[var(--border-color)] text-xs text-[var(--text-color)] flex items-center justify-between">
-              <span className="font-semibold text-sky-600 dark:text-sky-400">
-                {resumeMap[activeResumeType].name}:
-              </span>
-              <span className="text-[var(--text-color-light)] text-[11px] truncate max-w-md hidden sm:inline">
-                {resumeMap[activeResumeType].desc}
-              </span>
-            </div>
-
             {/* Embedded Live PDF Viewer */}
             <div className="flex-1 p-4 bg-[var(--body-color)] overflow-hidden flex flex-col">
               <iframe
-                src={resumeMap[activeResumeType].url}
-                className="w-full flex-1 rounded-2xl border border-[var(--border-color)] shadow-inner bg-slate-950 min-h-[500px]"
-                title="Deeksha G Resume Viewer"
+                src={officialResume.url}
+                className="w-full flex-1 rounded-2xl border border-[var(--border-color)] shadow-inner bg-slate-950 min-h-[520px]"
+                title="Deeksha G Official Resume Viewer"
               />
             </div>
 
@@ -1202,7 +1161,7 @@ export default function App() {
             <div className="px-6 py-3 border-t border-[var(--border-color)] bg-[var(--container-color)] flex flex-wrap items-center justify-between gap-3 text-xs">
               <div className="flex items-center gap-2 text-[var(--text-color-light)]">
                 <Sparkles size={14} className="text-sky-500" />
-                <span>Pearson Certiport IDs:</span>
+                <span>Verified Credentials:</span>
                 <span className="font-mono text-sky-600 dark:text-sky-400 font-bold">PLD3-uSKY (AI)</span>
                 <span>•</span>
                 <span className="font-mono text-sky-600 dark:text-sky-400 font-bold">waLMM-H9e3 (Data)</span>
@@ -1215,7 +1174,7 @@ export default function App() {
                 rel="noopener noreferrer"
                 className="text-sky-500 hover:underline font-bold flex items-center gap-1"
               >
-                Verify All Credentials on LinkedIn <ExternalLink size={12} />
+                Verify Credentials on LinkedIn <ExternalLink size={12} />
               </a>
             </div>
 
