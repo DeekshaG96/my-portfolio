@@ -100,6 +100,25 @@ export default function App() {
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) return;
+
+    // Hands the message to the visitor's mail client, pre-addressed and pre-filled.
+    // This delivers with zero backend and zero signup.
+    //
+    // To send silently in the background instead, create a form at
+    // https://formspree.io (or https://web3forms.com), then replace the three
+    // lines below with:
+    //
+    //   await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(formState),
+    //   });
+    const subject = `Portfolio enquiry from ${formState.name}`;
+    const body = `${formState.message}\n\n—\n${formState.name}\n${formState.email}`;
+    window.location.href =
+      `mailto:deekshagpbangera@gmail.com?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
     setFormSubmitted(true);
     setTimeout(() => {
       setFormState({ name: '', email: '', message: '' });
@@ -535,8 +554,11 @@ export default function App() {
             <div className="relative">
               <div className="home__blob overflow-hidden p-1.5">
                 <img 
-                  src="./assets/avatar.jpg" 
+                  src="./media/avatar.jpg" 
                   alt="Deeksha G" 
+                  width={597}
+                  height={800}
+                  fetchPriority="high"
                   className="w-full h-full object-cover object-top rounded-[60%_40%_30%_70%/60%_30%_70%_40%]"
                 />
               </div>
@@ -568,8 +590,12 @@ export default function App() {
           <div className="relative flex justify-center">
             <div className="w-64 sm:w-72 aspect-square rounded-3xl overflow-hidden b-card p-2">
               <img 
-                src="./assets/avatar.jpg" 
+                src="./media/avatar.jpg" 
                 alt="Deeksha G" 
+                width={597}
+                height={800}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
@@ -976,17 +1002,27 @@ export default function App() {
             </h3>
 
             {formSubmitted ? (
-              <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 p-6 rounded-xl text-center space-y-2">
+              <div
+                role="status"
+                aria-live="polite"
+                className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 p-6 rounded-xl text-center space-y-2"
+              >
                 <CheckCircle2 size={28} className="mx-auto text-emerald-500" />
-                <p className="font-bold text-sm">Message Sent Successfully!</p>
-                <p className="text-xs">Thank you for reaching out. I'll get back to you promptly.</p>
+                <p className="font-bold text-sm">Your message is ready to send</p>
+                <p className="text-xs">
+                  Your email app should have opened with it drafted — just hit send. If nothing
+                  opened, write to deekshagpbangera@gmail.com directly.
+                </p>
               </div>
             ) : (
               <form onSubmit={handleFormSubmit} className="space-y-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-[var(--text-color)]">Your Name</label>
+                  <label htmlFor="contact-name" className="text-xs font-semibold text-[var(--text-color)]">Your Name</label>
                   <input 
                     type="text" 
+                    id="contact-name"
+                    name="name"
+                    autoComplete="name"
                     required 
                     value={formState.name}
                     onChange={(e) => setFormState({ ...formState, name: e.target.value })}
@@ -996,9 +1032,12 @@ export default function App() {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-[var(--text-color)]">Email Address</label>
+                  <label htmlFor="contact-email" className="text-xs font-semibold text-[var(--text-color)]">Email Address</label>
                   <input 
                     type="email" 
+                    id="contact-email"
+                    name="email"
+                    autoComplete="email"
                     required 
                     value={formState.email}
                     onChange={(e) => setFormState({ ...formState, email: e.target.value })}
@@ -1008,9 +1047,11 @@ export default function App() {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-[var(--text-color)]">Message</label>
+                  <label htmlFor="contact-message" className="text-xs font-semibold text-[var(--text-color)]">Message</label>
                   <textarea 
                     rows={4} 
+                    id="contact-message"
+                    name="message"
                     required 
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}

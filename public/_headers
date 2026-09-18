@@ -12,6 +12,10 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Hand-managed images keep stable filenames, so they must revalidate.
+/media/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
 /Deeksha_G_Resume.pdf
   Cache-Control: public, max-age=86400, must-revalidate
   Content-Disposition: inline; filename="Deeksha_G_Resume.pdf"

@@ -31,6 +31,12 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Hand-managed images keep stable filenames, so they must revalidate.
+[[headers]]
+  for = "/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
 # Professional delivery header for the PDF Resume
 [[headers]]
   for = "/Deeksha_G_Resume.pdf"
