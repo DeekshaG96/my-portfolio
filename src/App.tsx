@@ -408,12 +408,17 @@ export default function App() {
       {/* ==================== HEADER / NAVBAR ==================== */}
       <header className="sticky top-0 z-50 bg-[var(--container-color)]/90 backdrop-blur-md border-b border-[var(--border-color)]">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo with Signature Script Font & Accent Dot */}
+          {/* Classy Tech Brand Logo */}
           <a 
             href="#home" 
-            className="font-signature text-3xl sm:text-4xl text-[var(--title-color)] hover:text-sky-500 transition-all flex items-center select-none leading-none tracking-normal"
+            className="flex items-center gap-2.5 select-none transition-transform active:scale-98"
           >
-            <span>Deeksha</span><span className="text-sky-500 font-sans text-2xl font-black leading-none ml-0.5">.</span>
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-md shadow-sky-500/20">
+              DG
+            </div>
+            <span className="font-headline font-bold text-xl sm:text-2xl text-[var(--title-color)] tracking-tight">
+              Deeksha<span className="text-sky-500 font-black">.</span>
+            </span>
           </a>
 
           {/* Desktop Navigation */}
@@ -421,7 +426,7 @@ export default function App() {
             <a href="#home" className="hover:text-sky-500 transition-colors">Home</a>
             <a href="#about" className="hover:text-sky-500 transition-colors">About</a>
             <a href="#skills" className="hover:text-sky-500 transition-colors">Skills</a>
-            <a href="#qualification" className="hover:text-sky-500 transition-colors">Qualification</a>
+            <a href="#qualification" className="hover:text-sky-500 transition-colors">Experience</a>
             <a href="#services" className="hover:text-sky-500 transition-colors">Services</a>
             <a href="#portfolio" className="hover:text-sky-500 transition-colors">Projects</a>
             <a href="#contact" className="hover:text-sky-500 transition-colors">Contact</a>
@@ -431,7 +436,7 @@ export default function App() {
               <button 
                 onClick={toggleTheme}
                 aria-label="Toggle Theme"
-                className="w-9 h-9 rounded-xl flex items-center justify-center text-[var(--text-color)] hover:text-sky-500 hover:bg-[var(--border-color)]/40 transition-colors"
+                className="w-9 h-9 rounded-xl flex items-center justify-center text-[var(--text-color)] hover:text-sky-500 hover:bg-[var(--border-color)]/40 transition-colors cursor-pointer"
                 title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
               >
                 {darkMode ? <Sun size={17} className="text-amber-400" /> : <Moon size={17} />}
@@ -462,7 +467,7 @@ export default function App() {
               {/* Interactive Resume Portal Button */}
               <button 
                 onClick={() => setIsResumeModalOpen(true)}
-                className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+                className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm shadow-sky-500/20 cursor-pointer"
               >
                 <FileText size={13} /> Resume
               </button>
@@ -499,7 +504,7 @@ export default function App() {
             <a href="#home" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Home</a>
             <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">About</a>
             <a href="#skills" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Skills</a>
-            <a href="#qualification" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Qualification</a>
+            <a href="#qualification" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Experience</a>
             <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Services</a>
             <a href="#portfolio" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Projects</a>
             <a href="#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Contact</a>
@@ -535,115 +540,115 @@ export default function App() {
       <section id="home" className="max-w-6xl mx-auto px-6 pt-16 sm:pt-24 pb-20 relative">
         <div className="grid md:grid-cols-[auto_1fr_auto] items-center gap-8 sm:gap-12">
           
-          {/* Vertical Socials on Left (Iconic Bedimcode Style) */}
-          <div className="hidden md:flex flex-col items-center gap-4 text-[var(--text-color-light)]">
+          {/* Clean Vertical Social Rail */}
+          <div className="hidden md:flex flex-col items-center gap-3.5 text-[var(--text-color-light)]">
             <a 
               href="https://github.com/DeekshaG96" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="hover:text-sky-500 transition-transform hover:-translate-y-1"
+              className="w-10 h-10 rounded-xl b-card flex items-center justify-center hover:text-sky-500 transition-all hover:-translate-y-0.5 shadow-xs"
               title="GitHub"
             >
-              <Github size={19} />
+              <Github size={17} />
             </a>
             <a 
               href="https://linkedin.com/in/deeksha-g-cybersec" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="hover:text-sky-500 transition-transform hover:-translate-y-1"
+              className="w-10 h-10 rounded-xl b-card flex items-center justify-center hover:text-sky-500 transition-all hover:-translate-y-0.5 shadow-xs"
               title="LinkedIn"
             >
-              <Linkedin size={19} />
+              <Linkedin size={17} />
             </a>
             <a 
               href="mailto:deekshagpbangera@gmail.com" 
-              className="hover:text-sky-500 transition-transform hover:-translate-y-1"
+              className="w-10 h-10 rounded-xl b-card flex items-center justify-center hover:text-sky-500 transition-all hover:-translate-y-0.5 shadow-xs"
               title="Send Email"
             >
-              <Mail size={19} />
+              <Mail size={17} />
             </a>
-            <div className="w-[1.5px] h-10 bg-[var(--border-color)] mt-1" />
-            <span className="font-signature text-2xl text-[var(--text-color-light)] select-none [writing-mode:vertical-rl] rotate-180 tracking-widest opacity-80 pt-2 hover:text-sky-500 transition-colors">
-              Deeksha
-            </span>
+            <div className="w-[1.5px] h-12 bg-gradient-to-b from-[var(--border-color)] to-transparent mt-1" />
           </div>
 
           {/* Hero Content (Center) */}
-          <div className="space-y-4 max-w-xl text-center md:text-left">
+          <div className="space-y-5 max-w-xl text-center md:text-left">
             {/* Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-600 dark:text-sky-400 text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Software Engineer & AI Developer • Expected June 2027 • Open to Internships & New-Grad Roles</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-400 text-xs font-semibold tracking-wide">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span>Available for Internships & Full-Time Roles • Class of 2027</span>
             </div>
 
-            <div className="space-y-1">
-              <h3 className="text-sm font-semibold tracking-wider uppercase text-[var(--text-color-light)]">
-                Hello, I'm
-              </h3>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-headline text-[var(--title-color)] tracking-tight">
-                Deeksha G.
-              </h1>
-              <h2 className="text-lg sm:text-xl font-medium text-sky-500 font-headline pt-1">
+            {/* Typography Hierarchy */}
+            <div className="space-y-1.5">
+              <p className="text-xs sm:text-sm font-bold tracking-widest uppercase text-sky-500 font-headline">
                 Software Engineer & AI Developer
-              </h2>
+              </p>
+              <h1 className="text-4xl sm:text-6xl font-extrabold font-headline text-[var(--title-color)] tracking-tight leading-[1.1]">
+                Deeksha G<span className="text-sky-500">.</span>
+              </h1>
             </div>
 
-            <p className="text-sm sm:text-base text-[var(--text-color)] leading-relaxed pt-1">
-              Engineering high-resilience full-stack web platforms, machine learning pipelines, and applied AI systems. Pursuing B.E. in Computer Science & Business Systems (CSBS) at Srinivas Institute of Technology (SIT), Mangaluru.
+            <p className="text-sm sm:text-base text-[var(--text-color)] leading-relaxed">
+              Engineering production-grade full-stack web platforms, applied machine learning pipelines, and cloud architectures. Pursuing B.E. in Computer Science & Business Systems (CSBS) at Srinivas Institute of Technology (SIT), Mangaluru.
             </p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-4">
+            {/* Action Buttons: Unified height, padding, and radius */}
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
               <a 
                 href="#contact" 
-                className="bg-sky-500 hover:bg-sky-600 text-white px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-sky-500/20 flex items-center gap-2 group"
+                className="h-11 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-sky-500/25 hover:shadow-lg hover:shadow-sky-500/30 flex items-center gap-2 cursor-pointer group"
               >
-                Say Hello <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                Get In Touch <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
               </a>
               <button 
                 onClick={() => setIsResumeModalOpen(true)}
-                className="b-card px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-[var(--title-color)] hover:text-sky-500 transition-all flex items-center gap-2 shadow-sm"
+                className="h-11 px-5 rounded-xl b-card text-xs font-bold uppercase tracking-wider text-[var(--title-color)] hover:text-sky-500 hover:border-sky-500/50 transition-all flex items-center gap-2 shadow-xs cursor-pointer"
               >
-                <FileText size={14} className="text-sky-500" /> View & Download CV
+                <FileText size={14} className="text-sky-500" /> View Resume
               </button>
               <button 
                 onClick={copyEmail}
-                className="px-4 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 bg-sky-500/10 hover:bg-sky-500/20 transition-all flex items-center gap-1.5"
+                className="h-11 px-4 rounded-xl bg-sky-500/10 hover:bg-sky-500/15 border border-sky-500/20 text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 transition-all flex items-center gap-2 cursor-pointer"
                 title="Copy Email Address"
               >
                 {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
-                {copied ? 'Copied' : 'Copy Email'}
+                <span>{copied ? 'Copied!' : 'Copy Email'}</span>
               </button>
             </div>
           </div>
 
-          {/* Right Column: Signature Bedimcode Blob Avatar Frame */}
+          {/* Right Column: Sleek Executive Portrait Frame */}
           <div className="flex justify-center order-first md:order-last">
-            <div className="relative">
-              <div className="home__blob overflow-hidden p-1.5">
-                <img 
-                  src="./media/avatar.jpg" 
-                  alt="Deeksha G" 
-                  width={597}
-                  height={800}
-                  fetchPriority="high"
-                  className="w-full h-full object-cover object-top rounded-[60%_40%_30%_70%/60%_30%_70%_40%]"
-                />
-              </div>
-              <div className="absolute -bottom-3 -right-3 b-card px-4 py-2 rounded-xl text-xs font-bold text-[var(--title-color)] flex items-center gap-2 shadow-lg">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                <span>Open to Internships & New-Grad Roles</span>
+            <div className="relative group">
+              {/* Subtle ambient back-glow */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-sky-500/25 via-indigo-500/15 to-emerald-500/15 rounded-[2.5rem] blur-2xl opacity-60 dark:opacity-40 group-hover:opacity-80 transition-opacity duration-700" />
+              
+              {/* Card Frame */}
+              <div className="relative w-64 sm:w-72 md:w-80 aspect-square rounded-[2rem] p-2 bg-[var(--container-color)] border border-[var(--border-color)] shadow-xl shadow-slate-900/10 dark:shadow-black/40">
+                <div className="w-full h-full rounded-[1.6rem] overflow-hidden bg-slate-100 dark:bg-slate-800">
+                  <img 
+                    src="./media/avatar.jpg" 
+                    alt="Deeksha G" 
+                    width={597}
+                    height={800}
+                    fetchPriority="high"
+                    className="w-full h-full object-cover object-top group-hover:scale-103 transition-transform duration-700"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Floating Scroll Down Indicator (Bedimcode Signature) */}
-        <div className="hidden sm:flex justify-center mt-16 text-xs font-semibold text-[var(--text-color-light)]">
-          <a href="#about" className="flex items-center gap-2 hover:text-sky-500 transition-colors">
-            <MousePointer size={15} className="animate-bounce text-sky-500" />
-            <span>Scroll down</span>
-            <ArrowRight size={13} />
+        {/* Floating Scroll Down Indicator */}
+        <div className="hidden sm:flex justify-center mt-14 text-xs font-semibold text-[var(--text-color-light)]">
+          <a href="#about" className="flex items-center gap-2 hover:text-sky-500 transition-colors py-2 px-4 rounded-full b-card shadow-xs">
+            <MousePointer size={14} className="animate-bounce text-sky-500" />
+            <span className="tracking-wide">Explore Portfolio</span>
+            <ArrowRight size={12} />
           </a>
         </div>
       </section>
@@ -664,7 +669,7 @@ export default function App() {
                 height={800}
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
+                className="w-full h-full object-cover rounded-2xl transition-all duration-500"
               />
             </div>
           </div>
@@ -782,10 +787,10 @@ export default function App() {
         </div>
       </section>
 
-      {/* ==================== 4. QUALIFICATION SECTION (Bedimcode Timeline) ==================== */}
+      {/* ==================== 4. EXPERIENCE & EDUCATION SECTION ==================== */}
       <section id="qualification" className="max-w-4xl mx-auto px-6 py-16">
-        <span className="section__subtitle">My Personal Journey</span>
-        <h2 className="section__title">Qualification</h2>
+        <span className="section__subtitle">Career & Academics</span>
+        <h2 className="section__title">Experience & Education</h2>
 
         {/* Interactive Tabs */}
         <div className="flex justify-center gap-6 mb-12" role="tablist" aria-label="Qualifications Tabs">
@@ -1159,19 +1164,25 @@ export default function App() {
       {/* ==================== FOOTER ==================== */}
       <footer className="border-t border-[var(--border-color)] bg-[var(--container-color)] py-12 text-center text-xs text-[var(--text-color-light)]">
         <div className="max-w-5xl mx-auto px-6 space-y-6">
-          <div>
-            <h2 className="font-signature text-3xl sm:text-4xl text-[var(--title-color)]">
-              Deeksha<span className="text-sky-500 font-sans text-2xl font-black ml-0.5">.</span>
-            </h2>
-            <p className="text-xs text-[var(--text-color-light)] mt-1">
+          <div className="flex flex-col items-center">
+            <a href="#home" className="flex items-center gap-2.5 select-none mb-2">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-md shadow-sky-500/20">
+                DG
+              </div>
+              <span className="font-headline font-bold text-2xl text-[var(--title-color)] tracking-tight">
+                Deeksha<span className="text-sky-500 font-black">.</span>
+              </span>
+            </a>
+            <p className="text-xs text-[var(--text-color-light)]">
               Software Engineer & AI Developer
             </p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 text-xs font-semibold uppercase tracking-wider text-[var(--text-color)]">
+            <a href="#home" className="hover:text-sky-500 transition-colors">Home</a>
             <a href="#about" className="hover:text-sky-500 transition-colors">About</a>
             <a href="#skills" className="hover:text-sky-500 transition-colors">Skills</a>
-            <a href="#qualification" className="hover:text-sky-500 transition-colors">Qualification</a>
+            <a href="#qualification" className="hover:text-sky-500 transition-colors">Experience</a>
             <a href="#services" className="hover:text-sky-500 transition-colors">Services</a>
             <a href="#portfolio" className="hover:text-sky-500 transition-colors">Projects</a>
             <a href="#contact" className="hover:text-sky-500 transition-colors">Contact</a>

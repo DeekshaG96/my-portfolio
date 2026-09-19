@@ -3,7 +3,6 @@
 @theme {
   --font-headline: "Poppins", "Plus Jakarta Sans", sans-serif;
   --font-body: "Inter", "Poppins", sans-serif;
-  --font-signature: "Great Vibes", "Alex Brush", "Allura", cursive;
 }
 
 :root {
@@ -162,19 +161,14 @@
 
   /* Subtle background grid */
   .bg-grid {
-    background-size: 32px 32px;
+    background-size: 40px 40px;
     background-image: 
-      linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+      linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
   }
   .dark .bg-grid {
     background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  }
-
-  /* Signature script font */
-  .font-signature {
-    font-family: 'Great Vibes', 'Alex Brush', 'Allura', cursive;
+      linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   }
 }
