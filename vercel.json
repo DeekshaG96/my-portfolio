@@ -10,7 +10,7 @@
       ]
     },
     {
-      "source": "/media/(.*)",
+      "source": "/(og-image\\.png|media/.*)",
       "headers": [
         {
           "key": "Cache-Control",

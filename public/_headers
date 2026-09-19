@@ -16,6 +16,9 @@
 /media/*
   Cache-Control: public, max-age=86400, must-revalidate
 
+/og-image.png
+  Cache-Control: public, max-age=86400, must-revalidate
+
 /Deeksha_G_Resume.pdf
   Cache-Control: public, max-age=86400, must-revalidate
   Content-Disposition: inline; filename="Deeksha_G_Resume.pdf"

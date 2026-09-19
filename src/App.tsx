@@ -60,10 +60,8 @@ export default function App() {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   const officialResume = {
-    name: 'Deeksha G — Technical Resume',
     filename: 'Deeksha_G_Resume.pdf',
-    url: './Deeksha_G_Resume.pdf',
-    desc: 'Verified 1-Page ATS Resume • B.E. Computer Science & Business Systems • Applied AI & Full-Stack'
+    url: './Deeksha_G_Resume.pdf'
   };
 
   // Contact Form State
@@ -639,7 +637,7 @@ export default function App() {
                 onClick={() => setIsResumeModalOpen(true)}
                 className="bg-sky-500 hover:bg-sky-600 text-white px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center gap-2 shadow-sm"
               >
-                <FileText size={14} /> View Master Resume (PDF)
+                <FileText size={14} /> View Technical Resume (PDF)
               </button>
             </div>
           </div>
