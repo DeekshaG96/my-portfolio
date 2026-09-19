@@ -1,4 +1,4 @@
-import { useState, useEffect, type FormEvent } from 'react';
+import { useState, useEffect, useRef, type FormEvent } from 'react';
 import { 
   Github, 
   Mail, 
@@ -59,6 +59,9 @@ export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
+  const copyTimeoutRef = useRef<number | null>(null);
+  const formTimeoutRef = useRef<number | null>(null);
+
   const officialResume = {
     filename: 'Deeksha_G_Resume.pdf',
     url: './Deeksha_G_Resume.pdf'
@@ -83,42 +86,117 @@ export default function App() {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 380);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Body scroll lock & Escape listener for Resume Modal
+  useEffect(() => {
+    if (!isResumeModalOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsResumeModalOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isResumeModalOpen]);
+
+  // Escape key & resize dismissal for Mobile Drawer
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setIsMenuOpen(false);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isMenuOpen]);
+
+  // Cleanup pending timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (copyTimeoutRef.current) window.clearTimeout(copyTimeoutRef.current);
+      if (formTimeoutRef.current) window.clearTimeout(formTimeoutRef.current);
+    };
   }, []);
 
   const toggleTheme = () => setDarkMode(!darkMode);
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText('deekshagpbangera@gmail.com');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2200);
+  const copyEmail = async () => {
+    const email = 'deekshagpbangera@gmail.com';
+    let success = false;
+
+    if (navigator?.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(email);
+        success = true;
+      } catch {
+        // Fallback for restricted clipboard contexts
+      }
+    }
+
+    if (!success) {
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = email;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        success = document.execCommand('copy');
+        document.body.removeChild(textArea);
+      } catch {
+        success = false;
+      }
+    }
+
+    if (success) {
+      if (copyTimeoutRef.current) window.clearTimeout(copyTimeoutRef.current);
+      setCopied(true);
+      copyTimeoutRef.current = window.setTimeout(() => setCopied(false), 2200);
+    }
   };
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!formState.name || !formState.email || !formState.message) return;
+    const trimmedName = formState.name.trim();
+    const trimmedEmail = formState.email.trim();
+    const trimmedMessage = formState.message.trim();
+
+    if (!trimmedName || !trimmedEmail || !trimmedMessage) return;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(trimmedEmail)) return;
 
     // Hands the message to the visitor's mail client, pre-addressed and pre-filled.
-    // This delivers with zero backend and zero signup.
-    //
-    // To send silently in the background instead, create a form at
-    // https://formspree.io (or https://web3forms.com), then replace the three
-    // lines below with:
-    //
-    //   await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(formState),
-    //   });
-    const subject = `Portfolio enquiry from ${formState.name}`;
-    const body = `${formState.message}\n\n—\n${formState.name}\n${formState.email}`;
+    const subject = `Portfolio enquiry from ${trimmedName}`;
+    const body = `${trimmedMessage}\n\n—\n${trimmedName}\n${trimmedEmail}`;
     window.location.href =
       `mailto:deekshagpbangera@gmail.com?subject=${encodeURIComponent(subject)}` +
       `&body=${encodeURIComponent(body)}`;
 
     setFormSubmitted(true);
-    setTimeout(() => {
+    if (formTimeoutRef.current) window.clearTimeout(formTimeoutRef.current);
+    formTimeoutRef.current = window.setTimeout(() => {
       setFormState({ name: '', email: '', message: '' });
       setFormSubmitted(false);
     }, 4500);
@@ -223,7 +301,13 @@ export default function App() {
 
   const filteredProjects = activeCategory === 'All' 
     ? projects 
-    : projects.filter(p => p.category === activeCategory);
+    : projects.filter(p => 
+        p.category === activeCategory || 
+        (activeCategory === 'Mobile' && (
+          p.tech.some(t => t.toLowerCase().includes('android') || t.toLowerCase().includes('mobile')) || 
+          p.tag.toLowerCase().includes('mobile')
+        ))
+      );
 
   const services = [
     {
@@ -357,7 +441,7 @@ export default function App() {
               <a 
                 href="https://github.com/DeekshaG96" 
                 target="_blank" 
-                rel="noreferrer" 
+                rel="noopener noreferrer" 
                 className="w-9 h-9 rounded-xl flex items-center justify-center text-[var(--text-color)] hover:text-sky-500 hover:bg-[var(--border-color)]/40 transition-colors"
                 title="GitHub Profile"
               >
@@ -368,7 +452,7 @@ export default function App() {
               <a 
                 href="https://linkedin.com/in/deeksha-g-cybersec" 
                 target="_blank" 
-                rel="noreferrer" 
+                rel="noopener noreferrer" 
                 className="w-9 h-9 rounded-xl flex items-center justify-center text-[var(--text-color)] hover:text-sky-500 hover:bg-[var(--border-color)]/40 transition-colors"
                 title="LinkedIn Profile"
               >
@@ -378,7 +462,7 @@ export default function App() {
               {/* Interactive Resume Portal Button */}
               <button 
                 onClick={() => setIsResumeModalOpen(true)}
-                className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm"
+                className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
               >
                 <FileText size={13} /> Resume
               </button>
@@ -390,13 +474,14 @@ export default function App() {
             <button 
               onClick={toggleTheme}
               aria-label="Toggle Theme"
-              className="p-2 rounded-lg text-[var(--text-color)] hover:bg-[var(--border-color)]/40"
+              title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+              className="p-2 rounded-lg text-[var(--text-color)] hover:bg-[var(--border-color)]/40 cursor-pointer"
             >
               {darkMode ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} />}
             </button>
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)} 
-              className="p-2 rounded-lg text-[var(--text-color)] hover:bg-[var(--border-color)]/40"
+              className="p-2 rounded-lg text-[var(--text-color)] hover:bg-[var(--border-color)]/40 cursor-pointer"
               aria-label="Toggle Menu"
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -406,7 +491,11 @@ export default function App() {
 
         {/* Mobile Dropdown Drawer */}
         {isMenuOpen && (
-          <div className="md:hidden bg-[var(--container-color)] border-b border-[var(--border-color)] px-6 py-5 flex flex-col gap-4 text-sm font-semibold shadow-xl">
+          <div 
+            role="navigation"
+            aria-label="Mobile Navigation"
+            className="md:hidden bg-[var(--container-color)] border-b border-[var(--border-color)] px-6 py-5 flex flex-col gap-4 text-sm font-semibold shadow-xl"
+          >
             <a href="#home" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Home</a>
             <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">About</a>
             <a href="#skills" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Skills</a>
@@ -418,7 +507,7 @@ export default function App() {
               <a 
                 href="https://github.com/DeekshaG96" 
                 target="_blank" 
-                rel="noreferrer" 
+                rel="noopener noreferrer" 
                 className="flex-1 py-2 rounded-xl b-card flex items-center justify-center gap-1.5 text-xs font-semibold hover:text-sky-500 transition-colors"
               >
                 <Github size={15} /> GitHub
@@ -426,7 +515,7 @@ export default function App() {
               <a 
                 href="https://linkedin.com/in/deeksha-g-cybersec" 
                 target="_blank" 
-                rel="noreferrer" 
+                rel="noopener noreferrer" 
                 className="flex-1 py-2 rounded-xl b-card flex items-center justify-center gap-1.5 text-xs font-semibold hover:text-sky-500 transition-colors"
               >
                 <Linkedin size={15} /> LinkedIn
@@ -434,7 +523,7 @@ export default function App() {
             </div>
             <button 
               onClick={() => { setIsResumeModalOpen(true); setIsMenuOpen(false); }}
-              className="bg-sky-500 text-white text-center py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider mt-1 flex items-center justify-center gap-2 shadow-sm"
+              className="bg-sky-500 text-white text-center py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider mt-1 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
             >
               <FileText size={14} /> View & Download Resume
             </button>
@@ -451,7 +540,7 @@ export default function App() {
             <a 
               href="https://github.com/DeekshaG96" 
               target="_blank" 
-              rel="noreferrer" 
+              rel="noopener noreferrer" 
               className="hover:text-sky-500 transition-transform hover:-translate-y-1"
               title="GitHub"
             >
@@ -460,7 +549,7 @@ export default function App() {
             <a 
               href="https://linkedin.com/in/deeksha-g-cybersec" 
               target="_blank" 
-              rel="noreferrer" 
+              rel="noopener noreferrer" 
               className="hover:text-sky-500 transition-transform hover:-translate-y-1"
               title="LinkedIn"
             >
@@ -699,10 +788,12 @@ export default function App() {
         <h2 className="section__title">Qualification</h2>
 
         {/* Interactive Tabs */}
-        <div className="flex justify-center gap-6 mb-12">
+        <div className="flex justify-center gap-6 mb-12" role="tablist" aria-label="Qualifications Tabs">
           <button
+            role="tab"
+            aria-selected={qualificationTab === 'experience'}
             onClick={() => setQualificationTab('experience')}
-            className={`flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-colors ${
+            className={`flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-colors cursor-pointer ${
               qualificationTab === 'experience'
                 ? 'text-sky-500 border-b-2 border-sky-500 pb-1'
                 : 'text-[var(--text-color-light)] hover:text-[var(--title-color)]'
@@ -713,8 +804,10 @@ export default function App() {
           </button>
 
           <button
+            role="tab"
+            aria-selected={qualificationTab === 'education'}
             onClick={() => setQualificationTab('education')}
-            className={`flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-colors ${
+            className={`flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-colors cursor-pointer ${
               qualificationTab === 'education'
                 ? 'text-sky-500 border-b-2 border-sky-500 pb-1'
                 : 'text-[var(--text-color-light)] hover:text-[var(--title-color)]'
@@ -843,72 +936,84 @@ export default function App() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {filteredProjects.map((p) => (
-            <div 
-              key={p.title} 
-              className="b-card rounded-2xl overflow-hidden flex flex-col justify-between group"
-            >
-              <div>
-                <div className="relative aspect-[16/9] overflow-hidden bg-slate-100 dark:bg-slate-800">
-                  <img 
-                    src={p.img} 
-                    alt={p.title} 
-                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" 
-                    referrerPolicy="no-referrer"
-                  />
-                  <span className="absolute top-3 right-3 bg-[var(--container-color)]/95 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 shadow-xs">
-                    {p.metric}
-                  </span>
-                </div>
-                
-                <div className="p-6 space-y-3">
-                  <div>
-                    <span className="text-[11px] font-bold text-sky-500 uppercase tracking-wider block">{p.tag}</span>
-                    <h3 className="text-lg font-bold font-headline text-[var(--title-color)] mt-0.5">{p.title}</h3>
+        {filteredProjects.length === 0 ? (
+          <div className="b-card p-12 rounded-2xl text-center space-y-3">
+            <Layers className="w-10 h-10 text-sky-500/50 mx-auto" />
+            <h3 className="text-base font-bold font-headline text-[var(--title-color)]">
+              No projects found in this category
+            </h3>
+            <p className="text-xs text-[var(--text-color-light)]">
+              Try selecting "All" or another category tab above.
+            </p>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-6">
+            {filteredProjects.map((p) => (
+              <div 
+                key={p.title} 
+                className="b-card rounded-2xl overflow-hidden flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="relative aspect-[16/9] overflow-hidden bg-slate-100 dark:bg-slate-800">
+                    <img 
+                      src={p.img} 
+                      alt={p.title} 
+                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" 
+                      referrerPolicy="no-referrer"
+                    />
+                    <span className="absolute top-3 right-3 bg-[var(--container-color)]/95 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 shadow-xs">
+                      {p.metric}
+                    </span>
                   </div>
+                  
+                  <div className="p-6 space-y-3">
+                    <div>
+                      <span className="text-[11px] font-bold text-sky-500 uppercase tracking-wider block">{p.tag}</span>
+                      <h3 className="text-lg font-bold font-headline text-[var(--title-color)] mt-0.5">{p.title}</h3>
+                    </div>
 
-                  <p className="text-[var(--text-color)] text-xs sm:text-sm leading-relaxed">
-                    {p.desc}
-                  </p>
+                    <p className="text-[var(--text-color)] text-xs sm:text-sm leading-relaxed">
+                      {p.desc}
+                    </p>
 
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {p.tech.map((t) => (
-                      <span 
-                        key={t} 
-                        className="text-[11px] bg-[var(--body-color)] text-[var(--text-color)] px-2.5 py-0.5 rounded-md font-medium border border-[var(--border-color)]"
-                      >
-                        {t}
-                      </span>
-                    ))}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {p.tech.map((t) => (
+                        <span 
+                          key={t} 
+                          className="text-[11px] bg-[var(--body-color)] text-[var(--text-color)] px-2.5 py-0.5 rounded-md font-medium border border-[var(--border-color)]"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Action Buttons */}
-              <div className="px-6 pb-5 pt-2 flex items-center gap-5 border-t border-[var(--border-color)]">
-                <a 
-                  href={p.github} 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="text-xs font-bold text-[var(--title-color)] hover:text-sky-500 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
-                >
-                  <Github size={15} /> Source Code
-                </a>
-                {p.live && (
+                {/* Action Buttons */}
+                <div className="px-6 pb-5 pt-2 flex items-center gap-5 border-t border-[var(--border-color)]">
                   <a 
-                    href={p.live} 
+                    href={p.github} 
                     target="_blank" 
-                    rel="noreferrer" 
-                    className="text-xs font-bold text-sky-500 hover:text-sky-600 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
+                    rel="noopener noreferrer" 
+                    className="text-xs font-bold text-[var(--title-color)] hover:text-sky-500 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
                   >
-                    <ExternalLink size={14} /> Live Demo
+                    <Github size={15} /> Source Code
                   </a>
-                )}
+                  {p.live && (
+                    <a 
+                      href={p.live} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-xs font-bold text-sky-500 hover:text-sky-600 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
+                    >
+                      <ExternalLink size={14} /> Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* ==================== 7. CONTACT ME SECTION ==================== */}
@@ -945,7 +1050,7 @@ export default function App() {
               <a 
                 href="https://github.com/DeekshaG96" 
                 target="_blank" 
-                rel="noreferrer" 
+                rel="noopener noreferrer" 
                 className="inline-flex items-center gap-1 text-xs font-bold text-sky-500 hover:text-sky-600 uppercase tracking-wider transition-colors pt-1"
               >
                 <span>Visit Profile</span> <ArrowRight size={13} />
@@ -960,7 +1065,7 @@ export default function App() {
               <a 
                 href="https://linkedin.com/in/deeksha-g-cybersec" 
                 target="_blank" 
-                rel="noreferrer" 
+                rel="noopener noreferrer" 
                 className="inline-flex items-center gap-1 text-xs font-bold text-sky-500 hover:text-sky-600 uppercase tracking-wider transition-colors pt-1"
               >
                 <span>Connect with me</span> <ArrowRight size={13} />
@@ -1077,7 +1182,7 @@ export default function App() {
             <a 
               href="https://github.com/DeekshaG96" 
               target="_blank" 
-              rel="noreferrer" 
+              rel="noopener noreferrer" 
               className="w-8 h-8 rounded-lg b-card flex items-center justify-center hover:text-sky-500 transition-colors"
               title="GitHub"
             >
@@ -1086,7 +1191,7 @@ export default function App() {
             <a 
               href="https://linkedin.com/in/deeksha-g-cybersec" 
               target="_blank" 
-              rel="noreferrer" 
+              rel="noopener noreferrer" 
               className="w-8 h-8 rounded-lg b-card flex items-center justify-center hover:text-sky-500 transition-colors"
               title="LinkedIn"
             >
@@ -1120,8 +1225,17 @@ export default function App() {
 
       {/* ==================== RESUME PORTAL MODAL ==================== */}
       {isResumeModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md">
-          <div className="bg-[var(--container-color)] border border-[var(--border-color)] rounded-3xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md"
+          onClick={() => setIsResumeModalOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="resume-modal-title"
+        >
+          <div 
+            className="bg-[var(--container-color)] border border-[var(--border-color)] rounded-3xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
             
             {/* Modal Header */}
             <div className="px-6 py-4 border-b border-[var(--border-color)] flex items-center justify-between bg-[var(--body-color)]/50">
@@ -1130,7 +1244,7 @@ export default function App() {
                   <FileText size={20} />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold font-headline text-[var(--title-color)]">
+                  <h3 id="resume-modal-title" className="text-base font-bold font-headline text-[var(--title-color)]">
                     Deeksha G — Technical Resume
                   </h3>
                   <p className="text-xs text-[var(--text-color-light)]">
@@ -1141,7 +1255,7 @@ export default function App() {
 
               <button 
                 onClick={() => setIsResumeModalOpen(false)}
-                className="p-2 rounded-xl text-[var(--text-color)] hover:bg-[var(--border-color)] transition-colors"
+                className="p-2 rounded-xl text-[var(--text-color)] hover:bg-[var(--border-color)] transition-colors cursor-pointer"
                 aria-label="Close Resume Modal"
               >
                 <X size={20} />
