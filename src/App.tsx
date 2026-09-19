@@ -228,7 +228,7 @@ export default function App() {
       desc: 'Complete full-stack commerce platform serving 500+ daily orders with real-time Kitchen Display System (KDS), admin catalog manager, and native Android application with sub-250ms state synchronization.',
       img: './media/projects/naanstop.png',
       github: 'https://github.com/DeekshaG96/food-delivery-app',
-      live: 'https://naanstop.vercel.app',
+      live: 'https://naanstop-customer.vercel.app',
       tech: ['React 19', 'TypeScript', 'Node.js', 'Express', 'Firebase', 'Android']
     },
     {
