@@ -60,10 +60,10 @@ export default function App() {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   const officialResume = {
-    name: 'Deeksha G — Master ATS Resume',
+    name: 'Deeksha G — Technical Resume',
     filename: 'Deeksha_G_Resume.pdf',
-    url: './Deeksha_G_Resume.pdf?v=20260918_v7',
-    desc: 'Verified 1-Page ATS Resume • B.E. Computer Science & Business Systems • NBEC 2026 Round 2 Shortlist • Full-Stack & AI'
+    url: './Deeksha_G_Resume.pdf',
+    desc: 'Verified 1-Page ATS Resume • B.E. Computer Science & Business Systems • Applied AI & Full-Stack'
   };
 
   // Contact Form State
@@ -139,7 +139,7 @@ export default function App() {
       category: 'AI & Cloud',
       metric: '5,000+ Records • 19/19 Assertions',
       desc: 'Autonomous financial reconciliation and liquidity intelligence engine built for Razorpay AI Buildathon. Decouples deterministic math from Gemini reasoning across 5,000+ transaction records, reducing manual audit overhead by 40%.',
-      img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=1000',
+      img: './media/projects/razorops-ai.png',
       github: 'https://github.com/DeekshaG96/razorops-ai',
       live: 'https://razorops-ai.web.app',
       tech: ['React 19', 'Gemini AI', 'Firebase', 'E2E Testing (19/19)', 'Tailwind CSS']
@@ -150,9 +150,9 @@ export default function App() {
       category: 'Full-Stack',
       metric: '500+ Daily Orders • Sub-250ms Latency',
       desc: 'Complete full-stack commerce platform serving 500+ daily orders with real-time Kitchen Display System (KDS), admin catalog manager, and native Android application with sub-250ms state synchronization.',
-      img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=1000',
+      img: './media/projects/naanstop.png',
       github: 'https://github.com/DeekshaG96/food-delivery-app',
-      live: 'https://naanstop-customer.vercel.app',
+      live: 'https://naanstop.vercel.app',
       tech: ['React 19', 'TypeScript', 'Node.js', 'Express', 'Firebase', 'Android']
     },
     {
@@ -161,7 +161,7 @@ export default function App() {
       category: 'AI & Cloud',
       metric: '10,000+ Points • +25% Resilience',
       desc: 'AI-assisted logistics intelligence platform for supply chain disruption detection and recovery routing. Interfaces Gemini AI reasoning with real-time IoT sensor telemetry (10,000+ points) to cut transit delays by 30%.',
-      img: 'https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=1000',
+      img: './media/projects/eco-track.png',
       github: 'https://github.com/DeekshaG96/eco-track-logistics',
       live: 'https://techspire-13303696-1c68d.web.app',
       tech: ['React', 'Gemini AI', 'Firebase', 'Google Maps API', 'CI/CD']
@@ -172,7 +172,7 @@ export default function App() {
       category: 'AI & Cloud',
       metric: 'R² > 0.98 • 30.5 MPa Tensile Strength',
       desc: 'Developed hybrid natural-fibre composites using coconut coir, flax fibre, epoxy resin, and recycled Single-Use Plastics (SUP) across CF, CFP, and CFT configurations. Evaluated mechanical tensile, flexural, and Charpy impact performance adhering to ASTM standards. Applied second-order polynomial regression to strain-force data, achieving R² > 0.98 goodness-of-fit. Shortlisted for and presented in Round 2 of the National Bio Entrepreneurship Competition (NBEC 2026).',
-      img: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1000',
+      img: './media/projects/hybrid-composite.png',
       github: 'https://github.com/DeekshaG96',
       live: 'https://deekshag.vercel.app',
       tech: ['Polynomial Regression', 'Data Analytics', 'ASTM Testing', 'Materials Science', 'Bio-Entrepreneurship']
@@ -183,7 +183,7 @@ export default function App() {
       category: 'Full-Stack',
       metric: 'Enterprise RBAC & Auditing',
       desc: 'Enterprise human resource management system featuring role-based access control, departmental salary indexing, attendance tracking, and cryptographically verified employee ledgers.',
-      img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000',
+      img: './media/projects/architectural-ledger.png',
       github: 'https://github.com/DeekshaG96/the-architectural-ledger',
       live: 'https://the-architectural-ledger.netlify.app/',
       tech: ['React 19', 'TypeScript', 'Tailwind CSS', 'Vite', 'Lucide']
@@ -194,7 +194,7 @@ export default function App() {
       category: 'Full-Stack',
       metric: '+40% User Engagement',
       desc: 'Scalable full-stack marketplace and crop intelligence portal connecting farmers to agronomy analytics and direct commercial buyers. Features dynamic pricing models and localized weather analytics (+40% user engagement). Built for Srinathon 2.0.',
-      img: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1000',
+      img: './media/projects/smart-farmer.png',
       github: 'https://github.com/DeekshaG96/smart-farm-connect',
       live: 'https://v0-smart-farm-connect-ui.vercel.app/',
       tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'REST API']
@@ -205,7 +205,7 @@ export default function App() {
       category: 'Security & Web3',
       metric: '10,000+ Anonymous Ballots',
       desc: 'Decentralized electronic voting platform deploying gas-optimized Solidity smart contracts on Ethereum Sepolia with cryptographic verification for voter anonymity and tamper-proof ballot verification across 10,000+ simulated voters.',
-      img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000',
+      img: './media/projects/votx-protocol.png',
       github: 'https://github.com/DeekshaG96/blockchain_proj',
       live: 'https://blockchainproj-7nj1.vercel.app',
       tech: ['Solidity', 'Ethereum Sepolia', 'Ethers.js', 'React', 'MetaMask']
@@ -216,7 +216,7 @@ export default function App() {
       category: 'AI & Cloud',
       metric: 'Real-Time ML Forecasting',
       desc: 'Interactive predictive machine learning portal analyzing educational indicators to forecast student retention and academic performance in real time with feature-importance visual explainability.',
-      img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000',
+      img: './media/projects/student-success.png',
       github: 'https://github.com/DeekshaG96/Student-Success-Dashboard',
       live: 'https://student-success-dashboard-cpnswmcahqbt6zwqkhwghy.streamlit.app/',
       tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Pandas', 'Matplotlib']
@@ -294,48 +294,29 @@ export default function App() {
     'Pearson: Data Analytics (waLMM-H9e3)',
     'Pearson: JavaScript (m39T-uTnz)',
     'Pearson: HTML5 App Dev (58VV-4wLq)',
-    'Google Cloud ACE',
-    'AWS Academy Cloud Architect',
-    'Fortinet Network Security (Grade O)',
-    'Postman API Student Expert',
-    'Vertex AI Prompt Specialist'
+    'Google Cloud: Associate Cloud Engineer (ACE)',
+    'AWS Academy: Cloud Infrastructure Foundations (Grade A)',
+    'Fortinet: Network Security & ZTNA (Grade O)',
+    'Palo Alto Networks: Cybersecurity & SOC Telemetry (Grade E)',
+    'National Bio Entrepreneurship Competition (NBEC 2026) — Round 2 Shortlist',
+    'Postman: API Student Expert',
+    'Vertex AI: Prompt Specialist'
   ];
 
   const experienceItems = [
+    {
+      title: 'AI Product Engineering Intern',
+      company: 'TechSaksham (Microsoft & SAP Initiative)',
+      date: 'Nov 2024 - Dec 2024',
+      badge: '94% ML Accuracy',
+      desc: 'Architected deep learning computer vision classification pipelines using Python and Scikit-Learn, reaching 94% prediction accuracy. Optimized inference latency by 35% across 10,000+ samples through automated feature reduction for real-time edge processing.'
+    },
     {
       title: 'Open Source Software Contributor',
       company: 'GirlScript Summer of Code (GSSoC)',
       date: 'May 2024 - Aug 2024',
       badge: 'Open Source',
-      desc: 'Contributing core features and bug fixes to developer and security tooling open-source repositories with automated GitHub Actions CI/CD workflows.'
-    },
-    {
-      title: 'Network Security Engineering Intern',
-      company: 'Fortinet (via AICTE & EduSkills)',
-      date: 'Oct 2024 - Dec 2024',
-      badge: 'Grade O (Outstanding, 90-100%)',
-      desc: 'Configured stateful firewall inspection rules, Zero-Trust Network Access (ZTNA) perimeters, and simulated enterprise threat vectors.'
-    },
-    {
-      title: 'Cybersecurity Engineering Intern',
-      company: 'Palo Alto Networks (via AICTE & EduSkills)',
-      date: 'Jan 2025 - Mar 2025',
-      badge: 'Grade E (Excellent, 80-89%)',
-      desc: 'Analyzed real-time network traffic telemetry, investigated simulated SOC alarms, and engineered automated incident response playbooks.'
-    },
-    {
-      title: 'AI Product Intern',
-      company: 'TechSaksham (Microsoft & SAP Initiative)',
-      date: 'Nov 2024 - Dec 2024',
-      badge: '94% ML Accuracy',
-      desc: 'Engineered deep learning computer vision pipelines for agricultural anomaly detection, achieving 94% prediction accuracy across 10,000+ records.'
-    },
-    {
-      title: 'Cloud Infrastructure Intern',
-      company: 'AWS Academy',
-      date: 'Oct 2024 - Dec 2024',
-      badge: 'Grade A Evaluation',
-      desc: 'Architected resilient cloud infrastructures utilizing AWS Core Services (EC2, S3, VPC, RDS, IAM) with multi-AZ fault tolerance and CloudWatch alarms.'
+      desc: 'Engineered core feature enhancements and performance patches across open-source developer tooling repositories using TypeScript and Python. Implemented automated GitHub Actions CI/CD workflows for linting and regression testing, increasing review throughput by 25%.'
     }
   ];
 
@@ -505,7 +486,7 @@ export default function App() {
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-600 dark:text-sky-400 text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Software & AI Engineer • Expected June 2027 • Open for Roles</span>
+              <span>Software Engineer & AI Developer • Expected June 2027 • Open to Internships & New-Grad Roles</span>
             </div>
 
             <div className="space-y-1">
@@ -516,12 +497,12 @@ export default function App() {
                 Deeksha G.
               </h1>
               <h2 className="text-lg sm:text-xl font-medium text-sky-500 font-headline pt-1">
-                Software Engineer & AI Architect
+                Software Engineer & AI Developer
               </h2>
             </div>
 
             <p className="text-sm sm:text-base text-[var(--text-color)] leading-relaxed pt-1">
-              Engineering high-resilience full-stack web platforms, cloud architectures, and applied AI systems. Pursuing B.E. in Computer Science & Business Systems (CSBS) at Srinivas Institute of Technology (SIT), Mangaluru.
+              Engineering high-resilience full-stack web platforms, machine learning pipelines, and applied AI systems. Pursuing B.E. in Computer Science & Business Systems (CSBS) at Srinivas Institute of Technology (SIT), Mangaluru.
             </p>
 
             {/* Action Buttons */}
@@ -564,7 +545,7 @@ export default function App() {
               </div>
               <div className="absolute -bottom-3 -right-3 b-card px-4 py-2 rounded-xl text-xs font-bold text-[var(--title-color)] flex items-center gap-2 shadow-lg">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                <span>Open for Internships</span>
+                <span>Open to Internships & New-Grad Roles</span>
               </div>
             </div>
           </div>
@@ -608,12 +589,12 @@ export default function App() {
               <div className="b-card p-3.5 rounded-2xl text-center">
                 <Briefcase className="w-5 h-5 text-sky-500 mx-auto mb-1" />
                 <h4 className="text-xs font-bold text-[var(--title-color)] font-headline">Experience</h4>
-                <span className="text-[11px] text-[var(--text-color-light)]">5 Internships</span>
+                <span className="text-[11px] text-[var(--text-color-light)]">2 Internships</span>
               </div>
               <div className="b-card p-3.5 rounded-2xl text-center">
                 <CheckCircle2 className="w-5 h-5 text-sky-500 mx-auto mb-1" />
                 <h4 className="text-xs font-bold text-[var(--title-color)] font-headline">Completed</h4>
-                <span className="text-[11px] text-[var(--text-color-light)]">10+ Projects</span>
+                <span className="text-[11px] text-[var(--text-color-light)]">8 Flagship Projects</span>
               </div>
               <div className="b-card p-3.5 rounded-2xl text-center">
                 <GraduationCap className="w-5 h-5 text-sky-500 mx-auto mb-1" />
@@ -628,7 +609,7 @@ export default function App() {
                 I am a Computer Science & Business Systems (CSBS) engineering undergraduate at Srinivas Institute of Technology (SIT), Mangaluru (Expected June 2027, VTU affiliated).
               </p>
               <p>
-                I specialize in building production-ready web applications, integrating applied AI, and deploying cloud architectures. Having completed enterprise internships across Fortinet (Grade O), Palo Alto Networks (Grade E), Microsoft TechSaksham (94% accuracy), AWS Academy (Grade A), and open-source contributions at GSSoC (May 2024 – Aug 2024), I build with clean architecture and strict quality standards.
+                I specialize in engineering production-grade web applications, integrating applied machine learning, and designing resilient cloud architectures. With verified internship experience at TechSaksham (Microsoft & SAP) and GirlScript Summer of Code (GSSoC), alongside accredited technical certifications from Google Cloud, AWS Academy, Fortinet, and Palo Alto Networks, I build software with clean architecture, strict reliability, and measurable impact.
               </p>
             </div>
 
@@ -991,7 +972,7 @@ export default function App() {
             {/* Availability Pill */}
             <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold text-center flex items-center justify-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Available for Immediate Full-Time & Internship Roles</span>
+              <span>Open to Internships & New-Grad Roles</span>
             </div>
           </div>
 
@@ -1080,7 +1061,7 @@ export default function App() {
               Deeksha<span className="text-sky-500 font-sans text-2xl font-black ml-0.5">.</span>
             </h2>
             <p className="text-xs text-[var(--text-color-light)] mt-1">
-              Software Engineer • Applied AI & Cloud Architecture
+              Software Engineer & AI Developer
             </p>
           </div>
 
@@ -1152,10 +1133,10 @@ export default function App() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold font-headline text-[var(--title-color)]">
-                    Official Technical Resume (Master ATS)
+                    Deeksha G — Technical Resume
                   </h3>
                   <p className="text-xs text-[var(--text-color-light)]">
-                    Verified 1-Page Technical Resume • Strictly Zero CGPA Mention • Batch 2027
+                    Verified 1-Page ATS Resume • B.E. Computer Science & Business Systems • Applied AI & Full-Stack
                   </p>
                 </div>
               </div>
@@ -1173,10 +1154,10 @@ export default function App() {
             <div className="px-6 py-3 border-b border-[var(--border-color)] flex flex-wrap items-center justify-between gap-3 bg-[var(--container-color)]">
               <div className="flex items-center gap-2">
                 <span className="px-3 py-1 rounded-xl text-xs font-semibold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
-                  Master Full-Stack & Applied AI Resume
+                  Technical Resume (1-Page ATS)
                 </span>
                 <span className="text-xs text-[var(--text-color-light)] hidden sm:inline">
-                  • 1 Page • Pure ASCII • ATS Grade A+
+                  • Single Column • ATS Standard
                 </span>
               </div>
 
@@ -1204,7 +1185,7 @@ export default function App() {
             <div className="flex-1 p-4 bg-[var(--body-color)] overflow-hidden flex flex-col">
               <iframe
                 src={officialResume.url}
-                className="w-full flex-1 rounded-2xl border border-[var(--border-color)] shadow-inner bg-slate-950 min-h-[520px]"
+                className="w-full flex-1 rounded-2xl border border-[var(--border-color)] shadow-inner bg-[var(--container-color)] min-h-[520px]"
                 title="Deeksha G Official Resume Viewer"
               />
             </div>
