@@ -171,4 +171,68 @@
       linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   }
+
+  /* How to Web Dev: Vibrant Gradient Typography */
+  .text-gradient-vibrant {
+    background: linear-gradient(135deg, #0284c7 0%, #6366f1 45%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .dark .text-gradient-vibrant {
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 45%, #f472b6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* How to Web Dev: Rounded-Full Pill Action Buttons */
+  .btn-pill {
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-pill:hover {
+    transform: translateY(-2px);
+  }
+  .btn-pill-primary {
+    background: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 14px 0 rgba(2, 132, 199, 0.35);
+  }
+  .btn-pill-primary:hover {
+    box-shadow: 0 6px 20px 0 rgba(2, 132, 199, 0.45);
+  }
+  .btn-pill-secondary {
+    background-color: var(--container-color);
+    color: var(--title-color);
+    border: 1.5px solid var(--border-color);
+  }
+  .btn-pill-secondary:hover {
+    border-color: #0284c7;
+    color: #0284c7;
+    box-shadow: 0 4px 14px 0 var(--shadow-color);
+  }
+  .dark .btn-pill-secondary:hover {
+    border-color: #38bdf8;
+    color: #38bdf8;
+  }
+
+  /* Modular High-Definition Card */
+  .card-modular {
+    background-color: var(--container-color);
+    border: 1px solid var(--border-color);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px -2px var(--shadow-color);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-modular:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px -4px var(--shadow-color);
+    border-color: rgba(2, 132, 199, 0.4);
+  }
+  .dark .card-modular:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+  }
 }

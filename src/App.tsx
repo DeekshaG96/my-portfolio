@@ -467,7 +467,7 @@ export default function App() {
               {/* Interactive Resume Portal Button */}
               <button 
                 onClick={() => setIsResumeModalOpen(true)}
-                className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm shadow-sky-500/20 cursor-pointer"
+                className="btn-pill btn-pill-primary px-4 py-2 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm shadow-sky-500/20 cursor-pointer"
               >
                 <FileText size={13} /> Resume
               </button>
@@ -583,7 +583,7 @@ export default function App() {
 
             {/* Typography Hierarchy */}
             <div className="space-y-1.5">
-              <p className="text-xs sm:text-sm font-bold tracking-widest uppercase text-sky-500 font-headline">
+              <p className="text-sm sm:text-base font-extrabold tracking-wider uppercase font-headline text-gradient-vibrant">
                 Software Engineer & AI Developer
               </p>
               <h1 className="text-4xl sm:text-6xl font-extrabold font-headline text-[var(--title-color)] tracking-tight leading-[1.1]">
@@ -595,23 +595,23 @@ export default function App() {
               Engineering production-grade full-stack web platforms, applied machine learning pipelines, and cloud architectures. Pursuing B.E. in Computer Science & Business Systems (CSBS) at Srinivas Institute of Technology (SIT), Mangaluru.
             </p>
 
-            {/* Action Buttons: Unified height, padding, and radius */}
+            {/* Action Buttons: How to Web Dev Pill Styling */}
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
               <a 
                 href="#contact" 
-                className="h-11 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-sky-500/25 hover:shadow-lg hover:shadow-sky-500/30 flex items-center gap-2 cursor-pointer group"
+                className="btn-pill btn-pill-primary h-11 px-6 text-xs uppercase tracking-wider gap-2 cursor-pointer group"
               >
                 Get In Touch <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
               </a>
               <button 
                 onClick={() => setIsResumeModalOpen(true)}
-                className="h-11 px-5 rounded-xl b-card text-xs font-bold uppercase tracking-wider text-[var(--title-color)] hover:text-sky-500 hover:border-sky-500/50 transition-all flex items-center gap-2 shadow-xs cursor-pointer"
+                className="btn-pill btn-pill-secondary h-11 px-6 text-xs uppercase tracking-wider gap-2 shadow-xs cursor-pointer"
               >
                 <FileText size={14} className="text-sky-500" /> View Resume
               </button>
               <button 
                 onClick={copyEmail}
-                className="h-11 px-4 rounded-xl bg-sky-500/10 hover:bg-sky-500/15 border border-sky-500/20 text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 transition-all flex items-center gap-2 cursor-pointer"
+                className="btn-pill h-11 px-5 bg-sky-500/10 hover:bg-sky-500/15 border border-sky-500/20 text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 gap-2 cursor-pointer"
                 title="Copy Email Address"
               >
                 {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
@@ -743,7 +743,7 @@ export default function App() {
             <div className="pt-2">
               <button 
                 onClick={() => setIsResumeModalOpen(true)}
-                className="bg-sky-500 hover:bg-sky-600 text-white px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all inline-flex items-center gap-2 shadow-sm"
+                className="btn-pill btn-pill-primary px-7 py-3.5 text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-md shadow-sky-500/25 cursor-pointer"
               >
                 <FileText size={14} /> View Technical Resume (PDF)
               </button>
@@ -806,19 +806,19 @@ export default function App() {
         <span className="section__subtitle">My Personal Journey</span>
         <h2 className="section__title">Qualification</h2>
 
-        {/* Interactive Tabs */}
-        <div className="flex justify-center gap-6 mb-12" role="tablist" aria-label="Qualifications Tabs">
+        {/* Interactive Tabs: How to Web Dev Pill Design */}
+        <div className="flex justify-center gap-3.5 mb-12" role="tablist" aria-label="Qualifications Tabs">
           <button
             role="tab"
             aria-selected={qualificationTab === 'experience'}
             onClick={() => setQualificationTab('experience')}
-            className={`flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+            className={`btn-pill px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
               qualificationTab === 'experience'
-                ? 'text-sky-500 border-b-2 border-sky-500 pb-1 font-extrabold'
-                : 'text-[var(--text-color-light)] hover:text-[var(--title-color)]'
+                ? 'btn-pill-primary text-white shadow-md shadow-sky-500/25'
+                : 'btn-pill-secondary text-[var(--text-color)] hover:text-sky-500'
             }`}
           >
-            <Briefcase size={18} />
+            <Briefcase size={15} className="mr-1.5" />
             <span>Experience</span>
           </button>
 
@@ -826,13 +826,13 @@ export default function App() {
             role="tab"
             aria-selected={qualificationTab === 'education'}
             onClick={() => setQualificationTab('education')}
-            className={`flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+            className={`btn-pill px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
               qualificationTab === 'education'
-                ? 'text-sky-500 border-b-2 border-sky-500 pb-1 font-extrabold'
-                : 'text-[var(--text-color-light)] hover:text-[var(--title-color)]'
+                ? 'btn-pill-primary text-white shadow-md shadow-sky-500/25'
+                : 'btn-pill-secondary text-[var(--text-color)] hover:text-sky-500'
             }`}
           >
-            <GraduationCap size={18} />
+            <GraduationCap size={15} className="mr-1.5" />
             <span>Education</span>
           </button>
         </div>
@@ -946,16 +946,16 @@ export default function App() {
         <span className="section__subtitle">Most Recent Work</span>
         <h2 className="section__title">Portfolio</h2>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        {/* Filter Pills: How to Web Dev Pill Design */}
+        <div className="flex flex-wrap justify-center gap-2.5 mb-10">
           {projectCategories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all ${
+              className={`btn-pill px-5 py-2 text-xs uppercase tracking-wider transition-all cursor-pointer ${
                 activeCategory === cat
-                  ? 'bg-sky-500 text-white shadow-md shadow-sky-500/20 font-bold'
-                  : 'b-card text-[var(--text-color)] hover:text-sky-500'
+                  ? 'btn-pill-primary text-white shadow-md shadow-sky-500/25 font-bold'
+                  : 'btn-pill-secondary text-[var(--text-color)] hover:text-sky-500'
               }`}
             >
               {cat}
@@ -979,7 +979,7 @@ export default function App() {
             {filteredProjects.map((p) => (
               <div 
                 key={p.title} 
-                className="b-card rounded-2xl overflow-hidden flex flex-col justify-between group"
+                className="card-modular overflow-hidden flex flex-col justify-between group"
               >
                 <div>
                   <div className="relative aspect-[16/9] overflow-hidden bg-slate-100 dark:bg-slate-800">
@@ -989,7 +989,7 @@ export default function App() {
                       className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" 
                       referrerPolicy="no-referrer"
                     />
-                    <span className="absolute top-3 right-3 bg-[var(--container-color)]/95 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 shadow-xs">
+                    <span className="absolute top-3 right-3 bg-[var(--container-color)]/95 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 shadow-xs">
                       {p.metric}
                     </span>
                   </div>
@@ -1008,7 +1008,7 @@ export default function App() {
                       {p.tech.map((t) => (
                         <span 
                           key={t} 
-                          className="text-[11px] bg-[var(--body-color)] text-[var(--text-color)] px-2.5 py-0.5 rounded-md font-medium border border-[var(--border-color)]"
+                          className="text-[11px] bg-[var(--body-color)] text-[var(--text-color)] px-3 py-1 rounded-full font-medium border border-[var(--border-color)]"
                         >
                           {t}
                         </span>
@@ -1017,35 +1017,35 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="px-6 pb-5 pt-2 flex items-center justify-between gap-4 border-t border-[var(--border-color)]">
-                  <div className="flex items-center gap-5">
-                    {p.github && (
-                      <a 
-                        href={p.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-xs font-bold text-[var(--title-color)] hover:text-sky-500 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
-                      >
-                        <Github size={15} /> Source Code
-                      </a>
-                    )}
+                {/* Action Buttons: How to Web Dev Pill Buttons */}
+                <div className="px-6 pb-6 pt-3 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--border-color)]/70">
+                  <div className="flex flex-wrap items-center gap-2.5">
                     {p.live && (
                       <a 
                         href={p.live} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="text-xs font-bold text-sky-500 hover:text-sky-600 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
+                        className="btn-pill btn-pill-primary h-9 px-4 text-xs tracking-wider gap-1.5 shadow-xs"
                       >
-                        <ExternalLink size={14} /> Live Demo
+                        <ExternalLink size={13} /> Live Demo
+                      </a>
+                    )}
+                    {p.github && (
+                      <a 
+                        href={p.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="btn-pill btn-pill-secondary h-9 px-4 text-xs tracking-wider gap-1.5 shadow-xs"
+                      >
+                        <Github size={13} /> Source Code
                       </a>
                     )}
                   </div>
                   {!p.github && !p.live && (
-                    <span className="text-xs font-semibold text-amber-500 dark:text-amber-400 flex items-center gap-1.5 py-0.5">
+                    <div className="btn-pill px-3.5 py-1.5 bg-amber-500/10 border border-amber-500/25 text-amber-600 dark:text-amber-400 text-xs font-semibold gap-1.5">
                       <Award size={14} className="text-amber-500 shrink-0" />
-                      Research Paper & Lab Evaluation (Offline / Proprietary)
-                    </span>
+                      <span>Research Paper & Lab Evaluation (Offline / Proprietary)</span>
+                    </div>
                   )}
                 </div>
               </div>
@@ -1184,7 +1184,7 @@ export default function App() {
 
                 <button 
                   type="submit"
-                  className="w-full bg-sky-500 hover:bg-sky-600 text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md shadow-sky-500/20"
+                  className="btn-pill btn-pill-primary w-full py-3.5 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-md shadow-sky-500/25"
                 >
                   Send Message <Send size={14} />
                 </button>
