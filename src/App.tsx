@@ -27,7 +27,8 @@ import {
   MousePointer,
   Linkedin,
   FileText,
-  ArrowDown
+  ArrowDown,
+  Award
 } from 'lucide-react';
 
 interface Project {
@@ -37,7 +38,7 @@ interface Project {
   metric: string;
   desc: string;
   img: string;
-  github: string;
+  github?: string;
   live?: string;
   tech: string[];
 }
@@ -250,8 +251,6 @@ export default function App() {
       metric: 'R² > 0.98 • 30.5 MPa Tensile Strength',
       desc: 'Developed hybrid natural-fibre composites using coconut coir, flax fibre, epoxy resin, and recycled Single-Use Plastics (SUP) across CF, CFP, and CFT configurations. Evaluated mechanical tensile, flexural, and Charpy impact performance adhering to ASTM standards. Applied second-order polynomial regression to strain-force data, achieving R² > 0.98 goodness-of-fit. Shortlisted for and presented in Round 2 of the National Bio Entrepreneurship Competition (NBEC 2026).',
       img: './media/projects/hybrid-composite.png',
-      github: 'https://github.com/DeekshaG96',
-      live: 'https://deekshag.vercel.app',
       tech: ['Polynomial Regression', 'Data Analytics', 'ASTM Testing', 'Materials Science', 'Bio-Entrepreneurship']
     },
     {
@@ -1019,24 +1018,34 @@ export default function App() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="px-6 pb-5 pt-2 flex items-center gap-5 border-t border-[var(--border-color)]">
-                  <a 
-                    href={p.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-xs font-bold text-[var(--title-color)] hover:text-sky-500 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
-                  >
-                    <Github size={15} /> Source Code
-                  </a>
-                  {p.live && (
-                    <a 
-                      href={p.live} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-xs font-bold text-sky-500 hover:text-sky-600 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
-                    >
-                      <ExternalLink size={14} /> Live Demo
-                    </a>
+                <div className="px-6 pb-5 pt-2 flex items-center justify-between gap-4 border-t border-[var(--border-color)]">
+                  <div className="flex items-center gap-5">
+                    {p.github && (
+                      <a 
+                        href={p.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-xs font-bold text-[var(--title-color)] hover:text-sky-500 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
+                      >
+                        <Github size={15} /> Source Code
+                      </a>
+                    )}
+                    {p.live && (
+                      <a 
+                        href={p.live} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-xs font-bold text-sky-500 hover:text-sky-600 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
+                      >
+                        <ExternalLink size={14} /> Live Demo
+                      </a>
+                    )}
+                  </div>
+                  {!p.github && !p.live && (
+                    <span className="text-xs font-semibold text-amber-500 dark:text-amber-400 flex items-center gap-1.5 py-0.5">
+                      <Award size={14} className="text-amber-500 shrink-0" />
+                      Research Paper & Lab Evaluation (Offline / Proprietary)
+                    </span>
                   )}
                 </div>
               </div>
