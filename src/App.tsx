@@ -217,7 +217,7 @@ export default function App() {
       category: 'AI & Cloud',
       metric: '5,000+ Records • 19/19 Assertions',
       desc: 'Autonomous financial reconciliation and liquidity intelligence engine built for Razorpay AI Buildathon. Decouples deterministic math from Gemini reasoning across 5,000+ transaction records, reducing manual audit overhead by 40%.',
-      img: './media/projects/razorops-ai.png',
+      img: './media/projects/razorops-ai-v2.png',
       github: 'https://github.com/DeekshaG96/razorops-ai',
       live: 'https://razorops-ai.web.app',
       tech: ['React 19', 'Gemini AI', 'Firebase', 'E2E Testing (19/19)', 'Tailwind CSS']
@@ -228,7 +228,7 @@ export default function App() {
       category: 'Full-Stack',
       metric: '500+ Daily Orders • Sub-250ms Latency',
       desc: 'Complete full-stack commerce platform serving 500+ daily orders with real-time Kitchen Display System (KDS), admin catalog manager, and native Android application with sub-250ms state synchronization.',
-      img: './media/projects/naanstop.png',
+      img: './media/projects/naanstop-v2.png',
       github: 'https://github.com/DeekshaG96/food-delivery-app',
       live: 'https://naanstop-customer.vercel.app',
       tech: ['React 19', 'TypeScript', 'Node.js', 'Express', 'Firebase', 'Android']
@@ -239,7 +239,7 @@ export default function App() {
       category: 'AI & Cloud',
       metric: '10,000+ Points • +25% Resilience',
       desc: 'AI-assisted logistics intelligence platform for supply chain disruption detection and recovery routing. Interfaces Gemini AI reasoning with real-time IoT sensor telemetry (10,000+ points) to cut transit delays by 30%.',
-      img: './media/projects/eco-track.png',
+      img: './media/projects/eco-track-v2.png',
       github: 'https://github.com/DeekshaG96/eco-track-logistics',
       live: 'https://techspire-13303696-1c68d.web.app',
       tech: ['React', 'Gemini AI', 'Firebase', 'Google Maps API', 'CI/CD']
@@ -250,7 +250,7 @@ export default function App() {
       category: 'AI & Cloud',
       metric: 'R² > 0.98 • 30.5 MPa Tensile Strength',
       desc: 'Developed hybrid natural-fibre composites using coconut coir, flax fibre, epoxy resin, and recycled Single-Use Plastics (SUP) across CF, CFP, and CFT configurations. Evaluated mechanical tensile, flexural, and Charpy impact performance adhering to ASTM standards. Applied second-order polynomial regression to strain-force data, achieving R² > 0.98 goodness-of-fit. Shortlisted for and presented in Round 2 of the National Bio Entrepreneurship Competition (NBEC 2026).',
-      img: './media/projects/hybrid-composite.png',
+      img: './media/projects/hybrid-composite-v2.png',
       tech: ['Polynomial Regression', 'Data Analytics', 'ASTM Testing', 'Materials Science', 'Bio-Entrepreneurship']
     },
     {
@@ -281,7 +281,7 @@ export default function App() {
       category: 'Security & Web3',
       metric: '10,000+ Anonymous Ballots',
       desc: 'Decentralized electronic voting platform deploying gas-optimized Solidity smart contracts on Ethereum Sepolia with cryptographic verification for voter anonymity and tamper-proof ballot verification across 10,000+ simulated voters.',
-      img: './media/projects/votx-protocol.png',
+      img: './media/projects/votx-protocol-v2.png',
       github: 'https://github.com/DeekshaG96/blockchain_proj',
       live: 'https://blockchainproj-7nj1.vercel.app',
       tech: ['Solidity', 'Ethereum Sepolia', 'Ethers.js', 'React', 'MetaMask']
@@ -292,7 +292,7 @@ export default function App() {
       category: 'AI & Cloud',
       metric: 'Real-Time ML Forecasting',
       desc: 'Interactive predictive machine learning portal analyzing educational indicators to forecast student retention and academic performance in real time with feature-importance visual explainability.',
-      img: './media/projects/student-success.png',
+      img: './media/projects/student-success-v2.png',
       github: 'https://github.com/DeekshaG96/Student-Success-Dashboard',
       live: 'https://student-success-dashboard-cpnswmcahqbt6zwqkhwghy.streamlit.app/',
       tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Pandas', 'Matplotlib']
