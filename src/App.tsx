@@ -426,9 +426,9 @@ export default function App() {
             <a href="#home" className="hover:text-sky-500 transition-colors">Home</a>
             <a href="#about" className="hover:text-sky-500 transition-colors">About</a>
             <a href="#skills" className="hover:text-sky-500 transition-colors">Skills</a>
-            <a href="#qualification" className="hover:text-sky-500 transition-colors">Experience</a>
+            <a href="#qualification" className="hover:text-sky-500 transition-colors">Qualification</a>
             <a href="#services" className="hover:text-sky-500 transition-colors">Services</a>
-            <a href="#portfolio" className="hover:text-sky-500 transition-colors">Projects</a>
+            <a href="#portfolio" className="hover:text-sky-500 transition-colors">Portfolio</a>
             <a href="#contact" className="hover:text-sky-500 transition-colors">Contact</a>
 
             <div className="flex items-center gap-3 pl-4 border-l border-[var(--border-color)]">
@@ -504,9 +504,9 @@ export default function App() {
             <a href="#home" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Home</a>
             <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">About</a>
             <a href="#skills" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Skills</a>
-            <a href="#qualification" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Experience</a>
+            <a href="#qualification" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Qualification</a>
             <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Services</a>
-            <a href="#portfolio" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Projects</a>
+            <a href="#portfolio" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Portfolio</a>
             <a href="#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-sky-500">Contact</a>
             <div className="flex items-center gap-3 pt-2 border-t border-[var(--border-color)]">
               <a 
@@ -620,24 +620,38 @@ export default function App() {
             </div>
           </div>
 
-          {/* Right Column: Sleek Executive Portrait Frame */}
+          {/* Right Column: Signature Bedimcode SVG Blob Avatar Frame */}
           <div className="flex justify-center order-first md:order-last">
             <div className="relative group">
               {/* Subtle ambient back-glow */}
-              <div className="absolute -inset-2 bg-gradient-to-tr from-sky-500/25 via-indigo-500/15 to-emerald-500/15 rounded-[2.5rem] blur-2xl opacity-60 dark:opacity-40 group-hover:opacity-80 transition-opacity duration-700" />
+              <div className="absolute -inset-3 bg-gradient-to-tr from-sky-500/30 via-indigo-500/20 to-emerald-500/20 rounded-full blur-2xl opacity-60 dark:opacity-40 group-hover:opacity-85 transition-opacity duration-700" />
               
-              {/* Card Frame */}
-              <div className="relative w-64 sm:w-72 md:w-80 aspect-square rounded-[2rem] p-2 bg-[var(--container-color)] border border-[var(--border-color)] shadow-xl shadow-slate-900/10 dark:shadow-black/40">
-                <div className="w-full h-full rounded-[1.6rem] overflow-hidden bg-slate-100 dark:bg-slate-800">
-                  <img 
-                    src="./media/avatar.jpg" 
-                    alt="Deeksha G" 
-                    width={597}
-                    height={800}
-                    fetchPriority="high"
-                    className="w-full h-full object-cover object-top group-hover:scale-103 transition-transform duration-700"
-                  />
-                </div>
+              {/* Bedimcode Signature Organic Blob */}
+              <div className="relative w-64 sm:w-72 md:w-80 aspect-square">
+                <svg 
+                  className="w-full h-full drop-shadow-xl select-none group-hover:scale-103 transition-transform duration-500" 
+                  viewBox="0 0 200 187" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <mask id="bedimcode-blob-mask" mask-type="alpha">
+                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 130.807 187.559 100.226 186.353C69.6454 185.147 41.0228 161.023 21.7403 129.476C2.45775 97.9288 -7.48481 59.1091 6.67881 34.588C20.8424 10.0669 59.1091 -0.155708 97.0515 0.00341797C134.994 0.162544 174.043 10.8571 190.312 36.4879Z"/>
+                  </mask>
+                  <g mask="url(#bedimcode-blob-mask)">
+                    <path 
+                      d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 130.807 187.559 100.226 186.353C69.6454 185.147 41.0228 161.023 21.7403 129.476C2.45775 97.9288 -7.48481 59.1091 6.67881 34.588C20.8424 10.0669 59.1091 -0.155708 97.0515 0.00341797C134.994 0.162544 174.043 10.8571 190.312 36.4879Z" 
+                      fill="var(--first-color)" 
+                    />
+                    <image 
+                      className="w-full h-full" 
+                      x="0" 
+                      y="0" 
+                      width="200" 
+                      height="187" 
+                      preserveAspectRatio="xMidYMid slice" 
+                      href="./media/avatar.jpg" 
+                    />
+                  </g>
+                </svg>
               </div>
             </div>
           </div>
@@ -787,10 +801,10 @@ export default function App() {
         </div>
       </section>
 
-      {/* ==================== 4. EXPERIENCE & EDUCATION SECTION ==================== */}
+      {/* ==================== 4. QUALIFICATION SECTION (Bedimcode Signature Timeline) ==================== */}
       <section id="qualification" className="max-w-4xl mx-auto px-6 py-16">
-        <span className="section__subtitle">Career & Academics</span>
-        <h2 className="section__title">Experience & Education</h2>
+        <span className="section__subtitle">My Personal Journey</span>
+        <h2 className="section__title">Qualification</h2>
 
         {/* Interactive Tabs */}
         <div className="flex justify-center gap-6 mb-12" role="tablist" aria-label="Qualifications Tabs">
@@ -800,7 +814,7 @@ export default function App() {
             onClick={() => setQualificationTab('experience')}
             className={`flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-colors cursor-pointer ${
               qualificationTab === 'experience'
-                ? 'text-sky-500 border-b-2 border-sky-500 pb-1'
+                ? 'text-sky-500 border-b-2 border-sky-500 pb-1 font-extrabold'
                 : 'text-[var(--text-color-light)] hover:text-[var(--title-color)]'
             }`}
           >
@@ -814,7 +828,7 @@ export default function App() {
             onClick={() => setQualificationTab('education')}
             className={`flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-colors cursor-pointer ${
               qualificationTab === 'education'
-                ? 'text-sky-500 border-b-2 border-sky-500 pb-1'
+                ? 'text-sky-500 border-b-2 border-sky-500 pb-1 font-extrabold'
                 : 'text-[var(--text-color-light)] hover:text-[var(--title-color)]'
             }`}
           >
@@ -825,26 +839,30 @@ export default function App() {
 
         {/* Experience Timeline */}
         {qualificationTab === 'experience' && (
-          <div className="space-y-6">
+          <div className="relative pl-6 sm:pl-8 border-l-2 border-sky-500/30 dark:border-sky-500/20 space-y-8 ml-3 sm:ml-8">
             {experienceItems.map((item, idx) => (
-              <div key={idx} className="b-card p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
+              <div key={idx} className="relative group">
+                {/* Bedimcode Rounder Dot */}
+                <span className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full bg-sky-500 ring-4 ring-sky-500/20 shadow-xs group-hover:scale-125 transition-transform" />
+                
+                {/* Timeline Card */}
+                <div className="b-card p-6 rounded-2xl space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
                       {item.badge}
                     </span>
+                    <span className="flex items-center gap-1.5 text-xs text-[var(--text-color-light)] font-medium">
+                      <Calendar size={13} className="text-sky-500" />
+                      {item.date}
+                    </span>
                   </div>
-                  <h3 className="text-base font-bold font-headline text-[var(--title-color)] pt-1">
+                  <h3 className="text-base font-bold font-headline text-[var(--title-color)]">
                     {item.title}
                   </h3>
                   <p className="text-xs font-semibold text-sky-500">{item.company}</p>
-                  <p className="text-xs text-[var(--text-color)] pt-1 leading-relaxed max-w-xl">
+                  <p className="text-xs text-[var(--text-color)] leading-relaxed pt-1">
                     {item.desc}
                   </p>
-                </div>
-                <div className="flex items-center gap-1.5 text-xs text-[var(--text-color-light)] font-medium shrink-0 self-start sm:self-center">
-                  <Calendar size={14} className="text-sky-500" />
-                  <span>{item.date}</span>
                 </div>
               </div>
             ))}
@@ -853,35 +871,40 @@ export default function App() {
 
         {/* Education Tab (Strictly ZERO CGPA!) */}
         {qualificationTab === 'education' && (
-          <div className="space-y-6">
-            <div className="b-card p-6 sm:p-8 rounded-2xl space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--border-color)] pb-4">
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-sky-500">Bachelor of Engineering (B.E.)</span>
-                  <h3 className="text-lg sm:text-xl font-bold font-headline text-[var(--title-color)] mt-0.5">
-                    Computer Science & Business Systems (CSBS)
-                  </h3>
-                  <p className="text-xs sm:text-sm font-semibold text-[var(--text-color)]">
-                    Srinivas Institute of Technology (SIT), Mangaluru
-                  </p>
+          <div className="relative pl-6 sm:pl-8 border-l-2 border-sky-500/30 dark:border-sky-500/20 space-y-8 ml-3 sm:ml-8">
+            <div className="relative group">
+              {/* Bedimcode Rounder Dot */}
+              <span className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full bg-sky-500 ring-4 ring-sky-500/20 shadow-xs group-hover:scale-125 transition-transform" />
+              
+              <div className="b-card p-6 sm:p-8 rounded-2xl space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--border-color)] pb-4">
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-sky-500">Bachelor of Engineering (B.E.)</span>
+                    <h3 className="text-lg sm:text-xl font-bold font-headline text-[var(--title-color)] mt-0.5">
+                      Computer Science & Business Systems (CSBS)
+                    </h3>
+                    <p className="text-xs sm:text-sm font-semibold text-[var(--text-color)]">
+                      Srinivas Institute of Technology (SIT), Mangaluru
+                    </p>
+                  </div>
+                  <div className="text-left sm:text-right">
+                    <span className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-bold">
+                      Expected June 2027
+                    </span>
+                    <p className="text-xs text-[var(--text-color-light)] mt-1 flex items-center sm:justify-end gap-1">
+                      <Calendar size={13} className="text-sky-500" /> Affiliated to VTU Belagavi • AICTE Approved
+                    </p>
+                  </div>
                 </div>
-                <div className="text-left sm:text-right">
-                  <span className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-bold">
-                    Expected June 2027
-                  </span>
-                  <p className="text-xs text-[var(--text-color-light)] mt-1 flex items-center sm:justify-end gap-1">
-                    <Calendar size={13} className="text-sky-500" /> Affiliated to VTU Belagavi • AICTE Approved
-                  </p>
-                </div>
-              </div>
 
-              <div className="space-y-2 pt-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-[var(--text-color-light)]">
-                  Core Engineering Curriculum
-                </span>
-                <p className="text-xs text-[var(--text-color)] leading-relaxed">
-                  Data Structures & Algorithms, Operating Systems, Database Management Systems, Computer Networks, Software Engineering, Object-Oriented Programming (Java / C++), Cloud Computing, and Machine Learning Systems.
-                </p>
+                <div className="space-y-2 pt-1">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--text-color-light)]">
+                    Core Engineering Curriculum
+                  </span>
+                  <p className="text-xs text-[var(--text-color)] leading-relaxed">
+                    Data Structures & Algorithms, Operating Systems, Database Management Systems, Computer Networks, Software Engineering, Object-Oriented Programming (Java / C++), Cloud Computing, and Machine Learning Systems.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -918,10 +941,10 @@ export default function App() {
         </div>
       </section>
 
-      {/* ==================== 6. PORTFOLIO / PROJECTS SECTION ==================== */}
+      {/* ==================== 6. PORTFOLIO SECTION (Bedimcode Style) ==================== */}
       <section id="portfolio" className="max-w-5xl mx-auto px-6 py-16">
         <span className="section__subtitle">Most Recent Work</span>
-        <h2 className="section__title">Featured Projects</h2>
+        <h2 className="section__title">Portfolio</h2>
 
         {/* Filter Pills */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -1182,9 +1205,9 @@ export default function App() {
             <a href="#home" className="hover:text-sky-500 transition-colors">Home</a>
             <a href="#about" className="hover:text-sky-500 transition-colors">About</a>
             <a href="#skills" className="hover:text-sky-500 transition-colors">Skills</a>
-            <a href="#qualification" className="hover:text-sky-500 transition-colors">Experience</a>
+            <a href="#qualification" className="hover:text-sky-500 transition-colors">Qualification</a>
             <a href="#services" className="hover:text-sky-500 transition-colors">Services</a>
-            <a href="#portfolio" className="hover:text-sky-500 transition-colors">Projects</a>
+            <a href="#portfolio" className="hover:text-sky-500 transition-colors">Portfolio</a>
             <a href="#contact" className="hover:text-sky-500 transition-colors">Contact</a>
           </div>
 
