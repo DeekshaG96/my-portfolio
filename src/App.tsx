@@ -26,7 +26,8 @@ import {
   Sparkles,
   MousePointer,
   Linkedin,
-  FileText
+  FileText,
+  ArrowDown
 } from 'lucide-react';
 
 interface Project {
@@ -647,7 +648,7 @@ export default function App() {
                       y="0" 
                       width="200" 
                       height="187" 
-                      preserveAspectRatio="xMidYMid slice" 
+                      preserveAspectRatio="xMidYMin slice" 
                       href="./media/avatar.jpg" 
                     />
                   </g>
@@ -657,12 +658,12 @@ export default function App() {
           </div>
         </div>
 
-        {/* Floating Scroll Down Indicator */}
+        {/* Floating Scroll Down Indicator (Bedimcode Signature) */}
         <div className="hidden sm:flex justify-center mt-14 text-xs font-semibold text-[var(--text-color-light)]">
-          <a href="#about" className="flex items-center gap-2 hover:text-sky-500 transition-colors py-2 px-4 rounded-full b-card shadow-xs">
+          <a href="#about" className="flex items-center gap-2 hover:text-sky-500 transition-colors py-2 px-4 rounded-full b-card shadow-xs group">
             <MousePointer size={14} className="animate-bounce text-sky-500" />
-            <span className="tracking-wide">Explore Portfolio</span>
-            <ArrowRight size={12} />
+            <span className="tracking-wide">Scroll down</span>
+            <ArrowDown size={13} className="text-sky-500 group-hover:translate-y-0.5 transition-transform" />
           </a>
         </div>
       </section>
