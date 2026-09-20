@@ -259,7 +259,7 @@ export default function App() {
       category: 'Full-Stack',
       metric: 'Enterprise RBAC & Auditing',
       desc: 'Enterprise human resource management system featuring role-based access control, departmental salary indexing, attendance tracking, and cryptographically verified employee ledgers.',
-      img: './media/projects/architectural-ledger.png',
+      img: './media/projects/architectural-ledger-v2.png',
       github: 'https://github.com/DeekshaG96/the-architectural-ledger',
       live: 'https://the-architectural-ledger.netlify.app/',
       tech: ['React 19', 'TypeScript', 'Tailwind CSS', 'Vite', 'Lucide']
@@ -270,7 +270,7 @@ export default function App() {
       category: 'Full-Stack',
       metric: '+40% User Engagement',
       desc: 'Scalable full-stack marketplace and crop intelligence portal connecting farmers to agronomy analytics and direct commercial buyers. Features dynamic pricing models and localized weather analytics (+40% user engagement). Built for Srinathon 2.0.',
-      img: './media/projects/smart-farmer.png',
+      img: './media/projects/smart-farmer-v2.png',
       github: 'https://github.com/DeekshaG96/smart-farm-connect',
       live: 'https://v0-smart-farm-connect-ui.vercel.app/',
       tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'REST API']
